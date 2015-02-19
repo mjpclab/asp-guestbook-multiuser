@@ -75,7 +75,7 @@ cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"
 <!-- #include file="inc_dtd.asp" -->
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> 找回密码完成</title>
 
 	<!-- #include file="style.asp" -->

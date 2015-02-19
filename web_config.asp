@@ -12,7 +12,7 @@ CreateConn cn,dbtype
 <!-- #include file="inc_dtd.asp" -->
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 留言本参数</title>
 	
 	<!-- #include file="style.asp" -->
