@@ -15,6 +15,8 @@ end if
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> ¡Ù—‘±æ À—À˜¡Ù—‘</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
 	//<![CDATA[
@@ -28,8 +30,6 @@ end if
 	
 	//]]>
 	</script>
-	
-	<!-- #include file="style.asp" -->
 </head>
 
 <body<%=bodylimit%> onload="if(form1.searchtxt.value=='')form1.searchtxt.focus();<%=framecheck%>">

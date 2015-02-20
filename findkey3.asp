@@ -65,6 +65,8 @@ rs.Close : set rs=nothing
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> ’“ªÿ√‹¬Î≤Ω÷Ë3</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
 	//<![CDATA[
@@ -80,8 +82,6 @@ rs.Close : set rs=nothing
 	
 	//]]>
 	</script>
-	
-	<!-- #include file="style.asp" -->
 </head>
 
 <body onload="findform3.pass1.focus();">

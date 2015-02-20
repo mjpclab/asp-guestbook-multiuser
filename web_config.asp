@@ -14,7 +14,7 @@ CreateConn cn,dbtype
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 留言本参数</title>
-	
+	<link rel="stylesheet" type="text/css" href="style.css"/>
 	<!-- #include file="style.asp" -->
 </head>
 

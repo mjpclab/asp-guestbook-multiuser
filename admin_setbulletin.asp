@@ -13,6 +13,8 @@ end if
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> 留言本 发布置顶公告</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
 	//<![CDATA[
@@ -28,8 +30,6 @@ end if
 	
 	//]]>
 	</script>
-	
-	<!-- #include file="style.asp" -->
 </head>
 
 <body<%=bodylimit%> onload="sfocus();<%=framecheck%>">

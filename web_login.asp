@@ -12,6 +12,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> 留言本 管理中心登录</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
 	<!-- #include file="style.asp" -->
 	
 	<script type="text/javascript">

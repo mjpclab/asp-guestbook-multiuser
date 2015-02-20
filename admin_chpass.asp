@@ -17,6 +17,8 @@ end if
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> 留言本 修改管理员密码</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
 	//<![CDATA[
@@ -41,8 +43,6 @@ end if
 	
 	//]]>
 	</script>
-	
-	<!-- #include file="style.asp" -->
 </head>
 
 <body<%=bodylimit%> onload="form4.ioldpass.focus();<%=framecheck%>">

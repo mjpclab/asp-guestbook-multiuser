@@ -20,6 +20,8 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> вти╬уй╨е</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
 	//<![CDATA[
@@ -36,7 +38,6 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 	//]]>
 	</script>
 	
-	<!-- #include file="style.asp" -->
 </head>
 
 <body onload="unregform.user.focus();">

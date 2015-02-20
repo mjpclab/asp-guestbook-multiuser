@@ -7,6 +7,11 @@
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 高级删除</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- #include file="style.asp" -->
+	<style type="text/css">
+	form {margin:20px 0;}
+	</style>
 
 	<script type="text/javascript">
 	//<![CDATA[
@@ -24,11 +29,6 @@
 	
 	//]]>
 	</script>
-	
-	<!-- #include file="style.asp" -->
-	<style type="text/css">
-	form {margin:20px 0px;}
-	</style>
 </head>
 
 <body>

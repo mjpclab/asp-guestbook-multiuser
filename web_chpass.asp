@@ -11,6 +11,8 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 修改管理员密码</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
 	//<![CDATA[
@@ -28,7 +30,6 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 	//]]>
 	</script>
 	
-	<!-- #include file="style.asp" -->
 </head>
 
 <body onload="form4.ioldpass.focus();">

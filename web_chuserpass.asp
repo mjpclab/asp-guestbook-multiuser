@@ -18,6 +18,8 @@ set cn=nothing
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 重设用户密码</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
 	//<![CDATA[
@@ -35,7 +37,6 @@ set cn=nothing
 	//]]>
 	</script>
 	
-	<!-- #include file="style.asp" -->
 </head>
 
 <body onload="form4.inewpass1.focus();">

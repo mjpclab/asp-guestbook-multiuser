@@ -11,6 +11,7 @@ Response.AddHeader "cache-control","private"
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 搜索留言</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
 	<!-- #include file="style.asp" -->
 </head>
 

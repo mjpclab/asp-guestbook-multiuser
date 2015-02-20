@@ -1,4 +1,5 @@
 <!-- #include file="webconfig.asp" -->
+<link rel="stylesheet" type="text/css" href="style.css"/>
 <!-- #include file="style.asp" -->
 <!-- #include file="md5.asp" -->
 <%

@@ -23,6 +23,8 @@ set rs=nothing : set cn=nothing
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> ¡Ù—‘±æ ±‡º≠¡Ù—‘</title>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
 	//<![CDATA[
@@ -99,8 +101,6 @@ set rs=nothing : set cn=nothing
 	
 	//]]>
 	</script>
-
-	<!-- #include file="style.asp" -->
 </head>
 
 <body<%=bodylimit%> onload="<%=framecheck%>">

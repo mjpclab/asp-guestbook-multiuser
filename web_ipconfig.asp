@@ -13,8 +13,12 @@ CreateConn cn,dbtype
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 IP屏蔽策略</title>
-	
+	<link rel="stylesheet" type="text/css" href="style.css"/>
 	<!-- #include file="style.asp" -->
+	<style type="text/css">
+    	#ipconfigtable {width:440px; text-align:left; margin:0px auto; border:solid 1px <%=TableBorderColor%>; border-collapse:collapse;}
+    	#ipconfigtable td {border:solid 1px <%=TableBorderColor%>;}
+    </style>
 </head>
 
 <body>
@@ -40,10 +44,6 @@ tipconstatus=rs("ipconstatus")
 rs.Close
 %>
 
-<style type="text/css">
-	#ipconfigtable {width:440px; text-align:left; margin:0px auto; border:solid 1px <%=TableBorderColor%>; border-collapse:collapse;}
-	#ipconfigtable td {border:solid 1px <%=TableBorderColor%>;}
-</style>
 
 <table border="1" bordercolor="<%=TableBorderColor%>" cellpadding="2" class="generalwindow">
 	<tr>
