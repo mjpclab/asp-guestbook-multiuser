@@ -9,14 +9,14 @@
 '======================================================
 sub wordsbaned
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
-	call addstat("banned")
+	if StatusStatistics then call addstat("banned")
 	Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=4"
 	Response.End
 end sub
 '======================================================
 sub floodbaned
 	rs.Close : rs2.Close : cn.Close : set rs=nothing : set rs2=nothing : set cn=nothing
-	call addstat("banned")
+	if StatusStatistics then call addstat("banned")
 	Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=7"
 	Response.End
 end sub
@@ -59,13 +59,13 @@ elseif StatusUserBanned then
 	Response.End
 elseif (flood_minwait>0 or web_flood_minwait>0) and isdate(session.Contents("wrote_time")) then
 	if datediff("s",session.Contents("wrote_time"),now())<=flood_minwait or datediff("s",session.Contents("wrote_time"),now())<=web_flood_minwait then
-		call addstat("banned")
+		if StatusStatistics then call addstat("banned")
 		Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=6"
 		Response.End
 	end if
 elseif (flood_minwait>0 or web_flood_minwait>0) and isdate(Request.Cookies("wrote_time")) then
 	if datediff("s",Request.Cookies("wrote_time"),now())<=flood_minwait or datediff("s",Request.Cookies("wrote_time"),now())<=web_flood_minwait then
-		call addstat("banned")
+		if StatusStatistics then call addstat("banned")
 		Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=6"
 		Response.End
 	end if
@@ -176,7 +176,7 @@ for i=1 to 2
 next
 
 set re=nothing
-if filtered=true then addstat("filtered")
+if filtered=true and StatusStatistics then addstat("filtered")
 '-------------------------
 if name1="" or title1="" then Response.Redirect "index.asp?user=" & Request.Form("user")
 
@@ -359,7 +359,7 @@ rs.Update
 
 rs.Close : cn.Close : set rs=nothing : set cn=nothing
 
-call addstat("written")
+if StatusStatistics then call addstat("written")
 
 SetTimelessCookie "wrote_time",now()
 Session.Contents("wrote_time")=now()

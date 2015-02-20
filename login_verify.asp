@@ -20,11 +20,11 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 checkuser cn,rs,true
 
-call addstat("login")
+if StatusStatistics then call addstat("login")
 
 if VcodeCount>0 and (Request.Form("ivcode")<>session("vcode") or session("vcode")="") then
 	session("vcode")=""
-	call addstat("loginfailed")
+	if StatusStatistics then call addstat("loginfailed")
 	Call MessagePage("验证码错误。","admin_login.asp?user=" &request("user"))
 
 	set rs=nothing
@@ -44,7 +44,7 @@ if session.Contents(InstanceName & "_adminpass_"& Request.Form("user"))=rs(0) th
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.Redirect "admin.asp?user=" &Request.Form("user")
 else
-	call addstat("loginfailed")
+	if StatusStatistics then call addstat("loginfailed")
 	Call MessagePage("密码不正确。","admin_login.asp?user=" &request("user"))
 
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing

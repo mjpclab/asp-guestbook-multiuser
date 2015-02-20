@@ -37,10 +37,16 @@ if clng(status and 32)<>0 then	'用户登录权限开启
 else
 	StatusLogin=false
 end if
+if clng(status and 256)<>0 then	'开启统计
+	StatusStatistics=true
+else
+	StatusStatistics=false
+end if
 
 web_StatusOpen=StatusOpen
 web_StatusWrite=StatusWrite
 web_StatusSearch=StatusSearch
+web_StatusStatistics=StatusStatistics
 
 web_IPConStatus=lrs("ipconstatus")	'IP屏蔽策略
 if web_IPConStatus<>0 and web_IPConStatus<>1 and web_IPConStatus<>2 then web_IPConStatus=0
@@ -166,6 +172,13 @@ if clng(status and 128)<>0 then	'允许访客回复
 	StatusGuestReply=true
 else
 	StatusGuestReply=false
+end if
+if StatusStatistics=true then
+	if clng(status and 256)<>0 then	'开启统计
+		StatusStatistics=true
+	else
+		StatusStatistics=false
+	end if
 end if
 
 IPConStatus=lrs("ipconstatus")	'IP屏蔽策略

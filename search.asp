@@ -21,7 +21,7 @@ set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 checkuser cn,rs,false
-call addstat("search")
+if StatusStatistics then call addstat("search")
 %>
 
 <!-- #include file="inc_dtd.asp" -->
@@ -106,6 +106,6 @@ end if
 %>
 
 <!-- #include file="bottom.asp" -->
-<script type="text/javascript" src="getclientinfo.asp?user=<%=request("user")%>" defer="defer" async="async"></script>
+<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=request("user")%>" defer="defer" async="async"></script><%end if%>
 </body>
 </html>

@@ -45,6 +45,11 @@ if clng(status and 64)<>0 then	'自删帐号功能开启
 else
 	StatusUnreg=false
 end if
+if clng(status and 256)<>0 then	'开启统计
+	StatusStatistics=true
+else
+	StatusStatistics=false
+end if
 
 web_IPConStatus=lrs("ipconstatus")	'IP屏蔽策略
 if web_IPConStatus<>0 and web_IPConStatus<>1 and web_IPConStatus<>2 then web_IPConStatus=0

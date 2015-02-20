@@ -96,8 +96,11 @@ else
 				
 		tstatus7=Request.Form("status7")
 		if tstatus7<>"0" and tstatus7<>"64" then tstatus6=64
-				
-		tstatus=clng(tstatus1)+clng(tstatus2)+clng(tstatus3)+clng(tstatus4)+clng(tstatus5)+clng(tstatus6)+clng(tstatus7)
+
+		tstatus9=Request.Form("status9")
+		if tstatus9<>"0" and tstatus9<>"256" then tstatus9=256
+
+		tstatus=clng(tstatus1)+clng(tstatus2)+clng(tstatus3)+clng(tstatus4)+clng(tstatus5)+clng(tstatus6)+clng(tstatus7)+clng(tstatus9)
 				
 		tadminhtml=0
 		if Request.Form("adminhtml")="1" then tadminhtml=tadminhtml+1

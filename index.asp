@@ -20,7 +20,7 @@ set rs=server.CreateObject("ADODB.Recordset")
 
 CreateConn cn,dbtype
 checkuser cn,rs,false
-call addstat("view")
+if StatusStatistics then call addstat("view")
 
 Dim WordsPerPage
 if GuestDisplayMode()="book" then
@@ -84,6 +84,6 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",Request.QuerySt
 </div>
 
 <!-- #include file="bottom.asp" -->
-<script type="text/javascript" src="getclientinfo.asp?user=<%=request("user")%>" defer="defer" async="async"></script>
+<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=request("user")%>" defer="defer" async="async"></script><%end if%>
 </body>
 </html>

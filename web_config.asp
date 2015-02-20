@@ -61,7 +61,8 @@ CreateConn cn,dbtype
 
 			留言本状态：　　　　　<input type="radio" name="status1" value="1" id="status11"<%=cked(clng(tstatus and 1)<>0)%> /><label for="status11">开启</label>　　<input type="radio" name="status1" value="0" id="status12"<%=cked(clng(tstatus and 1)=0)%> /><label for="status12">关闭</label><br/><br/>
 			访客留言权限：　　　　<input type="radio" name="status2" value="2" id="status21"<%=cked(clng(tstatus and 2)<>0)%> /><label for="status21">开启</label>　　<input type="radio" name="status2" value="0" id="status22"<%=cked(clng(tstatus and 2)=0)%> /><label for="status22">关闭</label><br/><br/>
-			访客搜索留言权限：　　<input type="radio" name="status3" value="4" id="status31"<%=cked(clng(tstatus and 4)<>0)%> /><label for="status31">开启</label>　　<input type="radio" name="status3" value="0" id="status32"<%=cked(clng(tstatus and 4)=0)%> /><label for="status32">关闭</label><br/><br/><br/>
+			访客搜索留言权限：　　<input type="radio" name="status3" value="4" id="status31"<%=cked(clng(tstatus and 4)<>0)%> /><label for="status31">开启</label>　　<input type="radio" name="status3" value="0" id="status32"<%=cked(clng(tstatus and 4)=0)%> /><label for="status32">关闭</label><br/><br/>
+			访问统计：　　　　　　<input type="radio" name="status9" value="256" id="status91"<%=cked(clng(tstatus and 256)<>0)%> /><label for="status91">开启</label>　　<input type="radio" name="status9" value="0" id="status92"<%=cked(clng(tstatus and 256)=0)%> /><label for="status92">关闭</label><br/><br/><br/>
 
 			<%adminlimit=rs("adminhtml")%>
 			管理中心安全性设置：　<input type="checkbox" value="1" name="adminviewcode" id="adminviewcode"<%=cked(clng(adminlimit and 8)<>0)%> /><label for="adminviewcode">用户及访客留言显示实际HTML或UBB代码</label><br/><br/>
