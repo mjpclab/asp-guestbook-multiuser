@@ -44,7 +44,6 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",Request.QuerySt
 	<title><%=HomeName%> ¡Ù—‘±æ</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
 	<!-- #include file="style.asp" -->
-	<!-- #include file="getclientinfo.inc" -->
 	</head>
 
 <body<%=bodylimit%> onload="<%=framecheck%>">
@@ -85,5 +84,6 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",Request.QuerySt
 </div>
 
 <!-- #include file="bottom.asp" -->
+<script type="text/javascript" src="getclientinfo.asp?user=<%=request("user")%>" defer="defer" async="async"></script>
 </body>
 </html>

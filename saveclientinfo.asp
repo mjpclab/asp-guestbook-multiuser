@@ -1,5 +1,6 @@
 <!-- #include file="loadconfig.asp" -->
 <%
+Response.ContentType="application/x-javascript"
 if session("gotclientuser")="" then session("gotclientuser")="|"
 if instr(session("gotclientuser"),"|" &request("user")& "|")=0 then
 	Dim cn,rs
