@@ -131,7 +131,7 @@ rs.Close : set rs=nothing
 				<tr style="height:5px;"><td></td></tr>
 				<tr>
 					<td>бщжЄТыЃК</td>
-					<td><input type="text" name="vcode" size="10" /> <img src="web_show_vcode.asp" class="vcode" onclick="this.src=this.src" /></td>
+					<td><input type="text" name="vcode" size="10" autocomplete="off" /> <img src="web_show_vcode.asp" class="vcode" onclick="this.src=this.src" /></td>
 				</tr>
 				<%end if%>
 				<tr style="height:20px;"><td></td></tr>
