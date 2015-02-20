@@ -15,8 +15,6 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
-	//<![CDATA[
-	
 	function checkpass(cobject)
 	{
 		if (cobject.ioldpass.value=="") {alert('ÇëÊäÈëÔ­ÃÜÂë¡£'); cobject.ioldpass.focus(); return(false);}
@@ -26,8 +24,6 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 		cobject.submit1.disabled=true;
 		return (true);
 	}
-	
-	//]]>
 	</script>
 	
 </head>

@@ -27,7 +27,6 @@ set rs=nothing : set cn=nothing
 	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
-	//<![CDATA[
 	function swIframe(jschk)
 	{
 		var span=document.getElementById('iframeSettings');
@@ -98,8 +97,6 @@ set rs=nothing : set cn=nothing
 			return false;
 		}
 	}
-	
-	//]]>
 	</script>
 </head>
 

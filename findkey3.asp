@@ -69,8 +69,6 @@ rs.Close : set rs=nothing
 	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
-	//<![CDATA[
-	
 	function submitcheck(frm)
 	{
 		if (frm.pass1.value=='') {alert('ÇëÊäÈëÃÜÂë¡£'); frm.pass1.focus(); return false;}
@@ -79,8 +77,6 @@ rs.Close : set rs=nothing
 		else if (frm.vcode && frm.vcode.value=='') {alert('ÇëÊäÈëÑéÖ¤Âë¡£'); frm.vcode.focus(); return false;}
 		else {frm.submit1.disabled=true; return true;}
 	}
-	
-	//]]>
 	</script>
 </head>
 

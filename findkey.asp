@@ -19,16 +19,12 @@ end if
 	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
-	//<![CDATA[
-	
 	function submitcheck(frm)
 	{
 		if (frm.user.value=='') {alert('请输入用户名。'); frm.user.focus(); return false;}
 		else if (/^\w+$/.test(frm.user.value)==false) {alert('用户名中只能包含英文字母、数字和下划线。'); frm.user.select(); return false;}
 		else {frm.submit1.disabled=true; return true;}
 	}
-	
-	//]]>
 	</script>
 </head>
 

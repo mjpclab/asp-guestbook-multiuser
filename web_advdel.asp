@@ -14,8 +14,6 @@
 	</style>
 
 	<script type="text/javascript">
-	//<![CDATA[
-	
 	function del_all_user_warning(frm)
 	{
 		if(confirm('警告！删除的用户和数据将不能恢复！\n确实要执行删除操作吗？'))
@@ -26,8 +24,6 @@
 		else
 			return false;
 	}
-	
-	//]]>
 	</script>
 </head>
 

@@ -46,8 +46,6 @@ cn.close
 	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
-	//<![CDATA[
-	
 	function submitcheck(cobject)
 	{
 		if (cobject.rcontent.value=="") {alert('ÇëÊäÈë»Ø¸´ÄÚÈÝ¡£'); cobject.rcontent.focus(); return (false);}
@@ -62,8 +60,6 @@ cn.close
 			form3.rcontent.select();
 		}
 	}
-	
-	//]]>
 	</script>
 </head>
 

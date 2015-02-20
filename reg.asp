@@ -24,8 +24,6 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
-	//<![CDATA[
-	
 	function submitcheck(frm)
 	{
 		if (frm.user.value=='') {alert('请输入用户名。'); frm.user.focus(); return false;}
@@ -82,8 +80,6 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 			xmlHttp.abort();
 		}
 	}
-	
-	//]]>
 	</script>
 </head>
 

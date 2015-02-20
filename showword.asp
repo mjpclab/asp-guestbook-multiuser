@@ -27,12 +27,10 @@ end if
 	<!-- #include file="getclientinfo.inc" -->
 	
 	<script type="text/javascript">
-	//<![CDATA[
 	function setFocus()
 	{
 		if(document && document.form5 && document.form5.ipass)document.form5.ipass.focus();
 	}
-	//]]>
 	</script>
 </head>
 

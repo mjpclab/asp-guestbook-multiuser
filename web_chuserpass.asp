@@ -22,8 +22,6 @@ set cn=nothing
 	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
-	//<![CDATA[
-	
 	function checkpass(cobject)
 	{
 		if (cobject.user.value=="") {alert('请输入用户名。'); cobject.user.focus(); return false;}
@@ -33,8 +31,6 @@ set cn=nothing
 		cobject.submit1.disabled=true;
 		return true;
 	}
-	
-	//]]>
 	</script>
 	
 </head>

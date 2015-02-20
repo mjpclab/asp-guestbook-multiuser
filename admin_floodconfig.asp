@@ -63,15 +63,11 @@ checkuser cn,rs,false
 </div>
 
 <script type="text/javascript" defer="defer">
-//<![CDATA[
-
 function check()
 {
 	document.configform.submit1.disabled=true;
 	return true;
 }
-
-//]]>
 </script>
 
 <!-- #include file="bottom.asp" -->

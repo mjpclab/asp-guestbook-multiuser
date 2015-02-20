@@ -24,8 +24,6 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
-	//<![CDATA[
-	
 	function submitcheck(frm)
 	{
 		if (frm.user.value=='') {alert('请输入用户名。'); frm.user.focus(); return false;}
@@ -34,8 +32,6 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 		else if (frm.vcode && frm.vcode.value=='') {alert('请输入验证码。'); frm.vcode.focus(); return false;}
 		else return confirm('删除用户名将同时清除全部留言、回复及公告，确实要继续吗？');
 	}
-	
-	//]]>
 	</script>
 	
 </head>

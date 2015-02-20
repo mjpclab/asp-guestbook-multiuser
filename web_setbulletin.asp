@@ -11,8 +11,6 @@
 	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
-	//<![CDATA[
-	
 	function sfocus()
 	{
 		if (!form6.abulletin.modified)
@@ -21,8 +19,6 @@
 			form6.abulletin.select();
 		}
 	}
-	
-	//]]>
 	</script>
 </head>
 

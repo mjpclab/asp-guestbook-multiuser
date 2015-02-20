@@ -21,8 +21,6 @@ end if
 	<!-- #include file="style.asp" -->
 
 	<script type="text/javascript">
-	//<![CDATA[
-	
 	function checkpass(cobject)
 	{
 		if (cobject.ioldpass.value=="") {alert('ÇëÊäÈëÔ­ÃÜÂë¡£'); cobject.ioldpass.focus(); return false;}
@@ -40,8 +38,6 @@ end if
 		cobject.submit1.disabled=true;
 		return (true);
 	}
-	
-	//]]>
 	</script>
 </head>
 
