@@ -13,7 +13,11 @@ Response.AddHeader "cache-control","private"
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 搜索留言</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="web_adminstyle.css"/>
 	<!-- #include file="style.asp" -->
+	<!-- #include file="adminstyle.asp" -->
+	<!-- #include file="web_adminstyle.asp" -->
 </head>
 
 <body>
@@ -112,34 +116,61 @@ sql_condition=sql_websearch_condition_init & sql_condition
 
 <div id="outerborder" class="outerborder">
 	<!-- #include file="web_admintitle.inc" -->
-	<!-- #include file="web_admintool.inc" -->
-			
-	<table border="1" bordercolor="<%=TableBorderColor%>" cellpadding="2" class="generalwindow">
-		<tr>
-			<td class="centertitle">搜索留言</td>
-		</tr>
-		<tr>
-		<td class="wordscontent" style="padding:20px 2px;">
-			<form method="post" action="web_search.asp" name="form1">
-			搜索：("%"代表任意个字符，"_"代表一个字符)<br/>
-			<br/>
-			用户名：　　　<input type="text" name="s_adminname" value="<%=request("s_adminname")%>" size="<%=SearchTextWidth%>" maxlength="32" /><br/>
-			访客姓名：　　<input type="text" name="s_name" value="<%=request("s_name")%>" size="<%=SearchTextWidth%>" maxlength="64" /><br/>
-			留言标题：　　<input type="text" name="s_title" value="<%=request("s_title")%>" size="<%=SearchTextWidth%>" maxlength="64" /><br/>
-			留言内容：　　<input type="text" name="s_article" value="<%=request("s_article")%>" size="<%=SearchTextWidth%>" /><br/>
-			访客邮件地址：<input type="text" name="s_email" value="<%=request("s_email")%>" size="<%=SearchTextWidth%>" maxlength="48" /><br/>
-			访客QQ号码：　<input type="text" name="s_qqid" value="<%=request("s_qqid")%>" size="<%=SearchTextWidth%>" maxlength="16" /><br/>
-			访客MSN地址： <input type="text" name="s_msnid" value="<%=request("s_msnid")%>" size="<%=SearchTextWidth%>" maxlength="48" /><br/>
-			访客主页地址：<input type="text" name="s_homepage" value="<%=request("s_homepage")%>" size="<%=SearchTextWidth%>" maxlength="255" /><br/>
-			访客IP地址：　<input type="text" name="s_ipaddr" value="<%=request("s_ipaddr")%>" size="<%=SearchTextWidth%>" maxlength="15" /><br/>
-			访客原IP地址：<input type="text" name="s_originalip" value="<%=request("s_originalip")%>" size="<%=SearchTextWidth%>" maxlength="15" /><br/>
-			版主回复内容：<input type="text" name="s_reply" value="<%=request("s_reply")%>" size="<%=SearchTextWidth%>" /><br/>
-			<br/>
-			<input type="submit" value="搜索留言" name="searchsubmit" />
-			</form>
-		</td>
-		</tr>
-	</table>
+	<!-- #include file="web_admincontrols.inc" -->
+
+<div class="region region-search-message">
+	<h3 class="title">搜索留言</h3>
+	<div class="content">
+		<form method="post" action="web_search.asp" name="form1">
+		<p>搜索：("%"代表任意个字符，"_"代表一个字符)</p>
+		<div class="field">
+			<span class="label">用户名：</span>
+			<span class="value"><input type="text" name="s_adminname" value="<%=request("s_adminname")%>" size="<%=SearchTextWidth%>" maxlength="32" /></span>
+		</div>
+		<div class="field">
+			<span class="label">访客姓名：</span>
+			<span class="value"><input type="text" name="s_name" value="<%=request("s_name")%>" size="<%=SearchTextWidth%>" maxlength="64" /></span>
+		</div>
+		<div class="field">
+			<span class="label">留言标题：</span>
+			<span class="value"><input type="text" name="s_title" value="<%=request("s_title")%>" size="<%=SearchTextWidth%>" maxlength="64" /></span>
+		</div>
+		<div class="field">
+			<span class="label">留言内容：</span>
+			<span class="value"><input type="text" name="s_article" value="<%=request("s_article")%>" size="<%=SearchTextWidth%>" /></span>
+		</div>
+		<div class="field">
+			<span class="label">访客邮件地址：</span>
+			<span class="value"><input type="text" name="s_email" value="<%=request("s_email")%>" size="<%=SearchTextWidth%>" maxlength="48" /></span>
+		</div>
+		<div class="field">
+			<span class="label">访客QQ号码：</span>
+			<span class="value"><input type="text" name="s_qqid" value="<%=request("s_qqid")%>" size="<%=SearchTextWidth%>" maxlength="16" /></span>
+		</div>
+		<div class="field">
+			<span class="label">访客Skype地址：</span>
+			<span class="value"><input type="text" name="s_msnid" value="<%=request("s_msnid")%>" size="<%=SearchTextWidth%>" maxlength="48" /></span>
+		</div>
+		<div class="field">
+			<span class="label">访客主页地址：</span>
+			<span class="value"><input type="text" name="s_homepage" value="<%=request("s_homepage")%>" size="<%=SearchTextWidth%>" maxlength="255" /></span>
+		</div>
+		<div class="field">
+			<span class="label">访客IP地址：</span>
+			<span class="value"><input type="text" name="s_ipaddr" value="<%=request("s_ipaddr")%>" size="<%=SearchTextWidth%>" maxlength="15" /></span>
+		</div>
+		<div class="field">
+			<span class="label">访客原IP地址：</span>
+			<span class="value"><input type="text" name="s_originalip" value="<%=request("s_originalip")%>" size="<%=SearchTextWidth%>" maxlength="15" /></span>
+		</div>
+		<div class="field">
+			<span class="label">版主回复内容：</span>
+			<span class="value"><input type="text" name="s_reply" value="<%=request("s_reply")%>" size="<%=SearchTextWidth%>" /></span>
+		</div>
+		<div class="command"><input type="submit" value="搜索留言" name="searchsubmit" /></div>
+		</form>
+	</div>
+</div>
 
 	<%
 	if PagesCount>1 and ShowTopPageList then

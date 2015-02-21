@@ -1,5 +1,10 @@
 <!-- #include file="webconfig.asp" -->
 <link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
+<link rel="stylesheet" type="text/css" href="web_adminstyle.css"/>
+<!-- #include file="style.asp" -->
+<!-- #include file="adminstyle.asp" -->
+<!-- #include file="web_adminstyle.asp" -->
 <!-- #include file="style.asp" -->
 <!-- #include file="md5.asp" -->
 

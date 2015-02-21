@@ -105,8 +105,8 @@ if clng(UbbFlag and 16)<>0 then UbbFlag_paragraph=true else UbbFlag_paragraph=fa
 if clng(UbbFlag and 32)<>0 then UbbFlag_fontstyle=true else UbbFlag_fontstyle=false
 if clng(UbbFlag and 64)<>0 then UbbFlag_fontcolor=true else UbbFlag_fontcolor=false
 if clng(UbbFlag and 128)<>0 then UbbFlag_alignment=true else UbbFlag_alignment=false
-if clng(UbbFlag and 256)<>0 then UbbFlag_movement=true else UbbFlag_movement=false
-if clng(UbbFlag and 512)<>0 then UbbFlag_cssfilter=true else UbbFlag_cssfilter=false
+'if clng(UbbFlag and 256)<>0 then UbbFlag_movement=true else UbbFlag_movement=false
+'if clng(UbbFlag and 512)<>0 then UbbFlag_cssfilter=true else UbbFlag_cssfilter=false
 if clng(UbbFlag and 1024)<>0 then UbbFlag_face=true else UbbFlag_face=false
 web_UbbFlag_image=UbbFlag_image
 web_UbbFlag_url=UbbFlag_url
@@ -116,8 +116,8 @@ web_UbbFlag_paragraph=UbbFlag_paragraph
 web_UbbFlag_fontstyle=UbbFlag_fontstyle
 web_UbbFlag_fontcolor=UbbFlag_fontcolor
 web_UbbFlag_alignment=UbbFlag_alignment
-web_UbbFlag_movement=UbbFlag_movement
-web_UbbFlag_cssfilter=UbbFlag_cssfilter
+'web_UbbFlag_movement=UbbFlag_movement
+'web_UbbFlag_cssfilter=UbbFlag_cssfilter
 web_UbbFlag_face=UbbFlag_face
 
 TableBorderWidth=1

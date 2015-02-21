@@ -24,7 +24,9 @@ set rs=nothing : set cn=nothing
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> 留言本 编辑留言</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
 	<!-- #include file="style.asp" -->
+	<!-- #include file="adminstyle.asp" -->
 
 	<script type="text/javascript">
 	function swIframe(jschk)
@@ -59,7 +61,7 @@ set rs=nothing : set cn=nothing
 		var width=document.getElementById('frm_width').value;
 		var height=document.getElementById('frm_height').value;
 		
-		if(n=='')
+		if(n==='')
 		{
 			alert('请输入显示条数。');
 			frm_n.focus();
@@ -80,7 +82,7 @@ set rs=nothing : set cn=nothing
 		else
 		{
 			var temp;
-			if(js) temp='<' + 'script type="text/javascript" language="javascript" src="{0}"><\/script>';
+			if(js) temp='<' + 'script type="text/javascript" src="{0}"><\/script>';
 			else temp='<iframe width="{w}" height="{h}" src="{0}" frameborder="0"><\/iframe>';
 			
 			var src=
@@ -105,46 +107,70 @@ set rs=nothing : set cn=nothing
 <div id="outerborder" class="outerborder">
 
 <%if ShowTitle=true then show_book_title 3,"管理"%>
-<!-- #include file="admintool.inc" -->
+<!-- #include file="admincontrols.inc" -->
 
-<table border="1" cellpadding="2" class="generalwindow" ID="Table1">
-	<tr>
-		<td class="centertitle">生成调用代码</td>
-	</tr>
-	<tr>
-		<td class="wordscontent" style="padding:20px 2px;">
-			<form method="post" action="" onsubmit="return generateCallCode();" ID="Form1">
-			<input type="hidden" name="IsPostBack" id="IsPostBack" value="1" />
-			<input type="hidden" name="url" id="url" value="<%=geturlpath%>tlist.asp" />
-			<input type="hidden" name="user" id="user" value="<%=Request.QueryString("user")%>" />
-			
-			此页用于生成留言本留言标题调用代码。请输入调用代码所需的参数，其中“显示条数”为必填项：<br/><br/>
-			
-			显示条数：　<input type="text" name="frm_n" id="frm_n" size="10" maxlength="10" value="<%=Request.Form("frm_n")%>" />*<br/>
-			打开窗口：　<select name="frm_target" id="frm_target">
-				<option value="" <%=seled(Request.Form("frm_target")="")%>>(默认)</option>
-				<option value="_blank" <%=seled(Request.Form("frm_target")="_blank")%>>打开新页面</option>
-				<option value="_self" <%=seled(Request.Form("frm_target")="_self")%>>相同窗口或框架窗口</option>
-				<option value="_top" <%=seled(Request.Form("frm_target")="_top")%>>整个浏览器窗口</option>
-				<option value="_parent" <%=seled(Request.Form("frm_target")="_parent")%>>父框架窗口</option>
-			</select><br/>
-			标题前缀：　<input type="text" name="frm_prefix" id="frm_prefix" size="10" value="<%=Request.Form("frm_prefix")%>" /><br/>
-			字数限制：　<input type="text" name="frm_len" id="frm_len" size="10" value="<%=Request.Form("frm_len")%>" /><br/>
-			不输出断行：<input type="checkbox" name="frm_nobr" id="frm_nobr" value="1" <%=cked(Request.Form("frm_nobr")="1")%> /><br/>
-			使用JS模式：<input type="checkbox" name="frm_js" id="frm_js" value="1" <%=cked(Request.Form("frm_js")="1")%> onclick="swIframe(this);" /><br/>
-			<span id="iframeSettings" style="<%if Request.Form("frm_js")="1" then Response.Write "visibility:hidden;"%>">
-			窗口宽度：　<input type="text" name="frm_width" id="frm_width" size="10" value="<%=Request.Form("frm_width")%>" /><br/>
-			窗口高度：　<input type="text" name="frm_height" id="frm_height" size="10" value="<%=Request.Form("frm_height")%>" /><br/>
+<div class="region region-callgen">
+	<h3 class="title">生成调用代码</h3>
+	<div class="content">
+		<form method="post" action="" onsubmit="return generateCallCode();" ID="Form1">
+		<input type="hidden" name="IsPostBack" id="IsPostBack" value="1" />
+		<input type="hidden" name="url" id="url" value="<%=geturlpath%>tlist.asp" />
+		<input type="hidden" name="user" id="user" value="<%=Request.QueryString("user")%>" />
+
+		<p>此页用于生成留言本留言标题调用代码。请输入调用代码所需的参数，其中“显示条数”为必填项：</p>
+
+		<div class="field">
+			<span class="label">显示条数：<span class="required">*</span></span>
+			<span class="value"><input type="text" name="frm_n" id="frm_n" size="10" maxlength="10" value="10" /></span>
+		</div>
+		<div class="field">
+			<span class="label">打开窗口：</span>
+			<span class="value">
+				<select name="frm_target" id="frm_target">
+					<option value="" <%=seled(Request.Form("frm_target")="")%>>(默认)</option>
+					<option value="_blank" <%=seled(Request.Form("frm_target")="_blank")%>>打开新页面</option>
+					<option value="_self" <%=seled(Request.Form("frm_target")="_self")%>>相同窗口或框架窗口</option>
+					<option value="_top" <%=seled(Request.Form("frm_target")="_top")%>>整个浏览器窗口</option>
+					<option value="_parent" <%=seled(Request.Form("frm_target")="_parent")%>>父框架窗口</option>
+				</select>
 			</span>
-			<br/><input type="submit" name="submit1" id="submit1" value="生成调用代码" /><br/><br/>
-			
-			
-			已生成的调用代码：<br/>
-			<textarea readonly="readonly" name="frm_code" id="frm_code" cols="<%=ReplyTextWidth%>" rows="<%=ReplyTextHeight%>"></textarea>
-			</form>
-		</td>
-	</tr>
-</table>
+		</div>
+		<div class="field">
+			<span class="label">标题前缀：</span>
+			<span class="value"><input type="text" name="frm_prefix" id="frm_prefix" size="10" value="<%=Request.Form("frm_prefix")%>" /></span>
+		</div>
+		<div class="field">
+			<span class="label">字数限制：</span>
+			<span class="value"><input type="text" name="frm_len" id="frm_len" size="10" value="<%=Request.Form("frm_len")%>" /></span>
+		</div>
+		<div class="field">
+			<span class="label">不输出断行：</span>
+			<span class="value"><input type="checkbox" name="frm_nobr" id="frm_nobr" value="1" <%=cked(Request.Form("frm_nobr")="1")%> /></span>
+		</div>
+		<div class="field">
+			<span class="label">使用JS模式：</span>
+			<span class="value"><input type="checkbox" name="frm_js" id="frm_js" value="1" <%=cked(Request.Form("frm_js")="1")%> onclick="swIframe(this);" /></span>
+		</div>
+		<div id="iframeSettings">
+			<div class="field">
+				<span class="label">窗口宽度：</span>
+				<span class="value"><input type="text" name="frm_width" id="frm_width" size="10" value="<%=Request.Form("frm_width")%>" /></span>
+			</div>
+			<div class="field">
+				<span class="label">窗口高度：</span>
+				<span class="value"><input type="text" name="frm_height" id="frm_height" size="10" value="<%=Request.Form("frm_height")%>" /></span>
+			</div>
+		</div>
+		<div class="field-command">
+			<input type="submit" name="submit1" id="submit1" value="生成调用代码" />
+		</div>
+		<div class="field">
+			<span class="row">已生成的调用代码：</span>
+			<span class="value"><textarea readonly="readonly" name="frm_code" id="frm_code" cols="<%=ReplyTextWidth%>" rows="<%=ReplyTextHeight%>"></textarea></span>
+		</div>
+		</form>
+	</div>
+</div>
 
 </div>
 

@@ -1,11 +1,11 @@
 <%
-function UBBCode(byref strContent,byval ubblimit)
+function UBBCode(byref strContent,byval allflags)
 if strContent="" then
 	UBBCode=""
 else
-	const embed_prefix1="<a href=""$1"" target=""_blank"">"
-	const embed_prefix3="<a href=""$3"" target=""_blank"">"
-	const embed_postfix="</a>"
+	const embed_prefix1="<table celpadding=""0"" cellspacing=""0"" style=""display:inline;""><tr><td><a href=""$1"" target=""_blank"">"
+	const embed_prefix3="<table celpadding=""0"" cellspacing=""0"" style=""display:inline;""><tr><td><a href=""$3"" target=""_blank"">"
+	const embed_postfix="</a></td></tr></table>"
 	dim re,i_count,originalStr
 	Set re=new RegExp
 	re.IgnoreCase =true
@@ -14,14 +14,14 @@ else
 	for i_count=1 to 5
 		originalStr=strContent
 
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_image) or (web_UbbFlag_image and UbbFlag_image) then
+		if UbbFlag_image or allflags then
 			re.Pattern="\[img\](.[^\[]*)\[\/img\]"
 			strContent=re.Replace(strContent,embed_prefix1 & "<img src=""$1"" style=""border-width:0px;"" />" & embed_postfix)
 			re.Pattern="\[img=*([0-9]*),*([0-9]*)\](.[^\[]*)\[\/img\]"
 			strContent=re.Replace(strContent,embed_prefix3 & "<img src=""$3"" style=""width:$1px; height:$2px; border-width:0px;"" />" & embed_postfix)
 		end if
 		
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_url) or (web_UbbFlag_url and UbbFlag_url) then
+		if UbbFlag_url or allflags then
 			re.Pattern="\[URL\](http:\/\/.[^\[]*)\[\/URL\]"
 			strContent= re.Replace(strContent,"<a href=""$1"" target=""_blank"">$1</a>")
 			re.Pattern="\[URL\](.[^\[]*)\[\/URL\]"
@@ -38,7 +38,7 @@ else
 			strContent= re.Replace(strContent,"<a href=""mailto:$1"" target=""_blank"">$1</a>")
 		end if
 		
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_player) or (web_UbbFlag_player and UbbFlag_player) then
+		if UbbFlag_player or allflags then
 			'Flash
 			re.Pattern="\[FLASH\](.[^\[]*)\[\/FLASH\]"
 			strContent= re.Replace(strContent,embed_prefix1 & "<object classid=""clsid:d27cdb6e-ae6d-11cf-96b8-444553540000""  codebase=""http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"">" & _
@@ -91,7 +91,7 @@ else
 												"</object>" & embed_postfix)
 		end if
 
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_autourl) or (web_UbbFlag_autourl and UbbFlag_autourl) then
+		if UbbFlag_autourl or allflags then
 			'http://
 			re.Pattern = "^((?:http|ftp|rtsp|mms|ed2k)://((?!&nbsp;|\s|&quot;|&apos;)[A-Za-z0-9\./=\?%\-{}&#_|~`@':+!])+)"
 			strContent = re.Replace(strContent,"<a target=""_blank"" href=""$1"">$1</a>")
@@ -105,14 +105,14 @@ else
 			strContent = re.Replace(strContent, "$1<a target=""_blank"" href=""http://$2"">$2</a>")
 		end if
 		
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_paragraph) or (web_UbbFlag_paragraph and UbbFlag_paragraph) then
+		if UbbFlag_paragraph or allflags then
 			re.Pattern="\[QUOTE\](.[^\[]*)\[\/QUOTE\]"
 			strContent=re.Replace(strContent,"<blockquote>$1</blockquote>")
 			re.Pattern="\[li\](.[^\[]*)\[\/li\]"
 			strContent=re.Replace(strContent,"<li>$1</li>")
 		end if
 		
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_fontstyle) or (web_UbbFlag_fontstyle and UbbFlag_fontstyle) then
+		if UbbFlag_fontstyle or allflags then
 			re.Pattern="\[font=(.[^\[\]]*)\](.[^\[]*)\[\/font\]"
 			strContent=re.Replace(strContent,"<span style=""font-family:$1"">$2</span>")
 			re.Pattern="\[i\](.[^\[]*)\[\/i\]"
@@ -125,35 +125,35 @@ else
 			strContent=re.Replace(strContent,"<span style=""text-decoration:line-through"">$1</span>")
 		end if
 		
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_fontcolor) or (web_UbbFlag_fontcolor and UbbFlag_fontcolor) then
+		if UbbFlag_fontcolor or allflags then
 			re.Pattern="\[color=(.[^\[\]]*)\](.[^\[]*)\[\/color\]"
 			strContent=re.Replace(strContent,"<span style=""color:$1"">$2</span>")
 			re.Pattern="\[bgcolor=\s*(.[^\[\]]*)\](.[^\[]*)\[\/bgcolor\]"
 			strContent=re.Replace(strContent,"<span style=""background-color:$1"">$2</span>")
 		end if
 
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_alignment) or (web_UbbFlag_alignment and UbbFlag_alignment) then
+		if UbbFlag_alignment or allflags then
 			re.Pattern="\[align=(.[^\[\]]*)\](.[^\[]*)\[\/align\]"
 			strContent=re.Replace(strContent,"<span style=""width:100%; display:block; text-align:$1"">$2</span>")
 			re.Pattern="\[center\](.[^\[]*)\[\/center\]"
 			strContent=re.Replace(strContent,"<span style=""width:100%; display:block; text-align:center"">$1</span>")
 		end if
 		
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_movement) or (web_UbbFlag_movement and UbbFlag_movement) then
-			re.Pattern="\[fly\](.[^\[]*)\[\/fly\]"
-			strContent=re.Replace(strContent,"<marquee behavior=""alternate"" direction=""left"" scrollamount=""3"">$1</marquee>")
-			re.Pattern="\[move\](.[^\[]*)\[\/move\]"
-			strContent=re.Replace(strContent,"<marquee direction=""left"" scrollamount=""3"">$1</marquee>")
-		end if
+		'if UbbFlag_movement or allflags then
+		'	re.Pattern="\[fly\](.[^\[]*)\[\/fly\]"
+		'	strContent=re.Replace(strContent,"<marquee behavior=""alternate"" direction=""left"" scrollamount=""3"">$1</marquee>")
+		'	re.Pattern="\[move\](.[^\[]*)\[\/move\]"
+		'	strContent=re.Replace(strContent,"<marquee direction=""left"" scrollamount=""3"">$1</marquee>")
+		'end if
 		
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_cssfilter) or (web_UbbFlag_cssfilter and UbbFlag_cssfilter) then		
-			re.Pattern="\[GLOW=\s*([0-9]*),\s*(#*[a-z0-9]*),\s*([0-9]*)\](.[^\[]*)\[\/GLOW]"
-			strContent=re.Replace(strContent,"<table style=""width:$1px; filter:glow(color=$2, strength=$3)""><tr><td>$4</td></tr></table>")
-			re.Pattern="\[SHADOW=\s*([0-9]*),\s*(#*[a-z0-9]*),\s*([0-9]*)\](.[^\[]*)\[\/SHADOW]"
-			strContent=re.Replace(strContent,"<table style=""width:$1px; filter:shadow(color=$2, strength=$3)""><tr><td>$4</td></tr></table>")
-		end if
+		'if UbbFlag_cssfilter or allflags then
+		'	re.Pattern="\[GLOW=\s*([0-9]*),\s*(#*[a-z0-9]*),\s*([0-9]*)\](.[^\[]*)\[\/GLOW]"
+		'	strContent=re.Replace(strContent,"<table style=""width:$1px; filter:glow(color=$2, strength=$3)""><tr><td>$4</td></tr></table>")
+		'	re.Pattern="\[SHADOW=\s*([0-9]*),\s*(#*[a-z0-9]*),\s*([0-9]*)\](.[^\[]*)\[\/SHADOW]"
+		'	strContent=re.Replace(strContent,"<table style=""width:$1px; filter:shadow(color=$2, strength=$3)""><tr><td>$4</td></tr></table>")
+		'end if
 
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_face) or (web_UbbFlag_face and UbbFlag_face) then
+		if UbbFlag_face or allflags then
 			if isnumeric(SmallFaceCount) and SmallFaceCount<>"" then
 				re.Pattern="\[face(\d{1," & len(cstr(SmallFaceCount)) & "})\]"
 				strContent=re.Replace(strContent,"<img src=""" & SmallFacePath & "$1.gif"" />")
@@ -172,7 +172,8 @@ else
 	next	
 
 	set re=Nothing
-	strContent=replace(strContent,chr(13)&chr(10),"<br/>" &chr(13)&chr(10))
+	strContent=replace(strContent,chr(13)&chr(10),chr(10))
+	strContent=replace(strContent,chr(10),"<br/>" &chr(13)&chr(10))
 	UBBCode=strContent
 end if
 end function

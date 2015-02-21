@@ -84,35 +84,28 @@ cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"
 <body>
 
 <div id="outerborder" class="outerborder">
-	<table cellpadding="2" style="width:100%; border-width:0px; border-collapse:collapse;">
-		<tr style="height:60px;">
-			<td style="width:100%; color:<%=TitleColor%>; background-color:<%=TitleBGC%>; background-image:url(<%=TitlePic%>);" nowrap="nowrap">
-			<%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; <a href="findkey.asp" style="color:<%=TitleColor%>">找回密码</a> &gt;&gt; 完成
-			</td>
-		</tr>		
-		<tr>
-			<td>
-				<%			
-				dim sys_bul_flag
-				sys_bul_flag=32
-				%>
-				<!-- #include file="sysbulletin.inc" -->
-				<%cn.Close : set cn=nothing%>
-			</td>
-		</tr>
-		<tr>
-			<td style="width:100%">
-			<!-- #include file="func_web.inc" -->
-			</td>
-		</tr>
-			<td style="width:100%; text-align:center; color:<%=TableContentColor%>;">
-			<br/>
-			已重设密码，请点击下面的链接登录：<br/><br/>
-			<a href="admin_login.asp?user=<%=Request.Form("user")%>">用户登录</a><br/><br/>
-			</td>
-		<tr>
-		</tr>
-	</table>
+
+<div class="header">
+	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; <a href="findkey.asp" style="color:<%=TitleColor%>">找回密码</a> &gt;&gt; 完成</div>
+</div>
+
+<%
+dim sys_bul_flag
+sys_bul_flag=32
+%>
+<!-- #include file="sysbulletin.inc" -->
+<%cn.Close : set cn=nothing%>
+
+<!-- #include file="func_web.inc" -->
+
+<div class="region form-region">
+	<h3 class="title">找回密码 步骤3</h3>
+	<div class="content">
+		<h4>已重设密码，请点击下面的链接登录：</h4>
+		<p><a href="admin_login.asp?user=<%=Request.Form("user")%>">用户登录</a></p>
+	</div>
+</div>
+
 </div>
 
 <!-- #include file="bottom.asp" -->

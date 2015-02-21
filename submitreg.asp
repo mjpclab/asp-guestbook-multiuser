@@ -94,34 +94,21 @@ gbookaddr=geturlpath & "index.asp?user=" & Request.Form("user")
 
 <div id="outerborder" class="outerborder">
 
-	<table cellpadding="2" style="width:100%; border-width:0px; border-collapse:collapse;">
-		<tr style="height:60px;">
-			<td style="width:100%; color:<%=TitleColor%>; background-color:<%=TitleBGC%>; background-image:url(<%=TitlePic%>);" nowrap="nowrap">
-				<%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; <a href="reg.asp" style="color:<%=TitleColor%>">创建留言本</a> &gt;&gt; 创建成功
-			</td>
-		</tr>		
-		<tr>
-			<td>
-				<%			
-				dim sys_bul_flag
-				sys_bul_flag=32
-				%>
-				<!-- #include file="sysbulletin.inc" -->
-				<%cn.Close : set cn=nothing%>
-			</td>
-		</tr>
-		<tr>
-			<td style="width:100%">
-			<!-- #include file="func_web.inc" -->
-			</td>
-		</tr>
-			<td style="width:100%; text-align:center; color:<%=TableContentColor%>;">
-			<br/>创建成功！请记下您的留言本首页地址：<br/><%=gbookaddr%><br/>
-			<a href="<%=gbookaddr%>">转到该页→</a><br/><br/>
-			</td>
-		<tr>
-		</tr>
-	</table>
+<div class="header">
+	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; <a href="reg.asp" style="color:<%=TitleColor%>">创建留言本</a> &gt;&gt; 创建成功</div>
+</div>
+
+<%
+dim sys_bul_flag
+sys_bul_flag=32
+%>
+<!-- #include file="sysbulletin.inc" -->
+<%cn.Close : set cn=nothing%>
+
+<!-- #include file="func_web.inc" -->
+
+<p style="text-align: center;">创建成功！请记下您的留言本首页地址：<br/><%=gbookaddr%><br/>><a href="<%=gbookaddr%>">转到该页→</a></p>
+
 </div>
 
 <!-- #include file="bottom.asp" -->

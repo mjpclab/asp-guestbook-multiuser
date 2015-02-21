@@ -12,7 +12,11 @@ Response.AddHeader "cache-control","private"
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 搜索留言</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="web_adminstyle.css"/>
 	<!-- #include file="style.asp" -->
+	<!-- #include file="adminstyle.asp" -->
+	<!-- #include file="web_adminstyle.asp" -->
 </head>
 
 <body>
@@ -49,23 +53,25 @@ CreateConn cn,dbtype
 <div id="outerborder" class="outerborder">
 
 	<!-- #include file="web_admintitle.inc" -->
-	<!-- #include file="web_admintool.inc" -->
+	<!-- #include file="web_admincontrols.inc" -->
 
-	<table border="1" bordercolor="<%=TableBorderColor%>" cellpadding="2" class="generalwindow">
-		<tr>
-			<td class="centertitle">搜索置顶公告</td>
-		</tr>
-		<tr>
-			<td class="wordscontent" style="padding:20px 2px;">
+	<div class="region form-region">
+		<h3 class="title">搜索置顶公告</h3>
+		<div class="content">
 			<form method="post" action="web_searchdec.asp" name="form1">
-			搜索：("%"代表任意个字符，"_"代表一个字符)<br/><br/>
-			用户名：　<input type="text" name="adminname" value="<%=Request("adminname")%>" size="<%=SearchTextWidth%>" /><br/>
-			公告内容：<input type="text" name="searchtxt" value="<%=Request("searchtxt")%>" size="<%=SearchTextWidth%>" /><br/>
-			<br/><input type="submit" value="搜索公告" name="searchsubmit" />
+			<p>搜索：("%"代表任意个字符，"_"代表一个字符)</p>
+			<div class="field">
+				<span class="label">用户名：</span>
+				<span class="value"><input type="text" name="adminname" value="<%=Request("adminname")%>" size="<%=SearchTextWidth%>" /></span>
+			</div>
+			<div class="field">
+				<span class="label">公告内容：</span>
+				<span class="value"><input type="text" name="searchtxt" value="<%=Request("searchtxt")%>" size="<%=SearchTextWidth%>" /></span>
+			</div>
+			<div class="command"><input type="submit" value="搜索公告" name="searchsubmit" /></div>
 			</form>
-			</td>
-		</tr>
-	</table>
+		</div>
+	</div>
 
 <%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"web_searchdec.asp","[搜索结果分页]","center","adminname=" &server.URLEncode(Request("adminname"))& "&searchtxt=" & server.URLEncode(Request("searchtxt")) end if%>
 <form method="post" action="web_mdeldec.asp" name="form7">
@@ -73,62 +79,48 @@ CreateConn cn,dbtype
 <input type="hidden" name="adminname" value="<%=request("adminname")%>" />
 <input type="hidden" name="searchtxt" value="<%=request("searchtxt")%>" />
 <input type="hidden" name="page" value="<%if isnumeric(request("page")) and request("page")<>"" then response.write request("page")%>" />
-<span class="generalwindow noborder" style="text-align:left; display:block;"><a href="javascript:for(var i=0;i<=form7.elements.length-1;i++)if(form7.elements[i].name=='users' && form7.elements[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.length-1)alert('请先选定要删除的公告。');" onmouseover="return true;"><img src="image/icon_mdel.gif" style="border-width:0px;" />删除选定公告</a></span>
+<div class="guest-functions">
+	<div class="main">
+		<a href="javascript:for(var i=0;i<=form7.elements.length-1;i++)if(form7.elements[i].name=='users' && form7.elements[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.length-1)alert('请先选定要删除的公告。');" onmouseover="return true;"><img src="image/icon_mdel.gif" style="border-width:0px;" />删除选定公告</a>
+	</div>
+</div>
+
 
 <%
 dim pub_flag,pub
 if ItemsCount=0 then
 	Response.Write "<br/><br/><div class=""centertext"">没有找到符合条件的公告。</div><br/><br/>"
 else
-for i=1 to ItemsPerPage
-if rs.eof=false and Response.IsClientConnected then
+	while rs.eof=false
 %>
 
-<table border="1" bordercolor="<%=TableBorderColor%>" cellpadding="0" cellspacing="0" class="onetopic">
-  <tr>
-	<td style="width:100%; height:25px; text-align:left; vertical-align:middle; font-weight:bold; color:<%=TableTitleColor%>; background-color:<%=TableTitleBGC%>; background-image:url(<%=TableTitlePic%>);">所属用户：<a href="web_userinfo.asp?user=<%=rs("adminname")%>" target="_blank"><%=rs("adminname")%></a></td>
-  </tr>
-  <tr>
-	<td class="wordscontent">
-		<%
-		pub_flag=rs("declareflag")
-		pub="" &rs("declare")& ""
+	<div class="region region-bulletin">
+		<h3 class="title">所属用户：<a href="web_userinfo.asp?user=<%=rs("adminname")%>" target="_blank"><%=rs("adminname")%></a></h3>
+		<div class="content">
+			<%
+			pub_flag=rs("declareflag")
+			pub="" &rs("declare")& ""
 
-		if AdminViewCode=true then		'Only view HTML code
-			pub=server.HTMLEncode(pub)
-		else
-			convertstr pub,pub_flag,2
-		end if
+			if AdminViewCode=true then		'Only view HTML code
+				pub=server.HTMLEncode(pub)
+			else
+				convertstr pub,pub_flag,2
+			end if
 
-		Response.Write pub
-		%>
-	</td>
-  </tr>
-  <tr style="height:25px;">
-	<td style="width:100%; color:<%=TableContentColor%>; background-color:<%=TableContentBGC%>;">
-		<table cellpadding="0" cellspacing="0" style="border-width:0px;">
-			<tr>
-				<td style="width:<%=TableLeftWidth%>px; border-right-width:0px;">
-					<input type="checkbox" name="users" id="c<%=i%>" value="<%=rs("adminname")%>"><label for="c<%=i%>">(选定)</label>
-				</td>
-				<td style="border-left-width:0px;">
-					<a href="web_deldec.asp?user=<%=rs("adminname")%><%if isnumeric(request("page")) and request("page")<>"" then response.write "&page=" & request("page")%>&adminname=<%=server.URLEncode(request("adminname"))%>&searchtxt=<%=server.URLEncode(request("searchtxt"))%>" title="删除公告"<%if DelDecTip=true then Response.Write " onclick=""return confirm('确实要删除公告吗？');"""%>><img border="0" src="image/icon_del.gif" class="imgicon" />[删除公告]</a> 
-				</td>
-			</tr>
-		</table>
-	</td>
-  </tr>
-</table>
-
+			Response.Write pub
+			%>
+		</div>
+		<div class="admin-tools">
+			<input type="checkbox" name="users" id="c<%=i%>" value="<%=rs("adminname")%>"><label for="c<%=i%>">(选定)</label>
+			<a href="web_deldec.asp?user=<%=rs("adminname")%><%if isnumeric(request("page")) and request("page")<>"" then response.write "&page=" & request("page")%>&adminname=<%=server.URLEncode(request("adminname"))%>&searchtxt=<%=server.URLEncode(request("searchtxt"))%>" title="删除公告"<%if DelDecTip=true then Response.Write " onclick=""return confirm('确实要删除公告吗？');"""%>><img border="0" src="image/icon_del.gif" class="imgicon" />[删除公告]</a>
+		</div>
+	</div>
 <%
-		rs.MoveNext
-		else
-			exit for
-		end if
-	next
+	rs.MoveNext
+	wend
 end if	'对应for上面一行的if
 %>
-<span class="generalwindow noborder" style="text-align:left; display:block;"><a href="javascript:for(var i=0;i<=form7.elements.length-1;i++)if(form7.elements[i].name=='users' && form7.elements[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.length-1)alert('请先选定要删除的公告。');" onmouseover="return true;"><img src="image/icon_mdel.gif" style="border-width:0px;">删除选定公告</a></span>
+<div class="guest-functions"><a href="javascript:for(var i=0;i<=form7.elements.length-1;i++)if(form7.elements[i].name=='users' && form7.elements[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.length-1)alert('请先选定要删除的公告。');" onmouseover="return true;"><img src="image/icon_mdel.gif" style="border-width:0px;">删除选定公告</a></div>
 </form>
 
 <%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchdec.asp","[搜索结果分页]","center","adminname=" &server.URLEncode(Request("adminname"))& "&searchtxt=" & server.URLEncode(Request("searchtxt")) end if%>

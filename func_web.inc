@@ -1,1 +1,8 @@
-<span style="float:right; clear:all; width:100%; text-align:right; padding:4px; color:<%=LinkNormal%>;"><a href="reg.asp">创建留言本</a> | <a href="findkey.asp">找回密码</a> | <a href="login.asp">维护留言本</a> | <a href=unreg.asp>自删帐号</a></span>
+<div class="guest-functions">
+	<div class="aside">
+		<a class="function" href="reg.asp">创建留言本</a>
+		<a class="function" href="findkey.asp">找回密码</a>
+		<a class="function" href="login.asp">维护留言本</a>
+		<a class="function" href=unreg.asp>自删帐号</a>
+	</div>
+</div>

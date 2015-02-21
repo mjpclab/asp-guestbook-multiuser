@@ -13,7 +13,11 @@ Response.AddHeader "cache-control","private"
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 查看留言</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="web_adminstyle.css"/>
 	<!-- #include file="style.asp" -->
+	<!-- #include file="adminstyle.asp" -->
+	<!-- #include file="web_adminstyle.asp" -->
 </head>
 
 <body>
@@ -40,11 +44,10 @@ end if
 <div id="outerborder" class="outerborder">
 
 	<!-- #include file="web_admintitle.inc" -->
-	<!-- #include file="web_admintool.inc" -->
+	<!-- #include file="web_admincontrols.inc" -->
 	
 	<form method="post" action="web_searchmdel.asp" name="form7">
 		<!-- #include file="func_web_search.inc" -->
-		<br/>
 		<%
 			dim pagename
 			pagename="web_showword"

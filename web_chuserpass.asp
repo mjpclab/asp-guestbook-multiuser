@@ -19,15 +19,19 @@ set cn=nothing
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 重设用户密码</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="web_adminstyle.css"/>
 	<!-- #include file="style.asp" -->
+	<!-- #include file="adminstyle.asp" -->
+	<!-- #include file="web_adminstyle.asp" -->
 
 	<script type="text/javascript">
 	function checkpass(cobject)
 	{
-		if (cobject.user.value=="") {alert('请输入用户名。'); cobject.user.focus(); return false;}
-		if (cobject.inewpass1.value=="") {alert('请输入新密码。'); cobject.inewpass1.focus(); return false;}
-		if (cobject.inewpass2.value=="") {alert('请输入确认密码。'); cobject.inewpass2.focus(); return false;}
-		if (cobject.inewpass1.value!=cobject.inewpass2.value) {alert('新密码与确认密码不同，请重新输入。'); cobject.inewpass1.focus(); return false;}
+		if (cobject.user.value.length===0) {alert('请输入用户名。'); cobject.user.focus(); return false;}
+		if (cobject.inewpass1.value.length===0) {alert('请输入新密码。'); cobject.inewpass1.focus(); return false;}
+		if (cobject.inewpass2.value.length===0) {alert('请输入确认密码。'); cobject.inewpass2.focus(); return false;}
+		if (cobject.inewpass1.value!==cobject.inewpass2.value) {alert('新密码与确认密码不同，请重新输入。'); cobject.inewpass1.focus(); return false;}
 		cobject.submit1.disabled=true;
 		return true;
 	}
@@ -41,22 +45,26 @@ set cn=nothing
 
 	<!-- #include file="web_admintitle.inc" -->
 
-	<table border="1" bordercolor="<%=TableBorderColor%>" cellpadding="2" class="generalwindow">
-		<tr>
-			<td class="centertitle">重设用户密码</td>
-		</tr>
-		<tr>
-			<td style="width:100%; text-align:center; color:<%=TableContentColor%>; background-color:<%=TableContentBGC%>;">
-			<br/>
-				<form method="post" action="web_saveuserpass.asp" onsubmit="return checkpass(this)" name="form4">
-				　用户名：<input type="text" name="user" size="<%=SetInfoTextWidth%>" maxlength="32" value="<%=Request.QueryString("user")%>" /><br/>
-				　新密码：<input type="password" name="inewpass1" size="<%=SetInfoTextWidth%>" maxlength="32" /><br/>
-				确认密码：<input type="password" name="inewpass2" size="<%=SetInfoTextWidth%>" maxlength="32" /><br/><br/>
-				<input value="更新数据" type="submit" name="submit1" />
-				</form>
-			<br/>
-		</td></tr>
-	</table>
+	<div class="region form-region">
+		<h3 class="title">重设用户密码</h3>
+		<div class="content">
+			<form method="post" action="web_saveuserpass.asp" onsubmit="return checkpass(this)" name="form4">
+			<div class="field">
+				<span class="label">用户名：</span>
+				<span class="value"><input type="text" name="user" size="<%=SetInfoTextWidth%>" maxlength="32" value="<%=Request.QueryString("user")%>" /></span>
+			</div>
+			<div class="field">
+				<span class="label">新密码：</span>
+				<span class="value"><input type="password" name="inewpass1" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+			</div>
+			<div class="field">
+				<span class="label">确认密码：</span>
+				<span class="value"><input type="password" name="inewpass2" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+			</div>
+			<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>
+            </form>
+		</div>
+	</div>
 </div>
 
 <!-- #include file="bottom.asp" -->

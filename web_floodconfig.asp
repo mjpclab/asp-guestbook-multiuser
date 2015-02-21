@@ -14,7 +14,11 @@ CreateConn cn,dbtype
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 留言本参数</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="web_adminstyle.css"/>
 	<!-- #include file="style.asp" -->
+	<!-- #include file="adminstyle.asp" -->
+	<!-- #include file="web_adminstyle.asp" -->
 </head>
 
 <body>
@@ -22,21 +26,18 @@ CreateConn cn,dbtype
 <div id="outerborder" class="outerborder">
 
 	<!-- #include file="web_admintitle.inc" -->
-	<!-- #include file="web_admintool.inc" -->
+	<!-- #include file="web_admincontrols.inc" -->
 
 	<%rs.Open Replace(sql_adminfloodconfig,"{0}",wm_name),cn,,,1%>
 
-	<table border="1" bordercolor="<%=TableBorderColor%>" cellpadding="2" class="generalwindow">
-		<tr>
-			<td class="centertitle">防灌水策略</td>
-		</tr>
-		<tr>
-			<td class="wordscontent" style="padding:20px 2px;">
+	<div class="region form-region">
+		<h3 class="title">防灌水策略</h3>
+		<div class="content">
 			<form method="post" action="web_savefloodconfig.asp" name="configform" onsubmit="return check();">
 			<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
-			同一用户最小发言时间间隔：<input type="text" name="minwait" size="10" maxlength="10" value="<%=flood_minwait%>" />秒 (0=不限)<br/><br/>
-			
-			最新<input type="text" name="searchrange" size="10" maxlength="10" value="<%=flood_searchrange%>" />条(0=不限)
+			<p>同一用户最小发言时间间隔：<input type="text" name="minwait" size="10" maxlength="10" value="<%=flood_minwait%>" />秒 (0=不限)</p>
+
+			<p>最新<input type="text" name="searchrange" size="10" maxlength="10" value="<%=flood_searchrange%>" />条(0=不限)
 			<input type="checkbox" name="flag_newword" id="flag_newword" value="1"<%=cked(flood_sfnewword)%> /><label for="flag_newword">新留言</label>
 			<input type="checkbox" name="flag_newreply" id="flag_newreply" value="1"<%=cked(flood_sfnewreply)%> /><label for="flag_newreply">访客回复</label>
 			<br/>不允许
@@ -45,12 +46,13 @@ CreateConn cn,dbtype
 			<br/>相同的
 			<input type="checkbox" name="flag_title" id="flag_title" value="1"<%=cked(flood_sititle)%> /><label for="flag_title">标题</label>
 			<input type="checkbox" name="flag_content" id="flag_content" value="1"<%=cked(flood_sicontent)%> /><label for="flag_content">内容</label>
-			
-			<p style="text-align:center;"><input value="更新数据" type="submit" name="submit1" /></p>
+			</p>
+
+			<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>
 			</form>
-		</td>
-	</tr>
-</table>
+		</div>
+	</div>
+
 <%rs.Close : cn.Close : set rs=nothing : set cn=nothing%>
 
 </div>

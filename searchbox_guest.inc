@@ -7,13 +7,10 @@ function searchsubmitcheck(frm)
 }
 </script>
 
-<table border="1" cellpadding="2" class="generalwindow">
-	<tr>
-		<td class="centertitle">[ÁôÑÔËÑË÷]</td>
-	</tr>
-	<tr>
-		<td class="wordscontent" style="text-align:center; padding:20px 0px;">
-			<form method="post" action="search.asp" onsubmit="return searchsubmitcheck(this);">
+<div class="region form-region center-region">
+	<h3 class="title">[ÁôÑÔËÑË÷]</h3>
+	<div class="content">
+		<form method="post" action="search.asp" onsubmit="return searchsubmitcheck(this);">
 			<input type="hidden" name="user" value="<%=request("user")%>" />
 			ËÑË÷£º<input type="text" name="searchtxt" size="<%=SearchTextWidth%>" value="<%=request("searchtxt")%>" />
 			<input type="submit" value="ËÑË÷" name="searchsubmit" />
@@ -23,7 +20,6 @@ function searchsubmitcheck(frm)
 				<option value="article" <%=seled(request("type")="article" or request("type")="")%>>°´ÁôÑÔÄÚÈİËÑË÷</option>
 				<option value="reply" <%=seled(request("type")="reply")%>>°´°æÖ÷»Ø¸´ËÑË÷</option>
 			</select>
-			</form>
-		</td>
-	</tr>
-</table>
+		</form>
+	</div>
+</div>

@@ -12,7 +12,9 @@ Response.AddHeader "cache-control","private"
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> 留言本 管理首页</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
 	<!-- #include file="style.asp" -->
+	<!-- #include file="adminstyle.asp" -->
 </head>
 
 <body<%=bodylimit%> onload="<%=framecheck%>">
@@ -42,7 +44,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(sql_admin_words_count,"{0}",Request.Q
 <div id="outerborder" class="outerborder">
 
 	<%if ShowTitle=true then show_book_title 3,"管理"%>
-	<!-- #include file="admintool.inc" -->
+	<!-- #include file="admincontrols.inc" -->
 	
 	<%dim sys_bul_flag
 	sys_bul_flag=128%>

@@ -43,7 +43,9 @@ cn.close
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> 留言本 回复留言</title>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
 	<!-- #include file="style.asp" -->
+	<!-- #include file="adminstyle.asp" -->
 
 	<script type="text/javascript">
 	function submitcheck(cobject)
@@ -68,7 +70,7 @@ cn.close
 <div id="outerborder" class="outerborder">
 
 <%if ShowTitle=true then show_book_title 3,"管理"%>
-<!-- #include file="admintool.inc" -->
+<!-- #include file="admincontrols.inc" -->
 
 <table cellpadding="2" class="generalwindow" ID="Table1">
 	<tr>
