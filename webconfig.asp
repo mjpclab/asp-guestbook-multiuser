@@ -1,6 +1,6 @@
 <!-- #include file="common.asp" -->
 <%
-web_BookName="申江ASP留言本 多用户系统"
+web_BookName="多用户留言本系统"
 
 dim lcn,lrs
 set lcn=server.CreateObject("ADODB.Connection")
