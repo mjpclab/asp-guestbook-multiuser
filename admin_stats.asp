@@ -271,8 +271,8 @@ on error resume next
 
 </div>
 
-<script language="javascript" src="tabcontrol.js"></script>
-<script language="javascript">
+<script type="text/javascript" src="js/tabcontrol.js"></script>
+<script type="text/javascript">
 	tab=new TabControl('div_outer');
 
 	tab.setOuterContainerCssClass('tab-outer-container');

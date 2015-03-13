@@ -72,7 +72,8 @@ Response.AddHeader "cache-control","private"
 			<%rs.MoveNext : wend%>
 			</tbody>
 			</table>
-			<script type="text/javascript" src="table-select.js"></script>
+			<script type="text/javascript" src="js/jquery-1.x-min.js"></script>
+			<script type="text/javascript" src="js/table-select.js"></script>
 
 			<%if ItemsCount>0 then%><span style="width:100%; text-align:left;"><br/> <input type="checkbox" onclick="for(var i=0;i<=elements.length-1;i++)if (elements[i].name=='users') elements[i].checked=this.checked;" id="selall" /><label for="selall">全选本页用户</label>    <input type="submit" value="删除选定用户" /></span><%end if%>
 		</form>

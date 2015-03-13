@@ -41,13 +41,13 @@ JavaScript方式使用方法：
 
 　　在网页代码中插入以下代码：
 
-<script language="javascript" src="http://留言本位置/tlist.asp?n=显示条数&len=每条最大字数&js=yes&user=用户名"></script>
+<script type="text/javascript" src="http://留言本位置/tlist.asp?n=显示条数&len=每条最大字数&js=yes&user=用户名"></script>
 
 目标窗口：
 
 　　当用户点击“查看留言”时，iframe方式默认在包含它的页面窗口中打开，而JavaScript方式则在页面自身的窗口打开。如果您希望在新窗口中打开，请在src属性的末尾加入&target=_blank，两种方式都适用。例如：
 
-<script language="javascript" src="http://留言本位置/tlist.asp?n=显示条数&js=yes&user=用户名&target=_blank"></script>
+<script type="text/javascript" src="http://留言本位置/tlist.asp?n=显示条数&js=yes&user=用户名&target=_blank"></script>
 
 可使用相对路径：
 
