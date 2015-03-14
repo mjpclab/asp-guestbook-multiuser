@@ -12,12 +12,12 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> 留言本 管理中心登录</title>
-	<link rel="stylesheet" type="text/css" href="style.css"/>
-	<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
-	<link rel="stylesheet" type="text/css" href="web_adminstyle.css"/>
-	<!-- #include file="style.asp" -->
-	<!-- #include file="adminstyle.asp" -->
-	<!-- #include file="web_adminstyle.asp" -->
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/adminstyle.css"/>
+	<link rel="stylesheet" type="text/css" href="css/web_adminstyle.css"/>
+	<!-- #include file="css/style.asp" -->
+	<!-- #include file="css/adminstyle.asp" -->
+	<!-- #include file="css/web_adminstyle.asp" -->
 	
 	<script type="text/javascript">
 	function submitCheck(obj)

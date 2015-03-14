@@ -23,10 +23,10 @@ set rs=nothing : set cn=nothing
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> ¡Ù—‘±æ ±‡º≠¡Ù—‘</title>
-	<link rel="stylesheet" type="text/css" href="style.css"/>
-	<link rel="stylesheet" type="text/css" href="adminstyle.css"/>
-	<!-- #include file="style.asp" -->
-	<!-- #include file="adminstyle.asp" -->
+	<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="css/adminstyle.css"/>
+	<!-- #include file="css/style.asp" -->
+	<!-- #include file="css/adminstyle.asp" -->
 
 	<script type="text/javascript">
 	function swIframe(jschk)
