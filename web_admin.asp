@@ -37,7 +37,7 @@ Response.AddHeader "cache-control","private"
 
 	if ItemsCount>0 then
 	%>
-		<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"web_admin.asp","[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","left",""%>
+		<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"web_admin.asp","[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]",""%>
 		<form method="post" action="web_deluser.asp" name="frm_user" onsubmit="for(var i=0;i<=elements.length-1;i++)if(elements[i].name=='users' && elements[i].checked){if(confirm('警告！删除的用户和数据将不能恢复！\n确实要执行删除操作吗？'))return confirm('请再次确认是否要删除用户？');else return false;}alert('请先选择要删除的用户。');return false;">
 
 			<input type="hidden" name="source" value="1">
@@ -59,7 +59,7 @@ Response.AddHeader "cache-control","private"
 			<%if ItemsCount>0 then%>
 			<div class="guest-functions">
 			<div class="main">
-				<input type="checkbox" onclick="for(var i=0;i<=elements.length-1;i++)if (elements[i].name=='users') elements[i].checked=this.checked;" id="selall" /><label for="selall">全选本页用户</label>    <input type="submit" value="删除选定用户" />
+				<input type="submit" value="删除选定用户" />
 			</div>
 			</div>
 			<%end if%>
@@ -70,7 +70,7 @@ Response.AddHeader "cache-control","private"
 	cn.Close : set rs=nothing : set cn=nothing
 	%>
 
-	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_admin.asp","[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","left",""%>
+	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_admin.asp","[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]",""%>
 
 	<!-- #include file="searchuserbox_web.inc" -->		
 </div>		

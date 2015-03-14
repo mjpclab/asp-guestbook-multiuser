@@ -57,7 +57,7 @@ Response.AddHeader "cache-control","private"
 
 	if ItemsCount>0 then
 	%>
-		<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"web_searchuser.asp","(搜索结果)[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","left","type=" &Request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
+		<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"web_searchuser.asp","(搜索结果)[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","type=" &Request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
 		<form method="post" action="web_deluser.asp" name="frm_user" onsubmit="for(var i=0;i<=elements.length-1;i++)if(elements[i].name=='users' && elements[i].checked){if(confirm('警告！删除的用户和数据将不能恢复！\n确实要执行删除操作吗？'))return confirm('请再次确认是否要删除用户？');else return false;}alert('请先选择要删除的用户。');return false;">
 
 			<input type="hidden" name="source" value="2" />
@@ -75,7 +75,13 @@ Response.AddHeader "cache-control","private"
 			<script type="text/javascript" src="js/jquery-1.x-min.js"></script>
 			<script type="text/javascript" src="js/table-select.js"></script>
 
-			<%if ItemsCount>0 then%><span style="width:100%; text-align:left;"><br/> <input type="checkbox" onclick="for(var i=0;i<=elements.length-1;i++)if (elements[i].name=='users') elements[i].checked=this.checked;" id="selall" /><label for="selall">全选本页用户</label>    <input type="submit" value="删除选定用户" /></span><%end if%>
+			<%if ItemsCount>0 then%>
+			<div class="guest-functions">
+			<div class="main">
+				<input type="submit" value="删除选定用户" />
+			</div>
+			</div>
+			<%end if%>
 		</form>
 	<%
 	rs.Close
@@ -83,7 +89,7 @@ Response.AddHeader "cache-control","private"
 	cn.Close : set rs=nothing : set cn=nothing
 	%>
 
-	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchuser.asp","(搜索结果)[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","left","type=" &Request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
+	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchuser.asp","(搜索结果)[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","type=" &Request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
 
 	<!-- #include file="searchuserbox_web.inc" -->	
 </div>		

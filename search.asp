@@ -71,7 +71,7 @@ end if
 	sys_bul_flag=64%>
 	<!-- #include file="sysbulletin.inc" -->
 	<!-- #include file="topbulletin.inc" -->
-	<%if CanOpenDB=true and PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"search.asp","[搜索结果分页]","center","type=" &request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
+	<%if CanOpenDB=true and PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"search.asp","[搜索结果分页]","type=" &request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
 	<%if ShowTopSearchBox then%><!-- #include file="searchbox_guest.inc" --><%end if%>
 
 	<%
@@ -93,7 +93,7 @@ end if
 
 	<!-- #include file="func_guest.inc" -->
 
-	<%if CanOpenDB=true and PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"search.asp","[搜索结果分页]","center","type=" &request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
+	<%if CanOpenDB=true and PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"search.asp","[搜索结果分页]","type=" &request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
 	<%if ShowBottomSearchBox then%><!-- #include file="searchbox_guest.inc" --><%end if%>
 </div>
 

@@ -58,7 +58,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",Request.QuerySt
 	<!-- #include file="sysbulletin.inc" -->
 	<!-- #include file="topbulletin.inc" -->
 	<!-- #include file="hidetip.inc" -->
-	<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"index.asp","[ÁôÑÔ·ÖÒ³]","center",""%>
+	<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"index.asp","[ÁôÑÔ·ÖÒ³]",""%>
 	<%if ItemsCount>0 and StatusSearch and ShowTopSearchBox then%><!-- #include file="searchbox_guest.inc" --><%end if%>
 
 	<%
@@ -78,7 +78,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",Request.QuerySt
 	
 	<!-- #include file="func_guest.inc" -->
 
-	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"index.asp","[ÁôÑÔ·ÖÒ³]","center",""%>
+	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"index.asp","[ÁôÑÔ·ÖÒ³]",""%>
 	<%if ItemsCount>0 and StatusSearch and ShowBottomSearchBox then%><!-- #include file="searchbox_guest.inc" --><%end if%>
 
 </div>

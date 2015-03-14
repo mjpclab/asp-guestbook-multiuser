@@ -58,7 +58,7 @@ end if
 	sys_bul_flag=128%>
 	<!-- #include file="sysbulletin.inc" -->
 	<!-- #include file="topbulletin.inc" -->
-	<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"admin.asp","[ÁôÑÔ·ÖÒ³]","center",""%>
+	<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"admin.asp","[ÁôÑÔ·ÖÒ³]",""%>
 
 	<form method="post" action="admin_mdel.asp" name="form7">
 		<!-- #include file="func_admin.inc" -->
