@@ -107,7 +107,7 @@ sys_bul_flag=32
 
 <!-- #include file="func_web.inc" -->
 
-<p style="text-align: center;">创建成功！请记下您的留言本首页地址：<br/><%=gbookaddr%><br/>><a href="<%=gbookaddr%>">转到该页→</a></p>
+<p class="centertext">创建成功！请记下您的留言本首页地址：<br/><%=gbookaddr%><br/>&gt;<a href="<%=gbookaddr%>">转到该页→</a></p>
 
 </div>
 
