@@ -29,11 +29,11 @@ while rs.eof=false
 			<%end if%>
 		</td>
 		<td class="title">
-			<%if isauditting then%><a href="showword.asp?user=<%=Request.QueryString("user")%>&id=<%=rs.Fields("id")%>">(留言待审核...)</a>
-			<%elseif ishidden then%><a href="showword.asp?user=<%=Request.QueryString("user")%>&id=<%=rs.Fields("id")%>">(留言被管理员隐藏...)</a>
-			<%elseif iswhisper then%><a href="showword.asp?user=<%=Request.QueryString("user")%>&id=<%=rs.Fields("id")%>">(给版主的悄悄话...)</a>
-			<%elseif Trim(rs.Fields("title"))="" then%><a href="showword.asp?user=<%=Request.QueryString("user")%>&id=<%=rs.Fields("id")%>">(无标题)</a>
-			<%else%><a href="showword.asp?user=<%=Request.QueryString("user")%>&id=<%=rs.Fields("id")%>" title="<%=rs.Fields("title")%>"><%=rs.Fields("title")%></a>
+			<%if isauditting then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(留言待审核...)</a>
+			<%elseif ishidden then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(留言被管理员隐藏...)</a>
+			<%elseif iswhisper then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(给版主的悄悄话...)</a>
+			<%elseif Trim(rs.Fields("title"))="" then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(无标题)</a>
+			<%else%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>" title="<%=rs.Fields("title")%>"><%=rs.Fields("title")%></a>
 			<%end if%>
 		</td>
 		<td class="name"><%if isauditting=false then Response.Write rs.Fields("name")%></td>

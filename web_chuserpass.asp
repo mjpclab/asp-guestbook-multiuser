@@ -51,7 +51,7 @@ set cn=nothing
 			<form method="post" action="web_saveuserpass.asp" onsubmit="return checkpass(this)" name="form4">
 			<div class="field">
 				<span class="label">用户名：</span>
-				<span class="value"><input type="text" name="user" size="<%=SetInfoTextWidth%>" maxlength="32" value="<%=Request.QueryString("user")%>" /></span>
+				<span class="value"><input type="text" name="user" size="<%=SetInfoTextWidth%>" maxlength="32" value="<%=ruser%>" /></span>
 			</div>
 			<div class="field">
 				<span class="label">新密码：</span>

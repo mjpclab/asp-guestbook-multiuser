@@ -9,7 +9,7 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 end if
 
 if isnumeric(Request.QueryString("id"))=false or Request.QueryString("id")="" then
-	Response.Redirect "admin.asp?user=" &Request.QueryString("user")
+	Response.Redirect "admin.asp?user=" &ruser
 	Response.End
 end if
 
@@ -19,7 +19,7 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 checkuser cn,rs,false
 
-rs.Open Replace(Replace(sql_adminedit,"{0}",Request.QueryString("id")),"{1}",Request.QueryString("user")),cn,,,1
+rs.Open Replace(Replace(sql_adminedit,"{0}",Request.QueryString("id")),"{1}",adminid),cn,,,1
 	
 if rs.EOF=false then
 	guestflag=rs("guestflag")
@@ -27,7 +27,7 @@ if rs.EOF=false then
 	guest_txt=replace(server.htmlEncode(guest_txt),chr(13)&chr(10),"&#13;&#10;")
 else
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
-	Response.Redirect "admin.asp?user=" &Request.QueryString("user")
+	Response.Redirect "admin.asp?user=" &ruser
 	Response.End
 end if
 %>
@@ -71,7 +71,7 @@ end if
 	<h3 class="title">±‡º≠¡Ù—‘</h3>
 	<div class="content">
 		<form method="post" action="admin_saveedit.asp" onsubmit="return submitcheck(this)" name="form3">
-		<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+		<input type="hidden" name="user" value="<%=ruser%>" />
 		<input type="hidden" name="rootid" value="<%=request.QueryString("rootid")%>" />
 		<input type="hidden" name="mainid" value="<%=request.QueryString("id")%>" />
 		<input type="hidden" name="page" value="<%=request.QueryString("page")%>" />

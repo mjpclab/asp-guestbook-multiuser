@@ -48,8 +48,8 @@ set rs1=server.CreateObject("ADODB.Recordset")
 CreateConn cn1,dbtype
 checkuser cn1,rs1,true
 
-cn1.Execute Replace(Replace(Replace(Replace(sql_adminsavefloodconfig,"{0}",flood_minwait),"{1}",flood_searchrange),"{2}",flood_searchflag),"{3}",Request.Form("user")),,1
+cn1.Execute Replace(Replace(Replace(Replace(sql_adminsavefloodconfig,"{0}",flood_minwait),"{1}",flood_searchrange),"{2}",flood_searchflag),"{3}",adminid),,1
 
 cn1.Close : set cn1=nothing
-Response.Redirect "admin_floodconfig.asp?user=" & Request.Form("user")
+Response.Redirect "admin_floodconfig.asp?user=" & ruser
 %>

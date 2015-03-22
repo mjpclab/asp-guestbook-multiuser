@@ -34,7 +34,7 @@ checkuser cn,rs,false
 	<!-- #include file="admincontrols.inc" -->
 
 	<%
-	rs.Open Replace(sql_adminsetinfo,"{0}",Request.QueryString("user")),cn,,,1
+	rs.Open Replace(sql_adminsetinfo,"{0}",adminid),cn,,,1
 	tfaceid=rs("faceid")
 	%>
 
@@ -42,7 +42,7 @@ checkuser cn,rs,false
 		<h3 class="title">修改版主资料</h3>
 		<div class="content">
 			<form method="post" action="admin_saveinfo.asp" name="form1" onsubmit="form1.submit1.disabled=true;">
-			<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+			<input type="hidden" name="user" value="<%=ruser%>" />
 			<div class="field">
 				<span class="label">昵称：</span>
 				<span class="value"><input type="text" name="aname" size="<%=SetInfoTextWidth%>" maxlength="20" value="<%="" & rs("name") & ""%>" /></span>

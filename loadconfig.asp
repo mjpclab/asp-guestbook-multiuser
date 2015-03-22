@@ -14,7 +14,7 @@ checkuser lcn,lrs,false
 '================================
 '================================
 '================================
-lrs.Open Replace(sql_loadconfig_config,"{0}",wm_name),lcn,0,1,1
+lrs.Open Replace(sql_loadconfig_config,"{0}",wm_id),lcn,0,1,1
 
 status=lrs("status")
 if clng(status and 1)<>0 then	'ÁôÑÔ±¾¿ªÆô
@@ -103,7 +103,7 @@ if clng(web_UbbFlag and 1024)<>0 then web_UbbFlag_face=true else web_UbbFlag_fac
 
 '========================
 lrs.Close
-lrs.Open Replace(sql_loadconfig_floodconfig,"{0}",wm_name),lcn,0,1,1
+lrs.Open Replace(sql_loadconfig_floodconfig,"{0}",wm_id),lcn,0,1,1
 web_flood_minwait=abs(lrs.Fields("minwait"))
 web_flood_searchrange=abs(lrs.Fields("searchrange"))
 web_flood_searchflag=lrs.Fields("searchflag")
@@ -123,8 +123,7 @@ lrs.Close
 '================================
 '================================
 '================================
-
-lrs.Open Replace(sql_loadconfig_config,"{0}",Request("user")),lcn,0,1,1
+lrs.Open Replace(sql_loadconfig_config,"{0}",adminid),lcn,0,1,1
 
 status=lrs("status")
 if StatusOpen=true then
@@ -345,10 +344,10 @@ if clng(DelConfirm and 128)<>0 then Bring2TopTip=true
 if clng(DelConfirm and 256)<>0 then Lock2TopTip=true
 if clng(DelConfirm and 512)<>0 then ReorderTip=true
 
-dim stylename
-stylename=lrs("stylename")
+dim styleid
+styleid=lrs("styleid")
 lrs.Close
-lrs.Open Replace(sql_loadconfig_style,"{0}",stylename),lcn,0,1,1
+lrs.Open Replace(sql_loadconfig_style,"{0}",styleid),lcn,0,1,1
 if lrs.EOF=true then
 	lrs.Close
 	lrs.Open sql_loadconfig_top1style,lcn,0,1,1
@@ -404,7 +403,7 @@ PageNumColor_Normal=lrs("pagenumcolor_normal")		'Ò»°ãÒ³ºÅÑÕÉ«
 Additional_Css=lrs("additional_css")	'¸½¼ÓCSS
 
 lrs.Close
-lrs.Open Replace(sql_loadconfig_floodconfig,"{0}",Request("user")),lcn,0,1,1
+lrs.Open Replace(sql_loadconfig_floodconfig,"{0}",adminid),lcn,0,1,1
 flood_minwait=abs(lrs.Fields("minwait"))
 flood_searchrange=abs(lrs.Fields("searchrange"))
 flood_searchflag=lrs.Fields("searchflag")

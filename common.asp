@@ -79,10 +79,10 @@ else
 	for i=1 to 2
 		if i=1 then
 			tStatus=web_IPConStatus
-			rsx.Open Replace(Replace(Replace(sql_common_isbanip,"{0}",IPConStatus),"{1}",ipaddr),"{2}",wm_name),cnx,,,1
+			rsx.Open Replace(Replace(Replace(sql_common_isbanip,"{0}",IPConStatus),"{1}",ipaddr),"{2}",wm_id),cnx,,,1
 		elseif i=2 then
 			tStatus=IPConStatus
-			rsx.Open Replace(Replace(Replace(sql_common_isbanip,"{0}",IPConStatus),"{1}",ipaddr),"{2}",Request("user")),cnx,,,1
+			rsx.Open Replace(Replace(Replace(sql_common_isbanip,"{0}",IPConStatus),"{1}",ipaddr),"{2}",adminid),cnx,,,1
 		end if
 		
 		if tStatus=1 then
@@ -127,7 +127,7 @@ else
 
 	CreateConn cnx,dbtype
 
-	rsx.Open Replace(Replace(Replace(sql_common_isbanip,"{0}",web_IPConStatus),"{1}",ipaddr),"{2}",wm_name),cnx,,,1
+	rsx.Open Replace(Replace(Replace(sql_common_isbanip,"{0}",web_IPConStatus),"{1}",ipaddr),"{2}",wm_id),cnx,,,1
 		
 	if web_IPConStatus=1 then
 		if not rsx.EOF then
@@ -163,15 +163,15 @@ set cna=server.CreateObject("ADODB.Connection")
 set rsa=server.CreateObject("ADODB.Recordset")
 
 CreateConn cna,dbtype
-rsa.Open Replace(Replace(sql_common_getstat,"{0}",fieldname),"{1}",Request("user")),cna,0,1,1
+rsa.Open Replace(Replace(sql_common_getstat,"{0}",fieldname),"{1}",adminid),cna,0,1,1
 
 if rsa.EOF then
-	cna.Execute Replace(Replace(sql_common_initstat,"{0}",DateTimeStr(Now())),"{1}",Request("user")),,1
+	cna.Execute Replace(Replace(sql_common_initstat,"{0}",DateTimeStr(Now())),"{1}",adminid),,1
 elseif isdate(rsa.Fields("startdate"))=false then
-	cna.Execute Replace(Replace(sql_common_updatetime,"{0}",DateTimeStr(Now())),"{1}",Request("user")),,1
+	cna.Execute Replace(Replace(sql_common_updatetime,"{0}",DateTimeStr(Now())),"{1}",adminid),,1
 end if
 rsa.Close
-cna.Execute Replace(Replace(sql_common_addstat,"{0}",fieldname),"{1}",Request("user")),,1
+cna.Execute Replace(Replace(sql_common_addstat,"{0}",fieldname),"{1}",adminid),,1
 
 cna.Close
 set rsa=nothing
@@ -200,20 +200,27 @@ end if
 end function
 '==================================
 function checkuser(byref conn,byref rec,byref ckform)
-dim ruser,re
+dim re
 if ckform=true then
 	ruser=Request.Form("user")
 else
 	ruser=request("user")
 end if
-if ruser<>"" then
+
+if ruser="" then
+	conn.Close
+	set rec=nothing
+	set conn=nothing
+	response.Redirect "face.asp"
+	Response.End
+else
 	set re=new RegExp
 	re.Pattern="^\w+$"
 	if re.Test(ruser)=false then
+		set re=nothing
 		conn.Close
 		set rec=nothing
 		set conn=nothing
-		set re=nothing
 		Response.Redirect "face.asp"
 		Response.End
 	else
@@ -226,16 +233,12 @@ if ruser<>"" then
 			set conn=nothing
 			Response.Redirect "face.asp"
 			Response.End
+		else
+			adminid=rec.Fields("adminid")
+			rec.Close
 		end if
 	end if
-else
-	conn.Close
-	set rec=nothing
-	set conn=nothing
-	response.Redirect "face.asp"
-	Response.End
 end if
-rec.close
 end function
 '==================================
 function textfilter(byref str,byval filterScript)
@@ -380,7 +383,7 @@ if ItemsCount>0 then
 	else
 		where_and=" WHERE"
 	end if
-	
+
 	rs.Open Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_common_dividepage _
 		,"{0}",CurrentItemsCount) _
 		,"{1}",ItemsEachPage*(ipage-1)+CurrentItemsCount) _
@@ -429,13 +432,13 @@ if ShowAdvPageList then
 	if CurPage+AdvPageListCount>PagesCount then largenext_page_no=PagesCount else largenext_page_no=CurPage+AdvPageListCount
 	if CurPage-AdvPageListCount<1 then largeprev_page_no=1 else largeprev_page_no=CurPage-AdvPageListCount
 	
-	str_first_page=		"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &first_page_no& param & "&user=" &request("user")& """><img src=""image/icon_page_first.gif"" title=""第" &first_page_no& "页"" /></a>"
-	str_largeprev_page=	"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &largeprev_page_no& param & "&user=" &request("user")& """><img src=""image/icon_page_largeprev.gif"" title=""第" &largeprev_page_no& "页"" /></a>"
-	str_prev_page=		"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &prev_page_no& param & "&user=" &request("user")& """><img src=""image/icon_page_prev.gif"" title=""第" &prev_page_no& "页"" /></a>"
+	str_first_page=		"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &first_page_no& param & "&user=" &ruser& """><img src=""image/icon_page_first.gif"" title=""第" &first_page_no& "页"" /></a>"
+	str_largeprev_page=	"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &largeprev_page_no& param & "&user=" &ruser& """><img src=""image/icon_page_largeprev.gif"" title=""第" &largeprev_page_no& "页"" /></a>"
+	str_prev_page=		"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &prev_page_no& param & "&user=" &ruser& """><img src=""image/icon_page_prev.gif"" title=""第" &prev_page_no& "页"" /></a>"
 	
-	str_last_page=		"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &last_page_no& param & "&user=" &request("user")& """><img src=""image/icon_page_last.gif"" title=""第" &last_page_no& "页"" /></a>"
-	str_largenext_page=	"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &largenext_page_no& param & "&user=" &request("user")& """><img src=""image/icon_page_largenext.gif"" title=""第" &largenext_page_no& "页"" /></a>"
-	str_next_page=		"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &next_page_no& param & "&user=" &request("user")& """><img src=""image/icon_page_next.gif"" title=""第" &next_page_no& "页"" /></a>"
+	str_last_page=		"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &last_page_no& param & "&user=" &ruser& """><img src=""image/icon_page_last.gif"" title=""第" &last_page_no& "页"" /></a>"
+	str_largenext_page=	"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &largenext_page_no& param & "&user=" &ruser& """><img src=""image/icon_page_largenext.gif"" title=""第" &largenext_page_no& "页"" /></a>"
+	str_next_page=		"<a class=""page-control"" name=""page-control"" href=""" &filename& "?page=" &next_page_no& param & "&user=" &ruser& """><img src=""image/icon_page_next.gif"" title=""第" &next_page_no& "页"" /></a>"
 	
 	str_first2_page=	"<a class=""js-page-control"" name=""js-page-control""><img onmouseup=""if(ghandle)clearTimeout(ghandle);"" onmousedown=""if(ghandle)clearTimeout(ghandle); refresh_pagenum(" &(-PagesCount+1)& ");"" src=""image/icon_page_first2.gif"" class=""pageicon"" title=""卷至首页"" /></a>"
 	str_largeprev2_page="<a class=""js-page-control"" name=""js-page-control""><img onmouseup=""if(ghandle)clearTimeout(ghandle);"" onmousedown=""if(ghandle)clearTimeout(ghandle); refresh_pagenum(" &(-AdvPageListCount)& ");"" src=""image/icon_page_largeprev2.gif"" class=""pageicon"" title=""上卷" &AdvPageListCount& "页"" /></a>"
@@ -455,7 +458,7 @@ end if%>
 		<%end if%>
 		<form method="get" action="<%=filename%>">
 		<div class="pagenum-list">
-			<%for j=start_page to end_page%><a name="pagenum" class="pagenum<%if j=CurPage then Response.Write " pagenum-current"%>" href="<%=filename%>?user=<%=request("user")%>&page=<%=j & param%>"><%=j%></a><%next%>
+			<%for j=start_page to end_page%><a name="pagenum" class="pagenum<%if j=CurPage then Response.Write " pagenum-current"%>" href="<%=filename%>?user=<%=ruser%>&page=<%=j & param%>"><%=j%></a><%next%>
 		</div>
 		<div class="goto">(共<%=PagesCount%>页)　转到页数<input type="text" name="page" class="page" maxlength="10" /> <input type="submit" class="submit" value="GO" /></div>
 		<%
@@ -467,7 +470,7 @@ end if%>
 			<%end if
 		next
 		%>
-		<input type="hidden" name="user" value="<%=request("user")%>" />
+		<input type="hidden" name="user" value="<%=ruser%>" />
 		</form>
 	</div>
 </div>
@@ -491,7 +494,7 @@ sub show_book_title(byval layercount, byval param)%>
 			<span class="guestbook">留言本</span>
 		<%elseif layercount=3 then%>
 			<%if HomeName<>"" then%><span class="separator">&gt;&gt;</span><%end if%>
-			<a class="guestbook" href="index.asp?user=<%=request("user")%>">留言本</a>
+			<a class="guestbook" href="index.asp?user=<%=ruser%>">留言本</a>
 			<span class="separator">&gt;&gt;</span>
 			<span class="page"><%=param%></span>
 		<%end if%>
@@ -626,15 +629,15 @@ function GetDisplayMode(FieldName)
 end function
 
 function GuestDisplayMode
-	GuestDisplayMode=GetDisplayMode(InstanceName & "_DisplayMode_" & Request("user"))
+	GuestDisplayMode=GetDisplayMode(InstanceName & "_DisplayMode_" & ruser)
 end function
 
 function AdminDisplayMode
-	AdminDisplayMode=GetDisplayMode(InstanceName & "_AdminDisplayMode_" & Request("user"))
+	AdminDisplayMode=GetDisplayMode(InstanceName & "_AdminDisplayMode_" & ruser)
 end function
 
 function WebDisplayMode
-	WebDisplayMode=GetDisplayMode(InstanceName & "_WebDisplayMode_" & Request("user"))
+	WebDisplayMode=GetDisplayMode(InstanceName & "_WebDisplayMode_" & ruser)
 end function
 '==================================
 function GetRequests

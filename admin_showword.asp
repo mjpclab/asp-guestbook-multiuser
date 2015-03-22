@@ -36,13 +36,13 @@ end if
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
-rs.Open Replace(Replace(sql_admin_showword,"{0}",id),"{1}",Request.QueryString("user")),cn,0,1,1
+rs.Open Replace(Replace(sql_admin_showword,"{0}",id),"{1}",adminid),cn,0,1,1
 if rs.EOF then		'留言不存在，退回主界面
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	if Request("type")<>"" and Request("searchtxt")<>"" then
-		Response.Redirect "admin_search.asp?user=" &Request("user")& "&page=" & Request("page") & "&type=" & server.URLEncode(Request("type")) & "&searchtxt=" & server.URLEncode(Request("searchtxt"))
+		Response.Redirect "admin_search.asp?user=" &ruser& "&page=" & Request("page") & "&type=" & server.URLEncode(Request("type")) & "&searchtxt=" & server.URLEncode(Request("searchtxt"))
 	else
-		Response.Redirect "admin.asp?user=" &Request("user")& "&page=" & Request("page")
+		Response.Redirect "admin.asp?user=" &ruser& "&page=" & Request("page")
 	end if
 	Response.End
 end if
@@ -70,7 +70,7 @@ end if
 		%>
 
 		<input type="hidden" name="rootid" value="<%=request("id")%>" />
-		<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+		<input type="hidden" name="user" value="<%=ruser%>" />
 		<input type="hidden" name="page" value="<%=Request.QueryString("page")%>" />
 		<input type="hidden" name="type" value="<%=Request.QueryString("type")%>" />
 		<input type="hidden" name="searchtxt" value="<%=Request.QueryString("searchtxt")%>" />

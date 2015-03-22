@@ -9,13 +9,13 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 elseif isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
-	Response.Redirect "err.asp?user=" &Request.QueryString("user")& "&number=1"
+	Response.Redirect "err.asp?user=" &ruser& "&number=1"
 	Response.End
 elseif StatusOpen=false then
-	Response.Redirect "err.asp?user=" &Request.QueryString("user")& "&number=2"
+	Response.Redirect "err.asp?user=" &ruser& "&number=2"
 	Response.End
 elseif StatusWrite=false then
-	Response.Redirect "err.asp?user=" &Request.QueryString("user")& "&number=3"
+	Response.Redirect "err.asp?user=" &ruser& "&number=3"
 	Response.End
 end if
 if StatusStatistics then call addstat("leaveword")
@@ -144,7 +144,7 @@ end function
 		<h3 class="title">欢迎您留言</h3>
 		<div class="content">
 			<form method="post" action="write.asp" onsubmit="return submitcheck(this)" name="form1">
-				<input type="hidden" name="user" value="<%=request("user")%>"/>
+				<input type="hidden" name="user" value="<%=ruser%>"/>
 				<input type="hidden" name="follow" value="<%=request("follow")%>"/>
 				<input type="hidden" name="return" value="<%=request("return")%>"/>
 				<input type="hidden" name="qstr" value="<%=Server.HtmlEncode(request.QueryString)%>"/>
@@ -158,7 +158,7 @@ end function
 					<%if WriteVcodeCount>0 then%>
 					<div class="field">
 						<div class="label">验证码<span class="required">*</span></div>
-						<div class="value"><input type="text" name="ivcode" size="<%=LeaveVcodeWidth%>" autocomplete="off"/><img class="captcha" src="show_vcode.asp?user=<%=request("user")%>"/></div>
+						<div class="value"><input type="text" name="ivcode" size="<%=LeaveVcodeWidth%>" autocomplete="off"/><img class="captcha" src="show_vcode.asp?user=<%=ruser%>"/></div>
 					</div>
 					<%end if%>
 					<div class="field">
@@ -167,11 +167,11 @@ end function
 					</div>
 					<div class="field">
 						<div class="label">标题<span class="required">*</span></div>
-						<div class="value"><input type="text" name="ititle" size="<%=LeaveTextWidth%>" maxlength="30" value="<%=server.htmlEncode(FormOrSession(InstanceName & "_ititle_" & Request("user")))%><%if Request.Form("ititle")="" and isnumeric(Request("follow")) and Request("follow")<>"" then response.write "Re:"%>"/></div>
+						<div class="value"><input type="text" name="ititle" size="<%=LeaveTextWidth%>" maxlength="30" value="<%=server.htmlEncode(FormOrSession(InstanceName & "_ititle_" & ruser))%><%if Request.Form("ititle")="" and isnumeric(Request("follow")) and Request("follow")<>"" then response.write "Re:"%>"/></div>
 					</div>
 					<div class="field">
 						<div class="row">内容： <%=getstatus(web_HTMLSupport and HTMLSupport)%>HTML标记　<%=getstatus(web_UBBSupport and UBBSupport)%>UBB标记<%if not(web_HTMLSupport and HTMLSupport) and not(web_UBBSupport and UBBSupport) and (web_AllowNewLine and AllowNewLine) then Response.Write "　" & getstatus(true) & "允许换行"%></div>
-						<div class="row"><textarea name="icontent" id="icontent" cols="<%=LeaveContentWidth%>" rows="<%=LeaveContentHeight%>" onkeydown="icontent_keydown(arguments[0]);"<%if WordsLimit>0 then Response.Write " onpropertychange=""checklength(this,"&WordsLimit&");"""%>><%=server.htmlEncode(FormOrSession(InstanceName & "_icontent_" & Request("user")))%></textarea></div>
+						<div class="row"><textarea name="icontent" id="icontent" cols="<%=LeaveContentWidth%>" rows="<%=LeaveContentHeight%>" onkeydown="icontent_keydown(arguments[0]);"<%if WordsLimit>0 then Response.Write " onpropertychange=""checklength(this,"&WordsLimit&");"""%>><%=server.htmlEncode(FormOrSession(InstanceName & "_icontent_" & ruser))%></textarea></div>
 						<!-- #include file="ubbtoolbar.inc" -->
 						<%if web_UBBSupport And UBBSupport then ShowUbbToolBar(3)%>
 					</div>
@@ -251,6 +251,6 @@ end function
 </div>
 
 <!-- #include file="bottom.asp" -->
-<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=request("user")%>" defer="defer" async="async"></script><%end if%>
+<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=ruser%>" defer="defer" async="async"></script><%end if%>
 </body>
 </html>

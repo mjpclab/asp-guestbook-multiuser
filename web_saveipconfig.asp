@@ -57,18 +57,18 @@ if tipconstatus<>"0" and tipconstatus<>"1" and tipconstatus<>"2" then tipconstat
 set cn=server.CreateObject("ADODB.Connection")
 CreateConn cn,dbtype
 
-if Request.Form("savediplist1")<>"" then cn.Execute Replace(Replace(sql_adminsaveipconfig_delete1,"{0}",replace(Request.Form("savediplist1"),"'","")),"{1}",wm_name),,1
-if Request.Form("savediplist2")<>"" then cn.Execute Replace(Replace(sql_adminsaveipconfig_delete1,"{0}",replace(Request.Form("savediplist2"),"'","")),"{1}",wm_name),,1
+if Request.Form("savediplist1")<>"" then cn.Execute Replace(Replace(sql_adminsaveipconfig_delete1,"{0}",replace(Request.Form("savediplist1"),"'","")),"{1}",wm_id),,1
+if Request.Form("savediplist2")<>"" then cn.Execute Replace(Replace(sql_adminsaveipconfig_delete1,"{0}",replace(Request.Form("savediplist2"),"'","")),"{1}",wm_id),,1
 
 dim i
 for i = 0 to ubound(tstartip1)
-	if len(tstartip1(i))=8 and len(tendip1(i))=8 and tstartip1(i)<=tendip1(i) then cn.Execute Replace(Replace(Replace(sql_adminsaveipconfig_insert1,"{0}",tstartip1(i)),"{1}",tendip1(i)),"{2}",wm_name),,1
+	if len(tstartip1(i))=8 and len(tendip1(i))=8 and tstartip1(i)<=tendip1(i) then cn.Execute Replace(Replace(Replace(sql_adminsaveipconfig_insert1,"{0}",tstartip1(i)),"{1}",tendip1(i)),"{2}",wm_id),,1
 next
 for i = 0 to ubound(tstartip2)
-	if len(tstartip2(i))=8 and len(tendip2(i))=8 and tstartip2(i)<=tendip2(i) then cn.Execute Replace(Replace(Replace(sql_adminsaveipconfig_insert2,"{0}",tstartip2(i)),"{1}",tendip2(i)),"{2}",wm_name),,1
+	if len(tstartip2(i))=8 and len(tendip2(i))=8 and tstartip2(i)<=tendip2(i) then cn.Execute Replace(Replace(Replace(sql_adminsaveipconfig_insert2,"{0}",tstartip2(i)),"{1}",tendip2(i)),"{2}",wm_id),,1
 next
 
-cn.Execute Replace(Replace(sql_adminsaveipconfig_update,"{0}",tipconstatus),"{1}",wm_name),,1
+cn.Execute Replace(Replace(sql_adminsaveipconfig_update,"{0}",tipconstatus),"{1}",wm_id),,1
 cn.Close : set cn=nothing
 
 Response.Redirect "web_ipconfig.asp"

@@ -34,11 +34,9 @@ checkuser cn,rs,false
 	<!-- #include file="admincontrols.inc" -->
 
 <%
-dim ruser
-ruser=Request.QueryString("user")
-rs.Open Replace(sql_adminstats_startdate,"{0}",ruser),cn,0,3,1
+rs.Open Replace(sql_adminstats_startdate,"{0}",adminid),cn,0,3,1
 if rs.EOF then
-	cn.Execute Replace(Replace(sql_adminstats_insert,"{0}",now()),"{1}",ruser),,1
+	cn.Execute Replace(Replace(sql_adminstats_insert,"{0}",now()),"{1}",adminid),,1
 else
 	if isdate(rs(0))=false then
 		rs(0)=now()
@@ -47,7 +45,7 @@ else
 end if
 rs.Close
 
-rs.Open Replace(sql_adminstats,"{0}",ruser),cn,,,1
+rs.Open Replace(sql_adminstats,"{0}",adminid),cn,,,1
 
 tstartdate=rs("startdate")
 tview=rs("view")
@@ -127,13 +125,13 @@ on error resume next
 		<%
 		on error goto 0
 
-		rs.Open Replace(sql_adminstats_client_count,"{0}",ruser),cn,,,1
+		rs.Open Replace(sql_adminstats_client_count,"{0}",adminid),cn,,,1
 		if rs.EOF=false then tclientcount=rs.Fields(0) else tclientcount=0
 
 		if tclientcount>0 then
 			'客户端操作系统
 			rs.Close
-			rs.Open Replace(sql_adminstats_client_os,"{0}",ruser),cn,,,1
+			rs.Open Replace(sql_adminstats_client_os,"{0}",adminid),cn,,,1
 
 			Response.Write "<div id=""div_os"">"
 			Response.Write "<h4>客户端操作系统</h4>"
@@ -150,7 +148,7 @@ on error resume next
 
 			'客户端浏览器
 			rs.Close
-			rs.Open Replace(sql_adminstats_client_browser,"{0}",ruser),cn,,,1
+			rs.Open Replace(sql_adminstats_client_browser,"{0}",adminid),cn,,,1
 
 			Response.Write "<div id=""div_browser"">"
 			Response.Write "<h4>客户端浏览器</h4>"
@@ -167,7 +165,7 @@ on error resume next
 
 			'客户端屏幕分辨率
 			rs.Close
-			rs.Open Replace(sql_adminstats_client_screen,"{0}",ruser),cn,,,1
+			rs.Open Replace(sql_adminstats_client_screen,"{0}",adminid),cn,,,1
 
 			Response.Write "<div id=""div_screen"">"
 			Response.Write "<h4>客户端屏幕分辨率</h4>"
@@ -188,7 +186,7 @@ on error resume next
 
 			'访问时段
 			rs.Close
-			rs.Open Replace(sql_adminstats_client_timesect,"{0}",ruser),cn,,,1
+			rs.Open Replace(sql_adminstats_client_timesect,"{0}",adminid),cn,,,1
 
 			Response.Write "<div id=""div_timesect"">"
 			Response.Write "<h4>访问时段</h4>"
@@ -208,7 +206,7 @@ on error resume next
 			weeklist=array("星期日","星期一","星期二","星期三","星期四","星期五","星期六")
 
 			rs.Close
-			rs.Open Replace(sql_adminstats_client_week,"{0}",ruser),cn,,,1
+			rs.Open Replace(sql_adminstats_client_week,"{0}",adminid),cn,,,1
 
 			Response.Write "<div id=""div_week"">"
 			Response.Write "<h4>访问周期</h4>"
@@ -226,7 +224,7 @@ on error resume next
 
 			'最近30天访问量
 			rs.Close
-			rs.Open Replace(sql_adminstats_client_30day,"{0}",ruser),cn,,,1
+			rs.Open Replace(sql_adminstats_client_30day,"{0}",adminid),cn,,,1
 
 			Response.Write "<div id=""div_30day"">"
 			Response.Write "<h4>最近30天访问量</h4>"
@@ -243,7 +241,7 @@ on error resume next
 
 			'访问来源
 			rs.Close
-			rs.Open Replace(sql_adminstats_client_source,"{0}",ruser),cn,,,1
+			rs.Open Replace(sql_adminstats_client_source,"{0}",adminid),cn,,,1
 
 			Response.Write "<div id=""div_source"">"
 			Response.Write "<h4>访问来源</h4>"

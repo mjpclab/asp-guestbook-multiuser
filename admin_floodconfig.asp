@@ -33,13 +33,13 @@ checkuser cn,rs,false
 	<%if ShowTitle=true then show_book_title 3,"管理"%>
 	<!-- #include file="admincontrols.inc" -->
 
-	<%rs.Open Replace(sql_adminfloodconfig,"{0}",Request.QueryString("user")),cn,,,1%>
+	<%rs.Open Replace(sql_adminfloodconfig,"{0}",adminid),cn,,,1%>
 
 	<div class="region form-region">
 		<h3 class="title">防灌水策略</h3>
 		<div class="content">
 			<form method="post" action="admin_savefloodconfig.asp" name="configform" onsubmit="return check();">
-			<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+			<input type="hidden" name="user" value="<%=ruser%>" />
 			<p>同一用户最小发言时间间隔：<input type="text" name="minwait" size="10" maxlength="10" value="<%=flood_minwait%>" />秒 (0=不限)</p>
 
 			<p>最新<input type="text" name="searchrange" size="10" maxlength="10" value="<%=flood_searchrange%>" />条(0=不限)

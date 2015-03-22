@@ -60,7 +60,7 @@ CreateConn cn,dbtype
             </form>
 
 			<%
-			rs.Open Replace(sql_adminfilter,"{0}",wm_name),cn,,,1
+			rs.Open Replace(sql_adminfilter,"{0}",wm_id),cn,,,1
 
 			while rs.EOF=false%>
 				<form method="post" action="web_updatefilter.asp" class="detail-item">

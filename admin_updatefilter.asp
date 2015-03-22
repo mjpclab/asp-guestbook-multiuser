@@ -51,7 +51,7 @@ if tfindexp<>"" then
 	if isnumeric(Request.Form("filterid")) and Request.Form("filterid")<>"" then
 		tfilterid=clng(Request.Form("filterid"))
 
-		rs.Open Replace(Replace(sql_adminupdatefilter,"{0}",tfilterid),"{1}",Request.Form("user")),cn,1,3,1
+		rs.Open Replace(Replace(sql_adminupdatefilter,"{0}",tfilterid),"{1}",adminid),cn,1,3,1
 		if not rs.EOF then
 			rs("regexp")=tfindexp
 			rs("filtermode")=tfiltermode
@@ -64,5 +64,5 @@ if tfindexp<>"" then
 	end if
 end if
 
-Response.Redirect "admin_filter.asp?user=" &Request.Form("user")
+Response.Redirect "admin_filter.asp?user=" &ruser
 %>

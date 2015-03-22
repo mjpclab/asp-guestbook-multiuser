@@ -8,11 +8,11 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 elseif StatusUserBanned then
-	Response.Redirect "err.asp?user=" &Request.QueryString("user")& "&number=100"
+	Response.Redirect "err.asp?user=" &ruser& "&number=100"
 	Response.End
 end if
 if isnumeric(request.form("mainid"))=false or request.form("mainid")="" then
-	Response.Redirect "admin.asp?user=" &Request.Form("user")
+	Response.Redirect "admin.asp?user=" &ruser
 	Response.End
 end if
 
@@ -28,7 +28,7 @@ if Request.Form("html1")="1" then tlimit=tlimit+1
 if Request.Form("ubb1")="1" then tlimit=tlimit+2
 if Request.Form("newline1")="1" then tlimit=tlimit+4
 
-rs.Open Replace(Replace(sql_adminsavereply_main,"{0}",Request.Form("mainid")),"{1}",Request.Form("user")),cn,0,3,1
+rs.Open Replace(Replace(sql_adminsavereply_main,"{0}",Request.Form("mainid")),"{1}",adminid),cn,0,3,1
 if rs.EOF=false then		'ÁôÑÔ´æÔÚ
 	cn.BeginTrans
 	rs("replied")=clng(rs("replied") OR 1)
@@ -49,11 +49,11 @@ if rs.EOF=false then		'ÁôÑÔ´æÔÚ
 	cn.CommitTrans
 	
 	if Request.Form("lock2top")="1" then	'ÖÃ¶¥
-		cn.Execute Replace(Replace(sql_adminsavereply_lock2top,"{0}",Request.Form("mainid")),"{1}",Request.Form("user")),,1
+		cn.Execute Replace(Replace(sql_adminsavereply_lock2top,"{0}",Request.Form("mainid")),"{1}",adminid),,1
 	end if
 	
 	if Request.Form("bring2top")="1" then	'ÌáÇ°
-		cn.Execute Replace(Replace(Replace(sql_adminsavereply_bring2top,"{0}",now()),"{1}",Request.Form("mainid")),"{2}",Request.Form("user")),,1
+		cn.Execute Replace(Replace(Replace(sql_adminsavereply_bring2top,"{0}",now()),"{1}",Request.Form("mainid")),"{2}",adminid),,1
 	end if
 	
 	cn.close
@@ -65,7 +65,7 @@ if rs.EOF=false then		'ÁôÑÔ´æÔÚ
 	rs.close : cn.close : set rs=nothing : set cn=nothing
 else
 	rs.close : cn.close : set rs=nothing : set cn=nothing
-	Response.Redirect "admin.asp?user=" & Request.Form("user")
+	Response.Redirect "admin.asp?user=" & ruser
 end if
 rs.close : cn.close : set rs=nothing : set cn=nothing
 %>

@@ -11,7 +11,7 @@ function searchsubmitcheck(frm)
 	<h3 class="title">[ÁôÑÔËÑË÷]</h3>
 	<div class="content">
 		<form method="post" action="search.asp" onsubmit="return searchsubmitcheck(this);">
-			<input type="hidden" name="user" value="<%=request("user")%>" />
+			<input type="hidden" name="user" value="<%=ruser%>" />
 			ËÑË÷£º<input type="text" name="searchtxt" size="<%=SearchTextWidth%>" value="<%=request("searchtxt")%>" />
 			<input type="submit" value="ËÑË÷" name="searchsubmit" />
 			<select name="type" size="1" onchange="searchtxt.focus();">

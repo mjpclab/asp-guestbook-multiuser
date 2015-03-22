@@ -24,7 +24,7 @@ end if
 	<%if ShowTitle=true then show_book_title 3,"错误"%>
 
 	<span style="float:right; clear:all; width:100%; text-align:right; padding:4px; color:<%=LinkNormal%>;">
-			| <a href="reg.asp">申请</a> | <a href="admin_login.asp?user=<%=request("user")%>">管理</a>
+			| <a href="reg.asp">申请</a> | <a href="admin_login.asp?user=<%=ruser%>">管理</a>
 	</span>
 
 <%

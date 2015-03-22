@@ -18,10 +18,11 @@ dim re
 set re=new RegExp
 re.Pattern="^\w+$"
 
-if Request.Form("user")="" then
+ruser=Request.Form("user")
+if ruser="" then
 	Call MessagePage("用户名不能为空。","findkey.asp")
 	Response.End
-elseif re.Test(Request.Form("user"))=false then
+elseif re.Test(ruser)=false then
 	Call MessagePage("用户名中只能包含英文字母、数字和下划线。","findkey.asp")
 	Response.End
 end if
@@ -32,7 +33,7 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 
 '=============================存在性验证
-rs.Open Replace(sql_findkey2_checkuser,"{0}",Request.Form("user")),cn,,,1
+rs.Open Replace(sql_findkey2_checkuser,"{0}",ruser),cn,,,1
 if rs.EOF then
 	Call MessagePage("用户名不存在。","findkey.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
@@ -82,7 +83,7 @@ sys_bul_flag=32
 	<h3 class="title">找回密码 步骤2</h3>
 	<div class="content">
 		<form name="findform2" method="post" action="findkey3.asp" onsubmit="return submitcheck(this)">
-			<input type="hidden" name="user" value="<%=Request.Form("user")%>">
+			<input type="hidden" name="user" value="<%=ruser%>">
 
 			<div class="field">
 				<span class="label">问题：</span>

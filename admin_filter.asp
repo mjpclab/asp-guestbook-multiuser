@@ -37,7 +37,7 @@ checkuser cn,rs,false
 		<h3 class="title">内容过滤策略</h3>
 		<div class="content">
 			<form method="post" name="newfilter" action="admin_appendfilter.asp" class="detail-item" onsubmit="if(findexp.value.length===0){alert('请输入查找内容。');findexp.focus();return false;}submit1.disabled=true;">
-			<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+			<input type="hidden" name="user" value="<%=ruser%>" />
 			<h4>添加新过滤策略：</h4>
 			<p>查找内容(可用正则表达式,多个过滤词间用“|”分割)<br/>
 			<input type="text" size="<%=FilterTextWidth%>" name="findexp" /><br/>
@@ -66,11 +66,11 @@ checkuser cn,rs,false
 			</form>
 
 			<%
-			rs.Open Replace(sql_adminfilter,"{0}",Request.QueryString("user")),cn,,,1
+			rs.Open Replace(sql_adminfilter,"{0}",adminid),cn,,,1
 
 			while rs.EOF=false%>
 			<form method="post" action="admin_updatefilter.asp" class="detail-item">
-				<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+				<input type="hidden" name="user" value="<%=ruser%>" />
 				<%tfilterid=rs("filterid")%>
 				<input type="hidden" name="filterid" value="<%=tfilterid%>" />
 				<%tfiltermode=clng(rs("filtermode"))%>

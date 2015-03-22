@@ -388,9 +388,9 @@ else
 		if Request.Form("lock2toptip")="1" then tdelconfirm=tdelconfirm+256
 		if Request.Form("reordertip")="1" then tdelconfirm=tdelconfirm+512
 
-		tstylename=server.HTMLEncode(Request.Form("style"))
-		tstylename=replace(tstylename," ","")
-		
+		tstyleid=Request.Form("style")
+		if isnumeric(tstyleid)=false then tstyleid=0
+		tstyleid=clng(tstyleid)
 	end if
 
 	set cn1=server.CreateObject("ADODB.Connection")
@@ -398,7 +398,7 @@ else
 
 	CreateConn cn1,dbtype
 	checkuser cn1,rs1,true
-	rs1.open Replace(sql_adminsaveconfig,"{0}",Request.Form("user")),cn1,0,3,1
+	rs1.open Replace(sql_adminsaveconfig,"{0}",adminid),cn1,0,3,1
 
 	if clng(showpage and 1)<> 0	then
 		rs1("status")=tstatus
@@ -455,12 +455,12 @@ else
 		rs1("pagecontrol")=tpagecontrol
 		rs1("wordslimit")=twordslimit
 		rs1("delconfirm")=tdelconfirm
-		rs1("stylename")=tstylename
+		rs1("styleid")=tstyleid
 	end if
 	rs1.Update
 	
 	rs1.Close : cn1.close : set rs1=nothing : set cn1=nothing
 end if
 
-Response.Redirect "admin_config.asp?user=" & Request.Form("user") & "&page=" & showpage
+Response.Redirect "admin_config.asp?user=" & ruser & "&page=" & showpage
 %>

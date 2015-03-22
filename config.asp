@@ -38,5 +38,7 @@ if right(FacePath,1)<>"/" then FacePath=FacePath & "/"
 if right(SmallFacePath,1)<>"/" then SmallFacePath=SmallFacePath & "/"
 
 wm_name="@admin"
-wm_name=replace(wm_name,chr(39),chr(39)&chr(39))
+wm_id=-1
+Dim adminid
+Dim ruser
 %>

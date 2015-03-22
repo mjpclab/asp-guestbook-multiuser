@@ -7,7 +7,7 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 elseif StatusUserBanned then
-	Response.Redirect "err.asp?user=" &Request.QueryString("user")& "&number=100"
+	Response.Redirect "err.asp?user=" &ruser& "&number=100"
 	Response.End
 end if
 
@@ -27,8 +27,8 @@ tbul=Request.Form("abulletin")
 tbul=replace(tbul,"'","''")
 tbul=replace(tbul,"<%","< %")
 
-cn1.Execute Replace(Replace(Replace(sql_adminsavebulletin,"{0}",clng(web_adminlimit and tlimit)),"{1}",tbul),"{2}",Request.Form("user")),,1
+cn1.Execute Replace(Replace(Replace(sql_adminsavebulletin,"{0}",clng(web_adminlimit and tlimit)),"{1}",tbul),"{2}",adminid),,1
 
 cn1.close : set rs1=nothing : set cn1=nothing:
-Response.Redirect "admin.asp?user=" &Request.Form("user")
+Response.Redirect "admin.asp?user=" &ruser
 %>

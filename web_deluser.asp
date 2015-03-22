@@ -21,9 +21,9 @@ arr=split(users,",")
 users=""
 for i=0 to ubound(arr)
 	if i>0 then
-		users=users & ",'" & replace(replace(arr(i),"'",""),";","") & "'"
+		users=users & ",'" & FilterSql(arr(i)) & "'"
 	else
-		users="'" & replace(replace(arr(i),"'",""),";","") & "'"
+		users="'" & FilterSql(arr(i)) & "'"
 	end if
 next
 

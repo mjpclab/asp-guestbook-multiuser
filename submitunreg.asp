@@ -25,13 +25,14 @@ dim re
 set re=new RegExp
 re.Pattern="^\w+$"
 
-if Request.Form("user")="" then
+ruser=Request.Form("user")
+if ruser="" then
 	Call MessagePage("用户名不能为空。","unreg.asp")
 	Response.End
-elseif re.Test(Request.Form("user"))=false then
+elseif re.Test(ruser)=false then
 	Call MessagePage("用户名中只能包含英文字母、数字和下划线。","unreg.asp")
 	Response.End
-elseif len(Request.Form("user"))>32 then
+elseif len(ruser)>32 then
 	Call MessagePage("用户名长度不能超过32字。","unreg.asp")
 	Response.End
 elseif Request.Form("pass1")="" then
@@ -48,7 +49,8 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 
 '=============================存在性验证
-rs.Open Replace(Replace(sql_submitunreg_checkuser,"{0}",Request.Form("user")),"{1}",wm_name),cn,,,1
+Dim del_adminid
+rs.Open Replace(Replace(sql_submitunreg_checkuser,"{0}",ruser),"{1}",wm_name),cn,,,1
 if rs.EOF then
 	Call MessagePage("用户名不存在。","unreg.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
@@ -58,18 +60,19 @@ elseif rs("adminpass")<>md5(Request.Form("pass1"),32) then
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
+del_adminid=rs.Fields("adminid")
 rs.Close : set rs=nothing
 
 cn.BeginTrans
-	cn.Execute Replace(sql_submitunreg_delete_filterconfig,"{0}",Request.Form("user")),,1
-	cn.Execute Replace(sql_submitunreg_delete_ipconfig,"{0}",Request.Form("user")),,1
-	cn.Execute Replace(sql_submitunreg_delete_floodconfig,"{0}",Request.Form("user")),,1
-	cn.Execute Replace(sql_submitunreg_delete_stats,"{0}",Request.Form("user")),,1
-	cn.Execute Replace(sql_submitunreg_delete_stats_clientinfo,"{0}",Request.Form("user")),,1
-	cn.Execute Replace(sql_submitunreg_delete_reply,"{0}",Request.Form("user")),,1
-	cn.Execute Replace(sql_submitunreg_delete_main,"{0}",Request.Form("user")),,1
-	cn.Execute Replace(sql_submitunreg_delete_config,"{0}",Request.Form("user")),,1
-	cn.Execute Replace(sql_submitunreg_delete_supervisor,"{0}",Request.Form("user")),,1
+	cn.Execute Replace(sql_submitunreg_delete_filterconfig,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_ipconfig,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_floodconfig,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_stats,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_stats_clientinfo,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_reply,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_main,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_config,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_supervisor,"{0}",del_adminid),,1
 cn.CommitTrans
 
 cn.Close : set cn=nothing

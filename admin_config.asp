@@ -14,8 +14,6 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 checkuser cn,rs,false
 
-dim ruser
-ruser=Request.QueryString("user")
 %>
 
 <!-- #include file="inc_dtd.asp" -->
@@ -36,7 +34,7 @@ ruser=Request.QueryString("user")
 	<%if ShowTitle=true then show_book_title 3,"管理"%>
 	<!-- #include file="admincontrols.inc" -->
 	
-	<%rs.Open Replace(sql_adminconfig_config,"{0}",Request.QueryString("user")),cn,,,1%>
+	<%rs.Open Replace(sql_adminconfig_config,"{0}",adminid),cn,,,1%>
 
 	<div class="region region-config admin-tools">
 		<h3 class="title">留言本参数设置</h3>
@@ -441,16 +439,17 @@ ruser=Request.QueryString("user")
 					<span class="value">
 						<select name="style">
 						<%
-						stylename=rs("stylename")
+						styleid=rs("styleid")
 						rs.Close
 						rs.Open sql_adminconfig_style,cn,,,1
 
-						dim onestyle
+						dim onestyleid,onestylename
 						while rs.EOF=false
-							onestyle=rs("stylename")
-							Response.Write "<option value=" &chr(34)& onestyle &chr(34)
-							if onestyle=stylename or stylename="" then Response.Write " selected=""selected"""
-							Response.Write ">" &onestyle& "</option>"
+							onestyleid=rs("styleid")
+							onestylename=rs("stylename")
+							Response.Write "<option value=" &chr(34)& onestyleid &chr(34)
+							if onestyleid=styleid or onestyleid="" then Response.Write " selected=""selected"""
+							Response.Write ">" &onestylename& "</option>"
 							rs.MoveNext
 						wend
 						%>

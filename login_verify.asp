@@ -25,7 +25,7 @@ if StatusStatistics then call addstat("login")
 if VcodeCount>0 and (Request.Form("ivcode")<>session("vcode") or session("vcode")="") then
 	session("vcode")=""
 	if StatusStatistics then call addstat("loginfailed")
-	Call MessagePage("验证码错误。","admin_login.asp?user=" &request("user"))
+	Call MessagePage("验证码错误。","admin_login.asp?user=" &ruser)
 
 	set rs=nothing
 	set cn=nothing
@@ -34,18 +34,18 @@ else
 	session("vcode")=""
 end if
 
-rs.Open Replace(sql_loginverify,"{0}",Request.Form("user")),cn,0,1,1
+rs.Open Replace(sql_loginverify,"{0}",adminid),cn,0,1,1
 
-session.Contents(InstanceName & "_adminpass_" & Request.Form("user"))=md5(request("iadminpass"),32)
-if session.Contents(InstanceName & "_adminpass_"& Request.Form("user"))=rs(0) then
+session.Contents(InstanceName & "_adminpass_" & ruser)=md5(request("iadminpass"),32)
+if session.Contents(InstanceName & "_adminpass_"& ruser)=rs(0) then
 	session.Timeout=cint(AdminTimeOut)
 
-	cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",now()),"{1}",Request.Form("user")),,1
+	cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",now()),"{1}",adminid),,1
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
-	Response.Redirect "admin.asp?user=" &Request.Form("user")
+	Response.Redirect "admin.asp?user=" &ruser
 else
 	if StatusStatistics then call addstat("loginfailed")
-	Call MessagePage("密码不正确。","admin_login.asp?user=" &request("user"))
+	Call MessagePage("密码不正确。","admin_login.asp?user=" &ruser)
 
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End

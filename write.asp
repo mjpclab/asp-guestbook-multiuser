@@ -10,14 +10,14 @@
 sub wordsbaned
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	if StatusStatistics then call addstat("banned")
-	Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=4"
+	Response.Redirect "err.asp?user=" &ruser& "&number=4"
 	Response.End
 end sub
 '======================================================
 sub floodbaned
 	rs.Close : rs2.Close : cn.Close : set rs=nothing : set rs2=nothing : set cn=nothing
 	if StatusStatistics then call addstat("banned")
-	Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=7"
+	Response.Redirect "err.asp?user=" &ruser& "&number=7"
 	Response.End
 end sub
 '======================================================
@@ -46,34 +46,34 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 elseif isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
-	Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=1"
+	Response.Redirect "err.asp?user=" &ruser& "&number=1"
 	Response.End
 elseif StatusOpen=false then
-	Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=2"
+	Response.Redirect "err.asp?user=" &ruser& "&number=2"
 	Response.End
 elseif StatusWrite=false then
-	Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=3"
+	Response.Redirect "err.asp?user=" &ruser& "&number=3"
 	Response.End
 elseif StatusUserBanned then
-	Response.Redirect "err.asp?user=" &Request.QueryString("user")& "&number=100"
+	Response.Redirect "err.asp?user=" &ruser& "&number=100"
 	Response.End
 elseif (flood_minwait>0 or web_flood_minwait>0) and isdate(session.Contents("wrote_time")) then
 	if datediff("s",session.Contents("wrote_time"),now())<=flood_minwait or datediff("s",session.Contents("wrote_time"),now())<=web_flood_minwait then
 		if StatusStatistics then call addstat("banned")
-		Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=6"
+		Response.Redirect "err.asp?user=" &ruser& "&number=6"
 		Response.End
 	end if
 elseif (flood_minwait>0 or web_flood_minwait>0) and isdate(Request.Cookies("wrote_time")) then
 	if datediff("s",Request.Cookies("wrote_time"),now())<=flood_minwait or datediff("s",Request.Cookies("wrote_time"),now())<=web_flood_minwait then
 		if StatusStatistics then call addstat("banned")
-		Response.Redirect "err.asp?user=" &Request.Form("user")& "&number=6"
+		Response.Redirect "err.asp?user=" &ruser& "&number=6"
 		Response.End
 	end if
 end if
 if Request.Form("iname")="" or Request.Form("ititle")="" then Response.Redirect("face.asp")
 
-Session(InstanceName & "_ititle_" & Request.Form("user"))=Request.Form("ititle")
-Session(InstanceName & "_icontent_" & Request.Form("user"))=Request.Form("icontent")
+Session(InstanceName & "_ititle_" & ruser)=Request.Form("ititle")
+Session(InstanceName & "_icontent_" & ruser)=Request.Form("icontent")
 
 if WriteVcodeCount>0 and (Request.Form("ivcode")<>session("vcode") or session("vcode")="") then
 	session("vcode")=""
@@ -135,9 +135,9 @@ filtered=false
 
 for i=1 to 2
 	if i=1 then
-		rs.Open Replace(sql_write_filter,"{0}",wm_name),cn,0,1,1
+		rs.Open Replace(sql_write_filter,"{0}",wm_id),cn,0,1,1
 	elseif i=2 then
-		rs.Open Replace(sql_write_filter,"{0}",Request.Form("user")),cn,0,1,1
+		rs.Open Replace(sql_write_filter,"{0}",adminid),cn,0,1,1
 	end if
 
 	while rs.EOF=false
@@ -178,7 +178,7 @@ next
 set re=nothing
 if filtered=true and StatusStatistics then addstat("filtered")
 '-------------------------
-if name1="" or title1="" then Response.Redirect "index.asp?user=" & Request.Form("user")
+if name1="" or title1="" then Response.Redirect "index.asp?user=" & ruser
 
 name1=server.htmlEncode(name1)
 name1=textfilter(name1,false)
@@ -242,7 +242,7 @@ if web_flood_searchrange>0 and (web_flood_sfnewword or web_flood_sfnewreply) and
 			if web_flood_equal or content1="" then sql=sql & Replace(sql_write_flood_articleequal,"{0}",FilterSqlStr(content1))
 		end if
 		
-		sql=sql & Replace(Replace(sql_write_flood_wordstail,"{0}",web_flood_searchrange),"{1}",Request.Form("user"))
+		sql=sql & Replace(Replace(sql_write_flood_wordstail,"{0}",web_flood_searchrange),"{1}",adminid)
 		rs.Open sql,cn,,,1
 		if not rs.EOF then floodbaned()
 		rs.Close
@@ -262,7 +262,7 @@ if web_flood_searchrange>0 and (web_flood_sfnewword or web_flood_sfnewreply) and
 			if web_flood_equal or content1="" then sql=sql & Replace(sql_write_flood_articleequal,"{0}",FilterSqlStr(content1))
 		end if
 		
-		sql=sql & Replace(Replace(Replace(sql_write_flood_replytail,"{0}",web_flood_searchrange),"{1}",rs2.Fields("id")),"{2}",Request.Form("user"))
+		sql=sql & Replace(Replace(Replace(sql_write_flood_replytail,"{0}",web_flood_searchrange),"{1}",rs2.Fields("id")),"{2}",adminid)
 		rs.Open sql,cn,,,1
 		if not rs.EOF then floodbaned()
 		rs.Close
@@ -291,7 +291,7 @@ if flood_searchrange>0 and (flood_sfnewword or flood_sfnewreply) and (flood_incl
 			if flood_equal or content1="" then sql=sql & Replace(sql_write_flood_articleequal,"{0}",FilterSqlStr(content1))
 		end if
 		
-		sql=sql & Replace(Replace(sql_write_flood_wordstail,"{0}",flood_searchrange),"{1}",Request.Form("user"))
+		sql=sql & Replace(Replace(sql_write_flood_wordstail,"{0}",flood_searchrange),"{1}",adminid)
 		rs.Open sql,cn,,,1
 		if not rs.EOF then floodbaned()
 		rs.Close
@@ -311,7 +311,7 @@ if flood_searchrange>0 and (flood_sfnewword or flood_sfnewreply) and (flood_incl
 			if flood_equal or content1="" then sql=sql & Replace(sql_write_flood_articleequal,"{0}",FilterSqlStr(content1))
 		end if
 		
-		sql=sql & Replace(Replace(Replace(sql_write_flood_replytail,"{0}",flood_searchrange),"{1}",rs2.Fields("id")),"{2}",Request.Form("user"))
+		sql=sql & Replace(Replace(Replace(sql_write_flood_replytail,"{0}",flood_searchrange),"{1}",rs2.Fields("id")),"{2}",adminid)
 		rs.Open sql,cn,,,1
 		if not rs.EOF then floodbaned()
 		rs.Close
@@ -322,7 +322,7 @@ end if
 '------------------------
 rs.Open sql_write_idnull,cn,0,3,1
 rs.AddNew
-rs("adminname")=Request.Form("user")
+rs("adminid")=adminid
 rs("name")=name1
 rs("title")=title1
 rs("email")=email1
@@ -339,11 +339,11 @@ rs("whisperpwd")=whisperpwd
 rs("article")=content1
 rs("parent_id")=0
 if isnumeric(Request.Form("follow")) and Request.Form("follow")<>"" and StatusGuestReply then
-	rs2.Open Replace(Replace(sql_write_verify_repliable,"{0}",Request.Form("follow")),"{1}",Request.Form("user")),cn,0,1,1
+	rs2.Open Replace(Replace(sql_write_verify_repliable,"{0}",Request.Form("follow")),"{1}",adminid),cn,0,1,1
 	if not rs2.EOF then
 		rs("parent_id")=Request.Form("follow")
-		cn.Execute Replace(Replace(Replace(sql_write_updatelastupdated,"{0}",now()),"{1}",Request.Form("follow")),"{2}",Request.Form("user")),,1
-		cn.Execute Replace(Replace(sql_write_updateparentflag,"{0}",Request.Form("follow")),"{1}",Request.Form("user")),,1
+		cn.Execute Replace(Replace(Replace(sql_write_updatelastupdated,"{0}",now()),"{1}",Request.Form("follow")),"{2}",adminid),,1
+		cn.Execute Replace(Replace(sql_write_updateparentflag,"{0}",Request.Form("follow")),"{1}",adminid),,1
 	end if
 	rs2.Close : set rs2=nothing
 end if
@@ -363,16 +363,16 @@ if StatusStatistics then call addstat("written")
 
 SetTimelessCookie "wrote_time",now()
 Session.Contents("wrote_time")=now()
-Session(InstanceName & "_ititle_" & Request.Form("user"))=""
-Session(InstanceName & "_icontent_" & Request.Form("user"))=""
+Session(InstanceName & "_ititle_" & ruser)=""
+Session(InstanceName & "_icontent_" & ruser)=""
 Session.Contents("guestflag")=guestflag
-Session.Contents("guestflag_user")=Request.Form("user")
+Session.Contents("guestflag_user")=ruser
 
 if web_MailNewInform=true and MailNewInform=true then newinform()
 
 if Request.Form("return")="showword" and isnumeric(Request.Form("follow")) and Request.Form("follow")<>"" then
-	Response.Redirect "showword.asp?user=" & Request.Form("user") & "&id=" & Request.Form("follow")
+	Response.Redirect "showword.asp?user=" & ruser & "&id=" & Request.Form("follow")
 else
-	Response.Redirect "index.asp?user=" & Request.Form("user")
+	Response.Redirect "index.asp?user=" & ruser
 end if
 %>

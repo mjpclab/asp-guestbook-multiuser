@@ -65,7 +65,7 @@ if request("s_qqid")<>"" then	'QQºÅÂë
 	param_str=param_str & "&s_qqid=" & server.URLEncode(request("s_qqid"))
 end if
 
-if request("s_msnid")<>"" then	'MSNºÅ
+if request("s_msnid")<>"" then	'SkypeºÅ
 	sql_condition=sql_condition & Replace(sql_websearch_condition_msnid,"{0}",FilterAdminLike(request("s_msnid")))
 	param_str=param_str & "&s_msnid=" & server.URLEncode(request("s_msnid"))
 end if

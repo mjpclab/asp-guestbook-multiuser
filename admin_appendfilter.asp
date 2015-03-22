@@ -52,7 +52,7 @@ if tfindexp<>"" then
 	
 	rs.Open sql_adminfilter_null,cn,0,3,1
 	rs.AddNew
-	rs("adminname")=Request.Form("user")
+	rs("adminid")=adminid
 	rs("regexp")=tfindexp
 	rs("filtermode")=tfiltermode
 	rs("replacestr")=treplacestr
@@ -60,16 +60,16 @@ if tfindexp<>"" then
 	rs.Update
 	rs.Close 
 
-	rs.Open Replace(sql_adminfilter_max,"{0}",Request.Form("user")),cn,,,1
+	rs.Open Replace(sql_adminfilter_max,"{0}",adminid),cn,,,1
 	pfilterid=rs(0)
 	rs.Close
 	
-	cn.Execute Replace(Replace(sql_adminfilter_update,"{0}",pfilterid),"{1}",Request.Form("user")),,1
+	cn.Execute Replace(Replace(sql_adminfilter_update,"{0}",pfilterid),"{1}",adminid),,1
 		
 	cn.CommitTrans
 	
 	cn.Close : set rs=nothing : set cn=nothing
 end if
 
-Response.Redirect "admin_filter.asp?user=" &Request.Form("user")
+Response.Redirect "admin_filter.asp?user=" &ruser
 %>

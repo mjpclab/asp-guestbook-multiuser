@@ -2,12 +2,12 @@
 <%
 Response.ContentType="application/x-javascript"
 if session("gotclientuser")="" then session("gotclientuser")="|"
-if instr(session("gotclientuser"),"|" &request("user")& "|")=0 then
+if instr(session("gotclientuser"),"|" &ruser& "|")=0 then
 	Dim cn,rs
 	Dim adminname,os,browser,screenwidth,screenheight,sourceaddr,fullsource
 
 	'Get Parameters
-	adminname=Request.QueryString("user")
+	adminname=ruser
 	os=Request.QueryString("sys")
 	browser=Request.QueryString("brow")
 	screenwidth=Request.QueryString("sw")
@@ -47,11 +47,11 @@ if instr(session("gotclientuser"),"|" &request("user")& "|")=0 then
 		set rs=server.CreateObject("ADODB.Recordset")
 		CreateConn cn,dbtype
 		checkuser cn,rs,false
-		cn.Execute Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_saveclientinfo,"{0}",os),"{1}",browser),"{2}",screenwidth),"{3}",screenheight),"{4}",now()),"{5}",sourceaddr),"{6}",fullsource),"{7}",adminname),,1
+		cn.Execute Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_saveclientinfo,"{0}",os),"{1}",browser),"{2}",screenwidth),"{3}",screenheight),"{4}",now()),"{5}",sourceaddr),"{6}",fullsource),"{7}",adminid),,1
 		cn.Close : set rs=nothing : set cn=nothing
 
 		'Got Complete
-		session("gotclientuser")=session("gotclientuser") & request("user") & "|"
+		session("gotclientuser")=session("gotclientuser") & ruser & "|"
 	end if
 end if
 %>

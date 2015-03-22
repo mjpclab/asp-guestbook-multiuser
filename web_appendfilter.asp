@@ -47,7 +47,7 @@ if tfindexp<>"" then
 	
 	rs.Open sql_adminfilter_null,cn,0,3,1
 	rs.AddNew
-	rs("adminname")=wm_name
+	rs("adminid")=wm_id
 	rs("regexp")=tfindexp
 	rs("filtermode")=tfiltermode
 	rs("replacestr")=treplacestr
@@ -55,11 +55,11 @@ if tfindexp<>"" then
 	rs.Update
 	rs.Close
 
-	rs.Open Replace(sql_adminfilter_max,"{0}",wm_name),cn,,,1
+	rs.Open Replace(sql_adminfilter_max,"{0}",wm_id),cn,,,1
 	pfilterid=rs(0)
 	rs.Close
 	
-	cn.Execute Replace(Replace(sql_adminfilter_update,"{0}",pfilterid),"{1}",wm_name),,1
+	cn.Execute Replace(Replace(sql_adminfilter_update,"{0}",pfilterid),"{1}",wm_id),,1
 
 	cn.CommitTrans
 	

@@ -1,11 +1,11 @@
 <!-- #include file="common.asp" -->
 <%
 if Request.QueryString("modeflag")="guest" then
-	SetTimelessCookie InstanceName & "_DisplayMode_" & Request("user") ,Request.QueryString("mode")
+	SetTimelessCookie InstanceName & "_DisplayMode_" & ruser ,Request.QueryString("mode")
 elseif Request.QueryString("modeflag")="admin" then
-	SetTimelessCookie InstanceName & "_AdminDisplayMode_" & Request("user") ,Request.QueryString("mode")
+	SetTimelessCookie InstanceName & "_AdminDisplayMode_" & ruser ,Request.QueryString("mode")
 elseif Request.QueryString("modeflag")="web" then
-	SetTimelessCookie InstanceName & "_WebDisplayMode_" & Request("user") ,Request.QueryString("mode")
+	SetTimelessCookie InstanceName & "_WebDisplayMode_" & ruser ,Request.QueryString("mode")
 end if
 
 if Request("rpage")<>"" then

@@ -9,10 +9,10 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 elseif isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
-	Response.Redirect "err.asp?user=" &Request("user")& "&number=1"
+	Response.Redirect "err.asp?user=" &ruser& "&number=1"
 	Response.End
 elseif StatusOpen=false then
-	Response.Redirect "err.asp?user=" &Request("user")& "&number=2"
+	Response.Redirect "err.asp?user=" &ruser& "&number=2"
 	Response.End
 end if
 %>
@@ -44,7 +44,7 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 checkuser cn,rs,false
 
-rs.Open Replace(sql_showword_count,"{0}",Request("user")),cn,0,1,1
+rs.Open Replace(sql_showword_count,"{0}",adminid),cn,0,1,1
 ItemsCount=rs(0)
 rs.Close
 %>
@@ -65,7 +65,7 @@ rs.Close
 	cantverify=false
 	idexists=false
 	if isnumeric(Request("id")) and Request("id")<>"" then
-		rs.Open Replace(Replace(sql_showword,"{0}",Request("id")),"{1}",Request("user")),cn,,,1
+		rs.Open Replace(Replace(sql_showword,"{0}",Request("id")),"{1}",adminid),cn,,,1
 		if not rs.EOF then
 			idexists=true
 			if clng(rs.Fields("guestflag") and 64)<>0 then
@@ -87,7 +87,7 @@ rs.Close
 			session("vcode")=""
 			session("id")=cstr(Request.Form("id"))
 			session("guest_pwd")=md5(Request.Form("ipass"),32)
-			Response.Redirect "showword.asp?user=" & Request.Form("user") & "&id=" & Request.Form("id")
+			Response.Redirect "showword.asp?user=" & ruser & "&id=" & Request.Form("id")
 		end if
 	end if
 
@@ -118,7 +118,7 @@ rs.Close
 			<h3 class="title">验证已加密留言</h3>
 			<div class="content">
 				<form method="post" action="showword.asp" name="form5" onsubmit="if(this.ipass.value==''){alert('请输入密码。');this.ipass.focus();return false;} else if(this.ivcode && this.ivcode.value==''){alert('请输入验证码。');this.ivcode.focus(); return false;} else this.submit1.disabled=true;">
-				<input type="hidden" name="user" value="<%=request("user")%>" />
+				<input type="hidden" name="user" value="<%=ruser%>" />
 				<input type="hidden" name="ispostback" value="1" />
 				<input type="hidden" name="id" value="<%=request("id")%>" />
 
@@ -131,7 +131,7 @@ rs.Close
 				<%if VcodeCount>0 then%>
 				<div class="field">
 					<span class="label">验证码：</span>
-					<span class="value"><input type="text" name="ivcode" autocomplete="off"> <img class="captcha" src="show_vcode.asp?user=<%=request("user")%>" /></span>
+					<span class="value"><input type="text" name="ivcode" autocomplete="off"> <img class="captcha" src="show_vcode.asp?user=<%=ruser%>" /></span>
 				</div>
 				<%end if%>
 
@@ -162,6 +162,6 @@ rs.Close
 </div>
 
 <!-- #include file="bottom.asp" -->
-<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=request("user")%>" defer="defer" async="async"></script><%end if%>
+<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=ruser%>" defer="defer" async="async"></script><%end if%>
 </body>
 </html>

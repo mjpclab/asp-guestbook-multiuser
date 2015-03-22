@@ -3,7 +3,7 @@ dim admin_name,admin_faceid,admin_faceurl,admin_email,admin_qqid,admin_msnid,adm
 '===================
 sub web_getadmininfo()
 	set rs3=server.CreateObject("ADODB.Recordset")
-	rs3.open Replace(sql_websearch_admininfo,"{0}",rs.Fields("adminname")),cn,0,1,1
+	rs3.open Replace(sql_websearch_admininfo,"{0}",rs.Fields("adminid")),cn,0,1,1
 
 	admin_name="" & rs3.fields("name") & ""
 	admin_faceid="" & rs3.fields("faceid") & ""
@@ -21,7 +21,7 @@ end sub
 '===================
 sub getadmininfo()
 	set rs3=server.CreateObject("ADODB.Recordset")
-	rs3.open Replace(sql_common2_getadmininfo,"{0}",Request("user")),cn,0,1,1
+	rs3.open Replace(sql_common2_getadmininfo,"{0}",adminid),cn,0,1,1
 
 	admin_name="" & rs3.fields("name") & ""
 	admin_faceid="" & rs3.fields("faceid") & ""
@@ -47,7 +47,7 @@ sub showadminicons()%>
 sub showguestreplyicons(byval follow_id,byval parent_id,byval show_reply)
 dim url
 
-url="leaveword.asp?user=" & request("user") & "&follow=" & follow_id
+url="leaveword.asp?user=" & ruser & "&follow=" & follow_id
 if left(pagename,8)="showword" then url=url & "&return=showword"
 url=Server.HTMLEncode(url)%>
 
@@ -81,7 +81,7 @@ sub inneradminreply(byref rs2)%>
 	<%if admin_faceurl<>"" then%><img class="face" src="<%=admin_faceurl%>"/><%end if%>
 	<div class="words">
 		<%if encrypted=true and pagename<>"showword" and left(pagename,5)<>"admin" then%>
-			<span class="inner-hint"><img src="image/icon_key.gif"/>(需要预设的密码才能查看...)[<a href="showword.asp?user=<%=rs("adminname")%>&id=<%=rs2("id")%>">点击这里验证...</a>]</span>
+			<span class="inner-hint"><img src="image/icon_key.gif"/>(需要预设的密码才能查看...)[<a href="showword.asp?user=<%=ruser%>&id=<%=rs2("id")%>">点击这里验证...</a>]</span>
 		<%else
 			reply_htmlflag=rs2("htmlflag")
 			reply_txt=rs2("reinfo")
@@ -258,7 +258,7 @@ sub outerword(byref t_rs)%>
 			if left(pagename,5)<>"admin" then hidden_condition=GetHiddenWordCondition()
 
 			set rs1=Server.CreateObject("ADODB.Recordset")
-			rs1.Open Replace(Replace(Replace(sql_common2_guestreply,"{0}",t_rs.Fields("id")),"{1}",hidden_condition),"{2}",t_rs.Fields("adminname")),cn,0,1,1
+			rs1.Open Replace(Replace(Replace(sql_common2_guestreply,"{0}",t_rs.Fields("id")),"{1}",hidden_condition),"{2}",t_rs.Fields("adminid")),cn,0,1,1
 			while not rs1.eof
 				guestflag=rs1("guestflag")
 				ishidden=(clng(guestflag and 40)=8)
@@ -363,7 +363,7 @@ sub newinform()
 				"标题：" & getpuretext(title1) & ertn & _
 				"内容：" & ertn & getpuretext(content1) & ertn & ertn & _
 				"状态：" & status_str & ertn & _
-				"打开留言本：" & geturlpath & "index.asp?user=" & request.Form("user")
+				"打开留言本：" & geturlpath & "index.asp?user=" & ruser
 								
 		if MailComponent="jmail" then
 			sendbyjmail MailReceive,subject_str,body_str
@@ -377,7 +377,7 @@ sub replyinform()
 	set cn=server.CreateObject("ADODB.Connection")
 	set rs=server.CreateObject("ADODB.Recordset")
 	CreateConn cn,dbtype
-	rs.Open Replace(Replace(sql_common2_replyinform,"{0}",Request.Form("mainid")),"{1}",Request.Form("user")),cn,0,1,1
+	rs.Open Replace(Replace(sql_common2_replyinform,"{0}",Request.Form("mainid")),"{1}",adminid),cn,0,1,1
 	if not rs.eof then
 		if isemail(rs.Fields("email")) and clng(rs.Fields("guestflag") and 128)<>0 and MailSmtpServer<>"" then
 				
@@ -393,7 +393,7 @@ sub replyinform()
 			body_str=HomeName & " 留言本：您的留言已回复" & ertn & _
 					"内容(" & cstr(rs.Fields("logdate")) & ")：" & ertn & getpuretext(rs.Fields("article")) & ertn & ertn & _
 					"回复(" & cstr(replydate1) & ")：" & ertn & getpuretext(Request.Form("rcontent")) & ertn & ertn & _
-					"查看留言：" & geturlpath & "showword.asp?user=" & request.Form("user") & "&id=" & id
+					"查看留言：" & geturlpath & "showword.asp?user=" & ruser & "&id=" & id
 
 			if MailComponent="jmail" then
 				sendbyjmail rs.Fields("email"),subject_str,body_str

@@ -7,10 +7,10 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 elseif isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
-	Response.Redirect "err.asp?user=" &Request.QueryString("user")& "&number=1"
+	Response.Redirect "err.asp?user=" &ruser& "&number=1"
 	Response.End
 elseif StatusOpen=false then
-	Response.Redirect "err.asp?user=" &Request.QueryString("user")& "&number=2"
+	Response.Redirect "err.asp?user=" &ruser& "&number=2"
 	Response.End
 end if
 
@@ -34,7 +34,7 @@ Dim ItemsCount,PagesCount,CurrentItemsCount,ipage
 dim local_sql_count,local_sql_query
 local_sql_count=sql_index_words_count & GetHiddenWordCondition()
 local_sql_query=sql_index_words_query & GetHiddenWordCondition()
-get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",Request.QueryString("user")),Replace(local_sql_query,"{0}",Request.QueryString("user")),"parent_id INC,lastupdated DEC,id DEC",Request.QueryString("page"),WordsPerPage,ItemsCount,PagesCount,CurrentItemsCount,ipage
+get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replace(local_sql_query,"{0}",adminid),"parent_id INC,lastupdated DEC,id DEC",Request.QueryString("page"),WordsPerPage,ItemsCount,PagesCount,CurrentItemsCount,ipage
 %>
 
 <!-- #include file="inc_dtd.asp" -->
@@ -84,6 +84,6 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",Request.QuerySt
 </div>
 
 <!-- #include file="bottom.asp" -->
-<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=request("user")%>" defer="defer" async="async"></script><%end if%>
+<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=ruser%>" defer="defer" async="async"></script><%end if%>
 </body>
 </html>

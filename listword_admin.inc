@@ -21,7 +21,7 @@ while rs.eof=false
 
 		if rs.Fields("parent_id")<=0 and clng(rs.Fields("replied") AND 2)<>0 and ReplyInWord=false then
 			set rs1=Server.CreateObject("ADODB.Recordset")
-			rs1.Open Replace(Replace(sql_listword_admin,"{0}",rs.Fields("id")),"{1}",Request("user")),cn,0,1,1
+			rs1.Open Replace(Replace(sql_listword_admin,"{0}",rs.Fields("id")),"{1}",adminid),cn,0,1,1
 			while not rs1.eof
 				guestflag=rs1("guestflag")
 				ishidden=(clng(guestflag and 40)=8)

@@ -7,7 +7,7 @@ set lcn=server.CreateObject("ADODB.Connection")
 set lrs=server.CreateObject("ADODB.Recordset")
 
 CreateConn lcn,dbtype
-lrs.Open Replace(sql_loadconfig_config,"{0}",wm_name),lcn,,,1
+lrs.Open Replace(sql_loadconfig_config,"{0}",wm_id),lcn,,,1
 
 status=lrs("status")
 if clng(status and 1)<>0 then	'ÁôÑÔ±¾¿ªÆô
@@ -157,10 +157,10 @@ if clng(DelConfirm and 16)<>0 then DelDecTip=true
 if clng(DelConfirm and 32)<>0 then DelSelDecTip=true
 
 '==========================
-dim stylename
-stylename=lrs("stylename")
+dim styleid
+styleid=lrs("styleid")
 lrs.Close
-lrs.Open Replace(sql_loadconfig_style,"{0}",stylename),lcn,,,1
+lrs.Open Replace(sql_loadconfig_style,"{0}",styleid),lcn,,,1
 if lrs.EOF=true then
 	lrs.Close
 	lrs.Open sql_loadconfig_top1style,lcn,,,1
@@ -217,7 +217,7 @@ Additional_Css=lrs("additional_css")	'¸½¼ÓCSS
 
 '==========================
 lrs.Close
-lrs.Open Replace(sql_loadconfig_floodconfig,"{0}",wm_name),lcn,,,1
+lrs.Open Replace(sql_loadconfig_floodconfig,"{0}",wm_id),lcn,,,1
 flood_minwait=abs(lrs.Fields("minwait"))
 flood_searchrange=abs(lrs.Fields("searchrange"))
 flood_searchflag=lrs.Fields("searchflag")

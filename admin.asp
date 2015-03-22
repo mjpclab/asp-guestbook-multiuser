@@ -38,7 +38,7 @@ elseif AdminDisplayMode()="forum" then
 end if
 
 Dim ItemsCount,PagesCount,CurrentItemsCount,ipage
-get_divided_page cn,rs,sql_pk_main,Replace(sql_admin_words_count,"{0}",Request.QueryString("user")),Replace(sql_admin_words_query,"{0}",Request.QueryString("user")),"parent_id INC,lastupdated DEC,id DEC",Request.QueryString("page"),WordsPerPage,ItemsCount,PagesCount,CurrentItemsCount,ipage
+get_divided_page cn,rs,sql_pk_main,Replace(sql_admin_words_count,"{0}",adminid),Replace(sql_admin_words_query,"{0}",adminid),"parent_id INC,lastupdated DEC,id DEC",Request.QueryString("page"),WordsPerPage,ItemsCount,PagesCount,CurrentItemsCount,ipage
 %>
 
 <div id="outerborder" class="outerborder">
@@ -69,7 +69,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(sql_admin_words_count,"{0}",Request.Q
 		end if
 		cn.Close : set rs=nothing : set cn=nothing%>
 
-		<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+		<input type="hidden" name="user" value="<%=ruser%>" />
 		<input type="hidden" name="page" value="<%=Request.QueryString("page")%>" />
 		<!-- #include file="func_admin.inc" -->
 	</form>

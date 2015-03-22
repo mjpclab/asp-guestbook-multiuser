@@ -17,7 +17,7 @@ if Request.Form("savediplist1")<>"" then
 ids=split(Request.Form("savediplist1"),",")
 	for each iids in ids
 		if isnumeric(iids)=false or iids="" then
-			Response.Redirect "admin.asp?user=" &Request.Form("user")
+			Response.Redirect "admin.asp?user=" &ruser
 			Response.End
 		end if
 	next
@@ -27,7 +27,7 @@ if Request.Form("savediplist2")<>"" then
 ids=split(Request.Form("savediplist2"),",")
 	for each iids in ids
 		if isnumeric(iids)=false or iids="" then
-			Response.Redirect "admin.asp?user=" &Request.Form("user")
+			Response.Redirect "admin.asp?user=" &ruser
 			Response.End
 		end if
 	next
@@ -68,19 +68,19 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 checkuser cn,rs,true
 
-if Request.Form("savediplist1")<>"" then cn.Execute Replace(Replace(sql_adminsaveipconfig_delete1,"{0}",replace(Request.Form("savediplist1"),"'","")),"{1}",Request.Form("user")),,1
-if Request.Form("savediplist2")<>"" then cn.Execute Replace(Replace(sql_adminsaveipconfig_delete1,"{0}",replace(Request.Form("savediplist2"),"'","")),"{1}",Request.Form("user")),,1
+if Request.Form("savediplist1")<>"" then cn.Execute Replace(Replace(sql_adminsaveipconfig_delete1,"{0}",replace(Request.Form("savediplist1"),"'","")),"{1}",adminid),,1
+if Request.Form("savediplist2")<>"" then cn.Execute Replace(Replace(sql_adminsaveipconfig_delete1,"{0}",replace(Request.Form("savediplist2"),"'","")),"{1}",adminid),,1
 
 dim i
 for i = 0 to ubound(tstartip1)
-	if len(tstartip1(i))=8 and len(tendip1(i))=8 and tstartip1(i)<=tendip1(i) then cn.Execute Replace(Replace(Replace(sql_adminsaveipconfig_insert1,"{0}",tstartip1(i)),"{1}",tendip1(i)),"{2}",Request.Form("user")),,1
+	if len(tstartip1(i))=8 and len(tendip1(i))=8 and tstartip1(i)<=tendip1(i) then cn.Execute Replace(Replace(Replace(sql_adminsaveipconfig_insert1,"{0}",tstartip1(i)),"{1}",tendip1(i)),"{2}",adminid),,1
 next
 for i = 0 to ubound(tstartip2)
-	if len(tstartip2(i))=8 and len(tendip2(i))=8 and tstartip2(i)<=tendip2(i) then cn.Execute Replace(Replace(Replace(sql_adminsaveipconfig_insert2,"{0}",tstartip2(i)),"{1}",tendip2(i)),"{2}",Request.Form("user")),,1
+	if len(tstartip2(i))=8 and len(tendip2(i))=8 and tstartip2(i)<=tendip2(i) then cn.Execute Replace(Replace(Replace(sql_adminsaveipconfig_insert2,"{0}",tstartip2(i)),"{1}",tendip2(i)),"{2}",adminid),,1
 next
 
-cn.Execute Replace(Replace(sql_adminsaveipconfig_update,"{0}",tipconstatus),"{1}",Request.Form("user")),,1
+cn.Execute Replace(Replace(sql_adminsaveipconfig_update,"{0}",tipconstatus),"{1}",adminid),,1
 cn.Close : set cn=nothing
 
-Response.Redirect "admin_ipconfig.asp?user=" &Request.Form("user")
+Response.Redirect "admin_ipconfig.asp?user=" & ruser
 %>

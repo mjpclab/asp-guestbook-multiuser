@@ -15,12 +15,12 @@ CreateConn cn,dbtype
 checkuser cn,rs,true
 
 tnow=now()
-cn.Execute Replace(Replace(sql_adminclearstats_startdate,"{0}",tnow),"{1}",Request.Form("user")),,1
-cn.Execute Replace(sql_adminclearstats_client,"{0}",Request.Form("user")),,1
+cn.Execute Replace(Replace(sql_adminclearstats_startdate,"{0}",tnow),"{1}",adminid),,1
+cn.Execute Replace(sql_adminclearstats_client,"{0}",adminid),,1
 
 cn.close
 set rs=nothing
 set cn=nothing
 		
-Response.Redirect "admin_stats.asp?user=" &Request.Form("user")
+Response.Redirect "admin_stats.asp?user=" &ruser
 %>

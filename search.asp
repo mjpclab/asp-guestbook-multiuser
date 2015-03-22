@@ -7,13 +7,13 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 elseif isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
-	Response.Redirect "err.asp?user=" &Request("user")& "&number=1"
+	Response.Redirect "err.asp?user=" &ruser& "&number=1"
 	Response.End
 elseif StatusOpen=false then
-	Response.Redirect "err.asp?user=" &Request("user")& "&number=2"
+	Response.Redirect "err.asp?user=" &ruser& "&number=2"
 	Response.End
 elseif StatusSearch=false then
-	Response.Redirect "err.asp?user=" &Request("user")& "&number=5"
+	Response.Redirect "err.asp?user=" &ruser& "&number=5"
 	Response.End
 end if
 
@@ -42,13 +42,13 @@ dim sql_condition,sql_count,sql_full
 if (request("type")="reply" or request("type")="name" or request("type")="title" or request("type")="article") and tparam<>"" then CanOpenDB=true
 if CanOpenDB=true then
 	if request("type")="reply" then
-		sql_condition=Replace(Replace(sql_search_condition_reply,"{0}",tparam),"{1}",Request("user"))
+		sql_condition=Replace(Replace(sql_search_condition_reply,"{0}",tparam),"{1}",adminid)
 	elseif request("type")="name" then
-		sql_condition=Replace(Replace(sql_search_condition_name,"{0}",tparam),"{1}",Request("user"))
+		sql_condition=Replace(Replace(sql_search_condition_name,"{0}",tparam),"{1}",adminid)
 	elseif request("type")="title" then
-		sql_condition=Replace(Replace(sql_search_condition_title,"{0}",Server.HTMLEncode(tparam)),"{1}",Request("user"))
+		sql_condition=Replace(Replace(sql_search_condition_title,"{0}",Server.HTMLEncode(tparam)),"{1}",adminid)
 	elseif request("type")="article" then
-		sql_condition=Replace(Replace(sql_search_condition_article,"{0}",tparam),"{1}",Request("user"))
+		sql_condition=Replace(Replace(sql_search_condition_article,"{0}",tparam),"{1}",adminid)
 	end if
 
 	sql_condition=sql_condition & GetHiddenWordCondition()
@@ -106,6 +106,6 @@ end if
 %>
 
 <!-- #include file="bottom.asp" -->
-<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=request("user")%>" defer="defer" async="async"></script><%end if%>
+<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=ruser%>" defer="defer" async="async"></script><%end if%>
 </body>
 </html>

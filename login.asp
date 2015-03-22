@@ -32,11 +32,11 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 		<form method="post" action="login_verify.asp" name="form5" onsubmit="return submitCheck(this);">
 			<div class="field">
 				<span class="label">ÓÃ»§Ãû£º</span>
-				<span class="value"><input type="text" name="user" maxlength="32" value="<%=Request.QueryString("user")%>" <%if Request.QueryString("user")="" then Response.Write "autofocus='autofocus'"%>/></span>
+				<span class="value"><input type="text" name="user" maxlength="32" value="<%=ruser%>" <%if ruser="" then Response.Write "autofocus='autofocus'"%>/></span>
 			</div>
 			<div class="field">
 				<span class="label">ÃÜÂë£º</span>
-				<span class="value"><input type="password" name="iadminpass" maxlength="32" <%if Request.QueryString("user")<>"" then Response.Write "autofocus='autofocus'"%>/></span>
+				<span class="value"><input type="password" name="iadminpass" maxlength="32" <%if ruser<>"" then Response.Write "autofocus='autofocus'"%>/></span>
 			</div>
 			<%if VcodeCount>0 then%>
 			<div class="field">

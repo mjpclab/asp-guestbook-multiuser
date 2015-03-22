@@ -9,7 +9,7 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 	Response.End
 end if
 if isnumeric(request.form("mainid"))=false or request.form("mainid")="" then
-	Response.Redirect "admin.asp?user=" &Request.Form("user")
+	Response.Redirect "admin.asp?user=" &ruser
 	Response.End
 end if
 
@@ -25,7 +25,7 @@ if Request.Form("html1")="1" then tlimit=tlimit+1
 if Request.Form("ubb1")="1" then tlimit=tlimit+2
 if Request.Form("newline1")="1" then tlimit=tlimit+4
 	
-rs.Open Replace(Replace(sql_adminsaveedit_open,"{0}",Request.Form("mainid")),"{1}",Request.Form("user")),cn,0,3,1
+rs.Open Replace(Replace(sql_adminsaveedit_open,"{0}",Request.Form("mainid")),"{1}",adminid),cn,0,3,1
 
 if rs.EOF=false then		'ÁôÑÔ´æÔÚ
 	rs.Fields("guestflag")=cbyte(rs.Fields("guestflag") and 248) + cbyte(tlimit and web_adminlimit)
@@ -37,7 +37,7 @@ if rs.EOF=false then		'ÁôÑÔ´æÔÚ
 	rs.close : cn.close : set rs=nothing : set cn=nothing
 else
 	rs.close : cn.close : set rs=nothing : set cn=nothing
-	Response.Redirect "admin.asp?user=" & Request.Form("user")
+	Response.Redirect "admin.asp?user=" & ruser
 end if
 rs.close : cn.close : set rs=nothing : set cn=nothing
 %>

@@ -28,13 +28,13 @@ CreateConn cn,dbtype
 	<!-- #include file="web_admintitle.inc" -->
 	<!-- #include file="web_admincontrols.inc" -->
 
-	<%rs.Open Replace(sql_adminfloodconfig,"{0}",wm_name),cn,,,1%>
+	<%rs.Open Replace(sql_adminfloodconfig,"{0}",wm_id),cn,,,1%>
 
 	<div class="region form-region">
 		<h3 class="title">防灌水策略</h3>
 		<div class="content">
 			<form method="post" action="web_savefloodconfig.asp" name="configform" onsubmit="return check();">
-			<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+			<input type="hidden" name="user" value="<%=ruser%>" />
 			<p>同一用户最小发言时间间隔：<input type="text" name="minwait" size="10" maxlength="10" value="<%=flood_minwait%>" />秒 (0=不限)</p>
 
 			<p>最新<input type="text" name="searchrange" size="10" maxlength="10" value="<%=flood_searchrange%>" />条(0=不限)

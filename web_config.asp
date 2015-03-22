@@ -29,7 +29,7 @@ CreateConn cn,dbtype
 	<!-- #include file="web_admintitle.inc" -->
 	<!-- #include file="web_admincontrols.inc" -->
 
-	<%rs.Open Replace(sql_adminconfig_config,"{0}",wm_name),cn,,,1%>
+	<%rs.Open Replace(sql_adminconfig_config,"{0}",wm_id),cn,,,1%>
 
 	<div class="region region-config admin-tools">
 		<h3 class="title">留言本参数设置</h3>
@@ -301,16 +301,17 @@ CreateConn cn,dbtype
 					<span class="value">
 						<select name="style">
 						<%
-						stylename=rs("stylename")
+						styleid=rs("styleid")
 						rs.Close
 						rs.Open sql_adminconfig_style,cn,,,1
 
-						dim onestyle
+						dim onestyleid,onestylename
 						while rs.EOF=false
-							onestyle=rs("stylename")
-							Response.Write "<option value=" &chr(34)& onestyle &chr(34)
-							if onestyle=stylename or stylename="" then Response.Write " selected=""selected"""
-							Response.Write ">" &onestyle& "</option>"
+							onestyleid=rs("styleid")
+							onestylename=rs("stylename")
+							Response.Write "<option value=" &chr(34)& onestyleid &chr(34)
+							if onestyleid=styleid or onestyleid="" then Response.Write " selected=""selected"""
+							Response.Write ">" &onestylename& "</option>"
 							rs.MoveNext
 						wend
 						%>
@@ -318,6 +319,7 @@ CreateConn cn,dbtype
 					</span>
 				</div>
 			<%end if%>
+
 			<input type="hidden" name="page" value="<%=showpage%>" />
 			<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>
 			</form>

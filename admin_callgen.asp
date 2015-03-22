@@ -115,7 +115,7 @@ set rs=nothing : set cn=nothing
 		<form method="post" action="" onsubmit="return generateCallCode();" ID="Form1">
 		<input type="hidden" name="IsPostBack" id="IsPostBack" value="1" />
 		<input type="hidden" name="url" id="url" value="<%=geturlpath%>tlist.asp" />
-		<input type="hidden" name="user" id="user" value="<%=Request.QueryString("user")%>" />
+		<input type="hidden" name="user" id="user" value="<%=ruser%>" />
 
 		<p>此页用于生成留言本留言标题调用代码。请输入调用代码所需的参数，其中“显示条数”为必填项：</p>
 

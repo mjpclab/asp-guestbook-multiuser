@@ -54,7 +54,7 @@ end if
 		<h3 class="title">修改密码</h3>
 		<div class="content">
 			<form method="post" action="admin_savepass.asp" onsubmit="return checkpass(this)" name="form4">
-			<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+			<input type="hidden" name="user" value="<%=ruser%>" />
 			<div class="field">
 				<span class="label">原密码：</span>
 				<span class="value"><input type="password" name="ioldpass" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
@@ -78,14 +78,14 @@ end if
 	CreateConn cn,dbtype
 	checkuser cn,rs,false
 
-	rs.Open Replace(sql_adminchpass_question,"{0}",Request.QueryString("user")),cn,,,1
+	rs.Open Replace(sql_adminchpass_question,"{0}",adminid),cn,,,1
 	%>
 
 	<div class="region form-region">
 		<h3 class="title">修改找回密码问题/答案</h3>
 		<div class="content">
 			<form method="post" action="admin_saveqa.asp" onsubmit="return checkqa(this)" name="form5">
-				<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+				<input type="hidden" name="user" value="<%=ruser%>" />
 				<div class="field">
 					<span class="label">密码：</span>
 					<span class="value"><input type="password" name="ioldpass" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>

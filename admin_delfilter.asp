@@ -16,10 +16,10 @@ if isnumeric(Request.Form("filterid")) and Request.Form("filterid")<>"" then
 	CreateConn cn,dbtype
 	checkuser cn,rs,true
 
-	cn.Execute Replace(Replace(sql_admindelfilter,"{0}",tfilterid),"{1}",Request.Form("user")),,1
+	cn.Execute Replace(Replace(sql_admindelfilter,"{0}",tfilterid),"{1}",adminid),,1
 	
 	cn.Close : set rs=nothing : set cn=nothing
 end if
 
-Response.Redirect "admin_filter.asp?user=" &Request.Form("user")
+Response.Redirect "admin_filter.asp?user=" &ruser
 %>

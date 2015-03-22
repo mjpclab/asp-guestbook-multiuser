@@ -45,7 +45,7 @@ while right(tparam,1)="%" or right(tparam,1)="_"
 	tparam=left(tparam,len(tparam)-1)
 wend
 if request("type")<>"" and tparam="" then
-	Call MessagePage("不能输入空字符串或全部为通配符。","admin_search.asp?user=" & Request.Form("user"))
+	Call MessagePage("不能输入空字符串或全部为通配符。","admin_search.asp?user=" & ruser)
 	Response.End
 end if
 
@@ -54,11 +54,11 @@ if request("type")<>"" and tparam<>"" then CanOpenDB=true
 if CanOpenDB=true then
 	if request("type")="audit" then
 		if tparam<>"0" and tparam<>"1" then tparam="1"
-		sql_condition=Replace(Replace(sql_adminsearch_condition_audit,"{0}",tparam),"{1}",Request("user"))
+		sql_condition=Replace(Replace(sql_adminsearch_condition_audit,"{0}",tparam),"{1}",adminid)
 	elseif request("type")="reply" then
-		sql_condition=Replace(Replace(sql_adminsearch_condition_reply,"{0}",tparam),"{1}",Request("user"))
+		sql_condition=Replace(Replace(sql_adminsearch_condition_reply,"{0}",tparam),"{1}",adminid)
 	else
-		sql_condition=Replace(Replace(Replace(sql_adminsearch_condition_else,"{0}",FilterSql(Request("type"))),"{1}",tparam),"{2}",Request("user"))
+		sql_condition=Replace(Replace(Replace(sql_adminsearch_condition_else,"{0}",FilterSql(Request("type"))),"{1}",tparam),"{2}",adminid)
 	end if
 
 	sql_count=sql_adminsearch_count_inner & sql_condition
@@ -75,11 +75,11 @@ end if
 	<%if ShowTitle=true then show_book_title 3,"管理"%>
 	<!-- #include file="admincontrols.inc" -->
 
-	<div class="region form-region">
+	<div class="region form-region center-region">
 		<h3 class="title">搜索留言</h3>
 		<div class="content">
 			<form method="post" action="admin_search.asp" id="form1" name="form1" onsubmit="return submitcheck();">
-			<input type="hidden" name="user" value="<%=request("user")%>" />
+			<input type="hidden" name="user" value="<%=ruser%>" />
 			搜索：<input type="text" name="searchtxt" size="<%=SearchTextWidth%>" value="<%=request("searchtxt")%>" />
 			<input type="submit" value="搜索" name="searchsubmit" />
 			<select name="type" size="1" onchange="searchtxt.focus();">
@@ -88,7 +88,7 @@ end if
 				<option value="article" <%=seled(request("type")="article" or request("type")="")%>>按留言内容搜索</option>
 				<option value="email" <%=seled(request("type")="email")%>>按邮件地址搜索</option>
 				<option value="qqid" <%=seled(request("type")="qqid")%>>按QQ号码搜索</option>
-				<option value="msnid" <%=seled(request("type")="msnid")%>>按MSN搜索</option>
+				<option value="msnid" <%=seled(request("type")="msnid")%>>按Skype搜索</option>
 				<option value="homepage" <%=seled(request("type")="homepage")%>>按主页地址搜索</option>
 				<option value="ipaddr" <%=seled(request("type")="ipaddr")%>>按IP地址搜索</option>
 				<option value="originalip" <%=seled(request("type")="originalip")%>>按原始IP地址搜索</option>
@@ -119,7 +119,7 @@ end if
 	end if
 	%>
 
-	<input type="hidden" name="user" value="<%=request("user")%>" />
+	<input type="hidden" name="user" value="<%=ruser%>" />
 	<input type="hidden" name="page" value="<%=request("page")%>" />
 	<input type="hidden" name="type" value="<%=request("type")%>" />
 	<input type="hidden" name="searchtxt" value="<%=request("searchtxt")%>" />

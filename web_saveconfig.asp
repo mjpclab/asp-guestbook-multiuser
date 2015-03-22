@@ -279,9 +279,9 @@ else
 		if Request.Form("deldectip")="1" then tdelconfirm=tdelconfirm+16
 		if Request.Form("delseldectip")="1" then tdelconfirm=tdelconfirm+32
 
-		tstylename=server.HTMLEncode(Request.Form("style"))
-		tstylename=replace(tstylename," ","")
-		
+		tstyleid=Request.Form("style")
+		if isnumeric(tstyleid)=false then tstyleid=0
+		tstyleid=clng(tstyleid)
 	end if
 
 	set cn1=server.CreateObject("ADODB.Connection")
@@ -289,7 +289,7 @@ else
 
 	CreateConn cn1,dbtype
 
-	rs1.open Replace(sql_adminsaveconfig,"{0}",wm_name),cn1,0,3,1
+	rs1.open Replace(sql_adminsaveconfig,"{0}",wm_id),cn1,0,3,1
 
 	if clng(showpage and 1)<> 0	then
 		rs1("status")=tstatus
@@ -328,7 +328,7 @@ else
 		rs1("ubbflag")=tubbflag
 		rs1("tablealign")=ttablealign
 		rs1("delconfirm")=tdelconfirm
-		rs1("stylename")=tstylename
+		rs1("styleid")=tstyleid
 	end if
 	rs1.Update
 	

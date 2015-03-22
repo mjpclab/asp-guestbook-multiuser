@@ -14,19 +14,19 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 checkuser cn,rs,false
 
-rs.Open Replace(sql_adminverify,"{0}",Request("user")),cn,0,1,1
+rs.Open Replace(sql_adminverify,"{0}",adminid),cn,0,1,1
 
 if not rs.eof then
-	if session.Contents(InstanceName & "_adminpass_" & Request("user"))<>rs(0) then
+	if session.Contents(InstanceName & "_adminpass_" & ruser)<>rs(0) then
 		rs.Close : cn.Close : set rs=nothing : set cn=nothing
-		Response.Redirect "admin_login.asp?user=" &request("user")
+		Response.Redirect "admin_login.asp?user=" &ruser
 		Response.End
 	else
 		rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	end if
 else
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
-	Response.Redirect "admin_login.asp?user=" &request("user")
+	Response.Redirect "admin_login.asp?user=" &ruser
 	Response.End
 end if
 %>

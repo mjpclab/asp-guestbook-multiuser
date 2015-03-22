@@ -1,6 +1,6 @@
 <%Response.ContentType="application/x-javascript"%>
 <%if session("gotclientuser")="" then session("gotclientuser")="|"%>
-<%if instr(session("gotclientuser"),"|" &request("user")& "|")=0 then%>
+<%if instr(session("gotclientuser"),"|" &ruser& "|")=0 then%>
 <!-- #include file="xmlhttp.inc" -->
 
 function trim(s)
@@ -121,7 +121,7 @@ url+='saveclientinfo.asp?sys=' +getsysname() +
 	'&sh=' + encodeURIComponent(getscreenheight()) +
 	'&src=' + encodeURIComponent(getsourceaddr()) +
 	'&fsrc=' + encodeURIComponent(document.referrer) +
-	'&user=' + encodeURIComponent('<%=request("user")%>');
+	'&user=' + encodeURIComponent('<%=ruser%>');
 
 if(xmlHttp)
 {

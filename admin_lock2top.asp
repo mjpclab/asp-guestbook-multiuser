@@ -8,7 +8,7 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 	Response.End
 end if
 if isnumeric(Request.QueryString("id"))=false or Request.QueryString("id")="" then
-	Response.Redirect "admin.asp?user=" &Request.QueryString("user")
+	Response.Redirect "admin.asp?user=" &ruser
 	Response.End
 end if
 
@@ -17,7 +17,7 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 checkuser cn,rs,false
 
-cn.Execute Replace(Replace(sql_adminlock2top,"{0}",Request.QueryString("id")),"{1}",Request.QueryString("user")),,1
+cn.Execute Replace(Replace(sql_adminlock2top,"{0}",Request.QueryString("id")),"{1}",adminid),,1
 cn.close : set rs=nothing : set cn=nothing
 %>
 <!-- #include file="admin_traceback.inc" -->

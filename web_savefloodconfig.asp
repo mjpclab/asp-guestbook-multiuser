@@ -40,7 +40,7 @@ dim cn1
 set cn1=server.CreateObject("ADODB.Connection")
 CreateConn cn1,dbtype
 
-cn1.Execute Replace(Replace(Replace(Replace(sql_adminsavefloodconfig,"{0}",flood_minwait),"{1}",flood_searchrange),"{2}",flood_searchflag),"{3}",wm_name),,1
+cn1.Execute Replace(Replace(Replace(Replace(sql_adminsavefloodconfig,"{0}",flood_minwait),"{1}",flood_searchrange),"{2}",flood_searchflag),"{3}",wm_id),,1
 
 cn1.Close : set cn1=nothing
 Response.Redirect "web_floodconfig.asp"

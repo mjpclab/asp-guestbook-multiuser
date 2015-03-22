@@ -28,10 +28,11 @@ dim re
 set re=new RegExp
 re.Pattern="^\w+$"
 
-if Request.Form("user")="" then
+ruser=Request.Form("user")
+if ruser="" then
 	Call MessagePage("用户名不能为空。","findkey.asp")
 	Response.End
-elseif re.Test(Request.Form("user"))=false then
+elseif re.Test(ruser)=false then
 	Call MessagePage("用户名中只能包含英文字母、数字和下划线。","findkey.asp")
 	Response.End
 elseif Request.Form("key")="" then
@@ -45,7 +46,7 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 
 '=============================存在性验证
-rs.Open Replace(sql_findkey3_checkuser,"{0}",Request.Form("user")),cn,,,1
+rs.Open Replace(sql_findkey3_checkuser,"{0}",ruser),cn,,,1
 if rs.EOF then
 	Call MessagePage("用户名不存在。","findkey.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
@@ -101,7 +102,7 @@ sys_bul_flag=32
 	<h3 class="title">找回密码 步骤3</h3>
 	<div class="content">
 		<form name="findform3" method="post" action="findkey4.asp" onsubmit="return submitcheck(this)">
-			<input type="hidden" name="user" value="<%=Request.Form("user")%>" />
+			<input type="hidden" name="user" value="<%=ruser%>" />
 			<input type="hidden" name="key" value="<%=Request.Form("key")%>" />
 
 			<h4>请重新设置您的密码</h4>

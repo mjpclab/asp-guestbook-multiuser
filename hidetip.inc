@@ -1,4 +1,4 @@
-<%if Session("guestflag_user")=Request.QueryString("user") and isnumeric(Session("guestflag")) and (Session("guestflag") and 48)<>0 and (HideAudit or HideWhisper) then%>
+<%if Session("guestflag_user")=ruser and isnumeric(Session("guestflag")) and (Session("guestflag") and 48)<>0 and (HideAudit or HideWhisper) then%>
 <div class="region">
 	<h3 class="title"><img src="image/icon_tip.gif" />¡Ù—‘Ã· æ£∫</h3>
 	<div class="content">

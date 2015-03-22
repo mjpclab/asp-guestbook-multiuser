@@ -63,7 +63,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 		<form method="post" action="login_verify.asp" name="form5" onsubmit="return submitCheck(this);">
 			<div class="field">
 				<span class="label">用户名：</span>
-				<span class="value"><input type="text" name="user" maxlength="32" value="<%=Request.QueryString("user")%>" /></span>
+				<span class="value"><input type="text" name="user" maxlength="32" value="<%=ruser%>" /></span>
 			</div>
 			<div class="field">
 				<span class="label">密码：</span>
@@ -72,7 +72,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 			<%if VcodeCount>0 then%>
 			<div class="field">
 				<span class="label">验证码：</span>
-				<span class="value"><input type="text" name="ivcode" autocomplete="off" /><img class="captcha" src="show_vcode.asp?user=<%=Request.QueryString("user")%>"/></span>
+				<span class="value"><input type="text" name="ivcode" autocomplete="off" /><img class="captcha" src="show_vcode.asp?user=<%=ruser%>"/></span>
 			</div>
 			<%end if%>
 			<div class="command">

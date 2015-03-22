@@ -27,7 +27,7 @@ while rs.eof=false
 
 		if rs.Fields("parent_id")<=0 and clng(rs.Fields("replied") AND 2)<>0 and (encrypted=false or pagename="showword") and ReplyInWord=false then
 			set rs1=Server.CreateObject("ADODB.Recordset")
-			rs1.open Replace(Replace(Replace(sql_listword_guest,"{0}",rs.Fields("id")),"{1}",GetHiddenWordCondition()),"{2}",Request.QueryString("user")),cn,0,1,1
+			rs1.open Replace(Replace(Replace(sql_listword_guest,"{0}",rs.Fields("id")),"{1}",GetHiddenWordCondition()),"{2}",adminid),cn,0,1,1
 			while not rs1.eof
 				guestflag=rs1("guestflag")
 				ishidden=(clng(guestflag and 40)=8)
@@ -47,7 +47,7 @@ while rs.eof=false
 		end if
 
 		if pagename<>"showword" and clng(rs.Fields("guestflag") and 96)=96 and rs.Fields("parent_id")<=0 then%>
-			<div class="outer-hint">悄悄话已预设密码，[<a href="showword.asp?user=<%=rs("adminname")%>&amp;id=<%=rs("id")%>">点击这里验证...</a>]</div>
+			<div class="outer-hint">悄悄话已预设密码，[<a href="showword.asp?user=<%=ruser%>&amp;id=<%=rs("id")%>">点击这里验证...</a>]</div>
 		<%end if
 	end if%>
 	</div>

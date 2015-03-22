@@ -9,7 +9,7 @@ if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Reque
 end if
 
 if isnumeric(Request.QueryString("id"))=false or Request.QueryString("id")="" then
-	Response.Redirect "admin.asp?user=" &Request.QueryString("user")
+	Response.Redirect "admin.asp?user=" &ruser
 	Response.End 
 end if
 
@@ -72,24 +72,21 @@ cn.close
 <%if ShowTitle=true then show_book_title 3,"管理"%>
 <!-- #include file="admincontrols.inc" -->
 
-<table cellpadding="2" class="generalwindow" ID="Table1">
-	<tr>
-		<td class="centertitle">回复留言</td>
-	</tr>
-	<tr>
-		<td class="wordscontent" style="text-align:center; padding:20px 2px;">
-			<form method="post" action="admin_savereply.asp" onsubmit="return submitcheck(this)" name="form3">
+<div class="region">
+	<h3 class="title">回复留言</h3>
+	<div class="content">
+		<form method="post" action="admin_savereply.asp" onsubmit="return submitcheck(this)" name="form3">
 			回复内容：<br/>
 			<textarea name="rcontent" id="rcontent" onkeydown="if(!this.modified)this.modified=true; var e=event?event:arguments[0]; if(e && e.ctrlKey && e.keyCode==13 && this.form.submit1)this.form.submit1.click();" cols="<%=ReplyTextWidth%>" rows="<%=ReplyTextHeight%>"><%=c_old%></textarea>
 			<!-- #include file="ubbtoolbar.inc" -->
 			<%if web_AdminUBBSupport then ShowUbbToolBar(2)%>
-			<input type="hidden" name="user" value="<%=Request.QueryString("user")%>" />
+			<input type="hidden" name="user" value="<%=ruser%>" />
 			<input type="hidden" name="rootid" value="<%=request.QueryString("rootid")%>" />
 			<input type="hidden" name="mainid" value="<%=request.QueryString("id")%>" />
 			<input type="hidden" name="page" value="<%=request.QueryString("page")%>" />
 			<input type="hidden" name="type" value="<%=request.QueryString("type")%>" />
 			<input type="hidden" name="searchtxt" value="<%=request.QueryString("searchtxt")%>" ID="Hidden6"/>
-			<p style="text-align:left;">
+			<p>
 				<%if web_AdminHTMLSupport=true then%><input type="checkbox" name="html1" id="html1" value="1"<%if cint(t_html and 1)<>0 then Response.Write " checked=""checked""" %> /><label for="html1">支持HTML标记</label><br/><%end if%>
 				<%if web_AdminUBBSupport=true then%><input type="checkbox" name="ubb1" id="ubb1" value="1"<%if cint(t_html and 2)<>0 then Response.Write " checked=""checked""" %> /><label for="ubb1">支持UBB标记</label><br/><%end if%>
 				<%if web_AdminAllowNewLine=true then%><input type="checkbox" name="newline1" id="newline1" value="1"<%if cint(t_html and 4)<>0 then Response.Write " checked=""checked""" %> /><label for="newline1">不支持HTML和UBB标记时允许回车换行</label><br/><%end if%>
@@ -97,15 +94,14 @@ cn.close
 				<input type="checkbox" name="lock2top" id="lock2top" value="1" /><label for="lock2top">回复后置顶留言</label><br/>
 				<input type="checkbox" name="bring2top" id="bring2top" value="1" /><label for="bring2top">回复后提前留言</label>
 			</p>
-			<input type="submit" value="发表回复" name="submit1" id="submit1" />
-			</form>
-		</td>
-	</tr>
-</table>
+			<div class="command"><input type="submit" value="发表回复" name="submit1" id="submit1" /></div>
+		</form>
+	</div>
+</div>
 
 <%
 CreateConn cn,dbtype
-rs.Open Replace(Replace(sql_adminreply_words,"{0}",Request.QueryString("id")),"{1}",Request.QueryString("user")),cn,,,1
+rs.Open Replace(Replace(sql_adminreply_words,"{0}",Request.QueryString("id")),"{1}",adminid),cn,,,1
 	
 if rs.EOF=false then
 	dim pagename

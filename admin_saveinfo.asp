@@ -12,7 +12,7 @@ set cn1=server.CreateObject("ADODB.Connection")
 set rs1=server.CreateObject("ADODB.Recordset")
 CreateConn cn1,dbtype
 checkuser cn1,rs1,true
-rs1.open Replace(sql_adminsaveinfo,"{0}",Request.Form("user")),cn1,0,3,1
+rs1.open Replace(sql_adminsaveinfo,"{0}",adminid),cn1,0,3,1
 		
 tname=server.HTMLEncode(Request.Form("aname"))
 
@@ -48,5 +48,5 @@ rs1.Update
 
 rs1.Close : cn1.close : set rs1=nothing : set cn1=nothing
 
-Response.Redirect "admin.asp?user=" &Request.Form("user")
+Response.Redirect "admin.asp?user=" &ruser
 %>

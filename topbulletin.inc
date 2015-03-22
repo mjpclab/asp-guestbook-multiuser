@@ -1,5 +1,5 @@
 <%set rs2=server.CreateObject("ADODB.Recordset")
-rs2.open Replace(sql_topbulletin,"{0}",Request("user")),cn,0,1,1
+rs2.open Replace(sql_topbulletin,"{0}",adminid),cn,0,1,1
 
 pub_flag=rs2("declareflag")
 pub="" &rs2("declare")& ""

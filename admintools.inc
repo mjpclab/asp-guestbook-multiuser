@@ -1,5 +1,5 @@
 <%
-param_url="?rootid=" & p_rs.Fields("root_id") & "&user=" & request("user") & "&id=" & p_rs.Fields("id") & "&page=" & ipage
+param_url="?rootid=" & p_rs.Fields("root_id") & "&user=" & ruser & "&id=" & p_rs.Fields("id") & "&page=" & ipage
 if request("type")<>"" and request("searchtxt")<>"" then
 	param_url=param_url & "&type=" & server.URLEncode(request("type")) & "&searchtxt=" & server.URLEncode(request("searchtxt"))
 end if

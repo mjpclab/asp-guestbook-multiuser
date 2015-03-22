@@ -34,28 +34,28 @@ if isnumeric(Request.QueryString("n")) and trim(Request.QueryString("n"))<>"" th
 	CreateConn cn,dbtype
 	checkuser cn,rs,false
 
-	rs.Open Replace(Replace(sql_tlist_maxtime,"{0}",Request.QueryString("user")),"{1}",GetHiddenWordCondition()),cn,0,1,1
+	rs.Open Replace(Replace(sql_tlist_maxtime,"{0}",adminid),"{1}",GetHiddenWordCondition()),cn,0,1,1
 	if not rs.EOF then max_time=rs.Fields(0) else max_time=now() end if
 	rs.Close
 	
-	rs.Open Replace(Replace(Replace(sql_tlist_mintime,"{0}",n),"{1}",Request.QueryString("user")),"{2}",GetHiddenWordCondition()),cn,0,1,1
+	rs.Open Replace(Replace(Replace(sql_tlist_mintime,"{0}",n),"{1}",adminid),"{2}",GetHiddenWordCondition()),cn,0,1,1
 	if not rs.EOF then min_time=rs.Fields(0) else min_time=now() end if
 	rs.Close
 	
-	rs.Open Replace(Replace(Replace(Replace(sql_tlist,"{0}",DateTimeStr(min_time)),"{1}",DateTimeStr(max_time)),"{2}",Request.QueryString("user")),"{3}",GetHiddenWordCondition()),cn,0,1,1
+	rs.Open Replace(Replace(Replace(Replace(sql_tlist,"{0}",DateTimeStr(min_time)),"{1}",DateTimeStr(max_time)),"{2}",adminid),"{3}",GetHiddenWordCondition()),cn,0,1,1
 %>
 	<%if lcase(trim(Request.QueryString("js")))="yes" then%>
 		<%if t="" then t="_self"%>
 		<%do while not rs.EOF
 			i=i+1
-			if clng(rs.Fields("guestflag") and 48)=0 then%><%output_counter=output_counter+1%><%if max_len=0 then str_title=rs.Fields("title") else str_title=left(rs.Fields("title"),max_len) end if%>document.write('<a href="<%=geturlpath & "index.asp?user=" &Request.QueryString("user")& "&page=" & page & "#a" & (((i-1) mod CountPerPage)+1)%>" target="<%=t%>" title="<%=jsfilter(rs.Fields("title"))%>"><%=jsfilter(pre & str_title)%></a><%=br%>');<%end if
+			if clng(rs.Fields("guestflag") and 48)=0 then%><%output_counter=output_counter+1%><%if max_len=0 then str_title=rs.Fields("title") else str_title=left(rs.Fields("title"),max_len) end if%>document.write('<a href="<%=geturlpath & "index.asp?user=" &ruser& "&page=" & page & "#a" & (((i-1) mod CountPerPage)+1)%>" target="<%=t%>" title="<%=jsfilter(rs.Fields("title"))%>"><%=jsfilter(pre & str_title)%></a><%=br%>');<%end if
 			if i mod CountPerPage=0 then
 				page=page+1
 			end if
 			if output_counter=n then exit do
 			rs.MoveNext
 		loop%>
-		document.write('<%=br%><a style="margin-top:2ex;" title="更多留言..." href="<%=geturlpath & "index.asp?user=" &Request.QueryString("user")%>" target="<%=t%>">更多留言...</a>');
+		document.write('<%=br%><a style="margin-top:2ex;" title="更多留言..." href="<%=geturlpath & "index.asp?user=" &ruser%>" target="<%=t%>">更多留言...</a>');
 	<%else%>
 	<%if t="" then t="_parent"%>
 	<!-- #include file="inc_dtd.asp" -->
@@ -71,14 +71,14 @@ if isnumeric(Request.QueryString("n")) and trim(Request.QueryString("n"))<>"" th
 		<nobr>
 			<%do while not rs.EOF
 				i=i+1
-				if clng(rs.Fields("guestflag") and 48)=0 then%><%output_counter=output_counter+1%><%if max_len=0 then str_title=rs.Fields("title") else str_title=left(rs.Fields("title"),max_len) end if%><a href="<%=geturlpath & "index.asp?user=" &Request.QueryString("user")& "&page=" & page & "#a" & (((i-1) mod CountPerPage)+1)%>" target="<%=t%>" title="<%=rs.Fields("title")%>"><%=pre & str_title%></a><%=br%><%end if
+				if clng(rs.Fields("guestflag") and 48)=0 then%><%output_counter=output_counter+1%><%if max_len=0 then str_title=rs.Fields("title") else str_title=left(rs.Fields("title"),max_len) end if%><a href="<%=geturlpath & "index.asp?user=" &ruser& "&page=" & page & "#a" & (((i-1) mod CountPerPage)+1)%>" target="<%=t%>" title="<%=rs.Fields("title")%>"><%=pre & str_title%></a><%=br%><%end if
 				if i mod CountPerPage=0 then
 					page=page+1
 				end if
 				if output_counter=n then exit do
 				rs.MoveNext
 			loop%>
-			<%=br%><a style="margin-top:2ex;" title="更多留言..." href="<%=geturlpath & "index.asp?user=" &Request.QueryString("user")%>" target="<%=t%>">更多留言...</a></span>
+			<%=br%><a style="margin-top:2ex;" title="更多留言..." href="<%=geturlpath & "index.asp?user=" &ruser%>" target="<%=t%>">更多留言...</a></span>
 		</nobr>
 	</body>
 	</html>

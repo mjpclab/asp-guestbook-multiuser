@@ -9,7 +9,7 @@ if isnumeric(Request.Form("filterid")) and Request.Form("filterid")<>"" then
 	set cn=server.CreateObject("ADODB.Connection")
 	CreateConn cn,dbtype
 
-	cn.Execute Replace(Replace(sql_admindelfilter,"{0}",tfilterid),"{1}",wm_name),,1
+	cn.Execute Replace(Replace(sql_admindelfilter,"{0}",tfilterid),"{1}",wm_id),,1
 	
 	cn.Close
 	set cn=nothing
