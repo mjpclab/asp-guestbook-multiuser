@@ -121,7 +121,7 @@ url+='saveclientinfo.asp?sys=' +getsysname() +
 	'&sh=' + encodeURIComponent(getscreenheight()) +
 	'&src=' + encodeURIComponent(getsourceaddr()) +
 	'&fsrc=' + encodeURIComponent(document.referrer) +
-	'&user=' + encodeURIComponent('<%=ruser%>');
+	'&user=' + encodeURIComponent('<%=Request.QueryString("user")%>');
 
 if(xmlHttp)
 {
