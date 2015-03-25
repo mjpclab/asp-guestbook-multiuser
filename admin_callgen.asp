@@ -82,7 +82,7 @@ set rs=nothing : set cn=nothing
 		else
 		{
 			var temp;
-			if(js) temp='<' + 'script type="text/javascript" src="{0}"><\/script>';
+			if(js) temp='<' + 'script type="text/javascript" src="{0}" charset="gbk"><\/script>';
 			else temp='<iframe width="{w}" height="{h}" src="{0}" frameborder="0"><\/iframe>';
 			
 			var src=
