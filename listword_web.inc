@@ -15,6 +15,7 @@ while rs.eof=false
 		if rs("replied")=true and ReplyInWord=false then outeradminreply(rs)
 		if ReplyInWord=false then
 			set p_rs=rs
+			adminname=p_rs("adminname")
 			%><!-- #include file="web_admintools.inc" --><%
 		end if
 

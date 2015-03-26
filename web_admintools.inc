@@ -6,7 +6,7 @@ param_url=param_url & param_temp
 %>
 <div class="admin-tools">
 	<span class="tool"><input type="checkbox" name="seltodel" id="c<%=p_rs("id")%>" value="<%=p_rs("id")%>" /><label for="c<%=p_rs("id")%>">(选定)</label></span>
-	<span class="tool">所属用户：<a href="web_userinfo.asp?user=<%=p_rs("adminname")%>" target="_blank"><%=p_rs("adminname")%></a></span>
+	<span class="tool">所属用户：<a href="web_userinfo.asp?user=<%=adminname%>" target="_blank"><%=adminname%></a></span>
 	<a class="tool" href="web_searchdel.asp<%=param_url%>" title="删除留言"<%if DelTip=true then Response.Write " onclick=""return confirm('确实要删除留言吗？');"""%>><img src="image/icon_del.gif"/>[删除]</a>
 	<%if p_rs("replied")=true then%><a class="tool" href="web_searchdelreply.asp?id=<%=p_rs("id")%><%if isnumeric(Request.QueryString("page")) and Request.QueryString("page")<>"" then response.write "&page=" & Request.QueryString("page")%><%=param_str%>" title="删除回复"<%if DelReTip=true then Response.Write " onclick=""return confirm('确实要删除回复吗？')"""%>><img border="0" src="image/icon_delreply.gif" />[删除回复]</a><%end if%>
 	<%if clng(guestflag and 16)<>0 then%><span class="tool"><img src="image/icon_wait2pass.gif">待审核</span><%end if%>

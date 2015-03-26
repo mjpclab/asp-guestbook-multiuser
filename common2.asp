@@ -248,6 +248,7 @@ sub outerword(byref t_rs)%>
 			<!-- #include file="admintools.inc" -->
 		<%elseif (pagename="admin_web_search" or pagename="web_showword") and ReplyInWord=true then%>
 			<%set p_rs=t_rs%>
+			<%adminname=p_rs("adminname")%>
 			<!-- #include file="web_admintools.inc" -->
 		<%end if%>
 

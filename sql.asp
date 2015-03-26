@@ -513,7 +513,7 @@ if IsAccess then
 	sql_websearch_count_inner=		"SELECT DISTINCT root_id FROM " &table_main& " main LEFT JOIN " &table_supervisor& " supervisor ON main.adminid=supervisor.adminid WHERE "
 	sql_websearch_count=			"SELECT Count(*) FROM ({0})"
 	sql_websearch_full_inner=		"SELECT DISTINCT root_id FROM " &table_main& " WHERE "
-	sql_websearch_full=				"SELECT supervisor.adminname,main.*,reply.* FROM " &table_supervisor& " AS supervisor INNER JOIN " &table_main& " AS main ON supervisor.adminid=main.adminid LEFT JOIN " &table_reply& " AS reply ON main.id=reply.articleid WHERE main.id IN({0})"
+	sql_websearch_full=				"SELECT supervisor.adminname,main.*,reply.* FROM ((" &table_supervisor& " AS supervisor INNER JOIN " &table_main& " AS main ON supervisor.adminid=main.adminid) LEFT JOIN " &table_reply& " AS reply ON main.id=reply.articleid) WHERE main.id IN({0})"
 elseif IsSqlServer then
 	sql_websearch_count_inner=		"SELECT DISTINCT root_id FROM " &table_main& " main LEFT JOIN " &table_supervisor& " supervisor ON main.adminid=supervisor.adminid WHERE "
 	sql_websearch_count=			"SELECT Count(*) FROM ({0}) AS __temp1"
