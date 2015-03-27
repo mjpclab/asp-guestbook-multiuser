@@ -33,16 +33,14 @@ CreateConn cn,dbtype
 
 	<div class="region region-config admin-tools">
 		<h3 class="title">留言本参数设置</h3>
-		<div class="content">
-			<table>
-			<tr>
-				<td><a href="web_config.asp?page=1" onmouseover="return true;">[基本配置]</a></td>
-				<td><a href="web_config.asp?page=2" onmouseover="return true;">[邮件通知]</a></td>
-				<td><a href="web_config.asp?page=4" onmouseover="return true;">[界面尺寸]</a></td>
-				<td><a href="web_config.asp?page=8" onmouseover="return true;">[功能设置]</a></td>
-				<td><a href="web_config.asp" onmouseover="return true;">[全部参数]</a></td>
-			</tr>
-			</table>
+		<div class="content flex-box">
+			<ul>
+				<li><a href="web_config.asp?page=1">基本配置</a></li>
+				<li><a href="web_config.asp?page=2">邮件通知</a></li>
+				<li><a href="web_config.asp?page=4">界面尺寸</a></li>
+				<li><a href="web_config.asp?page=8">功能设置</a></li>
+				<li><a href="web_config.asp">全部参数</a></li>
+			</ul>
 
 			<form method="post" action="web_saveconfig.asp" name="configform" onsubmit="return check();">
 			<%

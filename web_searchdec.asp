@@ -81,7 +81,7 @@ CreateConn cn,dbtype
 <input type="hidden" name="page" value="<%if isnumeric(request("page")) and request("page")<>"" then response.write request("page")%>" />
 <div class="guest-functions">
 	<div class="main">
-		<a href="javascript:for(var i=0;i<=form7.elements.length-1;i++)if(form7.elements[i].name=='users' && form7.elements[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.length-1)alert('请先选定要删除的公告。');" onmouseover="return true;"><img src="image/icon_mdel.gif" style="border-width:0px;" />删除选定公告</a>
+		<a href="javascript:for(var i=0;i<=form7.elements.length-1;i++)if(form7.elements[i].name=='users' && form7.elements[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.length-1)alert('请先选定要删除的公告。');"><img src="image/icon_mdel.gif" style="border-width:0px;" />删除选定公告</a>
 	</div>
 </div>
 
@@ -120,7 +120,7 @@ else
 	wend
 end if	'对应for上面一行的if
 %>
-<div class="guest-functions"><a href="javascript:for(var i=0;i<=form7.elements.length-1;i++)if(form7.elements[i].name=='users' && form7.elements[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.length-1)alert('请先选定要删除的公告。');" onmouseover="return true;"><img src="image/icon_mdel.gif" style="border-width:0px;">删除选定公告</a></div>
+<div class="guest-functions"><a href="javascript:for(var i=0;i<=form7.elements.length-1;i++)if(form7.elements[i].name=='users' && form7.elements[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.length-1)alert('请先选定要删除的公告。');"><img src="image/icon_mdel.gif" style="border-width:0px;">删除选定公告</a></div>
 </form>
 
 <%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchdec.asp","[搜索结果分页]","adminname=" &server.URLEncode(Request("adminname"))& "&searchtxt=" & server.URLEncode(Request("searchtxt")) end if%>
