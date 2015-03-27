@@ -214,9 +214,7 @@ if ruser="" then
 	response.Redirect "face.asp"
 	Response.End
 else
-	set re=new RegExp
-	re.Pattern="^\w+$"
-	if re.Test(ruser)=false then
+	if ruser<>FilterKeyword(ruser) then
 		set re=nothing
 		conn.Close
 		set rec=nothing
@@ -729,6 +727,43 @@ function FilterSql(byref str)
 	r_str=replace(r_str,"=","")
 	
 	FilterSql=r_str
+end function
+'==================================
+function FilterKeyword(byref str)
+	dim r_str
+	r_str=str
+
+	r_str=replace(r_str,"'","")
+	r_str=replace(r_str,"""","")
+	r_str=replace(r_str,",","")
+	r_str=replace(r_str,".","")
+	r_str=replace(r_str,":","")
+	r_str=replace(r_str,";","")
+	r_str=replace(r_str,"`","")
+	r_str=replace(r_str,"~","")
+	r_str=replace(r_str," ","")
+	r_str=replace(r_str,"(","")
+	r_str=replace(r_str,")","")
+	r_str=replace(r_str,"[","")
+	r_str=replace(r_str,"]","")
+	r_str=replace(r_str,"{","")
+	r_str=replace(r_str,"}","")
+	r_str=replace(r_str,"+","")
+	r_str=replace(r_str,"^","")
+	r_str=replace(r_str,"+","")
+	r_str=replace(r_str,"-","")
+	r_str=replace(r_str,"*","")
+	r_str=replace(r_str,"#","")
+	r_str=replace(r_str,"@","")
+	r_str=replace(r_str,"$","")
+	r_str=replace(r_str,"%","")
+	r_str=replace(r_str,"/","")
+	r_str=replace(r_str,"\","")
+	r_str=replace(r_str,"?","")
+	r_str=replace(r_str,"&","")
+	r_str=replace(r_str,"=","")
+
+	FilterKeyword=r_str
 end function
 '==================================
 sub MessagePage(strMessage,backPage)
