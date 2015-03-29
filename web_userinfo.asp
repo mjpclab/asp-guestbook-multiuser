@@ -71,9 +71,15 @@ checkuser cn,rs,false
 
 			<%
 			rs.Close
-			rs.Open Replace(sql_webuserinfo_count_ipconfig,"{0}",adminid),cn,,,1
+			rs.Open Replace(sql_webuserinfo_count_ipv4config,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">自定义IP屏蔽策略条数：</th><td><%=rs(0)%></td></tr>
+			<tr><th scope="row">自定义IPv4屏蔽策略条数：</th><td><%=rs(0)%></td></tr>
+
+			<%
+			rs.Close
+			rs.Open Replace(sql_webuserinfo_count_ipv6config,"{0}",adminid),cn,,,1
+			%>
+			<tr><th scope="row">自定义IPv6屏蔽策略条数：</th><td><%=rs(0)%></td></tr>
 
 			<%
 			rs.Close

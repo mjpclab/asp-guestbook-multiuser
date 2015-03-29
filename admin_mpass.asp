@@ -3,6 +3,10 @@
 
 <%
 Response.Expires=-1
+if web_checkIsBannedIP then
+	Response.Redirect "web_err.asp?number=4"
+	Response.End
+end if
 if Request.Form("seltodel")="" then
 	if isnumeric(Request.Form("tpage")) and Request.Form("tpage")<>"" then
 		Response.Redirect "admin.asp?user=" &ruser& "&page=" & Request.Form("tpage")

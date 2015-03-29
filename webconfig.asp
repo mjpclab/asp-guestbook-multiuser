@@ -51,8 +51,11 @@ else
 	StatusStatistics=false
 end if
 
-web_IPConStatus=lrs("ipconstatus")	'IP屏蔽策略
-if web_IPConStatus<>0 and web_IPConStatus<>1 and web_IPConStatus<>2 then web_IPConStatus=0
+web_IPConStatus=lrs("ipconstatus")	'IP屏蔽策略，低4位用于IPv4，高4位用于IPv6
+web_IPv4ConStatus=web_IPConStatus mod 16
+if web_IPv4ConStatus<0 or web_IPv4ConStatus>2 then web_IPv4ConStatus=0
+web_IPv6ConStatus=web_IPConStatus \ 16
+if web_IPv6ConStatus<0 or web_IPv6ConStatus>2 then web_IPv6ConStatus=0
 
 StatusShowHead=true
 
@@ -64,9 +67,15 @@ if clng(adminlimit and 8) <>0 then AdminViewCode=true		'为管理员显示实际HTML代码
 
 '========安全性设置========
 AdminTimeOut=lrs("admintimeout")		'管理员登录超时(分)
-ShowIP=lrs("showip")			'留言者IP显示 0:不显示 1:显示前1位 2:显示前2位 3:显示前3位 4:显示前4位
-AdminShowIP=lrs("adminshowip")	'为管理员显示IP位数
-AdminShowOriginalIP=lrs("adminshoworiginalip")	'为管理员显示原始IP位数
+ShowIP=lrs("showip")			'留言者IP显示，低4位用于IPv4，高4位用于IPv6
+ShowIPv4=ShowIP mod 16
+ShowIPv6=ShowIP \ 16
+AdminShowIP=lrs("adminshowip")	'为管理员显示IP位数，低4位用于IPv4，高4位用于IPv6
+AdminShowIPv4=AdminShowIP mod 16
+AdminShowIPv6=AdminShowIP \ 16
+AdminShowOriginalIP=lrs("adminshoworiginalip")	'为管理员显示原始IP位数，低4位用于IPv4，高4位用于IPv6
+AdminShowOriginalIPv4=AdminShowOriginalIP mod 16
+AdminShowOriginalIPv6=AdminShowOriginalIP \ 16
 
 VcodeCount=clng(lrs("vcodecount") and &H0F)		'登录验证码长度
 WriteVcodeCount=clng(lrs("vcodecount") and &HF0) \ &H10		'留言验证码长度

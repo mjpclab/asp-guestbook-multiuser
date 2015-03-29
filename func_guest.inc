@@ -10,7 +10,7 @@
 		<%end if%>
 	</div>
 	<div class="aside">
-		<a class="function" href="reg.asp">创建属于您的留言本</a>
+		<a class="function" href="reg.asp">申请留言本</a>
 		<a class="function" href="admin.asp?user=<%=ruser%>">管理</a>
 	</div>
 </div>

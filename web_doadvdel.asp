@@ -161,7 +161,8 @@ case "14"
 		tparam=DateTimeStr(tparam)
 		cn1.BeginTrans
 		cn1.Execute Replace(sql_webdoadvdel_regdate_filterconfig,"{0}",tparam),,1
-		cn1.Execute Replace(sql_webdoadvdel_regdate_ipconfig,"{0}",tparam),,1
+		cn1.Execute Replace(sql_webdoadvdel_regdate_ipv4config,"{0}",tparam),,1
+		cn1.Execute Replace(sql_webdoadvdel_regdate_ipv6config,"{0}",tparam),,1
 		cn1.Execute Replace(sql_webdoadvdel_regdate_floodconfig,"{0}",tparam),,1
 		cn1.Execute Replace(sql_webdoadvdel_regdate_stats,"{0}",tparam),,1
 		cn1.Execute Replace(sql_webdoadvdel_regdate_stats_clientinfo,"{0}",tparam),,1
@@ -180,7 +181,8 @@ case "15"
 		tparam=DateTimeStr(tparam)
 		cn1.BeginTrans
 		cn1.Execute Replace(sql_webdoadvdel_lastlogin_filterconfig,"{0}",tparam),,1
-		cn1.Execute Replace(sql_webdoadvdel_lastlogin_ipconfig,"{0}",tparam),,1
+		cn1.Execute Replace(sql_webdoadvdel_lastlogin_ipv4config,"{0}",tparam),,1
+		cn1.Execute Replace(sql_webdoadvdel_lastlogin_ipv6config,"{0}",tparam),,1
 		cn1.Execute Replace(sql_webdoadvdel_lastlogin_floodconfig,"{0}",tparam),,1
 		cn1.Execute Replace(sql_webdoadvdel_lastlogin_stats,"{0}",tparam),,1
 		cn1.Execute Replace(sql_webdoadvdel_lastlogin_stats_clientinfo,"{0}",tparam),,1
@@ -199,7 +201,8 @@ case "16"
 		tparam=DateTimeStr(tparam)
 		cn1.BeginTrans
 		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_filterconfig,"{0}",tparam),"{1}",wm_name),,1
-		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_ipconfig,"{0}",tparam),"{1}",wm_name),,1
+		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_ipv4config,"{0}",tparam),"{1}",wm_name),,1
+		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_ipv6config,"{0}",tparam),"{1}",wm_name),,1
 		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_floodconfig,"{0}",tparam),"{1}",wm_name),,1
 		cn1.Execute Replace(sql_webdoadvdel_logdate_stats,"{0}",tparam),,1
 		cn1.Execute Replace(sql_webdoadvdel_logdate_stats_clientinfo,"{0}",tparam),,1
@@ -216,7 +219,8 @@ case "16"
 case "17"
 		cn1.BeginTrans
 		cn1.Execute sql_webdoadvdel_neverlogin_filterconfig,,1
-		cn1.Execute sql_webdoadvdel_neverlogin_ipconfig,,1
+		cn1.Execute sql_webdoadvdel_neverlogin_ipv4config,,1
+		cn1.Execute sql_webdoadvdel_neverlogin_ipv6config,,1
 		cn1.Execute sql_webdoadvdel_neverlogin_floodconfig,,1
 		cn1.Execute sql_webdoadvdel_neverlogin_stats,,1
 		cn1.Execute sql_webdoadvdel_neverlogin_stats_clientinfo,,1
@@ -230,7 +234,8 @@ case "17"
 case "18"
 	cn1.BeginTrans
 	cn1.Execute Replace(sql_webdoadvdel_all_filterconfig,"{0}",wm_name),,1
-	cn1.Execute Replace(sql_webdoadvdel_all_ipconfig,"{0}",wm_name),,1
+	cn1.Execute Replace(sql_webdoadvdel_all_ipv4config,"{0}",wm_name),,1
+	cn1.Execute Replace(sql_webdoadvdel_all_ipv6config,"{0}",wm_name),,1
 	cn1.Execute Replace(sql_webdoadvdel_all_floodconfig,"{0}",wm_name),,1
 	cn1.Execute sql_webdoadvdel_all_stats,,1
 	cn1.Execute sql_webdoadvdel_all_stats_clientinfo,,1

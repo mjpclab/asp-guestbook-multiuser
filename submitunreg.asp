@@ -4,7 +4,7 @@
 <!-- #include file="md5.asp" -->
 <%
 Response.Expires=-1
-if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
+if web_checkIsBannedIP then
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 elseif StatusUnreg=false then
@@ -65,7 +65,8 @@ rs.Close : set rs=nothing
 
 cn.BeginTrans
 	cn.Execute Replace(sql_submitunreg_delete_filterconfig,"{0}",del_adminid),,1
-	cn.Execute Replace(sql_submitunreg_delete_ipconfig,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_ipv4config,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_ipv6config,"{0}",del_adminid),,1
 	cn.Execute Replace(sql_submitunreg_delete_floodconfig,"{0}",del_adminid),,1
 	cn.Execute Replace(sql_submitunreg_delete_stats,"{0}",del_adminid),,1
 	cn.Execute Replace(sql_submitunreg_delete_stats_clientinfo,"{0}",del_adminid),,1

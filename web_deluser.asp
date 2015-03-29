@@ -33,7 +33,8 @@ if users<>"" then
 	
 	cn.BeginTrans
 	cn.Execute Replace(sql_webdeluser_filterconfig,"{0}",users),,1
-	cn.Execute Replace(sql_webdeluser_ipconfig,"{0}",users),,1
+	cn.Execute Replace(sql_webdeluser_ipv4config,"{0}",users),,1
+	cn.Execute Replace(sql_webdeluser_ipv6config,"{0}",users),,1
 	cn.Execute Replace(sql_webdeluser_floodconfig,"{0}",users),,1
 	cn.Execute Replace(sql_webdeluser_stats,"{0}",users),,1
 	cn.Execute Replace(sql_webdeluser_stats_clientinfo,"{0}",users),,1

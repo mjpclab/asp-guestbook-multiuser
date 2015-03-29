@@ -2,9 +2,9 @@
 <!-- #include file="common2.asp" -->
 <%
 Response.Expires=-1
-if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
+if web_checkIsBannedIP then
 	Response.End
-elseif isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
+elseif checkIsBannedIP then
 	Response.End
 elseif StatusOpen=false then
 	Response.End

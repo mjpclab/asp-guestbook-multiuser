@@ -7,7 +7,8 @@ if dbtype>=1 and dbtype<=3 then
     table_config			="[" & prefix & "config]"
     table_filterconfig		="[" & prefix & "filterconfig]"
     table_floodconfig		="[" & prefix & "floodconfig]"
-    table_ipconfig			="[" & prefix & "ipconfig]"
+    table_ipv4config		="[" & prefix & "ipv4config]"
+    table_ipv6config		="[" & prefix & "ipv6config]"
     table_main				="[" & prefix & "main]"
     table_reply				="[" & prefix & "reply]"
     table_stats				="[" & prefix & "stats]"
@@ -25,7 +26,8 @@ elseif dbtype=10 then
     table_config			=schema & "[" & prefix & "config]"
     table_filterconfig		=schema & "[" & prefix & "filterconfig]"
     table_floodconfig		=schema & "[" & prefix & "floodconfig]"
-    table_ipconfig			=schema & "[" & prefix & "ipconfig]"
+    table_ipv4config		=schema & "[" & prefix & "ipv4config]"
+    table_ipv6config		=schema & "[" & prefix & "ipv6config]"
     table_main				=schema & "[" & prefix & "main]"
     table_reply				=schema & "[" & prefix & "reply]"
     table_stats				=schema & "[" & prefix & "stats]"
@@ -66,7 +68,8 @@ elseif IsSqlServer then
 end if
 
 'common
-sql_common_isbanip=		"SELECT TOP 1 1 FROM " &table_ipconfig& " WHERE ipconstatus={0} And '{1}'>=startip And '{1}'<=endip AND adminid={2}"
+sql_common_isbanipv4=	"SELECT TOP 1 1 FROM " &table_ipv4config& " WHERE cfgtype={0} And '{1}'>=ipfrom And '{1}'<=ipto AND adminid={2}"
+sql_common_isbanipv6=	"SELECT TOP 1 1 FROM " &table_ipv6config& " WHERE cfgtype={0} And '{1}'>=ipfrom And '{1}'<=ipto AND adminid={2}"
 sql_common_getstat=		"SELECT startdate,[{0}] FROM " &table_stats& " WHERE adminid={1}"
 sql_common_initstat=	"INSERT INTO " &table_stats& "(startdate,adminid) VALUES('{0}',{1})"
 sql_common_updatetime=	"UPDATE " &table_stats& " SET startdate='{0}' WHERE adminid={1}"
@@ -342,16 +345,19 @@ sql_adminconfig_style=	"SELECT styleid,stylename FROM " &table_style
 sql_adminsaveconfig="SELECT * FROM " &table_config& " WHERE adminid={0}"
 
 'admin_ipconfig/web_ipconfig
-sql_adminipconfig_status=	"SELECT ipconstatus FROM " &table_config& " WHERE adminid={0}"
-sql_adminipconfig_status1=	"SELECT listid,startip,endip FROM " &table_ipconfig& " WHERE ipconstatus=1 AND adminid={0}"
-sql_adminipconfig_status2=	"SELECT listid,startip,endip FROM " &table_ipconfig& " WHERE ipconstatus=2 AND adminid={0}"
+sql_adminipv4config_status1=	"SELECT listid,ipfrom,ipto FROM " &table_ipv4config& " WHERE cfgtype=1 AND adminid={0}"
+sql_adminipv4config_status2=	"SELECT listid,ipfrom,ipto FROM " &table_ipv4config& " WHERE cfgtype=2 AND adminid={0}"
+sql_adminipv6config_status1=	"SELECT listid,ipfrom,ipto FROM " &table_ipv6config& " WHERE cfgtype=1 AND adminid={0}"
+sql_adminipv6config_status2=	"SELECT listid,ipfrom,ipto FROM " &table_ipv6config& " WHERE cfgtype=2 AND adminid={0}"
 
 'admin_saveipconfig/web_saveipconfig
-sql_adminsaveipconfig_delete1=	"DELETE FROM " &table_ipconfig& " WHERE listid IN ({0}) AND adminid={1}"
-sql_adminsaveipconfig_delete2=	"DELETE FROM " &table_ipconfig& " WHERE listid IN ({0}) AND adminid={1}"
-sql_adminsaveipconfig_insert1=	"INSERT INTO " &table_ipconfig& "(ipconstatus,startip,endip,adminid) VALUES (1,'{0}','{1}',{2})"
-sql_adminsaveipconfig_insert2=	"INSERT INTO " &table_ipconfig& "(ipconstatus,startip,endip,adminid) VALUES (2,'{0}','{1}',{2})"
 sql_adminsaveipconfig_update=	"UPDATE " &table_config& " SET ipconstatus={0} WHERE adminid={1}"
+sql_adminsaveipv4config_delete=	"DELETE FROM " &table_ipv4config& " WHERE listid IN ({0}) AND adminid={1}"
+sql_adminsaveipv4config_insert1=	"INSERT INTO " &table_ipv4config& "(cfgtype,ipfrom,ipto,adminid) VALUES (1,'{0}','{1}',{2})"
+sql_adminsaveipv4config_insert2=	"INSERT INTO " &table_ipv4config& "(cfgtype,ipfrom,ipto,adminid) VALUES (2,'{0}','{1}',{2})"
+sql_adminsaveipv6config_delete=	"DELETE FROM " &table_ipv6config& " WHERE listid IN ({0}) AND adminid={1}"
+sql_adminsaveipv6config_insert1=	"INSERT INTO " &table_ipv6config& "(cfgtype,ipfrom,ipto,adminid) VALUES (1,'{0}','{1}',{2})"
+sql_adminsaveipv6config_insert2=	"INSERT INTO " &table_ipv6config& "(cfgtype,ipfrom,ipto,adminid) VALUES (2,'{0}','{1}',{2})"
 
 'admin_filter/web_filter
 sql_adminfilter="SELECT * FROM " &table_filterconfig& " WHERE adminid={0} ORDER BY filtersort ASC"
@@ -456,7 +462,7 @@ sql_checkuser="SELECT adminname FROM " &table_supervisor& " WHERE adminname='{0}
 'submitreg
 sql_submitreg_checkuser="SELECT 1 FROM " &table_supervisor& " WHERE adminname='{0}'"
 sql_submitreg_init1=	"INSERT INTO " &table_supervisor& "(adminname,adminpass,name,faceid,regdate,lastlogin,question,[key],[declare]) VALUES('{0}','{1}','{2}',{3},'{4}','{5}','{6}','{7}','{8}')"
-sql_submitreg_init2=	"INSERT INTO " &table_config& "(adminid,status,adminhtml,guesthtml,admintimeout,visualflag,ubbflag,styleid) SELECT TOP 1 adminid,{1},{2},{3},{4},{5},{6},'{7}' FROM " &table_supervisor& " WHERE adminname='{0}'"
+sql_submitreg_init2=	"INSERT INTO " &table_config& "(adminid,status,adminhtml,guesthtml,admintimeout,showip,adminshowip,adminshoworiginalip,visualflag,ubbflag,styleid) SELECT TOP 1 adminid,{1},{2},{3},{4},{5},{6},{7},{8},{9},'{10}' FROM " &table_supervisor& " WHERE adminname='{0}'"
 sql_submitreg_init3=	"INSERT INTO " &table_floodconfig& "(adminid) SELECT TOP 1 adminid FROM " &table_supervisor& " WHERE adminname='{0}'"
 
 'findkey2
@@ -472,7 +478,8 @@ sql_findkey4_resetpass="UPDATE " &table_supervisor& " SET adminpass='{0}' WHERE 
 'submitunreg
 sql_submitunreg_checkuser=				"SELECT adminid,adminpass FROM " &table_supervisor& " WHERE adminname='{0}' AND adminname<>'{1}'"
 sql_submitunreg_delete_filterconfig=	"DELETE FROM " &table_filterconfig& " WHERE adminid={0}"
-sql_submitunreg_delete_ipconfig=		"DELETE FROM " &table_ipconfig& " WHERE adminid={0}"
+sql_submitunreg_delete_ipv4config=		"DELETE FROM " &table_ipv4config& " WHERE adminid={0}"
+sql_submitunreg_delete_ipv6config=		"DELETE FROM " &table_ipv6config& " WHERE adminid={0}"
 sql_submitunreg_delete_floodconfig=		"DELETE FROM " &table_floodconfig& " WHERE adminid={0}"
 sql_submitunreg_delete_stats=			"DELETE FROM " &table_stats& " WHERE adminid={0}"
 sql_submitunreg_delete_stats_clientinfo="DELETE FROM " &table_stats_clientinfo& " WHERE adminid={0}"
@@ -552,7 +559,8 @@ sql_webdoadvdel_deldeclare=					"UPDATE " &table_supervisor& " SET [declare]='' 
 sql_webdoadvdel_cleardeclare=				"UPDATE " &table_supervisor& " SET [declare]='' WHERE [declare] LIKE '_%'"
 if IsAccess then
 	sql_webdoadvdel_regdate_filterconfig=		"DELETE FROM " &table_filterconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<=#{0}#)"
-	sql_webdoadvdel_regdate_ipconfig=			"DELETE FROM " &table_ipconfig&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<=#{0}#)"
+	sql_webdoadvdel_regdate_ipv4config=			"DELETE FROM " &table_ipv4config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<=#{0}#)"
+	sql_webdoadvdel_regdate_ipv6config=			"DELETE FROM " &table_ipv6config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<=#{0}#)"
 	sql_webdoadvdel_regdate_floodconfig=		"DELETE FROM " &table_floodconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<=#{0}#)"
 	sql_webdoadvdel_regdate_stats=				"DELETE FROM " &table_stats&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<=#{0}#)"
 	sql_webdoadvdel_regdate_stats_clientinfo=	"DELETE FROM " &table_stats_clientinfo&	" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<=#{0}#)"
@@ -562,7 +570,8 @@ if IsAccess then
 	sql_webdoadvdel_regdate_supervisor=			"DELETE FROM " &table_supervisor&		" WHERE regdate<=#{0}#"
 
 	sql_webdoadvdel_lastlogin_filterconfig=		"DELETE FROM " &table_filterconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<=#{0}#)"
-	sql_webdoadvdel_lastlogin_ipconfig=			"DELETE FROM " &table_ipconfig&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<=#{0}#)"
+	sql_webdoadvdel_lastlogin_ipv4config=		"DELETE FROM " &table_ipv4config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<=#{0}#)"
+	sql_webdoadvdel_lastlogin_ipv6config=		"DELETE FROM " &table_ipv6config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<=#{0}#)"
 	sql_webdoadvdel_lastlogin_floodconfig=		"DELETE FROM " &table_floodconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<=#{0}#)"
 	sql_webdoadvdel_lastlogin_stats=			"DELETE FROM " &table_stats&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<=#{0}#)"
 	sql_webdoadvdel_lastlogin_stats_clientinfo=	"DELETE FROM " &table_stats_clientinfo&	" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<=#{0}#)"
@@ -572,7 +581,8 @@ if IsAccess then
 	sql_webdoadvdel_lastlogin_supervisor=		"DELETE FROM " &table_supervisor&		" WHERE lastlogin<=#{0}#"
 
 	sql_webdoadvdel_logdate_filterconfig=		"DELETE FROM " &table_filterconfig&		" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>#{0}#) AND adminid<>'{1}'"
-	sql_webdoadvdel_logdate_ipconfig=			"DELETE FROM " &table_ipconfig&			" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>#{0}#) AND adminid<>'{1}'"
+	sql_webdoadvdel_logdate_ipv4config=			"DELETE FROM " &table_ipv4config&		" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>#{0}#) AND adminid<>'{1}'"
+	sql_webdoadvdel_logdate_ipv6config=			"DELETE FROM " &table_ipv6config&		" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>#{0}#) AND adminid<>'{1}'"
 	sql_webdoadvdel_logdate_floodconfig=		"DELETE FROM " &table_floodconfig&		" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>#{0}#) AND adminid<>'{1}'"
 	sql_webdoadvdel_logdate_stats=				"DELETE FROM " &table_stats&			" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>#{0}#)"
 	sql_webdoadvdel_logdate_stats_clientinfo=	"DELETE FROM " &table_stats_clientinfo& " WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>#{0}#)"
@@ -582,7 +592,8 @@ if IsAccess then
 	sql_webdoadvdel_logdate_supervisor=			"DELETE FROM " &table_supervisor&		" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>#{0}#)"
 elseif IsSqlServer then
 	sql_webdoadvdel_regdate_filterconfig=		"DELETE FROM " &table_filterconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<='{0}')"
-	sql_webdoadvdel_regdate_ipconfig=			"DELETE FROM " &table_ipconfig&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<='{0}')"
+	sql_webdoadvdel_regdate_ipv4config=			"DELETE FROM " &table_ipv4config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<='{0}')"
+	sql_webdoadvdel_regdate_ipv6config=			"DELETE FROM " &table_ipv6config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<='{0}')"
 	sql_webdoadvdel_regdate_floodconfig=		"DELETE FROM " &table_floodconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<='{0}')"
 	sql_webdoadvdel_regdate_stats=				"DELETE FROM " &table_stats&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<='{0}')"
 	sql_webdoadvdel_regdate_stats_clientinfo=	"DELETE FROM " &table_stats_clientinfo&	" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<='{0}')"
@@ -592,7 +603,8 @@ elseif IsSqlServer then
 	sql_webdoadvdel_regdate_supervisor=			"DELETE FROM " &table_supervisor&		" WHERE regdate<='{0}'"
 
 	sql_webdoadvdel_lastlogin_filterconfig=		"DELETE FROM " &table_filterconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<='{0}')"
-	sql_webdoadvdel_lastlogin_ipconfig=			"DELETE FROM " &table_ipconfig&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<='{0}')"
+	sql_webdoadvdel_lastlogin_ipv4config=		"DELETE FROM " &table_ipv4config&	    " WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<='{0}')"
+	sql_webdoadvdel_lastlogin_ipv6config=		"DELETE FROM " &table_ipv6config&	    " WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<='{0}')"
 	sql_webdoadvdel_lastlogin_floodconfig=		"DELETE FROM " &table_floodconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<='{0}')"
 	sql_webdoadvdel_lastlogin_stats=			"DELETE FROM " &table_stats&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<='{0}')"
 	sql_webdoadvdel_lastlogin_stats_clientinfo=	"DELETE FROM " &table_stats_clientinfo&	" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin<='{0}')"
@@ -602,7 +614,8 @@ elseif IsSqlServer then
 	sql_webdoadvdel_lastlogin_supervisor=		"DELETE FROM " &table_supervisor&		" WHERE lastlogin<='{0}'"
 
 	sql_webdoadvdel_logdate_filterconfig=		"DELETE FROM " &table_filterconfig&		" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>'{0}') AND adminid<>'{1}'"
-	sql_webdoadvdel_logdate_ipconfig=			"DELETE FROM " &table_ipconfig&			" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>'{0}') AND adminid<>'{1}'"
+	sql_webdoadvdel_logdate_ipv4config=			"DELETE FROM " &table_ipv4config&		" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>'{0}') AND adminid<>'{1}'"
+	sql_webdoadvdel_logdate_ipv6config=			"DELETE FROM " &table_ipv6config&		" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>'{0}') AND adminid<>'{1}'"
 	sql_webdoadvdel_logdate_floodconfig=		"DELETE FROM " &table_floodconfig&		" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>'{0}') AND adminid<>'{1}'"
 	sql_webdoadvdel_logdate_stats=				"DELETE FROM " &table_stats&			" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>'{0}')"
 	sql_webdoadvdel_logdate_stats_clientinfo=	"DELETE FROM " &table_stats_clientinfo& " WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>'{0}')"
@@ -612,7 +625,8 @@ elseif IsSqlServer then
 	sql_webdoadvdel_logdate_supervisor=			"DELETE FROM " &table_supervisor&		" WHERE adminid NOT IN (SELECT DISTINCT adminid FROM " &table_main& " WHERE logdate>'{0}')"
 end if
 sql_webdoadvdel_neverlogin_filterconfig=	"DELETE FROM " &table_filterconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin=regdate)"
-sql_webdoadvdel_neverlogin_ipconfig=		"DELETE FROM " &table_ipconfig&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin=regdate)"
+sql_webdoadvdel_neverlogin_ipv4config=		"DELETE FROM " &table_ipv4config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin=regdate)"
+sql_webdoadvdel_neverlogin_ipv6config=		"DELETE FROM " &table_ipv6config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin=regdate)"
 sql_webdoadvdel_neverlogin_floodconfig=		"DELETE FROM " &table_floodconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin=regdate)"
 sql_webdoadvdel_neverlogin_stats=			"DELETE FROM " &table_stats&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin=regdate)"
 sql_webdoadvdel_neverlogin_stats_clientinfo="DELETE FROM " &table_stats_clientinfo&	" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE lastlogin=regdate)"
@@ -622,7 +636,8 @@ sql_webdoadvdel_neverlogin_config=			"DELETE FROM " &table_config&			" WHERE adm
 sql_webdoadvdel_neverlogin_supervisor=		"DELETE FROM " &table_supervisor&		" WHERE lastlogin=regdate"
 
 sql_webdoadvdel_all_filterconfig=	"DELETE FROM " &table_filterconfig& " WHERE adminid<>{0}"
-sql_webdoadvdel_all_ipconfig=		"DELETE FROM " &table_ipconfig& " WHERE adminid<>{0}"
+sql_webdoadvdel_all_ipv4config=		"DELETE FROM " &table_ipv4config& " WHERE adminid<>{0}"
+sql_webdoadvdel_all_ipv6config=		"DELETE FROM " &table_ipv6config& " WHERE adminid<>{0}"
 sql_webdoadvdel_all_floodconfig=	"DELETE FROM " &table_floodconfig& " WHERE adminid<>{0}"
 sql_webdoadvdel_all_stats=			"DELETE FROM " &table_stats
 sql_webdoadvdel_all_stats_clientinfo="DELETE FROM " &table_stats_clientinfo
@@ -661,7 +676,8 @@ sql_websavepass_update="UPDATE " &table_webmaster& " SET webpass='{0}'"
 
 'web_deluser
 sql_webdeluser_filterconfig=	"DELETE FROM " &table_filterconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE adminname IN({0}))"
-sql_webdeluser_ipconfig=		"DELETE FROM " &table_ipconfig&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE adminname IN({0}))"
+sql_webdeluser_ipv4config=		"DELETE FROM " &table_ipv4config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE adminname IN({0}))"
+sql_webdeluser_ipv6config=		"DELETE FROM " &table_ipv6config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE adminname IN({0}))"
 sql_webdeluser_floodconfig=		"DELETE FROM " &table_floodconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE adminname IN({0}))"
 sql_webdeluser_stats=			"DELETE FROM " &table_stats&			" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE adminname IN({0}))"
 sql_webdeluser_stats_clientinfo="DELETE FROM " &table_stats_clientinfo&	" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE adminname IN({0}))"
@@ -675,7 +691,8 @@ sql_webuserinfo=				"SELECT faceid,adminname,adminid,name,email,qqid,msnid,homep
 sql_webuserinfo_count_view=		"SELECT [view] FROM " &table_stats& " WHERE adminid={0}"
 sql_webuserinfo_count_words=	"SELECT COUNT(1) FROM " &table_main& " WHERE adminid={0}"
 sql_webuserinfo_count_reply=	"SELECT COUNT(articleid) FROM " &table_main& " INNER JOIN " &table_reply& " ON (" &table_main& ".id=" &table_reply& ".articleid AND adminid={0})"
-sql_webuserinfo_count_ipconfig=	"SELECT COUNT(1) FROM " &table_ipconfig& " WHERE adminid={0}"
+sql_webuserinfo_count_ipv4config="SELECT COUNT(1) FROM " &table_ipv4config& " WHERE adminid={0}"
+sql_webuserinfo_count_ipv6config="SELECT COUNT(1) FROM " &table_ipv6config& " WHERE adminid={0}"
 sql_webuserinfo_count_filterconfig="SELECT COUNT(filterid) FROM " &table_filterconfig& " WHERE adminid={0}"
 sql_webuserinfo_reginfo=		"SELECT regdate,lastlogin FROM " &table_supervisor& " WHERE adminid={0}"
 sql_webuserinfo_logininfo=		"SELECT login,loginfailed FROM " &table_stats& " WHERE adminid={0}"

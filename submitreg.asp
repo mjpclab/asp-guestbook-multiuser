@@ -4,7 +4,7 @@
 <%
 
 Response.Expires=-1
-if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
+if web_checkIsBannedIP then
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 elseif StatusReg=false then
@@ -72,7 +72,7 @@ dim tnow
 cn.BeginTrans
 tnow=now()
 cn.Execute Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_submitreg_init1,"{0}",ruser),"{1}",md5(Request.Form("pass1"),32)),"{2}",FilterQuote(server.HTMLEncode(Request.Form("nick")))),"{3}",0),"{4}",tnow),"{5}",tnow),"{6}",FilterQuote(Request.Form("question"))),"{7}",md5(Request.Form("key"),32)),"{8}",""),,1
-cn.Execute Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_submitreg_init2,"{0}",ruser),"{1}",143),"{2}",6),"{3}",6),"{4}",20),"{5}",111),"{6}",1270),"{7}",styleid),,1
+cn.Execute Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_submitreg_init2,"{0}",ruser),"{1}",143),"{2}",6),"{3}",6),"{4}",20),"{5}",34),"{6}",132),"{7}",132),"{8}",111),"{9}",1270),"{10}",styleid),,1
 cn.Execute Replace(sql_submitreg_init3,"{0}",ruser),,1
 cn.CommitTrans
 
@@ -96,7 +96,7 @@ gbookaddr=geturlpath & "index.asp?user=" & ruser
 <div id="outerborder" class="outerborder">
 
 <div class="header">
-	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; <a href="reg.asp" style="color:<%=TitleColor%>">创建留言本</a> &gt;&gt; 创建成功</div>
+	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; <a href="reg.asp" style="color:<%=TitleColor%>">申请留言本</a> &gt;&gt; 申请成功</div>
 </div>
 
 <%

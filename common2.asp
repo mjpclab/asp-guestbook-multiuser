@@ -314,10 +314,19 @@ getpuretext=outstr
 end function
 '===================
 function geturlpath()
-dim host,url
+dim host,url,buffer,port
 host="http://"
 if Request.ServerVariables("SERVER_NAME")<>"" then
-	host=host & Request.ServerVariables("SERVER_NAME")
+	buffer=Request.ServerVariables("SERVER_NAME")
+	if IsIPv6(buffer) then
+		buffer = "[" & buffer & "]"
+	end if
+	host=host & buffer
+
+	port=Request.ServerVariables("SERVER_PORT")
+	if Len(port)>0 and port<>"80" then
+		host=host & ":" & port
+	end if
 else
 	host=host & Request.ServerVariables("HTTP_HOST")
 end if

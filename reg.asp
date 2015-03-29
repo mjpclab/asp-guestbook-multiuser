@@ -4,7 +4,7 @@ Response.Expires = -1
 Response.AddHeader "Pragma","no-cache"
 Response.AddHeader "cache-control","no-cache, must-revalidate"
 
-if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
+if web_checkIsBannedIP then
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 elseif StatusReg=false then
@@ -19,7 +19,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 <html>
 <head>
 	<!-- #include file="inc_metatag.asp" -->
-	<title><%=web_BookName%> 创建留言本</title>
+	<title><%=web_BookName%> 申请留言本</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<!-- #include file="css/style.asp" -->
 
@@ -88,7 +88,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 <div id="outerborder" class="outerborder">
 
 <div class="header">
-	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; 创建留言本</div>
+	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; 申请留言本</div>
 </div>
 
 <%
@@ -104,7 +104,7 @@ sys_bul_flag=32
 <!-- #include file="func_web.inc" -->
 
 <div class="region form-region">
-	<h3 class="title">创建留言本</h3>
+	<h3 class="title">申请留言本</h3>
 	<div class="content">
 	<form name="regform" method="post" action="submitreg.asp" onsubmit="return submitcheck(this)">
 		<div class="field">

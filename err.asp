@@ -2,7 +2,7 @@
 
 <%
 Response.Expires=-1
-if web_isbanip(Request.ServerVariables("REMOTE_ADDR"))=true or web_isbanip(Request.ServerVariables("HTTP_X_FORWARDED_FOR"))=true then
+if web_checkIsBannedIP then
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
 end if
@@ -22,12 +22,14 @@ end if
 <div id="outerborder" class="outerborder">
 
 	<%if ShowTitle=true then show_book_title 3,"错误"%>
+	<div class="guest-functions">
+		<div class="aside">
+			<a class="function" href="reg.asp">申请留言本</a>
+			<a class="function" href="admin.asp?user=<%=ruser%>">管理</a>
+		</div>
+	</div>
 
-	<span style="float:right; clear:all; width:100%; text-align:right; padding:4px; color:<%=LinkNormal%>;">
-			| <a href="reg.asp">申请</a> | <a href="admin_login.asp?user=<%=ruser%>">管理</a>
-	</span>
-
-<%
+	<%
 	dim errmsg
 	select case Request("number")
 	case "1"
