@@ -317,7 +317,9 @@ end function
 function geturlpath()
 dim host,url,buffer,port
 host="http://"
-if Request.ServerVariables("SERVER_NAME")<>"" then
+if Request.ServerVariables("HTTP_HOST")<>"" then
+	host=host & Request.ServerVariables("HTTP_HOST")
+else
 	buffer=Request.ServerVariables("SERVER_NAME")
 	if IsIPv6(buffer) then
 		buffer = "[" & buffer & "]"
@@ -328,8 +330,6 @@ if Request.ServerVariables("SERVER_NAME")<>"" then
 	if Len(port)>0 and port<>"80" then
 		host=host & ":" & port
 	end if
-else
-	host=host & Request.ServerVariables("HTTP_HOST")
 end if
 if Request.ServerVariables("PATH_INFO")<>"" then
 	host=host & Request.ServerVariables("PATH_INFO")
