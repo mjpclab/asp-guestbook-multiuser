@@ -69,8 +69,6 @@ elseif isnumeric(request.Form("searchtextwidth"))=false and clng(showpage and 4)
 	errbox "“搜索框宽度”必须为数字。"
 elseif isnumeric(request.Form("filtertextwidth"))=false and clng(showpage and 4)<> 0 then
 	errbox "“‘内容过滤’中文本宽”必须为数字。"
-elseif isnumeric(request.Form("replytextwidth"))=false and clng(showpage and 4)<> 0 then
-	errbox "“公告编辑框宽度”必须为数字。"
 elseif isnumeric(request.Form("replytextheight"))=false and clng(showpage and 4)<> 0 then
 	errbox "“公告编辑框高度”必须为数字。"
 elseif isnumeric(request.Form("itemsperpage"))=false and clng(showpage and 4)<> 0 then
@@ -225,11 +223,6 @@ else
 		if clng(tfiltertextwidth)>255 then tfiltertextwidth=255
 		if clng(tfiltertextwidth)<1 then tfiltertextwidth=62
 	
-		treplytextwidth=Request.Form("replytextwidth")
-		if len(cstr(treplytextwidth))>3 then treplytextwidth=62
-		if clng(treplytextwidth)>255 then treplytextwidth=255
-		if clng(treplytextwidth)<1 then treplytextwidth=62
-	
 		treplytextheight=Request.Form("replytextheight")
 		if len(cstr(treplytextheight))>3 then treplytextheight=62
 		if clng(treplytextheight)>255 then treplytextheight=255
@@ -323,9 +316,8 @@ else
 		rs1("tableleftwidth")=ttableleftwidth
 		rs1("searchtextwidth")=tsearchtextwidth
 		rs1("advdeltextwidth")=tadvdeltextwidth
-		rs1("setinfotextwidth")=tsetinfotextwidth		
+		rs1("setinfotextwidth")=tsetinfotextwidth
 		rs1("filtertextwidth")=tfiltertextwidth
-		rs1("replytextwidth")=treplytextwidth
 		rs1("replytextheight")=treplytextheight
 		rs1("itemsperpage")=titemsperpage
 		rs1("titlesperpage")=ttitlesperpage

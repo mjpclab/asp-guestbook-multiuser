@@ -206,10 +206,6 @@ CreateConn cn,dbtype
 					<span class="value"><input type="text" size="10" maxlength="3" name="filtertextwidth" value="<%=rs("filtertextwidth")%>" /> (默认=62,单位:字母宽度)</span>
 				</div>
 				<div class="field">
-					<span class="label">公告编辑框宽度：</span>
-					<span class="value"><input type="text" size="10" maxlength="3" name="replytextwidth" value="<%=rs("replytextwidth")%>" /> (默认=98,单位:字母宽度)</span>
-				</div>
-				<div class="field">
 					<span class="label">公告编辑框高度：</span>
 					<span class="value"><input type="text" size="10" maxlength="3" name="replytextheight" value="<%=rs("replytextheight")%>" /> (默认=10,单位:字母高度)</span>
 				</div>
@@ -419,11 +415,6 @@ function check()
 			{alert('“‘内容过滤’中文本宽”必须为数字。');document.configform.filtertextwidth.select();return false;}
 		else if (tv<1 || tv>255)
 			{alert('“‘内容过滤’中文本宽”必须在1～255的范围内。');document.configform.filtertextwidth.select();return false;}
-
-		if (isNaN(tv=Number(document.configform.replytextwidth.value)))
-			{alert('“回复、公告编辑框宽度”必须为数字。');document.configform.replytextwidth.select();return false;}
-		else if (tv<1 || tv>255)
-			{alert('“回复、公告编辑框宽度”必须在1～255的范围内。');document.configform.replytextwidth.select();return false;}
 
 		if (isNaN(tv=Number(document.configform.replytextheight.value)))
 			{alert('“回复、公告编辑框高度”必须为数字。');document.configform.replytextheight.select();return false;}
