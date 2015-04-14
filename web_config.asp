@@ -190,14 +190,6 @@ CreateConn cn,dbtype
 					<span class="value"><input type="text" size="10" maxlength="5" name="tableleftwidth" value="<%=rs("tableleftwidth")%>" /> (默认=150,可用百分比)</span>
 				</div>
 				<div class="field">
-					<span class="label">UBB工具栏宽度：</span>
-					<span class="value"><input type="text" size="10" maxlength="4" name="ubbtoolwidth" value="<%=rs("ubbtoolwidth")%>" /> (默认=320,单位:象素)</span>
-				</div>
-				<div class="field">
-					<span class="label">UBB工具栏高度：</span>
-					<span class="value"><input type="text" size="10" maxlength="4" name="ubbtoolheight" value="<%=rs("ubbtoolheight")%>" /> (默认=100,单位:象素)</span>
-				</div>
-				<div class="field">
 					<span class="label">搜索框宽度：</span>
 					<span class="value"><input type="text" size="10" maxlength="3" name="searchtextwidth" value="<%=rs("searchtextwidth")%>" /> (默认=20,单位:字母宽度)</span>
 				</div>
@@ -412,16 +404,6 @@ function check()
 			{alert('“搜索框宽度”必须为数字。');document.configform.searchtextwidth.select();return false;}
 		else if (tv<1 || tv>255)
 			{alert('“搜索框宽度”必须在1～255的范围内。');document.configform.searchtextwidth.select();return false;}
-
-		if (isNaN(tv=Number(document.configform.ubbtoolwidth.value)))
-			{alert('“‘写留言’UBB工具宽”必须为数字。');document.configform.ubbtoolwidth.select();return false;}
-		else if (tv<1 || tv>9999)
-			{alert('“‘写留言’UBB工具宽”必须在1～9999的范围内。');document.configform.ubbtoolwidth.select();return false;}
-
-		if (isNaN(tv=Number(document.configform.ubbtoolheight.value)))
-			{alert('“‘写留言’UBB工具高”必须为数字。');document.configform.ubbtoolheight.select();return false;}
-		else if (tv<1 || tv>9999)
-			{alert('“‘写留言’UBB工具高”必须在1～9999的范围内。');document.configform.ubbtoolheight.select();return false;}
 
 		if (isNaN(tv=Number(document.configform.advdeltextwidth.value)))
 			{alert('“‘高级删除’中文本宽”必须为数字。');document.configform.advdeltextwidth.select();return false;}

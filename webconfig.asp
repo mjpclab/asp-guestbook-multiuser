@@ -139,8 +139,6 @@ UBBSupport=true
 web_UBBSupport=true
 ShowUbbTool=true
 
-UbbToolWidth=lrs("ubbtoolwidth")					'“写留言”UBB工具宽
-UbbToolHeight=lrs("ubbtoolheight")					'“写留言”UBB工具高
 SearchTextWidth=lrs("searchtextwidth")				'搜索框宽度
 AdvDelTextWidth=lrs("advdeltextwidth")				'“高级删除”中文本宽
 SetInfoTextWidth=lrs("setinfotextwidth")			'“修改资料”中文本宽
