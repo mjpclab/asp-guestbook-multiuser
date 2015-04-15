@@ -51,15 +51,15 @@ set cn=nothing
 			<form method="post" action="web_saveuserpass.asp" onsubmit="return checkpass(this)" name="form4">
 			<div class="field">
 				<span class="label">用户名：</span>
-				<span class="value"><input type="text" name="user" size="<%=SetInfoTextWidth%>" maxlength="32" value="<%=ruser%>" /></span>
+				<span class="value"><input type="text" name="user" maxlength="32" value="<%=ruser%>" /></span>
 			</div>
 			<div class="field">
 				<span class="label">新密码：</span>
-				<span class="value"><input type="password" name="inewpass1" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+				<span class="value"><input type="password" name="inewpass1" maxlength="32" /></span>
 			</div>
 			<div class="field">
 				<span class="label">确认密码：</span>
-				<span class="value"><input type="password" name="inewpass2" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+				<span class="value"><input type="password" name="inewpass2" maxlength="32" /></span>
 			</div>
 			<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>
             </form>

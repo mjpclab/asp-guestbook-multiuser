@@ -140,9 +140,6 @@ web_UBBSupport=true
 ShowUbbTool=true
 
 SearchTextWidth=lrs("searchtextwidth")				'搜索框宽度
-AdvDelTextWidth=lrs("advdeltextwidth")				'“高级删除”中文本宽
-SetInfoTextWidth=lrs("setinfotextwidth")			'“修改资料”中文本宽
-FilterTextWidth=lrs("filtertextwidth")				'“内容过滤”中文本宽
 ReplyTextHeight=lrs("replytextheight")				'公告编辑框高度
 
 ItemsPerPage=lrs("itemsperpage")		'每页显示的项目数

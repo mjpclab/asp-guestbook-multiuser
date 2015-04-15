@@ -45,15 +45,15 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 			<form method="post" action="web_savepass.asp" onsubmit="return checkpass(this)" name="form4">
 			<div class="field">
 				<span class="label">原密码：</span>
-				<span class="value"><input type="password" name="ioldpass" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+				<span class="value"><input type="password" name="ioldpass" maxlength="32" /></span>
 			</div>
 			<div class="field">
 				<span class="label">新密码：</span>
-				<span class="value"><input type="password" name="inewpass1" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+				<span class="value"><input type="password" name="inewpass1" maxlength="32" /></span>
 			</div>
 			<div class="field">
 				<span class="label">确认密码：</span>
-				<span class="value"><input type="password" name="inewpass2" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+				<span class="value"><input type="password" name="inewpass2" maxlength="32" /></span>
 			</div>
 			<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>
 			</form>

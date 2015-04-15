@@ -57,15 +57,15 @@ end if
 			<input type="hidden" name="user" value="<%=ruser%>" />
 			<div class="field">
 				<span class="label">原密码：</span>
-				<span class="value"><input type="password" name="ioldpass" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+				<span class="value"><input type="password" name="ioldpass" maxlength="32" /></span>
 			</div>
 			<div class="field">
 				<span class="label">新密码：</span>
-				<span class="value"><input type="password" name="inewpass1" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+				<span class="value"><input type="password" name="inewpass1" maxlength="32" /></span>
 			</div>
 			<div class="field">
 				<span class="label">确认密码：</span>
-				<span class="value"><input type="password" name="inewpass2" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+				<span class="value"><input type="password" name="inewpass2" maxlength="32" /></span>
 			</div>
 			<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>
 			</form>
@@ -88,15 +88,15 @@ end if
 				<input type="hidden" name="user" value="<%=ruser%>" />
 				<div class="field">
 					<span class="label">密码：</span>
-					<span class="value"><input type="password" name="ioldpass" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+					<span class="value"><input type="password" name="ioldpass" maxlength="32" /></span>
 				</div>
 				<div class="field">
 					<span class="label">问题：</span>
-					<span class="value"><input type="text" name="question" size="<%=SetInfoTextWidth%>" maxlength="32" value="<%=server.HTMLEncode("" & rs("question") & "")%>" /></span>
+					<span class="value"><input type="text" name="question" maxlength="32" value="<%=server.HTMLEncode("" & rs("question") & "")%>" /></span>
 				</div>
 				<div class="field">
 					<span class="label">答案：</span>
-					<span class="value"><input type="text" name="key" size="<%=SetInfoTextWidth%>" maxlength="32" /></span>
+					<span class="value"><input type="text" name="key" maxlength="32" /></span>
 				</div>
 				<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>
 			</form>

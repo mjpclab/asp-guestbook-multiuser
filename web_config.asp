@@ -194,18 +194,6 @@ CreateConn cn,dbtype
 					<span class="value"><input type="text" size="10" maxlength="3" name="searchtextwidth" value="<%=rs("searchtextwidth")%>" /> (默认=20,单位:字母宽度)</span>
 				</div>
 				<div class="field">
-					<span class="label">“高级删除”中文本宽：</span>
-					<span class="value"><input type="text" size="10" maxlength="3" name="advdeltextwidth" value="<%=rs("advdeltextwidth")%>" /> (默认=20,单位:字母宽度)</span>
-				</div>
-				<div class="field">
-					<span class="label">“修改密码”中文本宽：</span>
-					<span class="value"><input type="text" size="10" maxlength="3" name="setinfotextwidth" value="<%=rs("setinfotextwidth")%>" /> (默认=40,单位:字母宽度)</span>
-				</div>
-				<div class="field">
-					<span class="label">“内容过滤”中文本宽：</span>
-					<span class="value"><input type="text" size="10" maxlength="3" name="filtertextwidth" value="<%=rs("filtertextwidth")%>" /> (默认=62,单位:字母宽度)</span>
-				</div>
-				<div class="field">
 					<span class="label">公告编辑框高度：</span>
 					<span class="value"><input type="text" size="10" maxlength="3" name="replytextheight" value="<%=rs("replytextheight")%>" /> (默认=10,单位:字母高度)</span>
 				</div>
@@ -400,21 +388,6 @@ function check()
 			{alert('“搜索框宽度”必须为数字。');document.configform.searchtextwidth.select();return false;}
 		else if (tv<1 || tv>255)
 			{alert('“搜索框宽度”必须在1～255的范围内。');document.configform.searchtextwidth.select();return false;}
-
-		if (isNaN(tv=Number(document.configform.advdeltextwidth.value)))
-			{alert('“‘高级删除’中文本宽”必须为数字。');document.configform.advdeltextwidth.select();return false;}
-		else if (tv<1 || tv>255)
-			{alert('“‘高级删除’中文本宽”必须在1～255的范围内。');document.configform.advdeltextwidth.select();return false;}
-
-		if (isNaN(tv=Number(document.configform.setinfotextwidth.value)))
-			{alert('“‘修改资料’中文本宽”必须为数字。');document.configform.setinfotextwidth.select();return false;}
-		else if (tv<1 || tv>255)
-			{alert('“‘修改资料’中文本宽”必须在1～255的范围内。');document.configform.setinfotextwidth.select();return false;}
-
-		if (isNaN(tv=Number(document.configform.filtertextwidth.value)))
-			{alert('“‘内容过滤’中文本宽”必须为数字。');document.configform.filtertextwidth.select();return false;}
-		else if (tv<1 || tv>255)
-			{alert('“‘内容过滤’中文本宽”必须在1～255的范围内。');document.configform.filtertextwidth.select();return false;}
 
 		if (isNaN(tv=Number(document.configform.replytextheight.value)))
 			{alert('“回复、公告编辑框高度”必须为数字。');document.configform.replytextheight.select();return false;}
