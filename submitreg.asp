@@ -87,8 +87,7 @@ gbookaddr=geturlpath & "index.asp?user=" & ruser
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> 创建成功</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<!-- #include file="css/style.asp" -->
+	<!-- #include file="inc_stylesheet.asp" -->
 </head>
 
 <body>

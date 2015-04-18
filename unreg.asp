@@ -20,8 +20,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> вти╬уй╨е</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<!-- #include file="css/style.asp" -->
+	<!-- #include file="inc_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function submitcheck(frm)

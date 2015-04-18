@@ -11,12 +11,6 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 修改管理员密码</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/adminstyle.css"/>
-	<link rel="stylesheet" type="text/css" href="css/web_adminstyle.css"/>
-	<!-- #include file="css/style.asp" -->
-	<!-- #include file="css/adminstyle.asp" -->
-	<!-- #include file="css/web_adminstyle.asp" -->
 
 	<script type="text/javascript">
 	function checkpass(cobject)

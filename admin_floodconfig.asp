@@ -20,10 +20,7 @@ checkuser cn,rs,false
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> ÁôÑÔ±¾ ·À¹àË®²ßÂÔ</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/adminstyle.css"/>
-	<!-- #include file="css/style.asp" -->
-	<!-- #include file="css/adminstyle.asp" -->
+	<!-- #include file="inc_admin_stylesheet.asp" -->
 </head>
 
 <body<%=bodylimit%> onload="<%=framecheck%>">

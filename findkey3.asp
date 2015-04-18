@@ -66,8 +66,7 @@ rs.Close : set rs=nothing
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> ÕÒ»ØÃÜÂë²½Öè3</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<!-- #include file="css/style.asp" -->
+	<!-- #include file="inc_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function submitcheck(frm)

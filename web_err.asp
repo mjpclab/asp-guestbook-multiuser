@@ -6,12 +6,7 @@
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> ´íÎó</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<link rel="stylesheet" type="text/css" href="css/adminstyle.css"/>
-	<link rel="stylesheet" type="text/css" href="css/web_adminstyle.css"/>
-	<!-- #include file="css/style.asp" -->
-	<!-- #include file="css/adminstyle.asp" -->
-	<!-- #include file="css/web_adminstyle.asp" -->
+	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
 
 <body>

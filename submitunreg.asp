@@ -1,6 +1,5 @@
 <!-- #include file="webconfig.asp" -->
-<link rel="stylesheet" type="text/css" href="css/style.css"/>
-<!-- #include file="css/style.asp" -->
+<!-- #include file="inc_stylesheet.asp" -->
 <!-- #include file="md5.asp" -->
 <%
 Response.Expires=-1

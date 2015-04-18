@@ -20,8 +20,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=HomeName%> 留言本 管理员登录</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<!-- #include file="css/style.asp" -->
+	<!-- #include file="inc_stylesheet.asp" -->
 </head>
 
 <body onload="if(form5.user.value.length===0)form5.user.focus();else form5.iadminpass.focus()">

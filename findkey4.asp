@@ -78,8 +78,7 @@ cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> ÕÒ»ØÃÜÂëÍê³É</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css"/>
-	<!-- #include file="css/style.asp" -->
+	<!-- #include file="inc_stylesheet.asp" -->
 </head>
 
 <body>
