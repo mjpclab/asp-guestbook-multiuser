@@ -30,59 +30,69 @@ CreateConn cn,dbtype
 sql_condition=""
 param_str=""
 
-if request("s_adminname")<>"" then	'用户名
-	sql_condition=sql_condition & Replace(sql_websearch_condition_adminname,"{0}",FilterAdminLike(request("s_adminname")))
-	param_str=param_str & "&s_adminname=" & server.URLEncode(request("s_adminname"))
+if Len(Request("s_adminname"))>0 then	'用户名
+	sql_condition=sql_condition & Replace(sql_websearch_condition_adminname,"{0}",FilterAdminLike(Request("s_adminname")))
+	param_str=param_str & "&s_adminname=" & server.URLEncode(Request("s_adminname"))
 end if
 
-if request("s_name")<>"" then	'访客名
-	sql_condition=sql_condition & Replace(sql_websearch_condition_name,"{0}",FilterAdminLike(request("s_name")))
-	param_str=param_str & "&s_name=" & server.URLEncode(request("s_name"))
+if Len(Request("s_name"))>0 then	'访客名
+	sql_condition=sql_condition & Replace(sql_websearch_condition_name,"{0}",FilterAdminLike(Request("s_name")))
+	param_str=param_str & "&s_name=" & server.URLEncode(Request("s_name"))
 end if
 
-if request("s_title")<>"" then	'标题
-	sql_condition=sql_condition & Replace(sql_websearch_condition_title,"{0}",FilterAdminLike(request("s_title")))
-	param_str=param_str & "&s_title=" & server.URLEncode(request("s_title"))
+if Len(Request("s_title"))>0 then	'标题
+	sql_condition=sql_condition & Replace(sql_websearch_condition_title,"{0}",FilterAdminLike(Request("s_title")))
+	param_str=param_str & "&s_title=" & server.URLEncode(Request("s_title"))
 end if
 
-if request("s_article")<>"" then	'留言内容
-	sql_condition=sql_condition & Replace(sql_websearch_condition_article,"{0}",FilterAdminLike(request("s_article")))
-	param_str=param_str & "&s_article=" & server.URLEncode(request("s_article"))
+if Len(Request("s_article"))>0 then	'留言内容
+	sql_condition=sql_condition & Replace(sql_websearch_condition_article,"{0}",FilterAdminLike(Request("s_article")))
+	param_str=param_str & "&s_article=" & server.URLEncode(Request("s_article"))
 end if
 
-if request("s_email")<>"" then	'邮件
-	sql_condition=sql_condition & Replace(sql_websearch_condition_email,"{0}",FilterAdminLike(request("s_email")))
-	param_str=param_str & "&s_email=" & server.URLEncode(request("s_email"))
+if Len(Request("s_email"))>0 then	'邮件
+	sql_condition=sql_condition & Replace(sql_websearch_condition_email,"{0}",FilterAdminLike(Request("s_email")))
+	param_str=param_str & "&s_email=" & server.URLEncode(Request("s_email"))
 end if
 
-if request("s_qqid")<>"" then	'QQ号码
-	sql_condition=sql_condition & Replace(sql_websearch_condition_qqid,"{0}",FilterAdminLike(request("s_qqid")))
-	param_str=param_str & "&s_qqid=" & server.URLEncode(request("s_qqid"))
+if Len(Request("s_qqid"))>0 then	'QQ号码
+	sql_condition=sql_condition & Replace(sql_websearch_condition_qqid,"{0}",FilterAdminLike(Request("s_qqid")))
+	param_str=param_str & "&s_qqid=" & server.URLEncode(Request("s_qqid"))
 end if
 
-if request("s_msnid")<>"" then	'Skype号
-	sql_condition=sql_condition & Replace(sql_websearch_condition_msnid,"{0}",FilterAdminLike(request("s_msnid")))
-	param_str=param_str & "&s_msnid=" & server.URLEncode(request("s_msnid"))
+if Len(Request("s_msnid"))>0 then	'Skype号
+	sql_condition=sql_condition & Replace(sql_websearch_condition_msnid,"{0}",FilterAdminLike(Request("s_msnid")))
+	param_str=param_str & "&s_msnid=" & server.URLEncode(Request("s_msnid"))
 end if
 
-if request("s_homepage")<>"" then	'主页
-	sql_condition=sql_condition & Replace(sql_websearch_condition_homepage,"{0}",FilterAdminLike(request("s_homepage")))
-	param_str=param_str & "&s_homepage=" & server.URLEncode(request("s_homepage"))
+if Len(Request("s_homepage"))>0 then	'主页
+	sql_condition=sql_condition & Replace(sql_websearch_condition_homepage,"{0}",FilterAdminLike(Request("s_homepage")))
+	param_str=param_str & "&s_homepage=" & server.URLEncode(Request("s_homepage"))
 end if
 
-if request("s_ipaddr")<>"" then	'IP
-	sql_condition=sql_condition & Replace(sql_websearch_condition_ipaddr,"{0}",FilterAdminLike(request("s_ipaddr")))
-	param_str=param_str & "&s_ipaddr=" & server.URLEncode(request("s_ipaddr"))
+if Len(Request("s_ipv4addr"))>0 then	'IPv4
+	sql_condition=sql_condition & Replace(sql_websearch_condition_ipv4addr,"{0}",FilterAdminLike(Request("s_ipv4addr")))
+	param_str=param_str & "&s_ipv4addr=" & server.URLEncode(Request("s_ipv4addr"))
 end if
 
-if request("s_originalip")<>"" then	'原始IP
-	sql_condition=sql_condition & Replace(sql_websearch_condition_originalip,"{0}",FilterAdminLike(request("s_originalip")))
-	param_str=param_str & "&s_originalip=" & server.URLEncode(request("s_originalip"))
+if Len(Request("s_originalipv4"))>0 then	'原始IPv4
+	sql_condition=sql_condition & Replace(sql_websearch_condition_originalipv4,"{0}",FilterAdminLike(Request("s_originalipv4")))
+	param_str=param_str & "&s_originalipv4=" & server.URLEncode(Request("s_originalipv4"))
 end if
 
-if request("s_reply")<>"" then	'回复内容
-	sql_condition=sql_condition & Replace(sql_websearch_condition_reply,"{0}",FilterAdminLike(request("s_reply")))
-	param_str=param_str & "&s_reply=" & server.URLEncode(request("s_reply"))
+if Len(Request("s_ipv6addr"))>0 then	'IPv6
+	sql_condition=sql_condition & Replace(sql_websearch_condition_ipv6addr,"{0}",FilterAdminLike(Request("s_ipv6addr")))
+	param_str=param_str & "&s_ipv6addr=" & server.URLEncode(Request("s_ipv6addr"))
+end if
+
+if Len(Request("s_originalipv6"))>0 then	'原始IPv6
+	sql_condition=sql_condition & Replace(sql_websearch_condition_originalipv6,"{0}",FilterAdminLike(Request("s_originalipv6")))
+	param_str=param_str & "&s_originalipv6=" & server.URLEncode(Request("s_originalipv6"))
+end if
+
+if Len(Request("s_reply"))>0 then	'回复内容
+	sql_condition=sql_condition & Replace(sql_websearch_condition_reply,"{0}",FilterAdminLike(Request("s_reply")))
+	param_str=param_str & "&s_reply=" & server.URLEncode(Request("s_reply"))
 end if
 
 
@@ -120,47 +130,55 @@ sql_condition=sql_websearch_condition_init & sql_condition
 		<p>搜索：("%"代表任意个字符，"_"代表一个字符)</p>
 		<div class="field">
 			<span class="label">用户名：</span>
-			<span class="value"><input type="text" name="s_adminname" value="<%=request("s_adminname")%>" size="<%=SearchTextWidth%>" maxlength="32" /></span>
+			<span class="value"><input type="text" name="s_adminname" value="<%=Request("s_adminname")%>" maxlength="32" /></span>
 		</div>
 		<div class="field">
 			<span class="label">访客姓名：</span>
-			<span class="value"><input type="text" name="s_name" value="<%=request("s_name")%>" size="<%=SearchTextWidth%>" maxlength="64" /></span>
+			<span class="value"><input type="text" name="s_name" value="<%=Request("s_name")%>" maxlength="64" /></span>
 		</div>
 		<div class="field">
 			<span class="label">留言标题：</span>
-			<span class="value"><input type="text" name="s_title" value="<%=request("s_title")%>" size="<%=SearchTextWidth%>" maxlength="64" /></span>
+			<span class="value"><input type="text" name="s_title" value="<%=Request("s_title")%>" maxlength="64" /></span>
 		</div>
 		<div class="field">
 			<span class="label">留言内容：</span>
-			<span class="value"><input type="text" name="s_article" value="<%=request("s_article")%>" size="<%=SearchTextWidth%>" /></span>
+			<span class="value"><input type="text" name="s_article" value="<%=Request("s_article")%>" /></span>
 		</div>
 		<div class="field">
 			<span class="label">访客邮件地址：</span>
-			<span class="value"><input type="text" name="s_email" value="<%=request("s_email")%>" size="<%=SearchTextWidth%>" maxlength="48" /></span>
+			<span class="value"><input type="text" name="s_email" value="<%=Request("s_email")%>" maxlength="48" /></span>
 		</div>
 		<div class="field">
 			<span class="label">访客QQ号码：</span>
-			<span class="value"><input type="text" name="s_qqid" value="<%=request("s_qqid")%>" size="<%=SearchTextWidth%>" maxlength="16" /></span>
+			<span class="value"><input type="text" name="s_qqid" value="<%=Request("s_qqid")%>" maxlength="16" /></span>
 		</div>
 		<div class="field">
 			<span class="label">访客Skype地址：</span>
-			<span class="value"><input type="text" name="s_msnid" value="<%=request("s_msnid")%>" size="<%=SearchTextWidth%>" maxlength="48" /></span>
+			<span class="value"><input type="text" name="s_msnid" value="<%=Request("s_msnid")%>" maxlength="48" /></span>
 		</div>
 		<div class="field">
 			<span class="label">访客主页地址：</span>
-			<span class="value"><input type="text" name="s_homepage" value="<%=request("s_homepage")%>" size="<%=SearchTextWidth%>" maxlength="255" /></span>
+			<span class="value"><input type="text" name="s_homepage" value="<%=Request("s_homepage")%>" maxlength="255" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客IP地址：</span>
-			<span class="value"><input type="text" name="s_ipaddr" value="<%=request("s_ipaddr")%>" size="<%=SearchTextWidth%>" maxlength="15" /></span>
+			<span class="label">访客IPv4地址：</span>
+			<span class="value"><input type="text" name="s_ipv4addr" value="<%=Request("s_ipv4addr")%>" maxlength="15" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客原IP地址：</span>
-			<span class="value"><input type="text" name="s_originalip" value="<%=request("s_originalip")%>" size="<%=SearchTextWidth%>" maxlength="15" /></span>
+			<span class="label">访客原IPv4地址：</span>
+			<span class="value"><input type="text" name="s_originalipv4" value="<%=Request("s_originalipv4")%>" maxlength="15" /></span>
+		</div>
+		<div class="field">
+			<span class="label">访客IPv6地址：</span>
+			<span class="value"><input type="text" name="s_ipv6addr" value="<%=Request("s_ipv6addr")%>" maxlength="15" /></span>
+		</div>
+		<div class="field">
+			<span class="label">访客原IPv6地址：</span>
+			<span class="value"><input type="text" name="s_originalipv6" value="<%=Request("s_originalipv6")%>" maxlength="15" /></span>
 		</div>
 		<div class="field">
 			<span class="label">版主回复内容：</span>
-			<span class="value"><input type="text" name="s_reply" value="<%=request("s_reply")%>" size="<%=SearchTextWidth%>" /></span>
+			<span class="value"><input type="text" name="s_reply" value="<%=request("s_reply")%>" /></span>
 		</div>
 		<div class="command"><input type="submit" value="搜索留言" name="searchsubmit" /></div>
 		</form>
@@ -176,18 +194,20 @@ sql_condition=sql_websearch_condition_init & sql_condition
 
 	<%RPage="web_search.asp"%><!-- #include file="func_web_search.inc" -->
 	
-	<input type="hidden" name="s_adminname" value="<%=request("s_adminname")%>" />
-	<input type="hidden" name="s_name" value="<%=request("s_name")%>" />
-	<input type="hidden" name="s_title" value="<%=request("s_title")%>" />
-	<input type="hidden" name="s_article" value="<%=request("s_article")%>" />
-	<input type="hidden" name="s_email" value="<%=request("s_email")%>" />
-	<input type="hidden" name="s_qqid" value="<%=request("s_qqid")%>" />
-	<input type="hidden" name="s_msnid" value="<%=request("s_msnid")%>" />
-	<input type="hidden" name="s_homepage" value="<%=request("s_homepage")%>" />
-	<input type="hidden" name="s_ipaddr" value="<%=request("s_ipaddr")%>" />
-	<input type="hidden" name="s_originalip" value="<%=request("s_originalip")%>" />
-	<input type="hidden" name="s_reply" value="<%=request("s_reply")%>" />
-	<input type="hidden" name="page" value="<%=request("page")%>" />
+	<input type="hidden" name="s_adminname" value="<%=Request("s_adminname")%>" />
+	<input type="hidden" name="s_name" value="<%=Request("s_name")%>" />
+	<input type="hidden" name="s_title" value="<%=Request("s_title")%>" />
+	<input type="hidden" name="s_article" value="<%=Request("s_article")%>" />
+	<input type="hidden" name="s_email" value="<%=Request("s_email")%>" />
+	<input type="hidden" name="s_qqid" value="<%=Request("s_qqid")%>" />
+	<input type="hidden" name="s_msnid" value="<%=Request("s_msnid")%>" />
+	<input type="hidden" name="s_homepage" value="<%=Request("s_homepage")%>" />
+	<input type="hidden" name="s_ipv4addr" value="<%=Request("s_ipv4addr")%>" />
+	<input type="hidden" name="s_originalipv4" value="<%=Request("s_originalipv4")%>" />
+	<input type="hidden" name="s_ipv6addr" value="<%=Request("s_ipv6addr")%>" />
+	<input type="hidden" name="s_originalipv6" value="<%=Request("s_originalipv6")%>" />
+	<input type="hidden" name="s_reply" value="<%=Request("s_reply")%>" />
+	<input type="hidden" name="page" value="<%=Request("page")%>" />
 
 	<%
 	if ItemsCount=0 then
