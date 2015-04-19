@@ -301,6 +301,7 @@ else
 		rs1("advpagelistcount")=tadvpagelistcount
 		rs1("ubbflag")=tubbflag
 		rs1("tablealign")=ttablealign
+		rs1("pagecontrol")=tpagecontrol
 		rs1("delconfirm")=tdelconfirm
 		rs1("styleid")=tstyleid
 	end if
