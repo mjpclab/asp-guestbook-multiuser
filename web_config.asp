@@ -252,6 +252,11 @@ CreateConn cn,dbtype
 					<span class="label">留言本对齐方式：</span>
 					<span class="value"><input type="radio" name="tablealign" value="left" id="align1"<%=cked(talign<>"center" and talign<>"right")%> /><label for="align1">左对齐</label>　　<input type="radio" name="tablealign" value="center" id="align2"<%=cked(talign="center")%> /><label for="align2">居中</label>　　<input type="radio" name="tablealign" value="right" id="align3"<%=cked(talign="right")%> /><label for="align3">右对齐</label></span>
 				</div>
+				<%tpagecontrol=rs("pagecontrol")%>
+				<div class="field">
+					<span class="label">留言本边框线：</span>
+					<span class="value"><input type="radio" name="showborder" value="1" id="showborder1"<%=cked(clng(tpagecontrol and 1)<>0)%> /><label for="showborder1">显示</label>　　<input type="radio" name="showborder" value="0" id="showborder2"<%=cked(clng(tpagecontrol and 1)=0)%> /><label for="showborder2">隐藏</label></span>
+				</div>
 				<%tdelconfirm=rs("delconfirm")%>
 				<div class="field">
 					<span class="label">删除留言时提示：</span>

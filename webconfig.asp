@@ -10,46 +10,14 @@ CreateConn lcn,dbtype
 lrs.Open Replace(sql_loadconfig_config,"{0}",wm_id),lcn,,,1
 
 status=lrs("status")
-if clng(status and 1)<>0 then	'ÁôÑÔ±¾¿ªÆô
-	StatusOpen=true
-else
-	StatusOpen=false
-end if
-if clng(status and 2)<>0 then	'ÁôÑÔÈ¨ÏŞ¿ªÆô
-	StatusWrite=true
-else
-	StatusWrite=false
-end if
-if clng(status and 4)<>0 then	'ËÑË÷È¨ÏŞ¿ªÆô
-	StatusSearch=true
-else
-	StatusSearch=false
-end if
-if clng(status and 8)<>0 then	'ÉêÇëÈ¨ÏŞ¿ªÆô
-	StatusReg=true
-else
-	StatusReg=false
-end if
-if clng(status and 16)<>0 then	'ÕÒ»ØÃÜÂëÈ¨ÏŞ¿ªÆô
-	StatusFindkey=true
-else
-	StatusFindkey=false
-end if
-if clng(status and 32)<>0 then	'ÓÃ»§µÇÂ¼È¨ÏŞ¿ªÆô
-	StatusLogin=true
-else
-	StatusLogin=false
-end if
-if clng(status and 64)<>0 then	'×ÔÉ¾ÕÊºÅ¹¦ÄÜ¿ªÆô
-	StatusUnreg=true
-else
-	StatusUnreg=false
-end if
-if clng(status and 256)<>0 then	'¿ªÆôÍ³¼Æ
-	StatusStatistics=true
-else
-	StatusStatistics=false
-end if
+StatusOpen=CBool(status and 1)	'ÁôÑÔ±¾¿ªÆô
+StatusWrite=CBool(status and 2)	'ÁôÑÔÈ¨ÏŞ¿ªÆô
+StatusSearch=CBool(status and 4)	'ËÑË÷È¨ÏŞ¿ªÆô
+StatusReg=CBool(status and 8)	'ÉêÇëÈ¨ÏŞ¿ªÆô
+StatusFindkey=CBool(status and 16)	'ÕÒ»ØÃÜÂëÈ¨ÏŞ¿ªÆô
+StatusLogin=CBool(status and 32)	'ÓÃ»§µÇÂ¼È¨ÏŞ¿ªÆô
+StatusUnreg=CBool(status and 64)	'×ÔÉ¾ÕÊºÅ¹¦ÄÜ¿ªÆô
+StatusStatistics=CBool(status and 256)  	'Í³¼Æ¿ªÆô
 
 web_IPConStatus=lrs("ipconstatus")	'IPÆÁ±Î²ßÂÔ£¬µÍ4Î»ÓÃÓÚIPv4£¬¸ß4Î»ÓÃÓÚIPv6
 web_IPv4ConStatus=web_IPConStatus mod 16
@@ -77,14 +45,14 @@ AdminShowOriginalIP=lrs("adminshoworiginalip")	'Îª¹ÜÀíÔ±ÏÔÊ¾Ô­Ê¼IPÎ»Êı£¬µÍ4Î»ÓÃÓ
 AdminShowOriginalIPv4=AdminShowOriginalIP mod 16
 AdminShowOriginalIPv6=AdminShowOriginalIP \ 16
 
-VcodeCount=clng(lrs("vcodecount") and &H0F)		'µÇÂ¼ÑéÖ¤Âë³¤¶È
-WriteVcodeCount=clng(lrs("vcodecount") and &HF0) \ &H10		'ÁôÑÔÑéÖ¤Âë³¤¶È
+VcodeCount=lrs("vcodecount") mod 16		'µÇÂ¼ÑéÖ¤Âë³¤¶È
+WriteVcodeCount=lrs("vcodecount") \ 16	'ÁôÑÔÑéÖ¤Âë³¤¶È
 
 '========ÓÊ¼şÉèÖÃ========
 MailFlag=lrs("mailflag")
-if clng(Mailflag and 1)<>0 then MailNewInform=true else MailNewInform=false		'ĞÂÁôÑÔÍ¨Öª
-if clng(Mailflag and 2)<>0 then MailReplyInform=true else MailReplyInform=false		'»Ø¸´Í¨Öª
-if clng(Mailflag and 4)<>0 then MailComponent="cdo" else MailComponent="jmail"
+MailNewInform=CBool(Mailflag and 1)		'ĞÂÁôÑÔÍ¨Öª
+MailReplyInform=CBool(Mailflag and 2)		'»Ø¸´Í¨Öª
+if CBool(Mailflag and 4) then MailComponent="cdo" else MailComponent="jmail"
 
 '========½çÃæÉèÖÃ========
 CssFontFamily=lrs("cssfontfamily")
@@ -92,31 +60,31 @@ CssFontSize=lrs("cssfontsize")
 CssLineHeight=lrs("csslineheight")
 
 VisualFlag=lrs("visualflag")
-if clng(VisualFlag and 1)<>0 then ReplyInWord=true else ReplyInWord=false					'»Ø¸´ÄÚÇ¶ÓÚÁôÑÔ
-if clng(VisualFlag and 2)<>0 then ShowUbbTool=true else ShowUbbTool=false					'ÏÔÊ¾UBB¹¤¾ßÀ¸
-if clng(VisualFlag and 4)<>0 then ShowTopPageList=true else ShowTopPageList=false			'ÉÏ·½ÏÔÊ¾·ÖÒ³
-if clng(VisualFlag and 8)<>0 then ShowBottomPageList=true else ShowBottomPageList=false		'ÏÂ·½ÏÔÊ¾·ÖÒ³
+ReplyInWord=CBool(VisualFlag and 1)					'»Ø¸´ÄÚÇ¶ÓÚÁôÑÔ
+ShowUbbTool=CBool(VisualFlag and 2)					'ÏÔÊ¾UBB¹¤¾ßÀ¸
+ShowTopPageList=CBool(VisualFlag and 4)			'ÉÏ·½ÏÔÊ¾·ÖÒ³
+ShowBottomPageList=CBool(VisualFlag and 8)		'ÏÂ·½ÏÔÊ¾·ÖÒ³
 if ShowTopPageList=false and ShowBottomPageList=false then ShowBottomPageList=true
-'if clng(VisualFlag and 16)<>0 then ShowTopSearchBox=true else ShowTopSearchBox=false		'ÉÏ·½ÏÔÊ¾ËÑË÷
-'if clng(VisualFlag and 32)<>0 then ShowBottomSearchBox=true else ShowBottomSearchBox=false	'ÏÂ·½ÏÔÊ¾ËÑË÷
+'ShowTopSearchBox=CBool(VisualFlag and 16)		'ÉÏ·½ÏÔÊ¾ËÑË÷
+'ShowBottomSearchBox=CBool(VisualFlag and 32)	'ÏÂ·½ÏÔÊ¾ËÑË÷
 'if ShowTopSearchBox=false and ShowBottomSearchBox=false then ShowBottomSearchBox=true
-if clng(VisualFlag and 64)<>0 then ShowAdvPageList=true else ShowAdvPageList=false			'Çø¶ÎÊ½·ÖÒ³
-if clng(VisualFlag and 1024)<>0 then DisplayMode="forum" else DisplayMode="book"			'Ä¬ÈÏ°æÃæÄ£Ê½
+ShowAdvPageList=CBool(VisualFlag and 64)			'Çø¶ÎÊ½·ÖÒ³
+if CBool(VisualFlag and 1024) then DisplayMode="forum" else DisplayMode="book"			'Ä¬ÈÏ°æÃæÄ£Ê½
 
 AdvPageListCount=lrs("advpagelistcount")	'Çø¶ÎÊ½·ÖÒ³ÏîÊı
 
 UbbFlag=lrs("ubbflag")
-if clng(UbbFlag and 1)<>0 then UbbFlag_image=true else UbbFlag_image=false
-if clng(UbbFlag and 2)<>0 then UbbFlag_url=true else UbbFlag_url=false
-if clng(UbbFlag and 4)<>0 then UbbFlag_autourl=true else UbbFlag_autourl=false
-if clng(UbbFlag and 8)<>0 then UbbFlag_player=true else UbbFlag_player=false
-if clng(UbbFlag and 16)<>0 then UbbFlag_paragraph=true else UbbFlag_paragraph=false
-if clng(UbbFlag and 32)<>0 then UbbFlag_fontstyle=true else UbbFlag_fontstyle=false
-if clng(UbbFlag and 64)<>0 then UbbFlag_fontcolor=true else UbbFlag_fontcolor=false
-if clng(UbbFlag and 128)<>0 then UbbFlag_alignment=true else UbbFlag_alignment=false
-'if clng(UbbFlag and 256)<>0 then UbbFlag_movement=true else UbbFlag_movement=false
-'if clng(UbbFlag and 512)<>0 then UbbFlag_cssfilter=true else UbbFlag_cssfilter=false
-if clng(UbbFlag and 1024)<>0 then UbbFlag_face=true else UbbFlag_face=false
+UbbFlag_image=CBool(UbbFlag and 1)
+UbbFlag_url=CBool(UbbFlag and 2)
+UbbFlag_autourl=CBool(UbbFlag and 4)
+UbbFlag_player=CBool(UbbFlag and 8)
+UbbFlag_paragraph=CBool(UbbFlag and 16)
+UbbFlag_fontstyle=CBool(UbbFlag and 32)
+UbbFlag_fontcolor=CBool(UbbFlag and 64)
+UbbFlag_alignment=CBool(UbbFlag and 128)
+'UbbFlag_movement=CBool(UbbFlag and 256)
+'UbbFlag_cssfilter=CBool(UbbFlag and 512)
+UbbFlag_face=CBool(UbbFlag and 1024)
 web_UbbFlag_image=UbbFlag_image
 web_UbbFlag_url=UbbFlag_url
 web_UbbFlag_autourl=UbbFlag_autourl
@@ -145,19 +113,16 @@ ReplyTextHeight=lrs("replytextheight")				'¹«¸æ±à¼­¿ò¸ß¶È
 ItemsPerPage=lrs("itemsperpage")		'Ã¿Ò³ÏÔÊ¾µÄÏîÄ¿Êı
 TitlesPerPage=lrs("titlesperpage")		'Ã¿Ò³ÏÔÊ¾µÄ±êÌâÊı
 
-DelTip=false
-DelReTip=false
-DelSelTip=false
-DelAdvTip=false
-DelDecTip=false
-DelSelDecTip=false
+PageControl=clng(lrs("pagecontrol"))
+ShowBorder=CBool(PageControl and 1)			'ÏÔÊ¾±ß¿ò
+
 DelConfirm=lrs("delconfirm")
-if clng(DelConfirm and 1)<>0 then DelTip=true
-if clng(DelConfirm and 2)<>0 then DelReTip=true
-if clng(DelConfirm and 4)<>0 then DelSelTip=true
-if clng(DelConfirm and 8)<>0 then DelAdvTip=true
-if clng(DelConfirm and 16)<>0 then DelDecTip=true
-if clng(DelConfirm and 32)<>0 then DelSelDecTip=true
+DelTip=CBool(DelConfirm and 1)
+DelReTip=CBool(DelConfirm and 2)
+DelSelTip=CBool(DelConfirm and 4)
+DelAdvTip=CBool(DelConfirm and 8)
+DelDecTip=CBool(DelConfirm and 16)
+DelSelDecTip=CBool(DelConfirm and 32)
 
 '==========================
 dim styleid
@@ -177,11 +142,13 @@ lrs.Open Replace(sql_loadconfig_floodconfig,"{0}",wm_id),lcn,,,1
 flood_minwait=abs(lrs.Fields("minwait"))
 flood_searchrange=abs(lrs.Fields("searchrange"))
 flood_searchflag=lrs.Fields("searchflag")
-if clng(flood_searchflag and 1)<>0 then flood_sfnewword=true else flood_sfnewword=false
-if clng(flood_searchflag and 2)<>0 then flood_sfnewreply=true else flood_sfnewreply=false
-if clng(flood_searchflag and 16)<>0 then flood_include=true else flood_include=false
-if clng(flood_searchflag and 32)<>0 then flood_equal=true else flood_equal=false
-if clng(flood_searchflag and 256)<>0 then flood_sititle=true else flood_sititle=false
-if clng(flood_searchflag and 512)<>0 then flood_sicontent=true else flood_sicontent=false
+flood_sfnewword=CBool(flood_searchflag and 1)
+flood_sfnewreply=CBool(flood_searchflag and 2)
+flood_include=CBool(flood_searchflag and 16)
+flood_equal=CBool(flood_searchflag and 32)
+flood_sititle=CBool(flood_searchflag and 256)
+flood_sicontent=CBool(flood_searchflag and 512)
+
+
 lrs.Close : lcn.Close : set lrs=nothing : set lcn=nothing
 %>

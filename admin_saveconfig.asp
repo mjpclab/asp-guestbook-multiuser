@@ -313,8 +313,8 @@ else
 
 		ttablealign=Request.Form("tablealign")
 		if ttablealign<>"left" and ttablealign<>"center" and ttablealign<>"right" then ttablealign="left"
-				
-		tpagecontrol=0			
+
+		tpagecontrol=0
 		if Request.Form("showborder")="1" then tpagecontrol=tpagecontrol+1
 		if Request.Form("showtitle")="1" then tpagecontrol=tpagecontrol+2
 		if Request.Form("showcontext")="1" then tpagecontrol=tpagecontrol+4

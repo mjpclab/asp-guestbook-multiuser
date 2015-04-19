@@ -247,7 +247,10 @@ else
 
 		ttablealign=Request.Form("tablealign")
 		if ttablealign<>"left" and ttablealign<>"center" and ttablealign<>"right" then ttablealign="left"
-		
+
+		tpagecontrol=0
+		if Request.Form("showborder")="1" then tpagecontrol=tpagecontrol+1
+
 		tdelconfirm=0
 		if Request.Form("deltip")="1" then tdelconfirm=tdelconfirm+1
 		if Request.Form("delretip")="1" then tdelconfirm=tdelconfirm+2
