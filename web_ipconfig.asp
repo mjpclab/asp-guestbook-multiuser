@@ -39,7 +39,7 @@ CreateConn cn,dbtype
 						<td style="width:50%; vertical-align:top;">
 							<p class="row"><input type="radio" name="ipv4constatus" value="1" id="ipv4constatus-1"<%=cked(web_IPv4ConStatus=1)%> /><label for="ipv4constatus-1">只屏蔽以下IP段，其余放行</label></p>
 							<p class="row">添加新IP段,格式:"起始IP-终止IP"</p>
-							<p class="row"><textarea name="newipv4status1" rows="6" style="width:100%"></textarea></p>
+							<p class="row"><textarea name="newipv4status1" rows="6"></textarea></p>
 							<p class="row">选择要删除的IP段：</p>
 							<%rs.Open Replace(sql_adminipv4config_status1,"{0}",wm_id),cn,,,1
 							if rs.EOF=false then
@@ -59,7 +59,7 @@ CreateConn cn,dbtype
 						<td style="width:50%; vertical-align:top;">
 							<p class="row"><input type="radio" name="ipv4constatus" value="2" id="ipv4constatus-2"<%=cked(web_IPv4ConStatus=2)%> /><label for="ipv4constatus-2">只允许以下IP段，其余均不放行</label></p>
 							<p class="row">添加新IP段,格式:"起始IP-终止IP"</p>
-							<p class="row"><textarea name="newipv4status2" rows="6" style="width:100%"></textarea></p>
+							<p class="row"><textarea name="newipv4status2" rows="6"></textarea></p>
 							<p class="row">选择要删除的IP段：</p>
 							<%rs.Open Replace(sql_adminipv4config_status2,"{0}",wm_id),cn,,,1
 							if rs.EOF=false then
@@ -89,7 +89,7 @@ CreateConn cn,dbtype
 						<td style="width:50%; vertical-align:top;">
 							<p class="row"><input type="radio" name="ipv6constatus" value="1" id="ipv6constatus-1"<%=cked(web_IPv6ConStatus=1)%> /><label for="ipv6constatus-1">只屏蔽以下IP段，其余放行</label></p>
 							<p class="row">添加新IP段,格式:"起始IP-终止IP"</p>
-							<p class="row"><textarea name="newipv6status1" rows="6" style="width:100%"></textarea></p>
+							<p class="row"><textarea name="newipv6status1" rows="6"></textarea></p>
 							<p class="row">选择要删除的IP段：</p>
 							<%rs.Open Replace(sql_adminipv6config_status1,"{0}",wm_id),cn,,,1
 							if rs.EOF=false then
@@ -109,7 +109,7 @@ CreateConn cn,dbtype
 						<td style="width:50%; vertical-align:top;">
 							<p class="row"><input type="radio" name="ipv6constatus" value="2" id="ipv6constatus-2"<%=cked(web_IPv6ConStatus=2)%> /><label for="ipv6constatus-2">只允许以下IP段，其余均不放行</label></p>
 							<p class="row">添加新IP段,格式:"起始IP-终止IP"</p>
-							<p class="row"><textarea name="newipv6status2" rows="6" style="width:100%"></textarea></p>
+							<p class="row"><textarea name="newipv6status2" rows="6"></textarea></p>
 							<p class="row">选择要删除的IP段：</p>
 							<%rs.Open Replace(sql_adminipv6config_status2,"{0}",wm_id),cn,,,1
 							if rs.EOF=false then

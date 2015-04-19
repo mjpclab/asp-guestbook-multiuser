@@ -113,7 +113,7 @@ sql_condition=sql_websearch_condition_init & sql_condition
 	<!-- #include file="web_admintitle.inc" -->
 	<!-- #include file="web_admincontrols.inc" -->
 
-<div class="region region-search-message">
+<div class="region region-longtext region-search-message">
 	<h3 class="title">ËÑË÷ÁôÑÔ</h3>
 	<div class="content">
 		<form method="post" action="web_search.asp" name="form1">

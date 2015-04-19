@@ -47,7 +47,7 @@ end if
 	<%if ShowTitle=true then show_book_title 3,"管理"%>
 	<!-- #include file="admincontrols.inc" -->
 
-	<div class="region form-region">
+	<div class="region form-region region-longtext">
 		<h3 class="title">修改密码</h3>
 		<div class="content">
 			<form method="post" action="admin_savepass.asp" onsubmit="return checkpass(this)" name="form4">
@@ -78,7 +78,7 @@ end if
 	rs.Open Replace(sql_adminchpass_question,"{0}",adminid),cn,,,1
 	%>
 
-	<div class="region form-region">
+	<div class="region form-region region-longtext">
 		<h3 class="title">修改找回密码问题/答案</h3>
 		<div class="content">
 			<form method="post" action="admin_saveqa.asp" onsubmit="return checkqa(this)" name="form5">

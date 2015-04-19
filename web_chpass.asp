@@ -11,6 +11,7 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 <head>
 	<!-- #include file="inc_metatag.asp" -->
 	<title><%=web_BookName%> Webmaster管理中心 修改管理员密码</title>
+	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function checkpass(cobject)
@@ -33,7 +34,7 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 	<!-- #include file="web_admintitle.inc" -->
 	<!-- #include file="web_admincontrols.inc" -->
 
-	<div class="region form-region">
+	<div class="region form-region region-longtext">
 		<h3 class="title">修改密码</h3>
 		<div class="content">
 			<form method="post" action="web_savepass.asp" onsubmit="return checkpass(this)" name="form4">
