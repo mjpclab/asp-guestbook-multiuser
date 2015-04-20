@@ -40,7 +40,7 @@ set cn=nothing
 
 	<!-- #include file="web_admintitle.inc" -->
 
-	<div class="region form-region">
+	<div class="region form-region region-longtext">
 		<h3 class="title">重设用户密码</h3>
 		<div class="content">
 			<form method="post" action="web_saveuserpass.asp" onsubmit="return checkpass(this)" name="form4">

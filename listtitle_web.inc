@@ -34,7 +34,7 @@ while rs.eof=false
 		</td>
 		<td class="name"><%=rs.Fields("name")%></td>
 		<td class="date"><%=rs.Fields("logdate")%></td>
-		<td class="user"><%=rs.Fields("adminname")%></td>
+		<td class="user"><a href="web_userinfo.asp?user=<%=rs.Fields("adminname")%>" target="_blank"><%=rs.Fields("adminname")%></a></td>
 	</tr>
 	<%rs.MoveNext
 wend

@@ -532,7 +532,11 @@ end if
 sql_websearch_admininfo=			"SELECT name,faceid,faceurl,email,qqid,msnid,homepage FROM " &table_supervisor& " WHERE adminid={0}"
 
 'web_showword
-sql_web_showword="SELECT * FROM " &table_main& " LEFT JOIN " &table_reply& " ON " &table_main& ".id=" &table_reply& ".articleid WHERE id="
+if IsAccess then
+	sql_web_showword="SELECT supervisor.adminname,main.*,reply.* FROM ((" &table_supervisor& " supervisor INNER JOIN " &table_main& " main ON supervisor.adminid=main.adminid) LEFT JOIN " &table_reply& " reply ON main.id=reply.articleid) WHERE id="
+elseif IsSqlServer then
+	sql_web_showword="SELECT supervisor.adminname,main.*,reply.* FROM " &table_supervisor& " supervisor INNER JOIN " &table_main& " main ON supervisor.adminid=main.adminid LEFT JOIN " &table_reply& " reply ON main.id=reply.articleid WHERE id="
+end if
 
 'web_searchdec
 sql_websearchdec_words_count="SELECT COUNT(adminname) FROM " &table_supervisor& " WHERE adminname LIKE '%{0}%' AND [declare] LIKE '%{1}%' AND [declare] LIKE '_%'"
