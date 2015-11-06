@@ -70,7 +70,7 @@ sys_bul_flag=32
 		<%if VcodeCount>0 then%>
 		<div class="field">
 			<span class="label">验证码：</span>
-			<span class="value"><input type="text" name="vcode" size="10" /><img class="captcha" src="web_show_vcode.asp"/></span>
+			<span class="value"><input type="text" name="vcode" size="10" /><img id="captcha" class="captcha" src="web_show_vcode.asp?t=0"/></span>
 		</div>
 		<%end if%>
 		<div class="command"><input type="submit" value="提交" />　　<input type="reset" value="重写" /></div>
@@ -80,7 +80,9 @@ sys_bul_flag=32
 </div>
 
 </div>
-
 <!-- #include file="bottom.asp" -->
+<script type="text/javascript">
+	<!-- #include file="js/refresh-captcha.js" -->
+</script>
 </body>
 </html>

@@ -157,7 +157,7 @@ end function
 					<%if WriteVcodeCount>0 then%>
 					<div class="field">
 						<div class="label">бщжЄТы<span class="required">*</span></div>
-						<div class="value"><input type="text" name="ivcode" autocomplete="off"/><img class="captcha" src="show_vcode.asp?user=<%=ruser%>"/></div>
+						<div class="value"><input type="text" name="ivcode" autocomplete="off"/><img id="captcha" class="captcha" src="show_vcode.asp?user=<%=ruser%>&t=0"/></div>
 					</div>
 					<%end if%>
 					<div class="field">
@@ -248,8 +248,10 @@ end function
 		</div>
 	</div>
 </div>
-
 <!-- #include file="bottom.asp" -->
+<script type="text/javascript">
+	<!-- #include file="js/refresh-captcha.js" -->
+</script>
 <%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=ruser%>" defer="defer" async="async"></script><%end if%>
 </body>
 </html>
