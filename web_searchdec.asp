@@ -76,21 +76,22 @@ CreateConn cn,dbtype
 <input type="hidden" name="page" value="<%if isnumeric(request("page")) and request("page")<>"" then response.write request("page")%>" />
 <div class="guest-functions">
 	<div class="main">
-		<a href="javascript:for(var i=0;i<=form7.elements.length-1;i++)if(form7.elements[i].name=='users' && form7.elements[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.length-1)alert('请先选定要删除的公告。');"><img src="image/icon_mdel.gif" style="border-width:0px;" />删除选定公告</a>
+		<a href="javascript:for(var i=0;i<=form7.elements.users.length-1;i++)if(form7.elements.users[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.users.length-1)alert('请先选定要删除的公告。');"><img src="image/icon_mdel.gif" style="border-width:0px;" />删除选定公告</a>
 	</div>
 </div>
 
 
 <%
-dim pub_flag,pub
+dim rsuser,pub_flag,pub
 if ItemsCount=0 then
 	Response.Write "<br/><br/><div class=""centertext"">没有找到符合条件的公告。</div><br/><br/>"
 else
 	while rs.eof=false
+	rsuser=rs("adminname")
 %>
 
 	<div class="region region-bulletin">
-		<h3 class="title">所属用户：<a href="web_userinfo.asp?user=<%=rs("adminname")%>" target="_blank"><%=rs("adminname")%></a></h3>
+		<h3 class="title">所属用户：<a href="web_userinfo.asp?user=<%=rsuser%>" target="_blank"><%=rsuser%></a></h3>
 		<div class="content">
 			<%
 			pub_flag=rs("declareflag")
@@ -106,8 +107,8 @@ else
 			%>
 		</div>
 		<div class="admin-tools">
-			<input type="checkbox" name="users" id="c<%=i%>" value="<%=rs("adminname")%>"><label for="c<%=i%>">(选定)</label>
-			<a href="web_deldec.asp?user=<%=rs("adminname")%><%if isnumeric(request("page")) and request("page")<>"" then response.write "&page=" & request("page")%>&adminname=<%=server.URLEncode(request("adminname"))%>&searchtxt=<%=server.URLEncode(request("searchtxt"))%>" title="删除公告"<%if DelDecTip=true then Response.Write " onclick=""return confirm('确实要删除公告吗？');"""%>><img border="0" src="image/icon_del.gif" class="imgicon" />[删除公告]</a>
+			<input type="checkbox" name="users" id="c<%=rsuser%>" value="<%=rsuser%>"><label for="c<%=rsuser%>">(选定)</label>
+			<a href="web_deldec.asp?user=<%=rsuser%><%if isnumeric(request("page")) and request("page")<>"" then response.write "&page=" & request("page")%>&adminname=<%=server.URLEncode(request("adminname"))%>&searchtxt=<%=server.URLEncode(request("searchtxt"))%>" title="删除公告"<%if DelDecTip=true then Response.Write " onclick=""return confirm('确实要删除公告吗？');"""%>><img border="0" src="image/icon_del.gif" class="imgicon" />[删除公告]</a>
 		</div>
 	</div>
 <%
