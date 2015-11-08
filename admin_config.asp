@@ -167,11 +167,11 @@ checkuser cn,rs,false
 				<%MailFlag=rs("mailflag")%>
 				<h4>邮件通知（请勿使用重要邮箱以防泄密）</h4>
 				<div class="field">
-					<span class="label">新留言到达通知：</span>
+					<span class="label">新留言到达通知版主：</span>
 					<span class="value"><input type="checkbox" value="1" name="mailnewinform" id="mailnewinform"<%=cked(clng(web_MailFlag and MailFlag and 1)<>0)%><%=dised(web_MailNewInform=false)%> /><label for="mailnewinform"<%=dised(web_MailNewInform=false)%>>启用</label></span>
 				</div>
 				<div class="field">
-					<span class="label">版主回复通知选项：</span>
+					<span class="label">版主回复通知留言人：</span>
 					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(clng(web_MailFlag and MailFlag and 2)<>0)%><%=dised(web_MailReplyInform=false)%> /><label for="mailreplyinform"<%=dised(web_MailReplyInform=false)%>>开启</label></span>
 				</div>
 				<div class="field">

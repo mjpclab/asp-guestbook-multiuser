@@ -144,11 +144,11 @@ CreateConn cn,dbtype
 				<%MailFlag=rs("mailflag")%>
 				<h4>邮件通知（设置是否对用户开放）：</h4>
 				<div class="field">
-					<span class="label">新留言到达通知：</span>
+					<span class="label">新留言到达通知版主：</span>
 					<span class="value"><input type="checkbox" value="1" name="mailnewinform" id="mailnewinform"<%=cked(clng(MailFlag and 1)<>0)%> /><label for="mailnewinform">启用</label></span>
 				</div>
 				<div class="field">
-					<span class="label">版主回复通知选项：</span>
+					<span class="label">版主回复通知留言人：</span>
 					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(clng(MailFlag and 2)<>0)%> /><label for="mailreplyinform">开启</label></span>
 				</div>
 				<div class="field">
