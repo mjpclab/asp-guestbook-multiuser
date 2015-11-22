@@ -98,9 +98,7 @@ end function
 		
 		if(xmlHttp && divPreview && iContent)
 		{
-			clearChildren(divPreview);
-			divPreview.style['textAlign']='center';
-			divPreview.appendChild(document.createTextNode('正在生成预览，请稍候……'));
+			setPureText(divPreview, '正在生成预览，请稍候……');
 			
 			xmlHttp.abort();
 			xmlHttp.onreadystatechange=previewArrived;
@@ -117,7 +115,6 @@ end function
 			var divPreview=document.getElementById('divPreview');
 			if(xmlHttp && divPreview)
 			{
-				divPreview.style['textAlign']='';
 				divPreview.innerHTML=xmlHttp.responseText;
 				xmlHttp.abort();
 			}
