@@ -17,7 +17,7 @@ function trim(s)
 
 function xmlHttpHandler()
 {
-	if(xmlHttp && xmlHttp.readyState==4 && xmlHttp.status==200)
+	if(xmlHttp && xmlHttp.readyState===4 && xmlHttp.status===200)
 	{
 		xmlHttp.abort();
 		xmlHttp=null;
