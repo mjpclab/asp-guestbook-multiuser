@@ -36,7 +36,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 		else return true;
 	}
 	
-	<!-- #include file="xmlhttp.inc" -->
+	<!-- #include file="js/xmlhttp.js" -->
 	function checkuser(frm,showChecking)
 	{
 		/*

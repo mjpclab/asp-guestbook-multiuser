@@ -1,7 +1,7 @@
 <%Response.ContentType="application/x-javascript"%>
 <%if session("gotclientuser")="" then session("gotclientuser")="|"%>
 <%if instr(session("gotclientuser"),"|" &ruser& "|")=0 then%>
-<!-- #include file="xmlhttp.inc" -->
+<!-- #include file="js/xmlhttp.js" -->
 
 function trim(s)
 {
