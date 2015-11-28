@@ -62,7 +62,7 @@ end if
 			<form method="post" action="admin_savebulletin.asp" name="form6" onsubmit="form6.submit1.disabled=true;">
 				<input type="hidden" name="user" value="<%=ruser%>" />
 				公告内容：<br/><textarea name="abulletin" id="abulletin" onkeydown="if(!this.modified)this.modified=true; var e=event?event:arguments[0]; if(e && e.ctrlKey && e.keyCode==13 && this.form.submit1)this.form.submit1.click();" rows="<%=ReplyTextHeight%>"><%=tbul%></textarea>
-				<!-- #include file="ubbtoolbar.inc" -->
+				<!-- #include file="include/ubbtoolbar.inc" -->
 				<%if web_AdminUBBSupport then ShowUbbToolBar(2)%>
 				<p>
 				<%if web_AdminHTMLSupport=true then%><input type="checkbox" name="html2" id="html2" value="1"<%if cint(tflag and 1)<>0 then Response.Write " checked=""checked"""%> /><label for="html2">支持HTML标记</label><br/><%end if%>
