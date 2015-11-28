@@ -20,4 +20,4 @@ checkuser cn,rs,false
 cn.Execute Replace(Replace(Replace(sql_adminbring2top,"{0}",now()),"{1}",Request.QueryString("id")),"{2}",adminid),,1
 cn.close : set rs=nothing : set cn=nothing
 %>
-<!-- #include file="admin_traceback.inc" -->
+<!-- #include file="include/admin_traceback.inc" -->

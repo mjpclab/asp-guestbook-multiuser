@@ -2,10 +2,10 @@
 <!-- #include file="web_admin_verify.asp" -->
 <%Response.Expires=-1%>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 高级删除</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 
@@ -27,8 +27,8 @@
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="web_admintitle.inc" -->
-	<!-- #include file="web_admincontrols.inc" -->
+	<!-- #include file="include/web_admin_title.inc" -->
+	<!-- #include file="include/web_admin_mainmenu.inc" -->
 
 	<div class="region form-region">
 		<h3 class="title">高级删除</h3>
@@ -147,6 +147,6 @@
 
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

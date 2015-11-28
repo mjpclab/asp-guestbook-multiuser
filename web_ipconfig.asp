@@ -8,10 +8,10 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 IP屏蔽策略</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
@@ -20,8 +20,8 @@ CreateConn cn,dbtype
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="web_admintitle.inc" -->
-	<!-- #include file="web_admincontrols.inc" -->
+	<!-- #include file="include/web_admin_title.inc" -->
+	<!-- #include file="include/web_admin_mainmenu.inc" -->
 
 <div class="region form-region">
 	<h3 class="title">IP屏蔽策略</h3>
@@ -156,6 +156,6 @@ CreateConn cn,dbtype
 <%cn.Close : set rs=nothing : set cn=nothing%>
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

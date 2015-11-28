@@ -16,10 +16,10 @@ checkuser cn,rs,false
 
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=HomeName%> 留言本 留言本参数</title>
 	<!-- #include file="inc_admin_stylesheet.asp" -->
 </head>
@@ -29,7 +29,7 @@ checkuser cn,rs,false
 <div id="outerborder" class="outerborder">
 
 	<%if ShowTitle=true then show_book_title 3,"管理"%>
-	<!-- #include file="admincontrols.inc" -->
+	<!-- #include file="include/admin_mainmenu.inc" -->
 	
 	<%rs.Open Replace(sql_adminconfig_config,"{0}",adminid),cn,,,1%>
 
@@ -562,6 +562,6 @@ function check()
 }
 </script>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

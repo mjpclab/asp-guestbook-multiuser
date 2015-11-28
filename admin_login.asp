@@ -15,10 +15,10 @@ end if
 if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=HomeName%> 留言本 管理员登录</title>
 	<!-- #include file="inc_admin_stylesheet.asp" -->
 	

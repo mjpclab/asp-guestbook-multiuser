@@ -1,7 +1,7 @@
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="inc_web_admin_stylesheet.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
-<!-- #include file="md5.asp" -->
+<!-- #include file="include/md5.asp" -->
 <%
 Response.Expires=-1
 set cn=server.CreateObject("ADODB.Connection")

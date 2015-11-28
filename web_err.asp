@@ -1,10 +1,10 @@
 <!-- #include file="webconfig.asp" -->
 <%Response.Expires=-1%>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> ´íÎó</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
@@ -17,7 +17,7 @@
 	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" class="booktitle">Ê×Ò³</a> &gt;&gt; ´íÎó</div>
 </div>
 
-<!-- #include file="func_web.inc" -->
+<!-- #include file="include/web_guest_func.inc" -->
 
 <%
 dim errmsg
@@ -39,6 +39,6 @@ Response.Write "<br/><br/><p>¡¡¡¡¡ö¡¡" &errmsg& "</p><br/><br/><br/>"
 %>
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

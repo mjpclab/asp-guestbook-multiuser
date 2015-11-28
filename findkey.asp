@@ -10,10 +10,10 @@ elseif StatusFindkey=false then
 end if
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> 找回密码步骤1</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 
@@ -42,10 +42,10 @@ CreateConn cn,dbtype
 dim sys_bul_flag
 sys_bul_flag=32
 %>
-<!-- #include file="sysbulletin.inc" -->
+<!-- #include file="include/sysbulletin.inc" -->
 <%cn.Close : set cn=nothing%>
 
-<!-- #include file="func_web.inc" -->
+<!-- #include file="include/web_guest_func.inc" -->
 
 <div class="region form-region">
 	<h3 class="title">找回密码 步骤1</h3>
@@ -62,6 +62,6 @@ sys_bul_flag=32
 
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

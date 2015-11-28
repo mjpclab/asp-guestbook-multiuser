@@ -1,16 +1,16 @@
 <!-- #include file="webconfig.asp" -->
-<!-- #include file="web_common.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
-
+<!-- #include file="web_common.asp" -->
+<!-- #include file="common2.asp" -->
 <%
 Response.Expires=-1
 Response.AddHeader "cache-control","private"
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 搜索留言</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
@@ -120,8 +120,8 @@ sql_condition=sql_websearch_condition_init & sql_condition
 %>
 
 <div id="outerborder" class="outerborder">
-	<!-- #include file="web_admintitle.inc" -->
-	<!-- #include file="web_admincontrols.inc" -->
+	<!-- #include file="include/web_admin_title.inc" -->
+	<!-- #include file="include/web_admin_mainmenu.inc" -->
 
 <div class="region region-longtext region-search-message">
 	<h3 class="title">搜索留言</h3>
@@ -192,7 +192,7 @@ sql_condition=sql_websearch_condition_init & sql_condition
 	%>
 	<form method="post" action="web_searchmdel.asp" name="form7">
 
-	<%RPage="web_search.asp"%><!-- #include file="func_web_search.inc" -->
+	<%RPage="web_search.asp"%><!-- #include file="include/web_admin_func_search.inc" -->
 	
 	<input type="hidden" name="s_adminname" value="<%=Request("s_adminname")%>" />
 	<input type="hidden" name="s_name" value="<%=Request("s_name")%>" />
@@ -216,15 +216,15 @@ sql_condition=sql_websearch_condition_init & sql_condition
 		dim pagename
 		pagename="admin_web_search"
 		if WebDisplayMode()="book" then
-			%><!-- #include file="listword_web.inc" --><%
+			%><!-- #include file="include/web_admin_listword.inc" --><%
 		elseif WebDisplayMode()="forum" then
-			%><!-- #include file="listtitle_web.inc" --><%
+			%><!-- #include file="include/web_admin_listtitle.inc" --><%
 		end if
 		rs.Close
 	end if
 	%>
 
-<!-- #include file="func_web_search.inc" -->
+<!-- #include file="include/web_admin_func_search.inc" -->
 </form>
 
 <%
@@ -237,6 +237,6 @@ end if
 
 <% cn.Close : set rs=nothing : set cn=nothing %>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

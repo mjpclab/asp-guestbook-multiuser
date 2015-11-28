@@ -8,10 +8,10 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 留言本参数</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
@@ -20,8 +20,8 @@ CreateConn cn,dbtype
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="web_admintitle.inc" -->
-	<!-- #include file="web_admincontrols.inc" -->
+	<!-- #include file="include/web_admin_title.inc" -->
+	<!-- #include file="include/web_admin_mainmenu.inc" -->
 
 	<%rs.Open Replace(sql_adminfloodconfig,"{0}",wm_id),cn,,,1%>
 
@@ -60,6 +60,6 @@ function check()
 }
 </script>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

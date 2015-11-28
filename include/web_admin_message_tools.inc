@@ -4,7 +4,7 @@ param_temp=get_param_str()
 if param_temp<>"" then param_temp="&" & mid(param_temp,2)
 param_url=param_url & param_temp
 %>
-<div class="admin-tools">
+<div class="admin-message-tools">
 	<span class="tool"><input type="checkbox" name="seltodel" id="c<%=p_rs("id")%>" value="<%=p_rs("id")%>" /><label for="c<%=p_rs("id")%>">(选定)</label></span>
 	<span class="tool">所属用户：<a href="web_userinfo.asp?user=<%=adminname%>" target="_blank"><%=adminname%></a></span>
 	<a class="tool" href="web_searchdel.asp<%=param_url%>" title="删除留言"<%if DelTip=true then Response.Write " onclick=""return confirm('确实要删除留言吗？');"""%>><img src="image/icon_del.gif"/>[删除]</a>

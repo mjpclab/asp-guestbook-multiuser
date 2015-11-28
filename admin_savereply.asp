@@ -61,7 +61,7 @@ if rs.EOF=false then		'ม๔ัิดๆิฺ
 	set cn=nothing
 
 	if web_MailReplyInform=true and MailReplyInform=true then replyinform()
-	%><!-- #include file="admin_traceback.inc" --><%
+	%><!-- #include file="include/admin_traceback.inc" --><%
 	rs.close : cn.close : set rs=nothing : set cn=nothing
 else
 	rs.close : cn.close : set rs=nothing : set cn=nothing

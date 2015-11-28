@@ -1,4 +1,5 @@
 <!-- #include file="loadconfig.asp" -->
+<!-- #include file="common2.asp" -->
 <%
 Response.Expires=-1
 Response.AddHeader "cache-control","private"
@@ -37,10 +38,10 @@ local_sql_query=sql_index_words_query & GetHiddenWordCondition()
 get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replace(local_sql_query,"{0}",adminid),"parent_id INC,lastupdated DEC,id DEC",Request.QueryString("page"),WordsPerPage,ItemsCount,PagesCount,CurrentItemsCount,ipage
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=HomeName%> ¡Ù—‘±æ</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 	</head>
@@ -50,15 +51,15 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 <div id="outerborder" class="outerborder">
 	<%if ShowTitle=true then show_book_title 2,""%>
 
-	<%RPage="index.asp"%><!-- #include file="func_guest.inc" -->
+	<%RPage="index.asp"%><!-- #include file="include/guest_func.inc" -->
 	
 	<%dim sys_bul_flag
 	sys_bul_flag=64%>
-	<!-- #include file="sysbulletin.inc" -->
-	<!-- #include file="topbulletin.inc" -->
-	<!-- #include file="hidetip.inc" -->
+	<!-- #include file="include/sysbulletin.inc" -->
+	<!-- #include file="include/topbulletin.inc" -->
+	<!-- #include file="include/guest_tiphidden.inc" -->
 	<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"index.asp","[¡Ù—‘∑÷“≥]",""%>
-	<%if ItemsCount>0 and StatusSearch and ShowTopSearchBox then%><!-- #include file="searchbox_guest.inc" --><%end if%>
+	<%if ItemsCount>0 and StatusSearch and ShowTopSearchBox then%><!-- #include file="include/guest_searchbox.inc" --><%end if%>
 
 	<%
 	if ItemsCount=0 then
@@ -67,22 +68,22 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 		dim pagename
 		pagename="index"
 		if GuestDisplayMode()="book" then
-			%><!-- #include file="listword_guest.inc" --><%
+			%><!-- #include file="include/guest_listword.inc" --><%
 		elseif GuestDisplayMode()="forum" then
-			%><!-- #include file="listtitle_guest.inc" --><%
+			%><!-- #include file="include/guest_listtitle.inc" --><%
 		end if
 		rs.Close
 	end if
 	cn.Close : set rs=nothing : set cn=nothing%>
 	
-	<!-- #include file="func_guest.inc" -->
+	<!-- #include file="include/guest_func.inc" -->
 
 	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"index.asp","[¡Ù—‘∑÷“≥]",""%>
-	<%if ItemsCount>0 and StatusSearch and ShowBottomSearchBox then%><!-- #include file="searchbox_guest.inc" --><%end if%>
+	<%if ItemsCount>0 and StatusSearch and ShowBottomSearchBox then%><!-- #include file="include/guest_searchbox.inc" --><%end if%>
 
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 <%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=ruser%>" defer="defer" async="async"></script><%end if%>
 </body>
 </html>

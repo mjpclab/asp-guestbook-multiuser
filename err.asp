@@ -8,10 +8,10 @@ if web_checkIsBannedIP then
 end if
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=HomeName%> ¡Ù—‘±æ ¥ÌŒÛ</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
@@ -52,6 +52,6 @@ end if
 	%>
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

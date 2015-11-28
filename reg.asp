@@ -15,10 +15,10 @@ end if
 if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> …Í«Î¡Ù—‘±æ</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 
@@ -97,10 +97,10 @@ CreateConn cn,dbtype
 dim sys_bul_flag
 sys_bul_flag=32
 %>
-<!-- #include file="sysbulletin.inc" -->
+<!-- #include file="include/sysbulletin.inc" -->
 <%cn.Close : set cn=nothing%>
 
-<!-- #include file="func_web.inc" -->
+<!-- #include file="include/web_guest_func.inc" -->
 
 <div class="region form-region">
 	<h3 class="title">…Í«Î¡Ù—‘±æ</h3>
@@ -149,7 +149,7 @@ sys_bul_flag=32
 </div>
 
 </div>
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 <script type="text/javascript">
 	<!-- #include file="js/refresh-captcha.js" -->
 </script>

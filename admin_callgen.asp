@@ -18,10 +18,10 @@ checkuser cn,rs,false
 set rs=nothing : set cn=nothing
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=HomeName%> 留言本 编辑留言</title>
 	<!-- #include file="inc_admin_stylesheet.asp" -->
 
@@ -104,7 +104,7 @@ set rs=nothing : set cn=nothing
 <div id="outerborder" class="outerborder">
 
 <%if ShowTitle=true then show_book_title 3,"管理"%>
-<!-- #include file="admincontrols.inc" -->
+<!-- #include file="include/admin_mainmenu.inc" -->
 
 <div class="region region-callgen">
 	<h3 class="title">生成调用代码</h3>
@@ -171,6 +171,6 @@ set rs=nothing : set cn=nothing
 
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

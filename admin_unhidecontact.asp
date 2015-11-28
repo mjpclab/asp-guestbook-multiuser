@@ -20,4 +20,4 @@ checkuser cn,rs,false
 cn.Execute Replace(Replace(sql_adminunhidecontact,"{0}",Request.QueryString("id")),"{1}",adminid),,1
 cn.close : set rs=nothing : set cn=nothing
 %>
-<!-- #include file="admin_traceback.inc" -->
+<!-- #include file="include/admin_traceback.inc" -->

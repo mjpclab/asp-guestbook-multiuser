@@ -1,6 +1,6 @@
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="common2.asp" -->
-<!-- #include file="md5.asp" -->
+<!-- #include file="include/md5.asp" -->
 <%
 
 Response.Expires=-1
@@ -82,10 +82,10 @@ dim gbookaddr
 gbookaddr=geturlpath & "index.asp?user=" & ruser
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> 创建成功</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
@@ -102,15 +102,15 @@ gbookaddr=geturlpath & "index.asp?user=" & ruser
 dim sys_bul_flag
 sys_bul_flag=32
 %>
-<!-- #include file="sysbulletin.inc" -->
+<!-- #include file="include/sysbulletin.inc" -->
 <%cn.Close : set cn=nothing%>
 
-<!-- #include file="func_web.inc" -->
+<!-- #include file="include/web_guest_func.inc" -->
 
 <p class="centertext">创建成功！请记下您的留言本首页地址：<br/><%=gbookaddr%><br/>&gt;<a href="<%=gbookaddr%>">转到该页→</a></p>
 
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

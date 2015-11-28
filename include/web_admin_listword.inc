@@ -1,27 +1,26 @@
-<!-- #include file="common2.asp" -->
 <%
 dim guest_txt,guestflag
 dim reply_txt,reply_htmlflag
 dim js_status
 dim param_url
 
-getadmininfo()
-
 while rs.eof=false
+	web_getadmininfo()
 	guestflag=rs("guestflag")
 	%>
 
 	<div class="topic"><%
 		outerword(rs)
-		if clng(rs.Fields("replied") AND 1)<>0 and ReplyInWord=false then outeradminreply(rs)
+		if rs("replied")=true and ReplyInWord=false then outeradminreply(rs)
 		if ReplyInWord=false then
 			set p_rs=rs
-			%><!-- #include file="admintools.inc" --><%
+			adminname=p_rs("adminname")
+			%><!-- #include file="web_admin_message_tools.inc" --><%
 		end if
 
-		if rs.Fields("parent_id")<=0 and clng(rs.Fields("replied") AND 2)<>0 and ReplyInWord=false then
+		if rs.Fields("parent_id")<=0 and ReplyInWord=false then
 			set rs1=Server.CreateObject("ADODB.Recordset")
-			rs1.Open Replace(Replace(sql_listword_admin,"{0}",rs.Fields("id")),"{1}",adminid),cn,0,1,1
+			rs1.Open Replace(Replace(sql_listword_web,"{0}",rs("id")),"{1}",rs("adminid")),cn,0,1,1
 			while not rs1.eof
 				guestflag=rs1("guestflag")
 				ishidden=(clng(guestflag and 40)=8)
@@ -29,14 +28,15 @@ while rs.eof=false
 				encrypted=(clng(guestflag and 96)=96)
 
 				outerword(rs1)
-				if clng(rs1.Fields("replied") AND 1)<>0 then outeradminreply(rs1)
+				if rs1.Fields("replied") then outeradminreply(rs1)
 					set p_rs=rs1
-					%><!-- #include file="admintools.inc" --><%
+					%><!-- #include file="web_admin_message_tools.inc" --><%
 				rs1.movenext
 			wend
 			rs1.close
 			set rs1=nothing
-		end if%>
+		end if
+		%>
 	</div>
 
 	<%rs.MoveNext

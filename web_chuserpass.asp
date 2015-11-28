@@ -13,10 +13,10 @@ set rs=nothing
 set cn=nothing
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 重设用户密码</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 
@@ -38,7 +38,7 @@ set cn=nothing
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="web_admintitle.inc" -->
+	<!-- #include file="include/web_admin_title.inc" -->
 
 	<div class="region form-region region-longtext">
 		<h3 class="title">重设用户密码</h3>
@@ -62,6 +62,6 @@ set cn=nothing
 	</div>
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

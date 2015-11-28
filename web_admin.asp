@@ -6,10 +6,10 @@ Response.Expires=-1
 Response.AddHeader "cache-control","private"
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
@@ -18,8 +18,8 @@ Response.AddHeader "cache-control","private"
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="web_admintitle.inc" -->
-	<!-- #include file="web_admincontrols.inc" -->
+	<!-- #include file="include/web_admin_title.inc" -->
+	<!-- #include file="include/web_admin_mainmenu.inc" -->
 
 	<h3>注册用户列表：</h3>
 	<%
@@ -67,9 +67,9 @@ Response.AddHeader "cache-control","private"
 
 	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_admin.asp","[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]",""%>
 
-	<!-- #include file="searchuserbox_web.inc" -->		
+	<!-- #include file="include/web_admin_searchuserbox.inc" -->
 </div>		
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

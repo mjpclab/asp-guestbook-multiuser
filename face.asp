@@ -8,10 +8,10 @@ if web_checkIsBannedIP then
 end if
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%></title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
@@ -31,10 +31,10 @@ CreateConn cn,dbtype
 dim sys_bul_flag
 sys_bul_flag=16
 %>
-<!-- #include file="sysbulletin.inc" -->
+<!-- #include file="include/sysbulletin.inc" -->
 <%cn.Close : set cn=nothing%>
 
-<!-- #include file="func_web.inc" -->
+<!-- #include file="include/web_guest_func.inc" -->
 
 
 <div style="overflow: hidden; padding: 10px;">
@@ -67,6 +67,6 @@ sys_bul_flag=16
 
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

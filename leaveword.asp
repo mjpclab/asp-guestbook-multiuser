@@ -30,10 +30,10 @@ function getstatus(isopen)
 end function
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=HomeName%> ¡Ù—‘±æ «©–¥¡Ù—‘</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 
@@ -212,13 +212,13 @@ end function
 				<div id="divFace">
 					<h4>Õ∑œÒ£∫</h4>
 					<%defaultindex=FormOrCookie("ihead")%>
-					<!-- #include file="listface.inc" -->
+					<!-- #include file="include/listface.inc" -->
 				</div>
 				<%end if%>
 
 				<div id="divUbbhelp">
 					<h4>UBB∞Ô÷˙£∫</h4>
-					<!-- #include file="inc_ubbhelp.asp" -->
+					<!-- #include file="include/ubbhelp.inc" -->
 				</div>
 
 				<script type="text/javascript" src="js/tabcontrol.js"></script>
@@ -245,7 +245,7 @@ end function
 		</div>
 	</div>
 </div>
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 <script type="text/javascript">
 	<!-- #include file="js/refresh-captcha.js" -->
 </script>

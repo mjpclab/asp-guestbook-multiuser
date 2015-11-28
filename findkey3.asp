@@ -1,5 +1,5 @@
 <!-- #include file="webconfig.asp" -->
-<!-- #include file="md5.asp" -->
+<!-- #include file="include/md5.asp" -->
 <%
 Response.Expires = -1
 Response.AddHeader "Pragma","no-cache"
@@ -61,10 +61,10 @@ end if
 rs.Close : set rs=nothing
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> 找回密码步骤3</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 
@@ -92,10 +92,10 @@ rs.Close : set rs=nothing
 dim sys_bul_flag
 sys_bul_flag=32
 %>
-<!-- #include file="sysbulletin.inc" -->
+<!-- #include file="include/sysbulletin.inc" -->
 <%cn.Close : set cn=nothing%>
 
-<!-- #include file="func_web.inc" -->
+<!-- #include file="include/web_guest_func.inc" -->
 
 <div class="region form-region">
 	<h3 class="title">找回密码 步骤3</h3>
@@ -125,7 +125,7 @@ sys_bul_flag=32
 </div>
 
 </div>
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 <script type="text/javascript">
 	<!-- #include file="js/refresh-captcha.js" -->
 </script>

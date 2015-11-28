@@ -15,10 +15,10 @@ CreateConn cn,dbtype
 checkuser cn,rs,false
 %>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=HomeName%> 留言本 访问统计</title>
 	<!-- #include file="inc_admin_stylesheet.asp" -->
 </head>
@@ -28,7 +28,7 @@ checkuser cn,rs,false
 <div id="outerborder" class="outerborder">
 
 	<%if ShowTitle=true then show_book_title 3,"管理"%>
-	<!-- #include file="admincontrols.inc" -->
+	<!-- #include file="include/admin_mainmenu.inc" -->
 
 <%
 rs.Open Replace(sql_adminstats_startdate,"{0}",adminid),cn,0,3,1
@@ -95,7 +95,7 @@ on error resume next
 		</div>
 
 		<div id="div_leaveword">
-			<h4>留言/回复页面</h4>
+			<h4>写留言/回复页面</h4>
 			<blockquote>
 				<table>
 					<tr><td style="width:120px;">访问次数：</td><td><%=tleaveword%></td></tr>
@@ -279,7 +279,7 @@ on error resume next
 
 	tab.addPage('div_words','留言列表页面');
 	tab.addPage('div_search','搜索页面');
-	tab.addPage('div_leaveword','留言/回复页面');
+	tab.addPage('div_leaveword','写留言/回复页面');
 	tab.addPage('div_login','管理登录页面');
 	tab.addPage('div_os','客户端操作系统');
 	tab.addPage('div_browser','客户端浏览器');
@@ -290,6 +290,6 @@ on error resume next
 	tab.addPage('div_source','访问来源');
 </script>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

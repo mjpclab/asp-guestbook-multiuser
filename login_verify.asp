@@ -1,6 +1,6 @@
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="inc_stylesheet.asp" -->
-<!-- #include file="md5.asp" -->
+<!-- #include file="include/md5.asp" -->
 
 <%
 Response.Expires=-1

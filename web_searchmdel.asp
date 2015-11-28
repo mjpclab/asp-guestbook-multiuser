@@ -29,4 +29,4 @@ cn.CommitTrans
 
 cn.close : set cn=nothing
 %>
-<!-- #include file="web_traceback.inc" -->
+<!-- #include file="include/web_admin_traceback.inc" -->

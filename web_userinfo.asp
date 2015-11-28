@@ -3,10 +3,10 @@
 
 <%Response.Expires=-1%>
 
-<!-- #include file="inc_dtd.asp" -->
+<!-- #include file="include/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="inc_metatag.asp" -->
+	<!-- #include file="include/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 查看用户信息</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
@@ -23,7 +23,7 @@ checkuser cn,rs,false
 
 <div id="outerborder" class="outerborder">
 
-<!-- #include file="web_admintitle.inc" -->
+<!-- #include file="include/web_admin_title.inc" -->
 
 
 <div class="region">
@@ -104,6 +104,6 @@ rs.Close : cn.Close : set rs=nothing : set cn=nothing
 %>
 </div>
 
-<!-- #include file="bottom.asp" -->
+<!-- #include file="include/footer.inc" -->
 </body>
 </html>

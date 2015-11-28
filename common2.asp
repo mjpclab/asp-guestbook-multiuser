@@ -246,11 +246,11 @@ sub outerword(byref t_rs)%>
 
 		<%if (pagename="admin" or pagename="admin_search" or pagename="admin_showword") and ReplyInWord=true then%>
 			<%set p_rs=t_rs%>
-			<!-- #include file="admintools.inc" -->
+			<!-- #include file="include/admin_message_tools.inc" -->
 		<%elseif (pagename="admin_web_search" or pagename="web_showword") and ReplyInWord=true then%>
 			<%set p_rs=t_rs%>
 			<%adminname=p_rs("adminname")%>
-			<!-- #include file="web_admintools.inc" -->
+			<!-- #include file="include/web_admin_message_tools.inc" -->
 		<%end if%>
 
 		<%
@@ -276,10 +276,10 @@ sub outerword(byref t_rs)%>
 
 				if pagename="admin" or pagename="admin_search" or pagename="admin_showword" then
 					set p_rs=rs1
-					%><!-- #include file="admintools.inc" --><%
+					%><!-- #include file="include/admin_message_tools.inc" --><%
 				elseif pagename="admin_web_search" or pagename="web_showword" then
 					set p_rs=rs1
-					%><!-- #include file="web_admintools.inc" --><%
+					%><!-- #include file="include/web_admin_message_tools.inc" --><%
 				end if
 				rs1.movenext
 			wend
