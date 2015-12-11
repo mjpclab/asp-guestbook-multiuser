@@ -1,33 +1,25 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/web_admin_deluser.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" --
+<!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
+<!-- #include file="tips.asp" -->
 <%
 Response.Expires=-1
 
 dim arr,users,affected,i
 affected=0
 
-users=replace(Request.Form("users"),"'","")
-users=replace(users,";","")
-users=replace(users,"#","")
-users=replace(users,"%","")
-users=replace(users,"&","")
-users=replace(users,"=","")
-users=replace(users," ","")
-users=replace(users,"[","")
-users=replace(users,"]","")
-users=replace(users,"\","")
+users=FilterSql(Request.Form("users"))
+if Len(users)>0 then
+	users="'" & Replace(users,",","','") & "'"
 
-arr=split(users,",")
-users=""
-for i=0 to ubound(arr)
-	if i>0 then
-		users=users & ",'" & FilterSql(arr(i)) & "'"
-	else
-		users="'" & FilterSql(arr(i)) & "'"
-	end if
-next
-
-if users<>"" then
 	set cn=server.CreateObject("ADODB.Connection")
 	CreateConn cn,dbtype
 	
@@ -56,5 +48,5 @@ else
 end if
 if Request.Form("arguments")<>"" then backurl=backurl & "?" & Request.Form("arguments")
 
-Call MessagePage("已删除" &affected& "个用户。",backurl)
+Call TipsPage("已删除" &affected& "个用户。",backurl)
 %>

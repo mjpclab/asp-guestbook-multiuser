@@ -1,2 +1,2 @@
-<!-- #include file="loadconfig.asp" -->
-<!-- #include file="share_vcode.asp" -->
+<!-- #include file="include/utility/captcha.asp" -->
+<%Call OutputCaptcha(Session("vcode"))%>

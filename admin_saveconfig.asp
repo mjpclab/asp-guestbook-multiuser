@@ -1,7 +1,18 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/admin_verify.asp" -->
+<!-- #include file="include/sql/admin_saveconfig.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/string.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/user.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="loadconfig.asp" -->
-<!-- #include file="inc_admin_stylesheet.asp" -->
 <!-- #include file="admin_verify.asp" -->
-
+<!-- #include file="tips.asp" -->
 <%
 
 Response.Expires=-1
@@ -12,7 +23,7 @@ if web_checkIsBannedIP then
 end if
 
 sub errbox(byval errmsg)
-	Call MessagePage(errmsg,"admin_config.asp?page=" &Request.Form("page"))
+	Call TipsPage(errmsg,"admin_config.asp?page=" &Request.Form("page"))
 	Response.End
 end sub
 
@@ -348,7 +359,6 @@ else
 	set rs1=server.CreateObject("ADODB.Recordset")
 
 	CreateConn cn1,dbtype
-	checkuser cn1,rs1,true
 	rs1.open Replace(sql_adminsaveconfig,"{0}",adminid),cn1,0,3,1
 
 	if clng(showpage and 1)<> 0	then

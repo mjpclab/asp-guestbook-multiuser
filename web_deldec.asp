@@ -1,13 +1,17 @@
-<!-- #include file="webconfig.asp" -->
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/web_admin_deldec.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
-
 <%
 Response.Expires=-1
 
 set cn=server.CreateObject("ADODB.Connection")
 CreateConn cn,dbtype
 
-cn.Execute Replace(sql_webdeldec,"{0}",replace(replace(ruser,"'",""),";","")),,1
+cn.Execute Replace(sql_webdeldec,"{0}",FilterKeyword(Request.QueryString("user"))),,1
 cn.close
 set cn=nothing
 

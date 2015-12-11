@@ -1,15 +1,24 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/const.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/web_admin_searchuser.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/message.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
-
 <%
 Response.Expires=-1
 Response.AddHeader "cache-control","private"
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 搜索用户</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
@@ -18,8 +27,8 @@ Response.AddHeader "cache-control","private"
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/web_admin_title.inc" -->
-	<!-- #include file="include/web_admin_mainmenu.inc" -->
+	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 
 	<h4>(搜索结果)注册用户列表：</h4>
 
@@ -86,9 +95,9 @@ Response.AddHeader "cache-control","private"
 
 	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchuser.asp","(搜索结果)[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","type=" &Request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
 
-	<!-- #include file="include/web_admin_searchuserbox.inc" -->
-</div>		
+	<!-- #include file="include/template/web_admin_searchuserbox.inc" -->
+</div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

@@ -1,4 +1,4 @@
-<!-- #include file="common.asp" -->
+<!-- #include file="include/sql/loadconfig.asp" -->
 <%
 web_BookName="多用户留言本系统"
 

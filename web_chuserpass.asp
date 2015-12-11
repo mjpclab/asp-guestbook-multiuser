@@ -1,3 +1,12 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/user.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
 <%
@@ -13,10 +22,10 @@ set rs=nothing
 set cn=nothing
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 重设用户密码</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 
@@ -38,7 +47,7 @@ set cn=nothing
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_title.inc" -->
 
 	<div class="region form-region region-longtext">
 		<h3 class="title">重设用户密码</h3>
@@ -62,6 +71,6 @@ set cn=nothing
 	</div>
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

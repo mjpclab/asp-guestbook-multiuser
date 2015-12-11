@@ -1,6 +1,21 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/common2.asp" -->
+<!-- #include file="include/sql/admin_verify.asp" -->
+<!-- #include file="include/sql/admin_reply.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ip.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
+<!-- #include file="include/utility/user.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
+<!-- #include file="include/utility/message.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
-<!-- #include file="common2.asp" -->
 <%
 Response.Expires=-1
 if web_checkIsBannedIP then
@@ -17,7 +32,6 @@ end if
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
-checkuser cn,rs,false
 
 dim t_html
 
@@ -37,17 +51,17 @@ cn.close
 
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=HomeName%> 留言本 回复留言</title>
 	<!-- #include file="inc_admin_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function submitcheck(cobject)
 	{
-		if (cobject.rcontent.value=="") {alert('请输入回复内容。'); cobject.rcontent.focus(); return (false);}
+		if (cobject.rcontent.value.length===0) {alert('请输入回复内容。'); cobject.rcontent.focus(); return (false);}
 		cobject.submit1.disabled=true;
 		return (true);
 	}
@@ -67,7 +81,7 @@ cn.close
 <div id="outerborder" class="outerborder">
 
 <%if ShowTitle=true then show_book_title 3,"管理"%>
-<!-- #include file="include/admin_mainmenu.inc" -->
+<!-- #include file="include/template/admin_mainmenu.inc" -->
 
 <div class="region">
 	<h3 class="title">回复留言</h3>
@@ -75,7 +89,7 @@ cn.close
 		<form method="post" action="admin_savereply.asp" onsubmit="return submitcheck(this)" name="form3">
 			回复内容：<br/>
 			<textarea name="rcontent" id="rcontent" onkeydown="if(!this.modified)this.modified=true; var e=event?event:arguments[0]; if(e && e.ctrlKey && e.keyCode==13 && this.form.submit1)this.form.submit1.click();" rows="<%=ReplyTextHeight%>"><%=c_old%></textarea>
-			<!-- #include file="include/ubbtoolbar.inc" -->
+			<!-- #include file="include/template/ubbtoolbar.inc" -->
 			<%if web_AdminUBBSupport then ShowUbbToolBar(2)%>
 			<input type="hidden" name="user" value="<%=ruser%>" />
 			<input type="hidden" name="rootid" value="<%=request.QueryString("rootid")%>" />
@@ -103,13 +117,13 @@ rs.Open Replace(Replace(sql_adminreply_words,"{0}",Request.QueryString("id")),"{
 if rs.EOF=false then
 	dim pagename
 	pagename="admin_reply"
-	%><!-- #include file="include/admin_listword.inc" --><%
+	%><!-- #include file="include/template/admin_listword.inc" --><%
 end if
 rs.Close : cn.Close : set rs=nothing : set cn=nothing	
 %>
 
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

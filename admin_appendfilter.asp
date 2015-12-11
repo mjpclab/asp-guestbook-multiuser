@@ -1,6 +1,15 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/admin_verify.asp" -->
+<!-- #include file="include/sql/admin_appendfilter.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/user.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
-
 <%
 Response.Expires=-1
 if web_checkIsBannedIP then
@@ -46,7 +55,6 @@ if tfindexp<>"" then
 	set cn=server.CreateObject("ADODB.Connection")
 	set rs=server.CreateObject("ADODB.Recordset")
 	CreateConn cn,dbtype
-	checkuser cn,rs,true
 
 	cn.BeginTrans
 	

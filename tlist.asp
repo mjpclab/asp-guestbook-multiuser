@@ -1,5 +1,16 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/tlist.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/user.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/message.asp" -->
 <!-- #include file="loadconfig.asp" -->
-<!-- #include file="common2.asp" -->
 <%
 Response.Expires=-1
 if web_checkIsBannedIP then
@@ -32,7 +43,6 @@ if isnumeric(Request.QueryString("n")) and trim(Request.QueryString("n"))<>"" th
 	set cn=server.CreateObject("ADODB.Connection")
 	set rs=server.CreateObject("ADODB.Recordset")
 	CreateConn cn,dbtype
-	checkuser cn,rs,false
 
 	rs.Open Replace(Replace(sql_tlist_maxtime,"{0}",adminid),"{1}",GetHiddenWordCondition()),cn,0,1,1
 	if not rs.EOF then max_time=rs.Fields(0) else max_time=now() end if
@@ -46,22 +56,22 @@ if isnumeric(Request.QueryString("n")) and trim(Request.QueryString("n"))<>"" th
 %>
 	<%if lcase(trim(Request.QueryString("js")))="yes" then%>
 		<%if t="" then t="_self"%>
-		<%do while not rs.EOF
+		document.write('<%do while not rs.EOF
 			i=i+1
-			if clng(rs.Fields("guestflag") and 48)=0 then%><%output_counter=output_counter+1%><%if max_len=0 then str_title=rs.Fields("title") else str_title=left(rs.Fields("title"),max_len) end if%>document.write('<a href="<%=geturlpath & "index.asp?user=" &ruser& "&page=" & page & "#a" & (((i-1) mod CountPerPage)+1)%>" target="<%=t%>" title="<%=jsfilter(rs.Fields("title"))%>"><%=jsfilter(pre & str_title)%></a><%=br%>');<%end if
+			if clng(rs.Fields("guestflag") and 48)=0 then%><%output_counter=output_counter+1%><%if max_len=0 then str_title=rs.Fields("title") else str_title=left(rs.Fields("title"),max_len) end if%><a href="<%=geturlpath & "index.asp?user=" &ruser& "&page=" & page & "#a" & (((i-1) mod CountPerPage)+1)%>" target="<%=t%>" title="<%=jsfilter(rs.Fields("title"))%>"><%=jsfilter(pre & str_title)%></a><%=br%><%end if
 			if i mod CountPerPage=0 then
 				page=page+1
 			end if
 			if output_counter=n then exit do
 			rs.MoveNext
 		loop%>
-		document.write('<%=br%><a style="margin-top:2ex;" title="更多留言..." href="<%=geturlpath & "index.asp?user=" &ruser%>" target="<%=t%>">更多留言...</a>');
+		<%=br%><a style="margin-top:2ex;" title="更多留言..." href="<%=geturlpath & "index.asp?user=" &ruser%>" target="<%=t%>">更多留言...</a>');
 	<%else%>
 	<%if t="" then t="_parent"%>
-	<!-- #include file="include/dtd.inc" -->
+	<!-- #include file="include/template/dtd.inc" -->
 	<html>
 	<head>
-		<!-- #include file="include/metatag.inc" -->
+		<!-- #include file="include/template/metatag.inc" -->
 		<title><%=HomeName%> 留言本</title>
 		<!-- #include file="inc_stylesheet.asp" -->
 	</head>

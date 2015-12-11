@@ -1,3 +1,11 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/sysbulletin.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <%
 Response.Expires = -1
@@ -7,10 +15,10 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=HomeName%> 留言本 管理中心登录</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 	
@@ -51,7 +59,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 			<%if VcodeCount>0 then%>
 			<div class="field">
 				<span class="label">验证码：</span>
-				<span class="value"><input type="text" name="ivcode" autocomplete="off" /><img id="captcha" class="captcha" src="web_show_vcode.asp?t=0"/></span>
+				<span class="value"><input type="text" name="ivcode" autocomplete="off" /><img id="captcha" class="captcha" src="show_vcode.asp?t=0"/></span>
 			</div>
 			<%end if%>
 			<div class="command">

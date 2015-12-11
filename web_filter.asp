@@ -1,6 +1,12 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/admin_filter.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
-
 <%
 Response.Expires=-1
 set cn=server.CreateObject("ADODB.Connection")
@@ -8,10 +14,10 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 内容过滤策略</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
@@ -20,39 +26,39 @@ CreateConn cn,dbtype
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/web_admin_title.inc" -->
-	<!-- #include file="include/web_admin_mainmenu.inc" -->
+	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 
 	<div class="region form-region region-filter">
 		<h3 class="title">内容过滤策略（优先于普通用户设置）</h3>
 		<div class="content">
-			<form method="post" name="newfilter" action="web_appendfilter.asp" class="detail-item" onsubmit="if(findexp.value==''){alert('请输入查找内容。');findexp.focus();return false;}submit1.disabled=true;">
-            <h4>添加新过滤策略：</h4>
-            <p>查找内容(可用正则表达式,多个过滤词间用“|”分割)<br/>
-            <input type="text" name="findexp" /><br/>
-            <input type="checkbox" name="matchcase" id="matchcase" value="8192" /><label for="matchcase">区分大小写</label>
-            <input type="checkbox" name="multiline" id="multiline" value="2048" /><label for="multiline">正则多行模式</label>
-            </p>
-            <p>查找范围<br/>
-            <input type="checkbox" name="findrange" id="findname" value="1" checked="checked" /><label for="findname">称呼</label>
-            <input type="checkbox" name="findrange" id="findmail" value="2" checked="checked" /><label for="findmail">邮件</label>
-            <input type="checkbox" name="findrange" id="findqq" value="4" checked="checked" /><label for="findqq">QQ号</label>
-            <input type="checkbox" name="findrange" id="findmsn" value="8" checked="checked" /><label for="findmsn">MSN</label>
-            <input type="checkbox" name="findrange" id="findhome" value="16" checked="checked" /><label for="findhome">主页</label>
-            <input type="checkbox" name="findrange" id="findtitle" value="32" checked="checked" /><label for="findtitle">标题</label>
-            <input type="checkbox" name="findrange" id="findcontent" value="64" checked="checked" /><label for="findcontent">内容</label>
-            </p>
-            <p>处理方式<br/>
-            <input type="radio" name="filtermethod" id="filtermethod" value="0" checked="checked" onclick="if(typeof(newfilter.replacetxt.disabled)!='undefined')newfilter.replacetxt.disabled=false;" /><label for="filtermethod">替换为下面的文本</label>
-            <input type="radio" name="filtermethod" id="filtermethod2" value="4096" onclick="if(typeof(newfilter.replacetxt.disabled)!='undefined')newfilter.replacetxt.disabled=true;" /><label for="filtermethod2">等待审核</label>
-            <input type="radio" name="filtermethod" id="filtermethod3" value="16384" onclick="if(typeof(newfilter.replacetxt.disabled)!='undefined')newfilter.replacetxt.disabled=true;" /><label for="filtermethod3">拒绝留言</label><br/>
-            <input type="text" name="replacetxt" />
-            </p>
-            <p>备注<br/>
-            <input type="text" name="memo" maxlength="25" />
-            </p>
-            <div class="field-command"><input type="submit" value="添加过滤策略" name="submit1" /></div>
-            </form>
+			<form method="post" name="newfilter" action="web_appendfilter.asp" onsubmit="if(findexp.value.length===0){alert('请输入查找内容。');findexp.focus();return false;}submit1.disabled=true;">
+			<h4>添加新过滤策略：</h4>
+			<p>查找内容(可用正则表达式,多个过滤词间用“|”分割)<br/>
+			<input type="text" name="findexp" /><br/>
+			<input type="checkbox" name="matchcase" id="matchcase" value="8192" /><label for="matchcase">区分大小写</label>
+			<input type="checkbox" name="multiline" id="multiline" value="2048" /><label for="multiline">正则多行模式</label>
+			</p>
+			<p>查找范围<br/>
+			<input type="checkbox" name="findrange" id="findname" value="1" checked="checked" /><label for="findname">称呼</label>
+			<input type="checkbox" name="findrange" id="findmail" value="2" checked="checked" /><label for="findmail">邮件</label>
+			<input type="checkbox" name="findrange" id="findqq" value="4" checked="checked" /><label for="findqq">QQ号</label>
+			<input type="checkbox" name="findrange" id="findmsn" value="8" checked="checked" /><label for="findmsn">MSN</label>
+			<input type="checkbox" name="findrange" id="findhome" value="16" checked="checked" /><label for="findhome">主页</label>
+			<input type="checkbox" name="findrange" id="findtitle" value="32" checked="checked" /><label for="findtitle">标题</label>
+			<input type="checkbox" name="findrange" id="findcontent" value="64" checked="checked" /><label for="findcontent">内容</label>
+			</p>
+			<p>处理方式<br/>
+			<input type="radio" name="filtermethod" id="filtermethod" value="0" checked="checked" onclick="if(typeof(newfilter.replacetxt.disabled)!='undefined')newfilter.replacetxt.disabled=false;" /><label for="filtermethod">替换为下面的文本</label>
+			<input type="radio" name="filtermethod" id="filtermethod2" value="4096" onclick="if(typeof(newfilter.replacetxt.disabled)!='undefined')newfilter.replacetxt.disabled=true;" /><label for="filtermethod2">等待审核</label>
+			<input type="radio" name="filtermethod" id="filtermethod3" value="16384" onclick="if(typeof(newfilter.replacetxt.disabled)!='undefined')newfilter.replacetxt.disabled=true;" /><label for="filtermethod3">拒绝留言</label><br/>
+			<input type="text" name="replacetxt" />
+			</p>
+			<p>备注<br/>
+			<input type="text" name="memo" maxlength="25" />
+			</p>
+			<div class="field-command"><input type="submit" value="添加过滤策略" name="submit1" /></div>
+			</form>
 
 			<%
 			rs.Open Replace(sql_adminfilter,"{0}",wm_id),cn,,,1
@@ -106,6 +112,6 @@ CreateConn cn,dbtype
 
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

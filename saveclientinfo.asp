@@ -1,9 +1,18 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/saveclientinfo.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/user.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <%
 Response.ContentType="application/x-javascript"
 if session("gotclientuser")="" then session("gotclientuser")="|"
 if instr(session("gotclientuser"),"|" &ruser& "|")=0 then
-	Dim cn,rs
+	Dim cn
 	Dim adminname,os,browser,screenwidth,screenheight,sourceaddr,fullsource
 
 	'Get Parameters
@@ -44,11 +53,9 @@ if instr(session("gotclientuser"),"|" &ruser& "|")=0 then
 
 		'Save Parameters
 		set cn=server.CreateObject("ADODB.Connection")
-		set rs=server.CreateObject("ADODB.Recordset")
 		CreateConn cn,dbtype
-		checkuser cn,rs,false
 		cn.Execute Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_saveclientinfo,"{0}",os),"{1}",browser),"{2}",screenwidth),"{3}",screenheight),"{4}",now()),"{5}",sourceaddr),"{6}",fullsource),"{7}",adminid),,1
-		cn.Close : set rs=nothing : set cn=nothing
+		cn.Close : set cn=nothing
 
 		'Got Complete
 		session("gotclientuser")=session("gotclientuser") & ruser & "|"

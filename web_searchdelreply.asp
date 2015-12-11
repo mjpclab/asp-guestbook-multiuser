@@ -1,7 +1,11 @@
-<!-- #include file="webconfig.asp" -->
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/web_admin_noreplyflag.asp" -->
+<!-- #include file="include/sql/web_admin_searchdelreply.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
-<!-- #include file="web_common.asp" -->
-
 <%
 Response.Expires=-1
 if isnumeric(Request.QueryString("id"))=false or Request.QueryString("id")="" then
@@ -19,9 +23,5 @@ cn.CommitTrans
 
 cn.close
 set cn=nothing
-
-
-param_str=get_param_str()
-
-Response.Redirect "web_search.asp" & param_str
 %>
+<!-- #include file="include/template/web_admin_traceback.inc" -->

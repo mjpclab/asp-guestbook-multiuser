@@ -1,7 +1,11 @@
-<!-- #include file="webconfig.asp" -->
-<!-- #include file="inc_web_admin_stylesheet.asp" -->
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/web_admin_noreplyflag.asp" -->
+<!-- #include file="include/sql/web_admin_searchmdel.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
-<!-- #include file="web_common.asp" -->
 <%
 Response.Expires=-1
 if Request.Form("seltodel")="" then
@@ -22,11 +26,11 @@ CreateConn cn,dbtype
 
 
 cn.BeginTrans
-	cn.Execute Replace(sql_global_webnoguestreply_flag,"{0}",Request.Form("seltodel")),,1
+	cn.Execute Replace(sql_webnoguestreply_flag,"{0}",Request.Form("seltodel")),,1
 	cn.Execute Replace(sql_websearchmdel_reply,"{0}",Request.Form("seltodel")),,1
 	cn.Execute Replace(sql_websearchmdel_main,"{0}",Request.Form("seltodel")),,1
 cn.CommitTrans
 
 cn.close : set cn=nothing
 %>
-<!-- #include file="include/web_admin_traceback.inc" -->
+<!-- #include file="include/template/web_admin_traceback.inc" -->

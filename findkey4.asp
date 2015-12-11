@@ -1,5 +1,15 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/sysbulletin.asp" -->
+<!-- #include file="include/sql/web_findkey4.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
+<!-- #include file="include/utility/md5.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
-<!-- #include file="include/md5.asp" -->
+<!-- #include file="tips.asp" -->
 <%
 Response.Expires = -1
 Response.AddHeader "Pragma","no-cache"
@@ -15,7 +25,7 @@ end if
 
 if VcodeCount>0 and (Request.Form("vcode")<>session("vcode") or session("vcode")="") then
 	session("vcode")=""
-	Call MessagePage("验证码错误","findkey.asp")
+	Call TipsPage("验证码错误","findkey.asp")
 	Response.End
 else
 	session("vcode")=""
@@ -28,25 +38,25 @@ re.Pattern="^\w+$"
 
 ruser=Request.Form("user")
 if ruser="" then
-	Call MessagePage("用户名不能为空。","findkey.asp")
+	Call TipsPage("用户名不能为空。","findkey.asp")
 	Response.End
 elseif re.Test(ruser)=false then
-	Call MessagePage("用户名中只能包含英文字母、数字和下划线。","findkey.asp")
+	Call TipsPage("用户名中只能包含英文字母、数字和下划线。","findkey.asp")
 	Response.End
 elseif Request.Form("key")="" then
-	Call MessagePage("找回密码答案不能为空。","findkey.asp")
+	Call TipsPage("找回密码答案不能为空。","findkey.asp")
 	Response.End
 elseif Request.Form("pass1")="" then
-	Call MessagePage("密码不能为空。","findkey.asp")
+	Call TipsPage("密码不能为空。","findkey.asp")
 	Response.End
 elseif Request.Form("pass2")="" then
-	Call MessagePage("确认密码不能为空。","findkey.asp")
+	Call TipsPage("确认密码不能为空。","findkey.asp")
 	Response.End
 elseif Request.Form("pass1")<>Request.Form("pass2") then
-	Call MessagePage("密码不一致，请检查。","findkey.asp")
+	Call TipsPage("密码不一致，请检查。","findkey.asp")
 	Response.End
 elseif len(Request.Form("pass1"))>32 then
-	Call MessagePage("密码长度不能超过32字。","findkey.asp")
+	Call TipsPage("密码长度不能超过32字。","findkey.asp")
 	Response.End
 end if
 
@@ -58,13 +68,13 @@ CreateConn cn,dbtype
 '=============================存在性验证
 rs.Open Replace(sql_findkey4_checkuser,"{0}",ruser),cn,,,1
 if rs.EOF then
-	Call MessagePage("用户名不存在。","findkey.asp")
+	Call TipsPage("用户名不存在。","findkey.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
 
 if md5(Request.Form("key"),32)<>rs("key") then
-	Call MessagePage("找回密码答案不正确。","findkey.asp")
+	Call TipsPage("找回密码答案不正确。","findkey.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
@@ -73,10 +83,10 @@ cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"
 
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> 找回密码完成</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
@@ -93,10 +103,10 @@ cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"
 dim sys_bul_flag
 sys_bul_flag=32
 %>
-<!-- #include file="include/sysbulletin.inc" -->
+<!-- #include file="include/template/sysbulletin.inc" -->
 <%cn.Close : set cn=nothing%>
 
-<!-- #include file="include/web_guest_func.inc" -->
+<!-- #include file="include/template/web_guest_func.inc" -->
 
 <div class="region form-region">
 	<h3 class="title">找回密码 步骤3</h3>
@@ -108,6 +118,6 @@ sys_bul_flag=32
 
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

@@ -1,6 +1,21 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/common2.asp" -->
+<!-- #include file="include/sql/admin_verify.asp" -->
+<!-- #include file="include/sql/admin_edit.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ip.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
+<!-- #include file="include/utility/user.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
+<!-- #include file="include/utility/message.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
-<!-- #include file="common2.asp" -->
 <%
 Response.Expires=-1
 if web_checkIsBannedIP then
@@ -17,7 +32,6 @@ set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 
 CreateConn cn,dbtype
-checkuser cn,rs,false
 
 rs.Open Replace(Replace(sql_adminedit,"{0}",Request.QueryString("id")),"{1}",adminid),cn,,,1
 	
@@ -32,10 +46,10 @@ else
 end if
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=HomeName%> ¡Ù—‘±æ ±‡º≠¡Ù—‘</title>
 	<!-- #include file="inc_admin_stylesheet.asp" -->
 
@@ -62,9 +76,9 @@ end if
 <div id="outerborder" class="outerborder">
 
 <%if ShowTitle=true then show_book_title 3,"π‹¿Ì"%>
-<!-- #include file="include/admin_mainmenu.inc" -->
+<!-- #include file="include/template/admin_mainmenu.inc" -->
 
-<div class="region">
+<div class="region region-longtext">
 	<h3 class="title">±‡º≠¡Ù—‘</h3>
 	<div class="content">
 		<form method="post" action="admin_saveedit.asp" onsubmit="return submitcheck(this)" name="form3">
@@ -82,7 +96,7 @@ end if
 			<span class="row">ƒ⁄»›£∫</span>
 			<span class="row"><textarea name="econtent" id="econtent" onkeydown="if(!this.form.modified)this.form.modified=true; var e=event?event:arguments[0]; if(e && e.ctrlKey && e.keyCode==13 && this.form.submit1)this.form.submit1.click();" rows="<%=ReplyTextHeight%>"><%=guest_txt%></textarea></span>
 			<span class="row">
-				<!-- #include file="include/ubbtoolbar.inc" -->
+				<!-- #include file="include/template/ubbtoolbar.inc" -->
 				<%if web_AdminUBBSupport then ShowUbbToolBar(2)%>
 			</span>
 			<span class="row">
@@ -98,11 +112,11 @@ end if
 
 <%dim pagename
 pagename="admin_edit"%>
-<!-- #include file="include/admin_listword.inc" -->
+<!-- #include file="include/template/admin_listword.inc" -->
 <%rs.Close : cn.Close : set rs=nothing : set cn=nothing%>
 
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

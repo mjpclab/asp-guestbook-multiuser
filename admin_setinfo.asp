@@ -1,6 +1,17 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/admin_verify.asp" -->
+<!-- #include file="include/sql/admin_setinfo.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/user.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
-
 <%
 Response.Expires=-1
 if web_checkIsBannedIP then
@@ -12,13 +23,12 @@ set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 
 CreateConn cn,dbtype
-checkuser cn,rs,false
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=HomeName%> 留言本 修改版主资料</title>
 	<!-- #include file="inc_admin_stylesheet.asp" -->
 </head>
@@ -28,7 +38,7 @@ checkuser cn,rs,false
 <div id="outerborder" class="outerborder">
 
 	<%if ShowTitle=true then show_book_title 3,"管理"%>
-	<!-- #include file="include/admin_mainmenu.inc" -->
+	<!-- #include file="include/template/admin_mainmenu.inc" -->
 
 	<%
 	rs.Open Replace(sql_adminsetinfo,"{0}",adminid),cn,,,1
@@ -74,7 +84,7 @@ checkuser cn,rs,false
 				dim listfacecount,defaultindex
 				listfacecount=FrequentFaceCount
 				defaultindex=tfaceid%>
-				<!-- #include file="include/listface.inc" -->
+				<!-- #include file="include/template/listface.inc" -->
 			</div>
 			<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>
 			</form>
@@ -83,6 +93,6 @@ checkuser cn,rs,false
 
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

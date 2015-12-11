@@ -1,13 +1,30 @@
 .topic-list th,
 .topic-list td {
-	text-overflow:clip;
+	text-overflow: clip;
 }
 
 .region-search-message .field .label {
-	width:8em;
+	width: 8em;
 }
 
 .region-bulletin .admin-message-tools {
-	padding:5px;
-	border-top:1px solid;
+	padding: 5px;
+	border-top: 1px solid;
+}
+
+.region-2column .content {
+	overflow: hidden;
+}
+.region-2column .field {
+	width: 46%;
+	margin-left: 2%;
+	margin-right: 2%;
+	float: left;
+}
+*html .region-2column .field {
+	width: 42%;
+}
+.region-2column input[type=text],
+.region-2column input[type=password] {
+	width: 100%;
 }

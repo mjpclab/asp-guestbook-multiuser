@@ -1,3 +1,9 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
 <%
@@ -6,10 +12,10 @@ Response.AddHeader "Pragma","no-cache"
 Response.AddHeader "cache-control","no-cache, must-revalidate"
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 修改管理员密码</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 
@@ -31,8 +37,8 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/web_admin_title.inc" -->
-	<!-- #include file="include/web_admin_mainmenu.inc" -->
+	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 
 	<div class="region form-region region-longtext">
 		<h3 class="title">修改密码</h3>
@@ -57,6 +63,6 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

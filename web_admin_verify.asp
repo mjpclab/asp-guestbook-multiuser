@@ -1,3 +1,4 @@
+<!-- #include file="include/sql/web_admin_verify.asp" -->
 <%
 Response.Expires=-1
 Dim cn,rs

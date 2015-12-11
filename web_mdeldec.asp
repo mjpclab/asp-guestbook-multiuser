@@ -1,5 +1,15 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/web_admin_mdeldec.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
+<!-- #include file="tips.asp" -->
 <%
 Response.Expires=-1
 if Request.Form("users")="" then
@@ -7,31 +17,13 @@ if Request.Form("users")="" then
 	Response.End
 end if
 
-dim arr,users,affected,i
+dim users,affected
 affected=0
 
-users=replace(Request.Form("users"),"'","")
-users=replace(users,";","")
-users=replace(users,"#","")
-users=replace(users,"%","")
-users=replace(users,"&","")
-users=replace(users,"=","")
-users=replace(users," ","")
-users=replace(users,"[","")
-users=replace(users,"]","")
-users=replace(users,"\","")
+users=FilterSql(Request.Form("users"))
+if Len(users)>0 then
+	users="'" & Replace(users,",","','") & "'"
 
-arr=split(users,",")
-users=""
-for i=0 to ubound(arr)
-	if i>0 then
-		users=users & ",'" & FilterSql(arr(i)) & "'"
-	else
-		users="'" & FilterSql(arr(i)) & "'"
-	end if
-next
-
-if users<>"" then
 	set cn=server.CreateObject("ADODB.Connection")
 	CreateConn cn,dbtype
 	
@@ -41,5 +33,5 @@ if users<>"" then
 	set cn=nothing
 end if
 
-Call MessagePage("已删除" &affected& "条公告。",Replace(Replace(Replace("web_searchdec.asp?adminname={0}&searchtxt={1}&page={2}","{0}",server.URLEncode(Request.Form("adminname"))),"{1}",server.URLEncode(request.Form("searchtxt"))),"{2}",request.Form("page")))
+Call TipsPage("已删除" &affected& "条公告。",Replace(Replace(Replace("web_searchdec.asp?adminname={0}&searchtxt={1}&page={2}","{0}",server.URLEncode(Request.Form("adminname"))),"{1}",server.URLEncode(request.Form("searchtxt"))),"{2}",request.Form("page")))
 %>

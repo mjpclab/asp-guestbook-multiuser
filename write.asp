@@ -1,9 +1,20 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/write.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/user.asp" -->
+<!-- #include file="include/utility/ip.asp" -->
+<!-- #include file="include/utility/md5.asp" -->
+<!-- #include file="include/utility/string.asp" -->
+<!-- #include file="include/utility/mail.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="loadconfig.asp" -->
-<!-- #include file="inc_stylesheet.asp" -->
-<!-- #include file="include/ubbcode.asp" -->
-<!-- #include file="common2.asp" -->
-<!-- #include file="include/md5.asp" -->
-
+<!-- #include file="tips.asp" -->
 <%
 '======================================================
 sub wordsbaned
@@ -76,7 +87,7 @@ Session(InstanceName & "_icontent_" & ruser)=Request.Form("icontent")
 
 if WriteVcodeCount>0 and (Request.Form("ivcode")<>session("vcode") or session("vcode")="") then
 	session("vcode")=""
-	Call MessagePage("验证码错误。","leaveword.asp?" & Request.Form("qstr"))
+	Call TipsPage("验证码错误。","leaveword.asp?" & Request.Form("qstr"))
 	Response.End
 else
 	session("vcode")=""
@@ -98,7 +109,6 @@ set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 set rs2=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
-checkuser cn,rs,true
 
 dim content1,name1,title1,email1,qqid1,msnid1,homepage1,ipv4addr1,ipv6addr1,originalipv41,originalipv61,head1,guestflag,whisperpwd
 dim tmpAddr
@@ -127,17 +137,16 @@ face1=request.form("ihead")
 content1=request.form("icontent")
 if WordsLimit<>0 and len(content1)>WordsLimit then content1=left(content1,WordsLimit)
 
-guestflag=0
+guestflag=guestlimit AND web_guestlimit
 whisperpwd=""
-if StatusNeedAudit=true then guestflag=guestflag+16
-if StatusWhisper=true and Request.Form("chk_whisper")="1" then guestflag=guestflag+32
+if StatusNeedAudit=true then guestflag=guestflag OR 16
+if StatusWhisper=true and Request.Form("chk_whisper")="1" then guestflag=guestflag OR 32
 if StatusEncryptWhisper=true and Request.Form("chk_encryptwhisper")="1" and Request.Form("iwhisperpwd")<>"" then
-	guestflag=guestflag+64
+	guestflag=guestflag OR 64
 	whisperpwd=md5(Request.Form("iwhisperpwd"),32)
 end if
-if Request.Form("imailreplyinform")="1" then guestflag=guestflag+128
-if Request.Form("hidecontact")="1" then guestflag=guestflag+256
-guestflag=guestflag + cbyte((guestlimit and web_guestlimit) mod 8)
+if Request.Form("imailreplyinform")="1" then guestflag=guestflag OR 128
+if Request.Form("hidecontact")="1" then guestflag=guestflag OR 256
 '-------------------------
 dim tregexp,tfiltermode,treplacestr,re,filtered
 set re=new RegExp

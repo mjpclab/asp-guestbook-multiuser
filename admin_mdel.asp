@@ -1,6 +1,17 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/admin_verify.asp" -->
+<!-- #include file="include/sql/admin_noreplyflag.asp" -->
+<!-- #include file="include/sql/admin_mdel.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/user.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
-
 <%
 Response.Expires=-1
 if web_checkIsBannedIP then
@@ -28,14 +39,13 @@ next
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
-checkuser cn,rs,true
 
 cn.BeginTrans
-	cn.Execute Replace(Replace(sql_global_noguestreply_flag,"{0}",Request.Form("seltodel")),"{1}",adminid),,1
+	cn.Execute Replace(Replace(sql_noguestreply_flag,"{0}",Request.Form("seltodel")),"{1}",adminid),,1
 	cn.Execute Replace(Replace(sql_adminmdel_reply,"{0}",Request.Form("seltodel")),"{1}",adminid),,1
 	cn.Execute Replace(Replace(sql_adminmdel_main,"{0}",Request.Form("seltodel")),"{1}",adminid),,1
 cn.CommitTrans
 
 cn.Close : set rs=nothing : set cn=nothing
 %>
-<!-- #include file="include/admin_traceback.inc" -->
+<!-- #include file="include/template/admin_traceback.inc" -->

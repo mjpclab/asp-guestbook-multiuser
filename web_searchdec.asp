@@ -1,16 +1,29 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/const.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/common2.asp" -->
+<!-- #include file="include/sql/web_admin_searchdec.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
+<!-- #include file="include/utility/message.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
-
 <%
 Response.Expires=-1
 Response.AddHeader "cache-control","private"
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster管理中心 搜索留言</title>
+	<!-- #include file="include/template/metatag.inc" -->
+	<title><%=web_BookName%> Webmaster管理中心 搜索置顶公告</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
 
@@ -19,9 +32,9 @@ Response.AddHeader "cache-control","private"
 <%
 function filterstr(byref str,byval delquote)
 	if delquote=true then
-		filterstr=replace(replace(replace(str,"'",""),"[","[\[]"),chr(34),"")
+		filterstr=replace(replace(replace(str,"'",""),"[","[\[]"),"""","")
 	else
-		filterstr=replace(replace(replace(str,"'","''"),"[","[\[]"),chr(34),"")
+		filterstr=replace(replace(replace(str,"'","''"),"[","[\[]"),"""","")
 	end if
 end function
 
@@ -47,8 +60,8 @@ CreateConn cn,dbtype
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/web_admin_title.inc" -->
-	<!-- #include file="include/web_admin_mainmenu.inc" -->
+	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 
 	<div class="region form-region">
 		<h3 class="title">搜索置顶公告</h3>
@@ -106,7 +119,7 @@ else
 			Response.Write pub
 			%>
 		</div>
-		<div class="admin-tools">
+		<div class="admin-message-tools">
 			<input type="checkbox" name="users" id="c<%=rsuser%>" value="<%=rsuser%>"><label for="c<%=rsuser%>">(选定)</label>
 			<a href="web_deldec.asp?user=<%=rsuser%><%if isnumeric(request("page")) and request("page")<>"" then response.write "&page=" & request("page")%>&adminname=<%=server.URLEncode(request("adminname"))%>&searchtxt=<%=server.URLEncode(request("searchtxt"))%>" title="删除公告"<%if DelDecTip=true then Response.Write " onclick=""return confirm('确实要删除公告吗？');"""%>><img border="0" src="image/icon_del.gif" class="imgicon" />[删除公告]</a>
 		</div>
@@ -130,6 +143,6 @@ end if	'对应for上面一行的if
 %>
 
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

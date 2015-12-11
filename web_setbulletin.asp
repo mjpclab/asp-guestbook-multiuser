@@ -1,11 +1,18 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/web_admin_setbulletin.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
 <%Response.Expires=-1%>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 发布系统公告</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 
@@ -25,8 +32,8 @@
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/web_admin_title.inc" -->
-	<!-- #include file="include/web_admin_mainmenu.inc" -->
+	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 
 	<%
 	set cn=server.CreateObject("ADODB.Connection")
@@ -54,7 +61,7 @@
 		<div class="content">
 			<form method="post" action="web_savebulletin.asp" name="form6" onsubmit="form6.submit1.disabled=true;">
 			公告内容：<br/><textarea name="abulletin" id="abulletin" onkeydown="if(!this.modified)this.modified=true; var e=event?event:arguments[0]; if(e && e.ctrlKey && e.keyCode==13 && this.form.submit1)this.form.submit1.click();" rows="<%=ReplyTextHeight%>"><%=tbul%></textarea>
-			<!-- #include file="include/ubbtoolbar.inc" -->
+			<!-- #include file="include/template/ubbtoolbar.inc" -->
 			<%ShowUbbToolBar(1)%>
 			<p>
 			<input type="checkbox" name="html2" id="html2" value="1"<%if cint(tflag and 1)<>0 then Response.Write " checked=""checked"""%> /><label for="html2">支持HTML标记</label><br/>
@@ -73,6 +80,6 @@
 
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

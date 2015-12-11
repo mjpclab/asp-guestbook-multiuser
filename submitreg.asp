@@ -1,6 +1,17 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/sysbulletin.asp" -->
+<!-- #include file="include/sql/web_submitreg.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
+<!-- #include file="include/utility/md5.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
 <!-- #include file="webconfig.asp" -->
-<!-- #include file="common2.asp" -->
-<!-- #include file="include/md5.asp" -->
+<!-- #include file="tips.asp" -->
 <%
 
 Response.Expires=-1
@@ -14,7 +25,7 @@ end if
 
 if VcodeCount>0 and (Request.Form("vcode")<>session("vcode") or session("vcode")="") then
 	session("vcode")=""
-	Call MessagePage("验证码错误。","reg.asp")
+	Call TipsPage("验证码错误。","reg.asp")
 	Response.End
 else
 	session("vcode")=""
@@ -26,31 +37,31 @@ re.Pattern="^\w+$"
 
 ruser=Request.Form("user")
 if ruser="" then
-	Call MessagePage("用户名不能为空。","reg.asp")
+	Call TipsPage("用户名不能为空。","reg.asp")
 	Response.End
 elseif re.Test(ruser)=false then
-	Call MessagePage("用户名中只能包含英文字母、数字和下划线。","reg.asp")
+	Call TipsPage("用户名中只能包含英文字母、数字和下划线。","reg.asp")
 	Response.End
 elseif len(ruser)>32 then
-	Call MessagePage("用户名长度不能超过32字。","reg.asp")
+	Call TipsPage("用户名长度不能超过32字。","reg.asp")
 	Response.End
 elseif Request.Form("pass1")="" then
-	Call MessagePage("密码不能为空。","reg.asp")
+	Call TipsPage("密码不能为空。","reg.asp")
 	Response.End
 elseif Request.Form("pass2")="" then
-	Call MessagePage("确认密码不能为空。","reg.asp")
+	Call TipsPage("确认密码不能为空。","reg.asp")
 	Response.End
 elseif Request.Form("pass1")<>Request.Form("pass2") then
-	Call MessagePage("密码不一致，请检查。","reg.asp")
+	Call TipsPage("密码不一致，请检查。","reg.asp")
 	Response.End
 elseif len(Request.Form("pass1"))>32 then
-	Call MessagePage("密码长度不能超过32字。","reg.asp")
+	Call TipsPage("密码长度不能超过32字。","reg.asp")
 	Response.End
 elseif Request.Form("question")="" then
-	Call MessagePage("找回密码问题不能为空。","reg.asp")
+	Call TipsPage("找回密码问题不能为空。","reg.asp")
 	Response.End
 elseif Request.Form("key")="" then
-	Call MessagePage("找回密码答案不能为空。","reg.asp")
+	Call TipsPage("找回密码答案不能为空。","reg.asp")
 	Response.End
 end if
 
@@ -62,7 +73,7 @@ CreateConn cn,dbtype
 '=============================存在性验证
 rs.Open Replace(sql_submitreg_checkuser,"{0}",ruser),cn,,,1
 if not rs.EOF then
-	Call MessagePage("用户名已存在，请重新输入。","reg.asp")
+	Call TipsPage("用户名已存在，请重新输入。","reg.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
@@ -82,10 +93,10 @@ dim gbookaddr
 gbookaddr=geturlpath & "index.asp?user=" & ruser
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> 创建成功</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
@@ -102,15 +113,15 @@ gbookaddr=geturlpath & "index.asp?user=" & ruser
 dim sys_bul_flag
 sys_bul_flag=32
 %>
-<!-- #include file="include/sysbulletin.inc" -->
+<!-- #include file="include/template/sysbulletin.inc" -->
 <%cn.Close : set cn=nothing%>
 
-<!-- #include file="include/web_guest_func.inc" -->
+<!-- #include file="include/template/web_guest_func.inc" -->
 
 <p class="centertext">创建成功！请记下您的留言本首页地址：<br/><%=gbookaddr%><br/>&gt;<a href="<%=gbookaddr%>">转到该页→</a></p>
 
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

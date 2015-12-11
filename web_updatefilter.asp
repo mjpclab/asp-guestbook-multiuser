@@ -1,7 +1,13 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/admin_updatefilter.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
 <%
-
 Response.Expires=-1
 
 set cn=server.CreateObject("ADODB.Connection")
@@ -46,7 +52,7 @@ if tfindexp<>"" then
 	if isnumeric(Request.Form("filterid")) and Request.Form("filterid")<>"" then
 		tfilterid=clng(Request.Form("filterid"))
 
-		rs.Open Replace(Replace(sql_adminupdatefilter,"{0}",tfilterid),"{1}",wm_name),cn,1,3,1
+		rs.Open Replace(Replace(sql_adminupdatefilter,"{0}",tfilterid),"{1}",wm_id),cn,1,3,1
 		if not rs.EOF then
 			rs("regexp")=tfindexp
 			rs("filtermode")=tfiltermode

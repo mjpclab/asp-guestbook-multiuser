@@ -1,8 +1,25 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/const.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/common2.asp" -->
+<!-- #include file="include/sql/search.asp" -->
+<!-- #include file="include/sql/sysbulletin.asp" -->
+<!-- #include file="include/sql/topbulletin.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ip.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/user.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
+<!-- #include file="include/utility/message.asp" -->
 <!-- #include file="loadconfig.asp" -->
-<!-- #include file="common2.asp" -->
 <%
- 
-Response.Expires=-1
+ Response.Expires=-1
 if web_checkIsBannedIP then
 	Response.Redirect "web_err.asp?number=4"
 	Response.End
@@ -20,14 +37,13 @@ end if
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
-checkuser cn,rs,false
 if StatusStatistics then call addstat("search")
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=HomeName%> 留言本 搜索结果</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
@@ -64,14 +80,14 @@ end if
 <div id="outerborder" class="outerborder">
 	<%if ShowTitle=true then show_book_title 3,"搜索结果"%>
 
-	<%RPage="search.asp"%><!-- #include file="include/guest_func.inc" -->
+	<%RPage="search.asp"%><!-- #include file="include/template/guest_func.inc" -->
 	
 	<%dim sys_bul_flag
 	sys_bul_flag=64%>
-	<!-- #include file="include/sysbulletin.inc" -->
-	<!-- #include file="include/topbulletin.inc" -->
+	<!-- #include file="include/template/sysbulletin.inc" -->
+	<!-- #include file="include/template/topbulletin.inc" -->
 	<%if CanOpenDB=true and PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"search.asp","[搜索结果分页]","type=" &request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
-	<%if ShowTopSearchBox then%><!-- #include file="include/guest_searchbox.inc" --><%end if%>
+	<%if ShowTopSearchBox then%><!-- #include file="include/template/guest_searchbox.inc" --><%end if%>
 
 	<%
 	if CanOpenDB=true then
@@ -81,19 +97,19 @@ end if
 			dim pagename
 			pagename="search"
 			if GuestDisplayMode()="book" then
-				%><!-- #include file="include/guest_listword.inc" --><%
+				%><!-- #include file="include/template/guest_listword.inc" --><%
 			elseif GuestDisplayMode()="forum" then
-				%><!-- #include file="include/guest_listtitle.inc" --><%
+				%><!-- #include file="include/template/guest_listtitle.inc" --><%
 			end if
 			rs.Close
 		end if
 	end if
 	%>
 
-	<!-- #include file="include/guest_func.inc" -->
+	<!-- #include file="include/template/guest_func.inc" -->
 
 	<%if CanOpenDB=true and PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"search.asp","[搜索结果分页]","type=" &request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
-	<%if ShowBottomSearchBox then%><!-- #include file="include/guest_searchbox.inc" --><%end if%>
+	<%if ShowBottomSearchBox then%><!-- #include file="include/template/guest_searchbox.inc" --><%end if%>
 </div>
 
 <%
@@ -104,7 +120,7 @@ if CanOpenDB=true then
 end if
 %>
 
-<!-- #include file="include/footer.inc" -->
-<%if StatusStatistics then%><script type="text/javascript" src="getclientinfo.asp?user=<%=ruser%>" defer="defer" async="async"></script><%end if%>
+<!-- #include file="include/template/footer.inc" -->
+<!-- #include file="include/template/getclientinfo.inc" -->
 </body>
 </html>

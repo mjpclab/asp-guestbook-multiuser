@@ -1,6 +1,13 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/admin_ipconfig.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ip.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
-
 <%
 Response.Expires=-1
 set cn=server.CreateObject("ADODB.Connection")
@@ -8,10 +15,10 @@ set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 IP屏蔽策略</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
@@ -20,8 +27,8 @@ CreateConn cn,dbtype
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/web_admin_title.inc" -->
-	<!-- #include file="include/web_admin_mainmenu.inc" -->
+	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 
 <div class="region form-region">
 	<h3 class="title">IP屏蔽策略</h3>
@@ -156,6 +163,6 @@ CreateConn cn,dbtype
 <%cn.Close : set rs=nothing : set cn=nothing%>
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

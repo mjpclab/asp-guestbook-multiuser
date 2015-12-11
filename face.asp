@@ -1,3 +1,11 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/sysbulletin.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 
 <%
@@ -8,10 +16,10 @@ if web_checkIsBannedIP then
 end if
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%></title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
@@ -31,10 +39,10 @@ CreateConn cn,dbtype
 dim sys_bul_flag
 sys_bul_flag=16
 %>
-<!-- #include file="include/sysbulletin.inc" -->
+<!-- #include file="include/template/sysbulletin.inc" -->
 <%cn.Close : set cn=nothing%>
 
-<!-- #include file="include/web_guest_func.inc" -->
+<!-- #include file="include/template/web_guest_func.inc" -->
 
 
 <div style="overflow: hidden; padding: 10px;">
@@ -67,6 +75,6 @@ sys_bul_flag=16
 
 </div>
 
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

@@ -1,10 +1,17 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/admin_saveconfig.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
-<!-- #include file="inc_web_admin_stylesheet.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
+<!-- #include file="tips.asp" -->
 <%
 
 sub errbox(byval errmsg)
-	Call MessagePage(errmsg,"web_config.asp?page=" &Request.Form("page"))
+	Call TipsPage(errmsg,"web_config.asp?page=" &Request.Form("page"))
 	Response.End
 end sub
 

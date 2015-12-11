@@ -1,3 +1,12 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/sysbulletin.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <%
 Response.Expires = -1
@@ -15,10 +24,10 @@ end if
 if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 %>
 
-<!-- #include file="include/dtd.inc" -->
+<!-- #include file="include/template/dtd.inc" -->
 <html>
 <head>
-	<!-- #include file="include/metatag.inc" -->
+	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> 申请留言本</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 
@@ -29,7 +38,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 		else if (/^\w+$/.test(frm.user.value)==false) {alert('用户名中只能包含英文字母、数字和下划线。'); frm.user.select(); return false;}
 		else if (frm.pass1.value.length===0) {alert('请输入密码。'); frm.pass1.focus(); return false;}
 		else if (frm.pass2.value.length===0) {alert('请输入确认密码。'); frm.pass2.focus(); return false;}
-		else if (frm.pass1.value!=frm.pass2.value) {alert('密码不一致，请检查。'); frm.pass2.select(); return false;}
+		else if (frm.pass1.value!==frm.pass2.value) {alert('密码不一致，请检查。'); frm.pass2.select(); return false;}
 		else if (frm.question.value.length===0) {alert('请输入找回密码问题。'); frm.question.focus(); return false;}
 		else if (frm.key.value.length===0) {alert('请输入找回密码答案。'); frm.key.focus(); return false;}
 		else if (frm.vcode && frm.vcode.value.length===0) {alert('请输入验证码。'); frm.vcode.focus(); return false;}
@@ -97,10 +106,10 @@ CreateConn cn,dbtype
 dim sys_bul_flag
 sys_bul_flag=32
 %>
-<!-- #include file="include/sysbulletin.inc" -->
+<!-- #include file="include/template/sysbulletin.inc" -->
 <%cn.Close : set cn=nothing%>
 
-<!-- #include file="include/web_guest_func.inc" -->
+<!-- #include file="include/template/web_guest_func.inc" -->
 
 <div class="region form-region">
 	<h3 class="title">申请留言本</h3>
@@ -140,7 +149,7 @@ sys_bul_flag=32
 		<%if VcodeCount>0 then%>
 		<div class="field">
 			<span class="label">验证码<span class="required">*</span></span>
-			<span class="value"><input type="text" name="vcode" size="10" /><img id="captcha" class="captcha" src="web_show_vcode.asp?t=0"/></span>
+			<span class="value"><input type="text" name="vcode" size="10" /><img id="captcha" class="captcha" src="show_vcode.asp?t=0"/></span>
 		</div>
 		<%end if%>
 		<div class="command"><input type="submit" value="提交" style="width:80px; height:25px;" />　　<input type="reset" value="清空" style="width:80px; height:25px;" /></div>
@@ -149,7 +158,7 @@ sys_bul_flag=32
 </div>
 
 </div>
-<!-- #include file="include/footer.inc" -->
+<!-- #include file="include/template/footer.inc" -->
 <script type="text/javascript">
 	<!-- #include file="js/refresh-captcha.js" -->
 </script>

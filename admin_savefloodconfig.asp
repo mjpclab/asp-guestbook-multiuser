@@ -1,3 +1,13 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/admin_verify.asp" -->
+<!-- #include file="include/sql/admin_savefloodconfig.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/user.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
 <%
@@ -41,12 +51,10 @@ end if
 if Request.Form("flag_title")="1" then flood_searchflag=flood_searchflag+256
 if Request.Form("flag_content")="1" then flood_searchflag=flood_searchflag+512	
 
-dim cn1,rs1
+dim cn1
 set cn1=server.CreateObject("ADODB.Connection")
-set rs1=server.CreateObject("ADODB.Recordset")
 
 CreateConn cn1,dbtype
-checkuser cn1,rs1,true
 
 cn1.Execute Replace(Replace(Replace(Replace(sql_adminsavefloodconfig,"{0}",flood_minwait),"{1}",flood_searchrange),"{2}",flood_searchflag),"{3}",adminid),,1
 

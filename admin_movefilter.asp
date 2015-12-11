@@ -1,6 +1,15 @@
+<!-- #include file="include/template/page_instruction.inc" -->
+<!-- #include file="config/system.asp" -->
+<!-- #include file="config/database.asp" -->
+<!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
+<!-- #include file="include/sql/admin_verify.asp" -->
+<!-- #include file="include/sql/admin_movefilter.asp" -->
+<!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/user.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
-
 <%
 Response.Expires=-1
 if web_checkIsBannedIP then
@@ -14,8 +23,7 @@ if isnumeric(Request.Form("filterid")) and Request.Form("filterid")<>"" and (Req
 	set cn=server.CreateObject("ADODB.Connection")
 	set rs=server.CreateObject("ADODB.Recordset")
 	CreateConn cn,dbtype
-	checkuser cn,rs,true
-	
+
 	rs.Open Replace(Replace(sql_adminmovefilter_sort1,"{0}",filterid1),"{1}",adminid),cn,,,1
 	if rs.EOF=false then
 		qid1=rs(0)
