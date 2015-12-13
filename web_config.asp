@@ -285,7 +285,7 @@ CreateConn cn,dbtype
 					<span class="value"><input type="radio" name="deldectip" value="1" id="deldectip1"<%=cked(clng(tdelconfirm and 16)<>0)%> /><label for="deldectip1">提示</label>　　<input type="radio" name="deldectip" value="0" id="deldectip2"<%=cked(clng(tdelconfirm and 16)=0)%> /><label for="deldectip2">不提示</label></span>
 				</div>
 				<div class="field">
-					<span class="label">删除选定公告时提示：</span>
+					<span class="label">删除选定置顶公告时提示：</span>
 					<span class="value"><input type="radio" name="delseldectip" value="1" id="delseldectip1"<%=cked(clng(tdelconfirm and 32)<>0)%> /><label for="delseldectip1">提示</label>　　<input type="radio" name="delseldectip" value="0" id="delseldectip2"<%=cked(clng(tdelconfirm and 32)=0)%> /><label for="delseldectip2">不提示</label></span>
 				</div>
 				<div class="field">

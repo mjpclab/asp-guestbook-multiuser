@@ -68,11 +68,11 @@ Response.AddHeader "cache-control","private"
 			<input type="hidden" name="arguments" value="<%=arg%>">
 			<table id="titlelist" class="topic-list">
 			<thead>
-                <tr><th class="select"><input type="checkbox" name="users"/></th><th>用户名</th><th>昵称</th><th>注册日期</th><th>最后登录日期</th><th>打开留言本</th></tr>
+                <tr><th class="select"><input type="checkbox" name="users" class="users checkbox"/></th><th>用户名</th><th>昵称</th><th>注册日期</th><th>最后登录日期</th><th>打开留言本</th></tr>
             </thead>
             <tbody>
 			<%while not rs.EOF%>
-				<tr><td class="select"><input type="checkbox" name="users" value="<%=rs("adminname")%>" /></td><td><a href="web_userinfo.asp?user=<%=rs("adminname")%>" target="_blank"><%=rs("adminname")%></a></td><td><%=rs("name")%></td><td><%=rs("regdate")%></td><td><%=rs("lastlogin")%></td><td><a href="index.asp?user=<%=rs("adminname")%>" target="_blank">打开留言本</a></td></tr>
+				<tr><td class="select"><input type="checkbox" name="users" class="users checkbox" value="<%=rs("adminname")%>" /></td><td><a href="web_userinfo.asp?user=<%=rs("adminname")%>" target="_blank"><%=rs("adminname")%></a></td><td><%=rs("name")%></td><td><%=rs("regdate")%></td><td><%=rs("lastlogin")%></td><td><a href="index.asp?user=<%=rs("adminname")%>" target="_blank">打开留言本</a></td></tr>
 			<%rs.MoveNext : wend%>
 			</tbody>
 			</table>

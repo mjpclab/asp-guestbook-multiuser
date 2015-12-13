@@ -89,7 +89,7 @@ CreateConn cn,dbtype
 <input type="hidden" name="page" value="<%if isnumeric(request("page")) and request("page")<>"" then response.write request("page")%>" />
 <div class="guest-functions">
 	<div class="main">
-		<a href="javascript:for(var i=0;i<=form7.elements.users.length-1;i++)if(form7.elements.users[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.users.length-1)alert('请先选定要删除的公告。');"><img src="asset/image/icon_mdel.gif" style="border-width:0px;" />删除选定公告</a>
+		<a class="function-multi-del" href="javascript:void 0;"><img src="asset/image/icon_mdel.gif" />删除选定公告</a>
 	</div>
 </div>
 
@@ -120,7 +120,7 @@ else
 			%>
 		</div>
 		<div class="admin-message-tools">
-			<input type="checkbox" name="users" id="c<%=rsuser%>" value="<%=rsuser%>"><label for="c<%=rsuser%>">(选定)</label>
+			<input type="checkbox" name="users" class="users checkbox" id="c<%=rsuser%>" value="<%=rsuser%>"><label for="c<%=rsuser%>">(选定)</label>
 			<a href="web_deldec.asp?user=<%=rsuser%><%if isnumeric(request("page")) and request("page")<>"" then response.write "&page=" & request("page")%>&adminname=<%=server.URLEncode(request("adminname"))%>&searchtxt=<%=server.URLEncode(request("searchtxt"))%>" title="删除公告"<%if DelDecTip=true then Response.Write " onclick=""return confirm('确实要删除公告吗？');"""%>><img border="0" src="asset/image/icon_del.gif" class="imgicon" />[删除公告]</a>
 		</div>
 	</div>
@@ -129,7 +129,12 @@ else
 	wend
 end if	'对应for上面一行的if
 %>
-<div class="guest-functions"><a href="javascript:for(var i=0;i<=form7.elements.length-1;i++)if(form7.elements[i].name=='users' && form7.elements[i].checked){<%if DelSelDecTip=true then Response.Write "if (confirm('确实要删除选定公告吗？')==true)"%>form7.submit();break;}else if(i==form7.elements.length-1)alert('请先选定要删除的公告。');"><img src="asset/image/icon_mdel.gif" style="border-width:0px;">删除选定公告</a></div>
+<div class="guest-functions">
+	<div class="main">
+		<a class="function-multi-del" href="javascript:void 0;"><img src="asset/image/icon_mdel.gif" />删除选定公告</a>
+	</div>
+</div>
+
 </form>
 
 <%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchdec.asp","[搜索结果分页]","adminname=" &server.URLEncode(Request("adminname"))& "&searchtxt=" & server.URLEncode(Request("searchtxt")) end if%>
@@ -142,7 +147,21 @@ end if	'对应for上面一行的if
 	set cn=nothing
 %>
 
-
 <!-- #include file="include/template/footer.inc" -->
+<script type="text/javascript" src="asset/js/jquery-1.x-min.js"></script>
+<script type="text/javascript">
+	(function multiDelConfirm(){
+		var $multiDelLink = $('.function-multi-del');
+		$multiDelLink.click(function () {
+			var delSelDecTip = <%=LCase(CStr(DelSelDecTip))%>;
+			var $selected = $('input.users:checked');
+			if (!$selected.length) {
+				alert('请先选定要删除的公告。');
+			} else if (!delSelDecTip || confirm('确实要删除选定公告吗？')) {
+				form7.submit();
+			}
+		});
+	}());
+</script>
 </body>
 </html>

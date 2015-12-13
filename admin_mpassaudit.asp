@@ -26,20 +26,18 @@ if Request.Form("seltodel")="" then
 		Response.Redirect "admin.asp?user=" &ruser
 	end if
 end if
-dim ids,iids
-ids=split(Request.Form("seltodel"),",")
-for each iids in ids
-	if isnumeric(iids)=false or iids="" then
-		Response.Redirect "admin.asp?user=" &ruser
-		Response.End
-	end if
-next
+
+dim ids
+ids=FilterSql(Request.Form("seltodel"))
+if Left(ids,1) = "," then
+	ids=Mid(ids,2)
+end if
 
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 CreateConn cn,dbtype
 
-cn.Execute Replace(Replace(sql_adminmpass,"{0}",Request.Form("seltodel")),"{1}",adminid),,1
+cn.Execute Replace(Replace(sql_adminmpass,"{0}",ids),"{1}",adminid),,1
 cn.Close : set rs=nothing : set cn=nothing
 %>
 <!-- #include file="include/template/admin_traceback.inc" -->

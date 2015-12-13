@@ -215,7 +215,7 @@ param_url=Server.HtmlEncode(param_url)
 	<div class="group">
 		<div class="name">选定留言：</div>
 		<div class="tools">
-			<span class="tool"><input type="checkbox" name="seltodel" id="c<%=rs.Fields("id")%>" value="<%=rs("id")%>" /><label for="c<%=rs.Fields("id")%>">(选定)</label></span>
+			<span class="tool"><input type="checkbox" name="seltodel" class="seltodel checkbox" id="c<%=rs.Fields("id")%>" value="<%=rs("id")%>" /><label for="c<%=rs.Fields("id")%>">(选定)</label></span>
 		</div>
 	</div>
 	<div class="group">
@@ -275,7 +275,7 @@ if param_temp<>"" then param_temp="&" & mid(param_temp,2)
 param_url=param_url & param_temp
 %>
 <div class="admin-message-tools">
-	<span class="tool"><input type="checkbox" name="seltodel" id="c<%=rs("id")%>" value="<%=rs("id")%>" /><label for="c<%=rs("id")%>">(选定)</label></span>
+	<span class="tool"><input type="checkbox" name="seltodel" class="seltodel checkbox" id="c<%=rs("id")%>" value="<%=rs("id")%>" /><label for="c<%=rs("id")%>">(选定)</label></span>
 	<span class="tool">所属用户：<a href="web_userinfo.asp?user=<%=adminname%>" target="_blank"><%=adminname%></a></span>
 	<a class="tool" href="web_searchdel.asp<%=param_url%>" title="删除留言"<%if DelTip=true then Response.Write " onclick=""return confirm('确实要删除留言吗？');"""%>><img src="asset/image/icon_del.gif"/>[删除]</a>
 	<%if CBool(rs("replied") AND 1) then%><a class="tool" href="web_searchdelreply.asp<%=param_url%><%if isnumeric(Request.QueryString("page")) and Request.QueryString("page")<>"" then response.write "&page=" & Request.QueryString("page")%><%=param_str%>" title="删除回复"<%if DelReTip=true then Response.Write " onclick=""return confirm('确实要删除回复吗？')"""%>><img border="0" src="asset/image/icon_delreply.gif" />[删除回复]</a><%end if%>
