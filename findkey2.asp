@@ -2,24 +2,27 @@
 <!-- #include file="config/system.asp" -->
 <!-- #include file="config/database.asp" -->
 <!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
 <!-- #include file="include/sql/sysbulletin.asp" -->
 <!-- #include file="include/sql/web_findkey2.asp" -->
 <!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="tips.asp" -->
+<!-- #include file="web_error.asp" -->
 <%
 Response.Expires = -1
 Response.AddHeader "Pragma","no-cache"
 Response.AddHeader "cache-control","no-cache, must-revalidate"
 
-if web_checkIsBannedIP then
-	Response.Redirect "web_err.asp?number=4"
+if web_checkIsBannedIP() then
+	Call WebErrorPage(4)
 	Response.End
 elseif StatusFindkey=false then
-	Response.Redirect "web_err.asp?number=2"
+	Call WebErrorPage(2)
 	Response.End
 end if
 

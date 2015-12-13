@@ -5,6 +5,7 @@
 <!-- #include file="include/sql/common.asp" -->
 <!-- #include file="include/sql/tlist.asp" -->
 <!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/user.asp" -->
@@ -13,9 +14,9 @@
 <!-- #include file="loadconfig.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP then
+if web_checkIsBannedIP() then
 	Response.End
-elseif checkIsBannedIP then
+elseif checkIsBannedIP() then
 	Response.End
 elseif StatusOpen=false then
 	Response.End

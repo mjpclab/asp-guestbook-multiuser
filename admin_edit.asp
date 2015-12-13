@@ -16,10 +16,11 @@
 <!-- #include file="include/utility/message.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
+<!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP then
-	Response.Redirect "web_err.asp?number=4"
+if web_checkIsBannedIP() then
+	Call WebErrorPage(4)
 	Response.End
 end if
 

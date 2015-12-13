@@ -7,19 +7,18 @@
 <!-- #include file="include/sql/admin_verify.asp" -->
 <!-- #include file="include/sql/admin_savereply.asp" -->
 <!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/mail.asp" -->
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
+<!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP then
-	Response.Redirect "web_err.asp?number=4"
-	Response.End
-elseif StatusUserBanned then
-	Response.Redirect "err.asp?user=" &ruser& "&number=100"
+if web_checkIsBannedIP() then
+	Call WebErrorPage(4)
 	Response.End
 end if
 if isnumeric(request.form("mainid"))=false or request.form("mainid")="" then

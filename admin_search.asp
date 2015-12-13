@@ -19,11 +19,12 @@
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
 <!-- #include file="tips.asp" -->
+<!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
 Response.AddHeader "cache-control","private"
-if web_checkIsBannedIP then
-	Response.Redirect "web_err.asp?number=4"
+if web_checkIsBannedIP() then
+	Call WebErrorPage(4)
 	Response.End
 end if
 %>

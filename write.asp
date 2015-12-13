@@ -13,21 +13,24 @@
 <!-- #include file="include/utility/string.asp" -->
 <!-- #include file="include/utility/mail.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="tips.asp" -->
+<!-- #include file="web_error.asp" -->
+<!-- #include file="error.asp" -->
 <%
 '======================================================
 sub wordsbaned
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	if StatusStatistics then call addstat("banned")
-	Response.Redirect "err.asp?user=" &ruser& "&number=4"
+	Call ErrorPage(4)
 	Response.End
 end sub
 '======================================================
 sub floodbaned
 	rs.Close : rs2.Close : cn.Close : set rs=nothing : set rs2=nothing : set cn=nothing
 	if StatusStatistics then call addstat("banned")
-	Response.Redirect "err.asp?user=" &ruser& "&number=7"
+	Call ErrorPage(7)
 	Response.End
 end sub
 '======================================================
@@ -52,31 +55,28 @@ end sub
 '======================================================
 
 Response.Expires=-1
-if web_checkIsBannedIP then
-	Response.Redirect "web_err.asp?number=4"
+if web_checkIsBannedIP() then
+	Call WebErrorPage(4)
 	Response.End
-elseif checkIsBannedIP then
-	Response.Redirect "err.asp?user=" &ruser& "&number=1"
+elseif checkIsBannedIP() then
+	Call ErrorPage(1)
 	Response.End
 elseif StatusOpen=false then
-	Response.Redirect "err.asp?user=" &ruser& "&number=2"
+	Call ErrorPage(2)
 	Response.End
 elseif StatusWrite=false then
-	Response.Redirect "err.asp?user=" &ruser& "&number=3"
-	Response.End
-elseif StatusUserBanned then
-	Response.Redirect "err.asp?user=" &ruser& "&number=100"
+	Call ErrorPage(3)
 	Response.End
 elseif (flood_minwait>0 or web_flood_minwait>0) and isdate(session.Contents("wrote_time")) then
 	if datediff("s",session.Contents("wrote_time"),now())<=flood_minwait or datediff("s",session.Contents("wrote_time"),now())<=web_flood_minwait then
 		if StatusStatistics then call addstat("banned")
-		Response.Redirect "err.asp?user=" &ruser& "&number=6"
+		Call ErrorPage(6)
 		Response.End
 	end if
 elseif (flood_minwait>0 or web_flood_minwait>0) and isdate(Request.Cookies("wrote_time")) then
 	if datediff("s",Request.Cookies("wrote_time"),now())<=flood_minwait or datediff("s",Request.Cookies("wrote_time"),now())<=web_flood_minwait then
 		if StatusStatistics then call addstat("banned")
-		Response.Redirect "err.asp?user=" &ruser& "&number=6"
+		Call ErrorPage(6)
 		Response.End
 	end if
 end if

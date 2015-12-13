@@ -18,19 +18,21 @@
 <!-- #include file="include/utility/book.asp" -->
 <!-- #include file="include/utility/message.asp" -->
 <!-- #include file="loadconfig.asp" -->
+<!-- #include file="web_error.asp" -->
+<!-- #include file="error.asp" -->
 <%
 Response.Expires = -1
 Response.AddHeader "Pragma","no-cache"
 Response.AddHeader "cache-control","no-cache, must-revalidate"
 
-if web_checkIsBannedIP then
-	Response.Redirect "web_err.asp?number=4"
+if web_checkIsBannedIP() then
+	Call WebErrorPage(4)
 	Response.End
-elseif checkIsBannedIP then
-	Response.Redirect "err.asp?user=" &ruser& "&number=1"
+elseif checkIsBannedIP() then
+	Call ErrorPage(1)
 	Response.End
 elseif StatusOpen=false then
-	Response.Redirect "err.asp?user=" &ruser& "&number=2"
+	Call ErrorPage(2)
 	Response.End
 end if
 %>

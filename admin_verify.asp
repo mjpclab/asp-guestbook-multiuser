@@ -1,10 +1,11 @@
+<!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP then
-	Response.Redirect "web_err.asp?number=4"
+if web_checkIsBannedIP() then
+	Call WebErrorPage(4)
 	Response.End
 elseif StatusLogin=false then
-	Response.Redirect "web_err.asp?number=3"
+	Call WebErrorPage(3)
 	Response.End
 end if
 

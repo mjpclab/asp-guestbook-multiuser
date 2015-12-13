@@ -2,9 +2,11 @@
 <!-- #include file="config/system.asp" -->
 <!-- #include file="config/database.asp" -->
 <!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/common.asp" -->
 <!-- #include file="include/sql/sysbulletin.asp" -->
 <!-- #include file="include/sql/web_submitreg.asp" -->
 <!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/md5.asp" -->
@@ -12,14 +14,14 @@
 <!-- #include file="include/utility/sqlfilter.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="tips.asp" -->
+<!-- #include file="web_error.asp" -->
 <%
-
 Response.Expires=-1
-if web_checkIsBannedIP then
-	Response.Redirect "web_err.asp?number=4"
+if web_checkIsBannedIP() then
+	Call WebErrorPage(4)
 	Response.End
 elseif StatusReg=false then
-	Response.Redirect "web_err.asp?number=1"
+	Call WebErrorPage(1)
 	Response.End
 end if
 
