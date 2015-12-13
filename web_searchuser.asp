@@ -76,8 +76,8 @@ Response.AddHeader "cache-control","private"
 			<%rs.MoveNext : wend%>
 			</tbody>
 			</table>
-			<script type="text/javascript" src="js/jquery-1.x-min.js"></script>
-			<script type="text/javascript" src="js/table-select.js"></script>
+			<script type="text/javascript" src="asset/js/jquery-1.x-min.js"></script>
+			<script type="text/javascript" src="asset/js/table-select.js"></script>
 
 			<%if ItemsCount>0 then%>
 			<div class="guest-functions">

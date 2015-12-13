@@ -150,7 +150,7 @@ CreateConn cn,dbtype
 				</table>
 			</div>
 
-			<script type="text/javascript" src="js/tabcontrol.js"></script>
+			<script type="text/javascript" src="asset/js/tabcontrol.js"></script>
 			<script type="text/javascript">
 				tab=new TabControl('tabContainer');
 				tab.savingFieldId='tabIndex';

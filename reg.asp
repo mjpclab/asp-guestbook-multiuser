@@ -48,7 +48,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 		else return true;
 	}
 	
-	<!-- #include file="js/xmlhttp.js" -->
+	<!-- #include file="asset/js/xmlhttp.js" -->
 	function checkuser(frm,showChecking)
 	{
 		/*
@@ -163,7 +163,7 @@ sys_bul_flag=32
 </div>
 <!-- #include file="include/template/footer.inc" -->
 <script type="text/javascript">
-	<!-- #include file="js/refresh-captcha.js" -->
+	<!-- #include file="asset/js/refresh-captcha.js" -->
 </script>
 </body>
 </html>

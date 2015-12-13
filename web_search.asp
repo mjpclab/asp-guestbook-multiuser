@@ -27,6 +27,7 @@ Response.AddHeader "cache-control","private"
 	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> Webmaster管理中心 搜索留言</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
+	<script type="text/javascript" src="asset/js/jquery-1.x-min.js"></script>
 </head>
 
 <body>

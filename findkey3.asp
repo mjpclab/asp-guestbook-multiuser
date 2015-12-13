@@ -141,7 +141,7 @@ sys_bul_flag=32
 </div>
 <!-- #include file="include/template/footer.inc" -->
 <script type="text/javascript">
-	<!-- #include file="js/refresh-captcha.js" -->
+	<!-- #include file="asset/js/refresh-captcha.js" -->
 </script>
 </body>
 </html>
