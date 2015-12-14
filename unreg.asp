@@ -56,7 +56,7 @@ if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
 </div>
 <%
 set cn=server.CreateObject("ADODB.Connection")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 dim sys_bul_flag
 sys_bul_flag=32

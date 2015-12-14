@@ -34,7 +34,7 @@ Response.AddHeader "cache-control","private"
 	<%
 	set cn=server.CreateObject("ADODB.Connection")
 	set rs=server.CreateObject("ADODB.Recordset")
-	CreateConn cn,dbtype
+	Call CreateConn(cn)
 
 	Dim ItemsCount,PagesCount,CurrentItemsCount,ipage
 	get_divided_page cn,rs,sql_pk_supervisor,sql_webadmin_words_count,sql_webadmin_words_query,"regdate DEC",Request.QueryString("page"),TitlesPerPage,ItemsCount,PagesCount,CurrentItemsCount,ipage

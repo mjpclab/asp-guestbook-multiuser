@@ -26,7 +26,7 @@ Dim affected
 affected=0
 
 set cn=server.CreateObject("ADODB.Connection")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 dim tparam
 tparam=Request.Form("iparam")

@@ -32,7 +32,7 @@ end if
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 rs.Open Replace(Replace(sql_adminedit,"{0}",Request.QueryString("id")),"{1}",adminid),cn,,,1
 	

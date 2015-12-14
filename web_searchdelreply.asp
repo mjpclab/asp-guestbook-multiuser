@@ -14,7 +14,7 @@ if isnumeric(Request.QueryString("id"))=false or Request.QueryString("id")="" th
 end if
 
 set cn=server.CreateObject("ADODB.Connection")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 cn.BeginTrans
 	cn.Execute sql_websearchdelreply_reply & Request.QueryString("id"),,1

@@ -9,7 +9,7 @@
 <%
 Response.Expires=-1
 set cn1=server.CreateObject("ADODB.Connection")
-CreateConn cn1,dbtype
+Call CreateConn(cn1)
 
 dim tlimit
 tlimit=0

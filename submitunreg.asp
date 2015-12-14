@@ -56,7 +56,7 @@ end if
 dim cn,rs
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 '=============================存在性验证
 Dim del_adminid

@@ -12,7 +12,7 @@ end if
 Dim cn,rs
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 checkuser cn,rs,false
 
 rs.Open Replace(sql_adminverify,"{0}",adminid),cn,0,1,1

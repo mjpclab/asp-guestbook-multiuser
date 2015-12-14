@@ -11,7 +11,7 @@
 Response.Expires=-1
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 %>
 
 <!-- #include file="include/template/dtd.inc" -->

@@ -60,7 +60,7 @@ end if
 Dim cn,rs,ItemsCount
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 rs.Open Replace(sql_showword_count,"{0}",adminid),cn,0,1,1
 ItemsCount=rs(0)

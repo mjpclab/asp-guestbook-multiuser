@@ -4,7 +4,7 @@ Response.Expires=-1
 Dim cn,rs
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 rs.Open sql_web_admin_verify,cn,,,1
 

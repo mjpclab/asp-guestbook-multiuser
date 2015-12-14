@@ -22,7 +22,7 @@ end if
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 tnow=now()
 cn.Execute Replace(Replace(sql_adminclearstats_startdate,"{0}",tnow),"{1}",adminid),,1

@@ -108,7 +108,7 @@ Dim cn,rs,sql
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 set rs2=server.CreateObject("ADODB.Recordset")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 dim content1,name1,title1,email1,qqid1,msnid1,homepage1,ipv4addr1,ipv6addr1,originalipv41,originalipv61,head1,guestflag,whisperpwd
 dim tmpAddr

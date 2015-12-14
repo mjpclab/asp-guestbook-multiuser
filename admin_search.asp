@@ -56,7 +56,7 @@ end if
 <%
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 tparam=FilterAdminLike(Request("searchtxt"))
 while left(tparam,1)="%" or left(tparam,1)="_"

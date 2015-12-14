@@ -52,7 +52,7 @@ end if
 
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 rs.Open Replace(Replace(sql_admin_showword,"{0}",id),"{1}",adminid),cn,0,1,1
 if rs.EOF then		'留言不存在，退回主界面
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing

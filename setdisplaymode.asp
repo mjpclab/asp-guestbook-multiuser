@@ -12,7 +12,7 @@ Dim cn,rs
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 
-CreateConn cn,dbtype
+Call CreateConn(cn)
 checkuser cn,rs,false
 
 if Request.QueryString("modeflag")="guest" then

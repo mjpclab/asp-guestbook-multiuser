@@ -25,7 +25,7 @@ if isnumeric(Request.QueryString("id"))=false or Request.QueryString("id")="" th
 end if
 
 set cn=server.CreateObject("ADODB.Connection")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 cn.Execute Replace(Replace(sql_adminunhidecontact,"{0}",Request.QueryString("id")),"{1}",adminid),,1
 cn.close : set cn=nothing

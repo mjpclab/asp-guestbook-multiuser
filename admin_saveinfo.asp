@@ -24,7 +24,7 @@ end if
 
 set cn1=server.CreateObject("ADODB.Connection")
 set rs1=server.CreateObject("ADODB.Recordset")
-CreateConn cn1,dbtype
+Call CreateConn(cn1)
 rs1.open Replace(sql_adminsaveinfo,"{0}",adminid),cn1,0,3,1
 		
 tname=server.HTMLEncode(Request.Form("aname"))

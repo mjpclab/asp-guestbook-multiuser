@@ -16,7 +16,7 @@ affected=0
 
 set cn1=server.CreateObject("ADODB.Connection")
 set rs1=server.CreateObject("ADODB.Recordset")
-CreateConn cn1,dbtype
+Call CreateConn(cn1)
 set rs1=nothing
 
 dim tparam

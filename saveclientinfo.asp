@@ -53,7 +53,7 @@ if instr(session("gotclientuser"),"|" &ruser& "|")=0 then
 
 		'Save Parameters
 		set cn=server.CreateObject("ADODB.Connection")
-		CreateConn cn,dbtype
+		Call CreateConn(cn)
 		cn.Execute Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_saveclientinfo,"{0}",os),"{1}",browser),"{2}",screenwidth),"{3}",screenheight),"{4}",now()),"{5}",sourceaddr),"{6}",fullsource),"{7}",adminid),,1
 		cn.Close : set cn=nothing
 

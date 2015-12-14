@@ -21,7 +21,7 @@ if Len(users)>0 then
 	users="'" & Replace(users,",","','") & "'"
 
 	set cn=server.CreateObject("ADODB.Connection")
-	CreateConn cn,dbtype
+	Call CreateConn(cn)
 	
 	cn.BeginTrans
 	cn.Execute Replace(sql_webdeluser_filterconfig,"{0}",users),,1

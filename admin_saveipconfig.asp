@@ -20,7 +20,7 @@ if web_checkIsBannedIP() then
 end if
 
 set cn=server.CreateObject("ADODB.Connection")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 'IPConStatus
 Dim tipconstatus

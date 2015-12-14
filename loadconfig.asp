@@ -4,7 +4,7 @@ dim lcn,lrs
 set lcn=server.CreateObject("ADODB.Connection")
 set lrs=server.CreateObject("ADODB.Recordset")
 
-CreateConn lcn,dbtype
+Call CreateConn(lcn)
 checkuser lcn,lrs,false
 
 '================================

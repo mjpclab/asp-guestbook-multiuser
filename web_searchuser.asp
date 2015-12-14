@@ -48,7 +48,7 @@ Response.AddHeader "cache-control","private"
 
 	set cn=server.CreateObject("ADODB.Connection")
 	set rs=server.CreateObject("ADODB.Recordset")
-	CreateConn cn,dbtype
+	Call CreateConn(cn)
 
 	if replace(replace(replace(Request("type"),"'",""),";","")," ","")<>"" and request("searchtxt")<>"" then
 		search_condition=Replace(Replace(sql_websearchuser_condition,"{0}",replace(replace(replace(replace(replace(replace(Request("type"),"'",""),";","")," ",""),"[",""),"--",""),"/*","")),"{1}",replace(replace(Request("searchtxt"),"'","''"),"[","[\[]"))

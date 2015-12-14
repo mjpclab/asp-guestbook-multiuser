@@ -25,7 +25,7 @@ if Len(users)>0 then
 	users="'" & Replace(users,",","','") & "'"
 
 	set cn=server.CreateObject("ADODB.Connection")
-	CreateConn cn,dbtype
+	Call CreateConn(cn)
 	
 	cn.execute Replace(sql_webmdeldec,"{0}",users),affected,1
 	

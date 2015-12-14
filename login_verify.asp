@@ -28,7 +28,7 @@ Dim cn,rs
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 if StatusStatistics then call addstat("login")
 

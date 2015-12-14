@@ -45,7 +45,7 @@ end sub
 sub replyinform()
 	set cn=server.CreateObject("ADODB.Connection")
 	set rs=server.CreateObject("ADODB.Recordset")
-	CreateConn cn,dbtype
+	Call CreateConn(cn)
 	rs.Open Replace(Replace(sql_common2_replyinform,"{0}",Request.Form("mainid")),"{1}",adminid),cn,0,1,1
 	if not rs.eof then
 		if isemail(rs.Fields("email")) and clng(rs.Fields("guestflag") and 128)<>0 and MailSmtpServer<>"" then

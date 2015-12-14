@@ -37,7 +37,7 @@ end if
 
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 cn.BeginTrans
 	cn.Execute Replace(Replace(sql_noguestreply_flag,"{0}",ids),"{1}",adminid),,1

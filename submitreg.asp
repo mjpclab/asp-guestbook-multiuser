@@ -70,7 +70,7 @@ end if
 dim cn,rs
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
-CreateConn cn,dbtype
+Call CreateConn(cn)
 
 '=============================存在性验证
 rs.Open Replace(sql_submitreg_checkuser,"{0}",ruser),cn,,,1

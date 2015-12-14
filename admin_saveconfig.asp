@@ -359,7 +359,7 @@ else
 	set cn1=server.CreateObject("ADODB.Connection")
 	set rs1=server.CreateObject("ADODB.Recordset")
 
-	CreateConn cn1,dbtype
+	Call CreateConn(cn1)
 	rs1.open Replace(sql_adminsaveconfig,"{0}",adminid),cn1,0,3,1
 
 	if clng(showpage and 1)<> 0	then
