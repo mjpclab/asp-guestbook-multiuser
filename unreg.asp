@@ -24,7 +24,7 @@ elseif StatusUnreg=false then
 	Response.End
 end if
 
-if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
+if VcodeCount>0 then Session("vcode")=getvcode(VcodeCount)
 %>
 
 <!-- #include file="include/template/dtd.inc" -->

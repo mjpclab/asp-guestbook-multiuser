@@ -10,8 +10,8 @@
 <!-- #include file="loadconfig.asp" -->
 <%
 Response.ContentType="application/x-javascript"
-if session("gotclientuser")="" then session("gotclientuser")="|"
-if instr(session("gotclientuser"),"|" &ruser& "|")=0 then
+if Session("gotclientuser")="" then Session("gotclientuser")="|"
+if instr(Session("gotclientuser"),"|" &ruser& "|")=0 then
 	Dim cn
 	Dim adminname,os,browser,screenwidth,screenheight,sourceaddr,fullsource
 
@@ -58,7 +58,7 @@ if instr(session("gotclientuser"),"|" &ruser& "|")=0 then
 		cn.Close : set cn=nothing
 
 		'Got Complete
-		session("gotclientuser")=session("gotclientuser") & ruser & "|"
+		Session("gotclientuser")=Session("gotclientuser") & ruser & "|"
 	end if
 end if
 %>

@@ -27,14 +27,14 @@ elseif StatusFindkey=false then
 	Response.End
 end if
 
-if VcodeCount>0 and (Request.Form("vcode")<>session("vcode") or session("vcode")="") then
-	session("vcode")=""
+if VcodeCount>0 and (Request.Form("vcode")<>Session("vcode") or Session("vcode")="") then
+	Session("vcode")=""
 	Call TipsPage("验证码错误。","findkey.asp")
 	Response.End
 elseif VcodeCount>0 then
-	session("vcode")=getvcode(VcodeCount)
+	Session("vcode")=getvcode(VcodeCount)
 else
-	session("vcode")=""
+	Session("vcode")=""
 end if
 
 '===============================合式验证

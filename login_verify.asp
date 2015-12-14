@@ -32,8 +32,8 @@ Call CreateConn(cn)
 
 if StatusStatistics then call addstat("login")
 
-if VcodeCount>0 and (Request.Form("ivcode")<>session("vcode") or session("vcode")="") then
-	session("vcode")=""
+if VcodeCount>0 and (Request.Form("ivcode")<>Session("vcode") or Session("vcode")="") then
+	Session("vcode")=""
 	if StatusStatistics then call addstat("loginfailed")
 	Call TipsPage("ÑéÖ¤Âë´íÎó¡£","admin_login.asp?user=" &ruser)
 
@@ -41,13 +41,13 @@ if VcodeCount>0 and (Request.Form("ivcode")<>session("vcode") or session("vcode"
 	set cn=nothing
 	Response.End
 else
-	session("vcode")=""
+	Session("vcode")=""
 end if
 
 rs.Open Replace(sql_adminverify,"{0}",adminid),cn,0,1,1
 
-session.Contents(InstanceName & "_adminpass_" & ruser)=md5(request("iadminpass"),32)
-if session.Contents(InstanceName & "_adminpass_"& ruser)=rs(0) then
+Session(InstanceName & "_adminpass_" & ruser)=md5(request("iadminpass"),32)
+if Session(InstanceName & "_adminpass_"& ruser)=rs(0) then
 	session.Timeout=cint(AdminTimeOut)
 
 	cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",now()),"{1}",adminid),,1

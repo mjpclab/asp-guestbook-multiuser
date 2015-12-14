@@ -36,12 +36,12 @@ elseif request.Form("inewpass1")="" then
 else
 	rs.Open Replace(sql_adminsavepass_select,"{0}",adminid),cn,0,1,1
 
-	if session.Contents(InstanceName & "_adminpass_" & ruser)=rs(0) then
-		if md5(request.Form("ioldpass"),32)=session.Contents(InstanceName & "_adminpass_" & ruser) then
+	if Session(InstanceName & "_adminpass_" & ruser)=rs(0) then
+		if md5(request.Form("ioldpass"),32)=Session(InstanceName & "_adminpass_" & ruser) then
 			pwd=md5(request.Form("inewpass1"),32)
 					
 			cn.Execute Replace(Replace(sql_adminsavepass_update,"{0}",pwd),"{1}",adminid),,1
-			session.Contents(InstanceName & "_adminpass_" & ruser)=pwd
+			Session(InstanceName & "_adminpass_" & ruser)=pwd
 			rs.Close : cn.Close : set rs=nothing : set cn=nothing
 			Response.Redirect "admin.asp?user=" &ruser
 		else

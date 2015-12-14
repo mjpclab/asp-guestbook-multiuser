@@ -1,6 +1,6 @@
 <%if StatusStatistics then%>
-<%if session("gotclientuser")="" then session("gotclientuser")="|"%>
-<%if instr(session("gotclientuser"),"|" &ruser& "|")=0 then%>
+<%if Session("gotclientuser")="" then Session("gotclientuser")="|"%>
+<%if instr(Session("gotclientuser"),"|" &ruser& "|")=0 then%>
 <script type="text/javascript" src="asset/js/stats.js"></script>
 <script type="text/javascript">
 	var url=location.href.substring(0,location.href.lastIndexOf('/')+1);

@@ -28,7 +28,7 @@ else
 		pwd=md5(request.Form("inewpass1"),32)
 				
 		cn.Execute Replace(sql_websavepass_update,"{0}",pwd),,1
-		session.Contents(InstanceName & "_webpass")=pwd
+		Session(InstanceName & "_webpass")=pwd
 		
 		rs.Close : cn.Close : set rs=nothing : set cn=nothing
 		Response.Redirect "web_admin.asp"

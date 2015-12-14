@@ -26,7 +26,7 @@ elseif StatusFindkey=false then
 	Response.End
 end if
 
-if VcodeCount>0 then session("vcode")=getvcode(VcodeCount)
+if VcodeCount>0 then Session("vcode")=getvcode(VcodeCount)
 '===============================合式验证
 dim re
 set re=new RegExp

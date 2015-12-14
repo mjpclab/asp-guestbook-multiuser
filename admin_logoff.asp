@@ -9,6 +9,6 @@
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <%
-Session.Contents(InstanceName & "_adminpass_" & ruser)=empty
+Session.Contents.Remove(InstanceName & "_adminpass_" & ruser)
 Response.Redirect "index.asp?user=" &ruser
 %>

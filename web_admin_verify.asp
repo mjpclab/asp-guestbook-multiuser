@@ -9,7 +9,7 @@ Call CreateConn(cn)
 rs.Open sql_web_admin_verify,cn,,,1
 
 if not rs.eof then
-	if session.Contents(InstanceName & "_webpass")<>rs(0) then
+	if Session(InstanceName & "_webpass")<>rs(0) then
 		rs.Close : cn.Close : set rs=nothing : set cn=nothing
 		Response.Redirect "face.asp"
 		Response.End

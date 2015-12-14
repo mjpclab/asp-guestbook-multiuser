@@ -16,12 +16,12 @@ Response.Expires = -1
 Response.AddHeader "Pragma","no-cache"
 Response.AddHeader "cache-control","no-cache, must-revalidate"
 
-if VcodeCount>0 and (Request.Form("ivcode")<>session("vcode") or session("vcode")="") then
-	session("vcode")=""
+if VcodeCount>0 and (Request.Form("ivcode")<>Session("vcode") or Session("vcode")="") then
+	Session("vcode")=""
 	Call TipsPage("ÑéÖ¤Âë´íÎó¡£","web_login.asp")
 	Response.End
 else
-	session("vcode")=""
+	Session("vcode")=""
 end if
 
 Dim cn,rs
@@ -31,8 +31,8 @@ set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 rs.Open sql_web_admin_verify,cn,0,1,1
 
-session.Contents(InstanceName & "_webpass")=md5(request("iadminpass"),32)
-if session.Contents(InstanceName & "_webpass")=rs(0) then
+Session(InstanceName & "_webpass")=md5(request("iadminpass"),32)
+if Session(InstanceName & "_webpass")=rs(0) then
 	session.Timeout=cint(AdminTimeOut)
 	
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
