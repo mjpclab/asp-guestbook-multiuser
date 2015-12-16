@@ -8,6 +8,7 @@
 <!-- #include file="include/sql/index.asp" -->
 <!-- #include file="include/sql/sysbulletin.asp" -->
 <!-- #include file="include/sql/topbulletin.asp" -->
+<!-- #include file="include/sql/guest_listword.asp" -->
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
