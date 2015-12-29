@@ -75,25 +75,25 @@ elseif isnumeric(request.Form("advpagelistcount"))=false and clng(showpage and 8
 	errbox "“区段式分页项数”必须为数字。"
 else
 
-	if clng(showpage and 1)<> 0 then
+	if CBool(showpage AND 1) then
 		tstatus1=Request.Form("status1")
 		if tstatus1<>"0" and tstatus1<>"1" then tstatus1=1
-				
+
 		tstatus2=Request.Form("status2")
 		if tstatus2<>"0" and tstatus2<>"2" then tstatus2=2
-				
+
 		tstatus3=Request.Form("status3")
 		if tstatus3<>"0" and tstatus3<>"4" then tstatus3=4
-				
+
 		tstatus4=Request.Form("status4")
 		if tstatus4<>"0" and tstatus4<>"8" then tstatus4=8
-				
+
 		tstatus5=Request.Form("status5")
 		if tstatus5<>"0" and tstatus5<>"16" then tstatus5=16
-				
+
 		tstatus6=Request.Form("status6")
 		if tstatus6<>"0" and tstatus6<>"32" then tstatus6=32
-				
+
 		tstatus7=Request.Form("status7")
 		if tstatus7<>"0" and tstatus7<>"64" then tstatus6=64
 
@@ -101,7 +101,7 @@ else
 		if tstatus9<>"0" and tstatus9<>"256" then tstatus9=256
 
 		tstatus=clng(tstatus1)+clng(tstatus2)+clng(tstatus3)+clng(tstatus4)+clng(tstatus5)+clng(tstatus6)+clng(tstatus7)+clng(tstatus9)
-				
+
 		tadminhtml=0
 		if Request.Form("adminhtml")="1" then tadminhtml=tadminhtml+1
 		if Request.Form("adminubb")="1" then tadminhtml=tadminhtml+2
@@ -156,20 +156,19 @@ else
 		if clng(twritevcodecount)>10 then twritevcodecount=4
 		if clng(twritevcodecount)<0 then twritevcodecount=4
 		twritevcodecount=clng(twritevcodecount) * &H10
-
 	end if
-	
-	if clng(showpage and 2)<> 0 then
+
+	if CBool(showpage AND 2) then
 		tmailflag=0
 		if Request.Form("mailnewinform")="1" then tmailflag=tmailflag+1
 		if Request.Form("mailreplyinform")="1" then tmailflag=tmailflag+2
 		if Request.Form("mailcomponent")="1" then tmailflag=tmailflag+4	
 	end if
-	
-	if clng(showpage and 4)<> 0 then
+
+	if CBool(showpage AND 4) then
 		tcssfontfamily=Request.Form("cssfontfamily")
 		if len(tcssfontfamily)>48 then tcssfontfamily=left(tcssfontfamily,48)
-		
+
 		tcssfontsize=Request.Form("cssfontsize")
 		if len(tcssfontsize)>8 then tcssfontsize=left(tcssfontsize,8)
 		
@@ -184,7 +183,7 @@ else
 		else
 			if left(ttablewidth,1)="-" then ttablewidth=right(ttablewidth,len(ttablewidth)-1)
 		end if
-	
+
 		twindowspace=Request.Form("windowspace")
 		if len(cstr(twindowspace))>3 then twindowspace=20
 		if clng(twindowspace)>255 then twindowspace=20
@@ -219,9 +218,15 @@ else
 		if clng(ttitlesperpage)>32767 then ttitlesperpage=32767
 		if clng(ttitlesperpage)<1 then ttitlesperpage=5
 
+		tstyleid=Request.Form("style")
+		if isnumeric(tstyleid)=false then
+			tstyleid=0
+		else
+			tstyleid=clng(tstyleid)
+		end if
 	end if
 	
-	if clng(showpage and 8)<> 0	then
+	if CBool(showpage AND 8) then
 		tvisualflag=0
 		if Request.Form("replyinword")="1" then tvisualflag=tvisualflag+1
 		select case Request.Form("showpagelist") : case "1","2","3"
@@ -265,10 +270,6 @@ else
 		if Request.Form("deladvtip")="1" then tdelconfirm=tdelconfirm+8
 		if Request.Form("deldectip")="1" then tdelconfirm=tdelconfirm+16
 		if Request.Form("delseldectip")="1" then tdelconfirm=tdelconfirm+32
-
-		tstyleid=Request.Form("style")
-		if isnumeric(tstyleid)=false then tstyleid=0
-		tstyleid=clng(tstyleid)
 	end if
 
 	set cn1=server.CreateObject("ADODB.Connection")
@@ -278,7 +279,7 @@ else
 
 	rs1.open Replace(sql_adminsaveconfig,"{0}",wm_id),cn1,0,3,1
 
-	if clng(showpage and 1)<> 0	then
+	if CBool(showpage AND 1) then
 		rs1("status")=tstatus
 		rs1("adminhtml")=tadminhtml
 		rs1("guesthtml")=tguesthtml
@@ -288,10 +289,10 @@ else
 		rs1("adminshoworiginalip")=tadminshoworiginalip
 		rs1("vcodecount")=tvcodecount + twritevcodecount
 	end if
-	if clng(showpage and 2)<> 0	then
+	if CBool(showpage AND 2) then
 		rs1("mailflag")=tmailflag
 	end if
-	if clng(showpage and 4)<> 0	then
+	if CBool(showpage AND 4) then
 		rs1("cssfontfamily")=tcssfontfamily
 		rs1("cssfontsize")=tcssfontsize
 		rs1("csslineheight")=tcsslineheight
@@ -302,15 +303,15 @@ else
 		rs1("replytextheight")=treplytextheight
 		rs1("itemsperpage")=titemsperpage
 		rs1("titlesperpage")=ttitlesperpage
+		rs1("styleid")=tstyleid
 	end if
-	if clng(showpage and 8)<> 0	then
+	if CBool(showpage AND 8) then
 		rs1("visualflag")=tvisualflag
 		rs1("advpagelistcount")=tadvpagelistcount
 		rs1("ubbflag")=tubbflag
 		rs1("tablealign")=ttablealign
 		rs1("pagecontrol")=tpagecontrol
 		rs1("delconfirm")=tdelconfirm
-		rs1("styleid")=tstyleid
 	end if
 	rs1.Update
 	

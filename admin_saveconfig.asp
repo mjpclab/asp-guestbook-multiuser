@@ -91,28 +91,28 @@ elseif isnumeric(request.Form("advpagelistcount"))=false and clng(showpage and 8
 elseif isnumeric(request.Form("wordslimit"))=false and clng(showpage and 8)<> 0 then
 	errbox "“留言字数限制”必须为数字。"
 else
-	if clng(showpage and 1)<> 0 then
+	if CBool(showpage AND 1) then
 		tstatus1=Request.Form("status1")
 		if tstatus1<>"0" and tstatus1<>"1" then tstatus1=1
-				
+
 		tstatus2=Request.Form("status2")
 		if tstatus2<>"0" and tstatus2<>"2" then tstatus2=2
-				
+
 		tstatus3=Request.Form("status3")
 		if tstatus3<>"0" and tstatus3<>"4" then tstatus3=4
-				
+
 		tstatus4=Request.Form("status4")
 		if tstatus4<>"0" and tstatus4<>"16" then tstatus4=16
-				
+
 		tstatus5=Request.Form("status5")
 		if tstatus5<>"0" and tstatus5<>"32" then tstatus5=32
-				
+
 		tstatus6=Request.Form("status6")
 		if tstatus6<>"0" and tstatus6<>"64" then tstatus6=64
-				
+
 		tstatus7=Request.Form("status7")
 		if tstatus7<>"0" and tstatus7<>"8" then tstatus6=8
-				
+
 		tstatus8=Request.Form("status8")
 		if tstatus8<>"0" and tstatus8<>"128" then tstatus8=128
 
@@ -120,7 +120,7 @@ else
 		if tstatus9<>"0" and tstatus9<>"256" then tstatus9=256
 
 		tstatus=clng(tstatus1)+clng(tstatus2)+clng(tstatus3)+clng(tstatus4)+clng(tstatus5)+clng(tstatus6)+clng(tstatus7)+clng(tstatus8)+clng(tstatus9)
-				
+
 		thomelogo=Trim(Request.Form("homelogo"))
 		if thomelogo<>"" then
 			thomelogo=textfilter(thomelogo,true)
@@ -189,10 +189,9 @@ else
 		if clng(twritevcodecount)>10 then twritevcodecount=4
 		if clng(twritevcodecount)<0 then twritevcodecount=4
 		twritevcodecount=clng(twritevcodecount) * &H10
-
 	end if
-	
-	if clng(showpage and 2)<> 0 then
+
+	if CBool(showpage AND 2) then
 		tmailflag=0
 		if Request.Form("mailnewinform")="1" then tmailflag=tmailflag+1
 		if Request.Form("mailreplyinform")="1" then tmailflag=tmailflag+2
@@ -217,13 +216,13 @@ else
 		if clng(tmaillevel)<1 or clng(tmaillevel)>5 then tmaillevel=3
 	end if
 
-	if clng(showpage and 4)<> 0 then
+	if CBool(showpage AND 4) then
 		tcssfontfamily=Request.Form("cssfontfamily")
 		if len(tcssfontfamily)>48 then tcssfontfamily=left(tcssfontfamily,48)
-		
+
 		tcssfontsize=Request.Form("cssfontsize")
 		if len(tcssfontsize)>8 then tcssfontsize=left(tcssfontsize,8)
-		
+
 		tcsslineheight=Request.Form("csslineheight")
 		if len(tcsslineheight)>8 then tcsslineheight=left(tcsslineheight,8)
 
@@ -286,9 +285,15 @@ else
 		if clng(tfrequentfacecount)<0 then tfrequentfacecount=14
 		if clng(tfrequentfacecount)>clng(FaceCount) then tfrequentfacecount=FaceCount
 
+		tstyleid=Request.Form("style")
+		if isnumeric(tstyleid)=false then
+			tstyleid=0
+		else
+			tstyleid=clng(tstyleid)
+		end if
 	end if
-	
-	if clng(showpage and 8)<> 0	then
+
+	if CBool(showpage AND 8) then
 		tvisualflag=0
 		if Request.Form("replyinword")="1" then tvisualflag=tvisualflag+1
 		if Request.Form("showubbtool")="1" then tvisualflag=tvisualflag+2
@@ -342,7 +347,7 @@ else
 		if len(cstr(twordslimit))>10 then twordslimit=0
 		if twordslimit>2147483647 then twordslimit=2147483647
 		twordslimit=abs(twordslimit)
-		
+
 		tdelconfirm=0
 		if Request.Form("deltip")="1" then tdelconfirm=tdelconfirm+1
 		if Request.Form("delretip")="1" then tdelconfirm=tdelconfirm+2
@@ -354,10 +359,6 @@ else
 		if Request.Form("bring2toptip")="1" then tdelconfirm=tdelconfirm+128
 		if Request.Form("lock2toptip")="1" then tdelconfirm=tdelconfirm+256
 		if Request.Form("reordertip")="1" then tdelconfirm=tdelconfirm+512
-
-		tstyleid=Request.Form("style")
-		if isnumeric(tstyleid)=false then tstyleid=0
-		tstyleid=clng(tstyleid)
 	end if
 
 	set cn1=server.CreateObject("ADODB.Connection")
@@ -366,7 +367,7 @@ else
 	Call CreateConn(cn1)
 	rs1.open Replace(sql_adminsaveconfig,"{0}",adminid),cn1,0,3,1
 
-	if clng(showpage and 1)<> 0	then
+	if CBool(showpage AND 1) then
 		rs1("status")=tstatus
 		rs1("homelogo")=thomelogo
 		rs1("homename")=thomename
@@ -379,7 +380,7 @@ else
 		rs1("adminshoworiginalip")=tadminshoworiginalip
 		rs1("vcodecount")=tvcodecount + twritevcodecount
 	end if
-	if clng(showpage and 2)<> 0	then
+	if CBool(showpage AND 2) then
 		rs1("mailflag")=tmailflag
 		rs1("mailreceive")=tmailreceive
 		rs1("mailfrom")=tmailfrom
@@ -388,7 +389,7 @@ else
 		rs1("mailuserpass")=tmailuserpass
 		rs1("maillevel")=tmaillevel
 	end if
-	if clng(showpage and 4)<> 0	then
+	if CBool(showpage AND 4) then
 		rs1("cssfontfamily")=tcssfontfamily
 		rs1("cssfontsize")=tcssfontsize
 		rs1("csslineheight")=tcsslineheight
@@ -402,8 +403,9 @@ else
 		rs1("titlesperpage")=ttitlesperpage
 		rs1("picturesperrow")=tpicturesperrow
 		rs1("frequentfacecount")=tfrequentfacecount
+		rs1("styleid")=tstyleid
 	end if
-	if clng(showpage and 8)<> 0	then
+	if CBool(showpage AND 8) then
 		rs1("visualflag")=tvisualflag
 		rs1("advpagelistcount")=tadvpagelistcount
 		rs1("ubbflag")=tubbflag
@@ -411,7 +413,6 @@ else
 		rs1("pagecontrol")=tpagecontrol
 		rs1("wordslimit")=twordslimit
 		rs1("delconfirm")=tdelconfirm
-		rs1("styleid")=tstyleid
 	end if
 	rs1.Update
 	

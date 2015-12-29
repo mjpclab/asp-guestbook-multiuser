@@ -38,7 +38,7 @@ Call CreateConn(cn)
 			<ul>
 				<li><a href="web_config.asp?page=1">基本配置</a></li>
 				<li><a href="web_config.asp?page=2">邮件通知</a></li>
-				<li><a href="web_config.asp?page=4">界面尺寸</a></li>
+				<li><a href="web_config.asp?page=4">界面与尺寸</a></li>
 				<li><a href="web_config.asp?page=8">功能设置</a></li>
 				<li><a href="web_config.asp">全部参数</a></li>
 			</ul>
@@ -48,7 +48,7 @@ Call CreateConn(cn)
 			showpage=15
 			if isnumeric(Request.QueryString("page")) and len(Request.QueryString("page"))<=2 and Request.QueryString("page")<>"" then showpage=clng(Request.QueryString("page"))
 
-			if clng(showpage and 1)<> 0 then
+			if CBool(showpage AND 1) then
 			%>
 				<h4>基本配置（当某功能关闭时，用户设置无效，IP显示优先于用户设置，验证码长度作为用户设置最小值）：</h4>
 				<%tstatus=rs("status")%>
@@ -145,7 +145,7 @@ Call CreateConn(cn)
 			<%
 			end if
 
-			if clng(showpage and 2)<> 0 then
+			if CBool(showpage AND 2) then
 			%>
 				<%MailFlag=rs("mailflag")%>
 				<h4>邮件通知（设置是否对用户开放）：</h4>
@@ -163,9 +163,9 @@ Call CreateConn(cn)
 				</div>
 			<%end if
 
-			if clng(showpage and 4)<> 0 then
+			if CBool(showpage AND 4) then
 			%>
-				<h4>界面尺寸（此项只影响本管理页面）：</h4>
+				<h4>界面与尺寸（此项只影响本管理页面）：</h4>
 				<div class="field">
 					<span class="label">字体名：</span>
 					<span class="value"><input type="text" size="10" maxlength="30" name="cssfontfamily" value="<%=rs("cssfontfamily")%>" /></span>
@@ -206,10 +206,34 @@ Call CreateConn(cn)
 					<span class="label">每页显示的标题数：</span>
 					<span class="value"><input type="text" size="10" maxlength="5" name="titlesperpage" value="<%=rs("titlesperpage")%>" /> (默认=20)</span>
 				</div>
+				<div class="field">
+					<span class="label">留言本配色方案：</span>
+					<span class="value">
+						<select name="style">
+						<%
+						styleid=rs("styleid")
+
+						set rs1=server.CreateObject("ADODB.Recordset")
+						rs1.Open sql_adminconfig_style,cn,,,1
+
+						dim onestyleid,onestylename
+						while rs1.EOF=false
+							onestyleid=rs1("styleid")
+							onestylename=rs1("stylename")
+							Response.Write "<option value=""" & onestyleid & """"
+							Response.Write seled(onestyleid=styleid or onestyleid="")
+							Response.Write ">" &onestylename& "</option>"
+							rs1.MoveNext
+						wend
+						rs1.Close : set rs1=nothing
+						%>
+						</select>
+					</span>
+				</div>
 			<%
 			end if
 
-			if clng(showpage and 8)<> 0 then
+			if CBool(showpage AND 8) then
 			%>
 				<h4>功能设置：</h4>
 				<%tvisualflag=rs("visualflag")%>
@@ -287,28 +311,6 @@ Call CreateConn(cn)
 				<div class="field">
 					<span class="label">删除选定置顶公告时提示：</span>
 					<span class="value"><input type="radio" name="delseldectip" value="1" id="delseldectip1"<%=cked(clng(tdelconfirm and 32)<>0)%> /><label for="delseldectip1">提示</label>　　<input type="radio" name="delseldectip" value="0" id="delseldectip2"<%=cked(clng(tdelconfirm and 32)=0)%> /><label for="delseldectip2">不提示</label></span>
-				</div>
-				<div class="field">
-					<span class="label">留言本配色方案：</span>
-					<span class="value">
-						<select name="style">
-						<%
-						styleid=rs("styleid")
-						rs.Close
-						rs.Open sql_adminconfig_style,cn,,,1
-
-						dim onestyleid,onestylename
-						while rs.EOF=false
-							onestyleid=rs("styleid")
-							onestylename=rs("stylename")
-							Response.Write "<option value=" &chr(34)& onestyleid &chr(34)
-							if onestyleid=styleid or onestyleid="" then Response.Write " selected=""selected"""
-							Response.Write ">" &onestylename& "</option>"
-							rs.MoveNext
-						wend
-						%>
-						</select>
-					</span>
 				</div>
 			<%end if%>
 
