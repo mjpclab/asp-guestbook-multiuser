@@ -155,7 +155,7 @@ sys_bul_flag=32
 			<span class="value"><input type="text" name="vcode" size="10" /><img id="captcha" class="captcha" src="show_vcode.asp?t=0"/></span>
 		</div>
 		<%end if%>
-		<div class="command"><input type="submit" value="提交" style="width:80px; height:25px;" />　　<input type="reset" value="清空" style="width:80px; height:25px;" /></div>
+		<div class="command"><input type="submit" value="提交"/>　　<input type="reset" value="清空"/></div>
 	</form>
 	</div>
 </div>
