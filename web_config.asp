@@ -54,56 +54,56 @@ Call CreateConn(cn)
 				<%tstatus=rs("status")%>
 				<div class="field">
 					<span class="label">留言本创建功能：</span>
-					<span class="value"><input type="radio" name="status4" value="8" id="status41"<%=cked(clng(tstatus and 8)<>0)%> /><label for="status41">开启</label>　　<input type="radio" name="status4" value="0" id="status42"<%=cked(clng(tstatus and 8)=0)%> /><label for="status42">关闭</label></span>
+					<span class="value"><input type="radio" name="status4" value="8" id="status41"<%=cked(CBool(tstatus AND 8))%> /><label for="status41">开启</label>　　<input type="radio" name="status4" value="0" id="status42"<%=cked(Not CBool(tstatus AND 8))%> /><label for="status42">关闭</label></span>
 				</div>
 				<div class="field">
 					<span class="label">找回密码功能：</span>
-					<span class="value"><input type="radio" name="status5" value="16" id="status51"<%=cked(clng(tstatus and 16)<>0)%> /><label for="status51">开启</label>　　<input type="radio" name="status5" value="0" id="status52"<%=cked(clng(tstatus and 16)=0)%> /><label for="status52">关闭</label></span>
+					<span class="value"><input type="radio" name="status5" value="16" id="status51"<%=cked(CBool(tstatus AND 16))%> /><label for="status51">开启</label>　　<input type="radio" name="status5" value="0" id="status52"<%=cked(Not CBool(tstatus AND 16))%> /><label for="status52">关闭</label></span>
 				</div>
 				<div class="field">
 					<span class="label">用户登录维护功能：</span>
-					<span class="value"><input type="radio" name="status6" value="32" id="status61"<%=cked(clng(tstatus and 32)<>0)%> /><label for="status61">开启</label>　　<input type="radio" name="status6" value="0" id="status62"<%=cked(clng(tstatus and 32)=0)%> /><label for="status62">关闭</label></span>
+					<span class="value"><input type="radio" name="status6" value="32" id="status61"<%=cked(CBool(tstatus AND 32))%> /><label for="status61">开启</label>　　<input type="radio" name="status6" value="0" id="status62"<%=cked(Not CBool(tstatus AND 32))%> /><label for="status62">关闭</label></span>
 				</div>
 				<div class="field">
 					<span class="label">用户自删帐号功能：</span>
-					<span class="value"><input type="radio" name="status7" value="64" id="status71"<%=cked(clng(tstatus and 64)<>0)%> /><label for="status71">开启</label>　　<input type="radio" name="status7" value="0" id="status72"<%=cked(clng(tstatus and 64)=0)%> /><label for="status72">关闭</label></span>
+					<span class="value"><input type="radio" name="status7" value="64" id="status71"<%=cked(CBool(tstatus AND 64))%> /><label for="status71">开启</label>　　<input type="radio" name="status7" value="0" id="status72"<%=cked(Not CBool(tstatus AND 64))%> /><label for="status72">关闭</label></span>
 				</div>
 				<div class="field">
 					<span class="label">留言本状态：</span>
-					<span class="value"><input type="radio" name="status1" value="1" id="status11"<%=cked(clng(tstatus and 1)<>0)%> /><label for="status11">开启</label>　　<input type="radio" name="status1" value="0" id="status12"<%=cked(clng(tstatus and 1)=0)%> /><label for="status12">关闭</label></span>
+					<span class="value"><input type="radio" name="status1" value="1" id="status11"<%=cked(CBool(tstatus AND 1))%> /><label for="status11">开启</label>　　<input type="radio" name="status1" value="0" id="status12"<%=cked(Not CBool(tstatus AND 1))%> /><label for="status12">关闭</label></span>
 				</div>
 				<div class="field">
 					<span class="label">访客留言权限：</span>
-					<span class="value"><input type="radio" name="status2" value="2" id="status21"<%=cked(clng(tstatus and 2)<>0)%> /><label for="status21">开启</label>　　<input type="radio" name="status2" value="0" id="status22"<%=cked(clng(tstatus and 2)=0)%> /><label for="status22">关闭</label></span>
+					<span class="value"><input type="radio" name="status2" value="2" id="status21"<%=cked(CBool(tstatus AND 2))%> /><label for="status21">开启</label>　　<input type="radio" name="status2" value="0" id="status22"<%=cked(Not CBool(tstatus AND 2))%> /><label for="status22">关闭</label></span>
 				</div>
 				<div class="field">
 					<span class="label">访客搜索留言权限：</span>
-					<span class="value"><input type="radio" name="status3" value="4" id="status31"<%=cked(clng(tstatus and 4)<>0)%> /><label for="status31">开启</label>　　<input type="radio" name="status3" value="0" id="status32"<%=cked(clng(tstatus and 4)=0)%> /><label for="status32">关闭</label></span>
+					<span class="value"><input type="radio" name="status3" value="4" id="status31"<%=cked(CBool(tstatus AND 4))%> /><label for="status31">开启</label>　　<input type="radio" name="status3" value="0" id="status32"<%=cked(Not CBool(tstatus AND 4))%> /><label for="status32">关闭</label></span>
 				</div>
 				<div class="field">
 					<span class="label">访问统计：</span>
-					<span class="value"><input type="radio" name="status9" value="256" id="status91"<%=cked(clng(tstatus and 256)<>0)%> /><label for="status91">开启</label>　　<input type="radio" name="status9" value="0" id="status92"<%=cked(clng(tstatus and 256)=0)%> /><label for="status92">关闭</label></span>
+					<span class="value"><input type="radio" name="status9" value="256" id="status91"<%=cked(CBool(tstatus AND 256))%> /><label for="status91">开启</label>　　<input type="radio" name="status9" value="0" id="status92"<%=cked(Not CBool(tstatus AND 256))%> /><label for="status92">关闭</label></span>
 				</div>
 				<%adminlimit=rs("adminhtml")%>
 				<div class="field">
 					<span class="label">管理中心安全性设置：</span>
-					<span class="value"><input type="checkbox" value="1" name="adminviewcode" id="adminviewcode"<%=cked(clng(adminlimit and 8)<>0)%> /><label for="adminviewcode">用户及访客留言显示实际HTML或UBB代码</label></span>
+					<span class="value"><input type="checkbox" value="1" name="adminviewcode" id="adminviewcode"<%=cked(CBool(adminlimit AND 8))%> /><label for="adminviewcode">用户及访客留言显示实际HTML或UBB代码</label></span>
 				</div>
 				<div class="field">
 					<span class="label">用户管理员HTML权限：</span>
 					<span class="value">
-						<span class="row"><input type="checkbox" value="1" name="adminhtml" id="adminhtml"<%=cked(clng(adminlimit and 1)<>0)%> /><label for="adminhtml">开启HTML权限（不推荐）</label></span>
-						<span class="row"><input type="checkbox" value="1" name="adminubb" id="adminubb"<%=cked(clng(adminlimit and 2)<>0)%> /><label for="adminubb">开启UBB权限</label></span>
-						<span class="row"><input type="checkbox" value="1" name="adminertn" id="adminertn"<%=cked(clng(adminlimit and 4)<>0)%> /><label for="adminertn">不支持HTML和UBB时，允许回车换行</label></span>
+						<span class="row"><input type="checkbox" value="1" name="adminhtml" id="adminhtml"<%=cked(CBool(adminlimit AND 1))%> /><label for="adminhtml">开启HTML权限（不推荐）</label></span>
+						<span class="row"><input type="checkbox" value="1" name="adminubb" id="adminubb"<%=cked(CBool(adminlimit AND 2))%> /><label for="adminubb">开启UBB权限</label></span>
+						<span class="row"><input type="checkbox" value="1" name="adminertn" id="adminertn"<%=cked(CBool(adminlimit AND 4))%> /><label for="adminertn">不支持HTML和UBB时，允许回车换行</label></span>
 					</span>
 				</div>
 				<%guestlimit=rs("guesthtml")%>
 				<div class="field">
 					<span class="label">访客HTML权限：</span>
 					<span class="value">
-						<span class="row"><input type="checkbox" value="1" name="guesthtml" id="guesthtml"<%=cked(clng(guestlimit and 1)<>0)%> /><label for="guesthtml">开启HTML权限（不推荐）</label></span>
-						<span class="row"><input type="checkbox" value="1" name="guestubb" id="guestubb"<%=cked(clng(guestlimit and 2)<>0)%> /><label for="guestubb">开启UBB权限</label></span>
-						<span class="row"><input type="checkbox" value="1" name="guestertn" id="guestertn"<%=cked(clng(guestlimit and 4)<>0)%> /><label for="guestertn">不支持HTML和UBB时，允许回车换行</label></span>
+						<span class="row"><input type="checkbox" value="1" name="guesthtml" id="guesthtml"<%=cked(CBool(guestlimit AND 1))%> /><label for="guesthtml">开启HTML权限（不推荐）</label></span>
+						<span class="row"><input type="checkbox" value="1" name="guestubb" id="guestubb"<%=cked(CBool(guestlimit AND 2))%> /><label for="guestubb">开启UBB权限</label></span>
+						<span class="row"><input type="checkbox" value="1" name="guestertn" id="guestertn"<%=cked(CBool(guestlimit AND 4))%> /><label for="guestertn">不支持HTML和UBB时，允许回车换行</label></span>
 					</span>
 				</div>
 				<div class="field">
@@ -151,15 +151,15 @@ Call CreateConn(cn)
 				<h4>邮件通知（设置是否对用户开放）：</h4>
 				<div class="field">
 					<span class="label">新留言到达通知版主：</span>
-					<span class="value"><input type="checkbox" value="1" name="mailnewinform" id="mailnewinform"<%=cked(clng(MailFlag and 1)<>0)%> /><label for="mailnewinform">启用</label></span>
+					<span class="value"><input type="checkbox" value="1" name="mailnewinform" id="mailnewinform"<%=cked(CBool(MailFlag AND 1))%> /><label for="mailnewinform">启用</label></span>
 				</div>
 				<div class="field">
 					<span class="label">版主回复通知留言人：</span>
-					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(clng(MailFlag and 2)<>0)%> /><label for="mailreplyinform">开启</label></span>
+					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(CBool(MailFlag AND 2))%> /><label for="mailreplyinform">开启</label></span>
 				</div>
 				<div class="field">
 					<span class="label">邮件发送组件：</span>
-					<span class="value"><input type="radio" value="0" name="mailcomponent" id="mailcomponent0"<%=cked(clng(MailFlag and 4)=0)%> /><label for="mailcomponent0">JMail</label>　<input type="radio" value="1" name="mailcomponent" id="mailcomponent1"<%=cked(clng(MailFlag and 4)<>0)%> /><label for="mailcomponent1">CDO</label></span>
+					<span class="value"><input type="radio" value="0" name="mailcomponent" id="mailcomponent0"<%=cked(Not CBool(MailFlag AND 4))%> /><label for="mailcomponent0">JMail</label>　<input type="radio" value="1" name="mailcomponent" id="mailcomponent1"<%=cked(CBool(MailFlag AND 4))%> /><label for="mailcomponent1">CDO</label></span>
 				</div>
 			<%end if
 
@@ -239,11 +239,11 @@ Call CreateConn(cn)
 				<%tvisualflag=rs("visualflag")%>
 				<div class="field">
 					<span class="label">默认版面模式：</span>
-					<span class="value"><input type="radio" name="displaymode" value="1" id="displaymode1"<%=cked(clng(tvisualflag and 1024)<>0)%> /><label for="displaymode1">标题模式</label>　　<input type="radio" name="displaymode" value="0" id="displaymode2"<%=cked(clng(tvisualflag and 1024)=0)%> /><label for="displaymode2">完整模式</label></span>
+					<span class="value"><input type="radio" name="displaymode" value="1" id="displaymode1"<%=cked(CBool(tvisualflag AND 1024))%> /><label for="displaymode1">标题模式</label>　　<input type="radio" name="displaymode" value="0" id="displaymode2"<%=cked(Not CBool(tvisualflag AND 1024))%> /><label for="displaymode2">完整模式</label></span>
 				</div>
 				<div class="field">
 					<span class="label">回复内容显示位置：</span>
-					<span class="value"><input type="radio" name="replyinword" value="1" id="replyinword1"<%=cked(clng(tvisualflag and 1)<>0)%> /><label for="replyinword1">内嵌于访客留言</label>　　<input type="radio" name="replyinword" value="0" id="replyinword2"<%=cked(clng(tvisualflag and 1)=0)%> /><label for="replyinword2">显示在访客留言下方</label></span>
+					<span class="value"><input type="radio" name="replyinword" value="1" id="replyinword1"<%=cked(CBool(tvisualflag AND 1))%> /><label for="replyinword1">内嵌于访客留言</label>　　<input type="radio" name="replyinword" value="0" id="replyinword2"<%=cked(Not CBool(tvisualflag AND 1))%> /><label for="replyinword2">显示在访客留言下方</label></span>
 				</div>
 				<div class="field">
 					<span class="label">分页窗口显示位置：</span>
@@ -251,7 +251,7 @@ Call CreateConn(cn)
 				</div>
 				<div class="field">
 					<span class="label">分页列表模式：</span>
-					<span class="value"><input type="radio" name="advpagelist" value="1" id="advpagelist1"<%=cked(clng(tvisualflag and 64)<>0)%> /><label for="advpagelist1">区段式</label>　<input type="radio" name="advpagelist" value="0" id="advpagelist2"<%=cked(clng(tvisualflag and 64)=0)%> /><label for="advpagelist2">平面式</label></span>
+					<span class="value"><input type="radio" name="advpagelist" value="1" id="advpagelist1"<%=cked(CBool(tvisualflag AND 64))%> /><label for="advpagelist1">区段式</label>　<input type="radio" name="advpagelist" value="0" id="advpagelist2"<%=cked(Not CBool(tvisualflag AND 64))%> /><label for="advpagelist2">平面式</label></span>
 				</div>
 				<div class="field">
 					<span class="label">区段式分页项数：</span>
@@ -285,32 +285,32 @@ Call CreateConn(cn)
 				<%tpagecontrol=rs("pagecontrol")%>
 				<div class="field">
 					<span class="label">留言本边框线：</span>
-					<span class="value"><input type="radio" name="showborder" value="1" id="showborder1"<%=cked(clng(tpagecontrol and 1)<>0)%> /><label for="showborder1">显示</label>　　<input type="radio" name="showborder" value="0" id="showborder2"<%=cked(clng(tpagecontrol and 1)=0)%> /><label for="showborder2">隐藏</label></span>
+					<span class="value"><input type="radio" name="showborder" value="1" id="showborder1"<%=cked(CBool(tpagecontrol AND 1))%> /><label for="showborder1">显示</label>　　<input type="radio" name="showborder" value="0" id="showborder2"<%=cked(Not CBool(tpagecontrol AND 1))%> /><label for="showborder2">隐藏</label></span>
 				</div>
 				<%tdelconfirm=rs("delconfirm")%>
 				<div class="field">
 					<span class="label">删除留言时提示：</span>
-					<span class="value"><input type="radio" name="deltip" value="1" id="deltip1"<%=cked(clng(tdelconfirm and 1)<>0)%> /><label for="deltip1">提示</label>　　<input type="radio" name="deltip" value="0" id="deltip2"<%=cked(clng(tdelconfirm and 1)=0)%> /><label for="deltip2">不提示</label></span>
+					<span class="value"><input type="radio" name="deltip" value="1" id="deltip1"<%=cked(CBool(tdelconfirm AND 1))%> /><label for="deltip1">提示</label>　　<input type="radio" name="deltip" value="0" id="deltip2"<%=cked(Not CBool(tdelconfirm AND 1))%> /><label for="deltip2">不提示</label></span>
 				</div>
 				<div class="field">
 					<span class="label">删除回复时提示：</span>
-					<span class="value"><input type="radio" name="delretip" value="1" id="delretip1"<%=cked(clng(tdelconfirm and 2)<>0)%> /><label for="delretip1">提示</label>　　<input type="radio" name="delretip" value="0" id="delretip2"<%=cked(clng(tdelconfirm and 2)=0)%> /><label for="delretip2">不提示</label></span>
+					<span class="value"><input type="radio" name="delretip" value="1" id="delretip1"<%=cked(CBool(tdelconfirm AND 2))%> /><label for="delretip1">提示</label>　　<input type="radio" name="delretip" value="0" id="delretip2"<%=cked(Not CBool(tdelconfirm AND 2))%> /><label for="delretip2">不提示</label></span>
 				</div>
 				<div class="field">
 					<span class="label">删除选定留言时提示：</span>
-					<span class="value"><input type="radio" name="delseltip" value="1" id="delseltip1"<%=cked(clng(tdelconfirm and 4)<>0)%> /><label for="delseltip1">提示</label>　　<input type="radio" name="delseltip" value="0" id="delseltip2"<%=cked(clng(tdelconfirm and 4)=0)%> /><label for="delseltip2">不提示</label></span>
+					<span class="value"><input type="radio" name="delseltip" value="1" id="delseltip1"<%=cked(CBool(tdelconfirm AND 4))%> /><label for="delseltip1">提示</label>　　<input type="radio" name="delseltip" value="0" id="delseltip2"<%=cked(Not CBool(tdelconfirm AND 4))%> /><label for="delseltip2">不提示</label></span>
 				</div>
 				<div class="field">
 					<span class="label">执行高级删除时提示：</span>
-					<span class="value"><input type="radio" name="deladvtip" value="1" id="deladvtip1"<%=cked(clng(tdelconfirm and 8)<>0)%> /><label for="deladvtip1">提示</label>　　<input type="radio" name="deladvtip" value="0" id="deladvtip2"<%=cked(clng(tdelconfirm and 8)=0)%> /><label for="deladvtip2">不提示</label></span>
+					<span class="value"><input type="radio" name="deladvtip" value="1" id="deladvtip1"<%=cked(CBool(tdelconfirm AND 8))%> /><label for="deladvtip1">提示</label>　　<input type="radio" name="deladvtip" value="0" id="deladvtip2"<%=cked(Not CBool(tdelconfirm AND 8))%> /><label for="deladvtip2">不提示</label></span>
 				</div>
 				<div class="field">
 					<span class="label">删除置顶公告时提示：</span>
-					<span class="value"><input type="radio" name="deldectip" value="1" id="deldectip1"<%=cked(clng(tdelconfirm and 16)<>0)%> /><label for="deldectip1">提示</label>　　<input type="radio" name="deldectip" value="0" id="deldectip2"<%=cked(clng(tdelconfirm and 16)=0)%> /><label for="deldectip2">不提示</label></span>
+					<span class="value"><input type="radio" name="deldectip" value="1" id="deldectip1"<%=cked(CBool(tdelconfirm AND 16))%> /><label for="deldectip1">提示</label>　　<input type="radio" name="deldectip" value="0" id="deldectip2"<%=cked(Not CBool(tdelconfirm AND 16))%> /><label for="deldectip2">不提示</label></span>
 				</div>
 				<div class="field">
 					<span class="label">删除选定置顶公告时提示：</span>
-					<span class="value"><input type="radio" name="delseldectip" value="1" id="delseldectip1"<%=cked(clng(tdelconfirm and 32)<>0)%> /><label for="delseldectip1">提示</label>　　<input type="radio" name="delseldectip" value="0" id="delseldectip2"<%=cked(clng(tdelconfirm and 32)=0)%> /><label for="delseldectip2">不提示</label></span>
+					<span class="value"><input type="radio" name="delseldectip" value="1" id="delseldectip1"<%=cked(CBool(tdelconfirm AND 32))%> /><label for="delseldectip1">提示</label>　　<input type="radio" name="delseldectip" value="0" id="delseldectip2"<%=cked(Not CBool(tdelconfirm AND 32))%> /><label for="delseldectip2">不提示</label></span>
 				</div>
 			<%end if%>
 
