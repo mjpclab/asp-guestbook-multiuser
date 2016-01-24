@@ -29,7 +29,7 @@ if right(pdnum,1)="%" then
 	end if
 end if
 
-isnum=false	
+isnum=false
 end function
 
 Response.Expires=-1
@@ -76,42 +76,26 @@ elseif isnumeric(request.Form("advpagelistcount"))=false and clng(showpage and 8
 else
 
 	if CBool(showpage AND 1) then
-		tstatus1=Request.Form("status1")
-		if tstatus1<>"0" and tstatus1<>"1" then tstatus1=1
-
-		tstatus2=Request.Form("status2")
-		if tstatus2<>"0" and tstatus2<>"2" then tstatus2=2
-
-		tstatus3=Request.Form("status3")
-		if tstatus3<>"0" and tstatus3<>"4" then tstatus3=4
-
-		tstatus4=Request.Form("status4")
-		if tstatus4<>"0" and tstatus4<>"8" then tstatus4=8
-
-		tstatus5=Request.Form("status5")
-		if tstatus5<>"0" and tstatus5<>"16" then tstatus5=16
-
-		tstatus6=Request.Form("status6")
-		if tstatus6<>"0" and tstatus6<>"32" then tstatus6=32
-
-		tstatus7=Request.Form("status7")
-		if tstatus7<>"0" and tstatus7<>"64" then tstatus6=64
-
-		tstatus9=Request.Form("status9")
-		if tstatus9<>"0" and tstatus9<>"256" then tstatus9=256
-
-		tstatus=clng(tstatus1)+clng(tstatus2)+clng(tstatus3)+clng(tstatus4)+clng(tstatus5)+clng(tstatus6)+clng(tstatus7)+clng(tstatus9)
+		tstatus=0
+		if Request.Form("status1")="1" then tstatus=tstatus OR 1
+		if Request.Form("status2")="1" then tstatus=tstatus OR 2
+		if Request.Form("status3")="1" then tstatus=tstatus OR 4
+		if Request.Form("status4")="1" then tstatus=tstatus OR 8
+		if Request.Form("status5")="1" then tstatus=tstatus OR 16
+		if Request.Form("status6")="1" then tstatus=tstatus OR 32
+		if Request.Form("status7")="1" then tstatus=tstatus OR 64
+		if Request.Form("status9")="1" then tstatus=tstatus OR 256
 
 		tadminhtml=0
-		if Request.Form("adminhtml")="1" then tadminhtml=tadminhtml+1
-		if Request.Form("adminubb")="1" then tadminhtml=tadminhtml+2
-		if Request.Form("adminertn")="1" then tadminhtml=tadminhtml+4
-		if Request.Form("adminviewcode")="1" then tadminhtml=tadminhtml+8
+		if Request.Form("adminhtml")="1" then tadminhtml=tadminhtml OR 1
+		if Request.Form("adminubb")="1" then tadminhtml=tadminhtml OR 2
+		if Request.Form("adminertn")="1" then tadminhtml=tadminhtml OR 4
+		if Request.Form("adminviewcode")="1" then tadminhtml=tadminhtml OR 8
 
 		tguesthtml=0
-		if Request.Form("guesthtml")="1" then tguesthtml=tguesthtml+1
-		if Request.Form("guestubb")="1" then tguesthtml=tguesthtml+2
-		if Request.Form("guestertn")="1" then tguesthtml=tguesthtml+4
+		if Request.Form("guesthtml")="1" then tguesthtml=tguesthtml OR 1
+		if Request.Form("guestubb")="1" then tguesthtml=tguesthtml OR 2
+		if Request.Form("guestertn")="1" then tguesthtml=tguesthtml OR 4
 
 		tadmintimeout=Request.Form("admintimeout")
 		if len(cstr(tadmintimeout))>4 or isnumeric(tadmintimeout)=false then tadmintimeout=1440
@@ -160,9 +144,9 @@ else
 
 	if CBool(showpage AND 2) then
 		tmailflag=0
-		if Request.Form("mailnewinform")="1" then tmailflag=tmailflag+1
-		if Request.Form("mailreplyinform")="1" then tmailflag=tmailflag+2
-		if Request.Form("mailcomponent")="1" then tmailflag=tmailflag+4	
+		if Request.Form("mailnewinform")="1" then tmailflag=tmailflag OR 1
+		if Request.Form("mailreplyinform")="1" then tmailflag=tmailflag OR 2
+		if Request.Form("mailcomponent")="1" then tmailflag=tmailflag OR 4
 	end if
 
 	if CBool(showpage AND 4) then
@@ -225,15 +209,15 @@ else
 			tstyleid=clng(tstyleid)
 		end if
 	end if
-	
+
 	if CBool(showpage AND 8) then
 		tvisualflag=0
-		if Request.Form("replyinword")="1" then tvisualflag=tvisualflag+1
+		if Request.Form("replyinword")="1" then tvisualflag=tvisualflag OR 1
 		select case Request.Form("showpagelist") : case "1","2","3"
-			tvisualflag=tvisualflag+clng(Request.Form("showpagelist"))*4				'左移2位后累加
+			tvisualflag=tvisualflag OR clng(Request.Form("showpagelist"))*4				'左移2位后累加
 		end select
-		if Request.Form("advpagelist")="1" then tvisualflag=tvisualflag+64
-		if Request.Form("displaymode")="1" then tvisualflag=tvisualflag+1024
+		if Request.Form("advpagelist")="1" then tvisualflag=tvisualflag OR 64
+		if Request.Form("displaymode")="1" then tvisualflag=tvisualflag OR 1024
 
 		tadvpagelistcount=Request.Form("advpagelistcount")
 		if len(cstr(tadvpagelistcount))>3 then
@@ -245,17 +229,17 @@ else
 		if tadvpagelistcount<1 then tadvpagelistcount=1
 
 		tubbflag=0
-		if Request.Form("ubbflag_image")="1" then tubbflag=tubbflag+1
-		if Request.Form("ubbflag_url")="1" then tubbflag=tubbflag+2
-		if Request.Form("ubbflag_autourl")="1" then tubbflag=tubbflag+4
-		if Request.Form("ubbflag_player")="1" then tubbflag=tubbflag+8
-		if Request.Form("ubbflag_paragraph")="1" then tubbflag=tubbflag+16
-		if Request.Form("ubbflag_fontstyle")="1" then tubbflag=tubbflag+32
-		if Request.Form("ubbflag_fontcolor")="1" then tubbflag=tubbflag+64
-		if Request.Form("ubbflag_alignment")="1" then tubbflag=tubbflag+128
-		'if Request.Form("ubbflag_movement")="1" then tubbflag=tubbflag+256
-		'if Request.Form("ubbflag_cssfilter")="1" then tubbflag=tubbflag+512
-		if Request.Form("ubbflag_face")="1" then tubbflag=tubbflag+1024
+		if Request.Form("ubbflag_image")="1" then tubbflag=tubbflag OR 1
+		if Request.Form("ubbflag_url")="1" then tubbflag=tubbflag OR 2
+		if Request.Form("ubbflag_autourl")="1" then tubbflag=tubbflag OR 4
+		if Request.Form("ubbflag_player")="1" then tubbflag=tubbflag OR 8
+		if Request.Form("ubbflag_paragraph")="1" then tubbflag=tubbflag OR 16
+		if Request.Form("ubbflag_fontstyle")="1" then tubbflag=tubbflag OR 32
+		if Request.Form("ubbflag_fontcolor")="1" then tubbflag=tubbflag OR 64
+		if Request.Form("ubbflag_alignment")="1" then tubbflag=tubbflag OR 128
+		'if Request.Form("ubbflag_movement")="1" then tubbflag=tubbflag OR 256
+		'if Request.Form("ubbflag_cssfilter")="1" then tubbflag=tubbflag OR 512
+		if Request.Form("ubbflag_face")="1" then tubbflag=tubbflag OR 1024
 
 		ttablealign=Request.Form("tablealign")
 		if ttablealign<>"left" and ttablealign<>"center" and ttablealign<>"right" then ttablealign="left"
@@ -264,12 +248,12 @@ else
 		if Request.Form("showborder")="1" then tpagecontrol=tpagecontrol+1
 
 		tdelconfirm=0
-		if Request.Form("deltip")="1" then tdelconfirm=tdelconfirm+1
-		if Request.Form("delretip")="1" then tdelconfirm=tdelconfirm+2
-		if Request.Form("delseltip")="1" then tdelconfirm=tdelconfirm+4
-		if Request.Form("deladvtip")="1" then tdelconfirm=tdelconfirm+8
-		if Request.Form("deldectip")="1" then tdelconfirm=tdelconfirm+16
-		if Request.Form("delseldectip")="1" then tdelconfirm=tdelconfirm+32
+		if Request.Form("deltip")="1" then tdelconfirm=tdelconfirm OR 1
+		if Request.Form("delretip")="1" then tdelconfirm=tdelconfirm OR 2
+		if Request.Form("delseltip")="1" then tdelconfirm=tdelconfirm OR 4
+		if Request.Form("deladvtip")="1" then tdelconfirm=tdelconfirm OR 8
+		if Request.Form("deldectip")="1" then tdelconfirm=tdelconfirm OR 16
+		if Request.Form("delseldectip")="1" then tdelconfirm=tdelconfirm OR 32
 	end if
 
 	set cn1=server.CreateObject("ADODB.Connection")
