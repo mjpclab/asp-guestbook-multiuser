@@ -66,15 +66,15 @@ Call CreateConn(cn)
 				<%tstatus=rs("status")%>
 				<div class="field">
 					<span class="label">留言本状态：</span>
-					<span class="value"><input type="radio" name="status1" value="1" id="status11"<%=cked(StatusOpen)%><%=dised(web_StatusOpen=false)%> /><label for="status11"<%=dised(web_StatusOpen=false)%>>开启</label>　　<input type="radio" name="status1" value="0" id="status12"<%=cked(StatusOpen=false)%><%=dised(web_StatusOpen=false)%> /><label for="status12"<%=dised(web_StatusOpen=false)%>>关闭</label> (关闭时"访客留言权限"设置无效)</span>
+					<span class="value"><input type="radio" name="status1" value="1" id="status11"<%=cked(StatusOpen)%><%=dised(Not web_StatusOpen)%> /><label for="status11"<%=dised(Not web_StatusOpen)%>>开启</label>　　<input type="radio" name="status1" value="0" id="status12"<%=cked(Not StatusOpen)%><%=dised(Not web_StatusOpen)%> /><label for="status12"<%=dised(Not web_StatusOpen)%>>关闭</label> (关闭时"访客留言权限"设置无效)</span>
 				</div>
 				<div class="field">
 					<span class="label">访客留言权限：</span>
-					<span class="value"><input type="radio" name="status2" value="1" id="status21"<%=cked(StatusWrite)%><%=dised(web_StatusWrite=false)%> /><label for="status21"<%=dised(web_StatusWrite=false)%>>开启</label>　　<input type="radio" name="status2" value="0" id="status22"<%=cked(StatusWrite=false)%><%=dised(web_StatusWrite=false)%> /><label for="status22"<%=dised(web_StatusWrite=false)%>>关闭</label></span>
+					<span class="value"><input type="radio" name="status2" value="1" id="status21"<%=cked(StatusWrite)%><%=dised(Not web_StatusWrite)%> /><label for="status21"<%=dised(Not web_StatusWrite)%>>开启</label>　　<input type="radio" name="status2" value="0" id="status22"<%=cked(Not StatusWrite)%><%=dised(Not web_StatusWrite)%> /><label for="status22"<%=dised(Not web_StatusWrite)%>>关闭</label></span>
 				</div>
 				<div class="field">
 					<span class="label">访客搜索留言权限：</span>
-					<span class="value"><input type="radio" name="status3" value="1" id="status31"<%=cked(StatusSearch)%><%=dised(web_StatusSearch=false)%> /><label for="status31"<%=dised(web_StatusSearch=false)%>>开启</label>　　<input type="radio" name="status3" value="0" id="status32"<%=cked(StatusSearch=false)%><%=dised(web_StatusSearch=false)%> /><label for="status32"<%=dised(web_StatusSearch=false)%>>关闭</label></span>
+					<span class="value"><input type="radio" name="status3" value="1" id="status31"<%=cked(StatusSearch)%><%=dised(Not web_StatusSearch)%> /><label for="status31"<%=dised(Not web_StatusSearch)%>>开启</label>　　<input type="radio" name="status3" value="0" id="status32"<%=cked(Not StatusSearch)%><%=dised(Not web_StatusSearch)%> /><label for="status32"<%=dised(Not web_StatusSearch)%>>关闭</label></span>
 				</div>
 				<div class="field">
 					<span class="label">访客头像功能：</span>
@@ -120,18 +120,18 @@ Call CreateConn(cn)
 				<div class="field">
 					<span class="label">管理员默认HTML权限：</span>
 					<span class="value">
-						<span class="row"><input type="checkbox" value="1" name="adminhtml" id="adminhtml"<%=cked(clng(web_adminlimit and adminlimit and 1)<>0)%><%=dised(web_AdminHTMLSupport=false)%> /><label for="adminhtml"<%=dised(web_AdminHTMLSupport=false)%>>管理员回复、公告默认支持HTML</label></span>
-						<span class="row"><input type="checkbox" value="1" name="adminubb" id="adminubb"<%=cked(clng(web_adminlimit and adminlimit and 2)<>0)%><%=dised(web_AdminUBBSupport=false)%> /><label for="adminubb"<%=dised(web_AdminUBBSupport=false)%>>管理员回复、公告默认支持UBB</label></span>
-						<span class="row"><input type="checkbox" value="1" name="adminertn" id="adminertn"<%=cked(clng(web_adminlimit and adminlimit and 4)<>0)%><%=dised(web_AdminAllowNewLine=false)%> /><label for="adminertn"<%=dised(web_AdminAllowNewLine=false)%>>管理员不支持HTML和UBB时，默认允许回车换行</label></span>
+						<span class="row"><input type="checkbox" value="1" name="adminhtml" id="adminhtml"<%=cked(clng(web_adminlimit and adminlimit and 1)<>0)%><%=dised(Not web_AdminHTMLSupport)%> /><label for="adminhtml"<%=dised(Not web_AdminHTMLSupport)%>>管理员回复、公告默认支持HTML</label></span>
+						<span class="row"><input type="checkbox" value="1" name="adminubb" id="adminubb"<%=cked(clng(web_adminlimit and adminlimit and 2)<>0)%><%=dised(Not web_AdminUBBSupport)%> /><label for="adminubb"<%=dised(Not web_AdminUBBSupport)%>>管理员回复、公告默认支持UBB</label></span>
+						<span class="row"><input type="checkbox" value="1" name="adminertn" id="adminertn"<%=cked(clng(web_adminlimit and adminlimit and 4)<>0)%><%=dised(Not web_AdminAllowNewLine)%> /><label for="adminertn"<%=dised(Not web_AdminAllowNewLine)%>>管理员不支持HTML和UBB时，默认允许回车换行</label></span>
 					</span>
 				</div>
 				<%guestlimit=rs("guesthtml")%>
 				<div class="field">
 					<span class="label">访客HTML权限：</span>
 					<span class="value">
-						<span class="row"><input type="checkbox" value="1" name="guesthtml" id="guesthtml"<%=cked(clng(web_guestlimit and guestlimit and 1)<>0)%><%=dised(web_HTMLSupport=false)%> /><label for="guesthtml"<%=dised(web_HTMLSupport=false)%>>访客留言支持HTML</label></span>
-						<span class="row"><input type="checkbox" value="1" name="guestubb" id="guestubb"<%=cked(clng(web_guestlimit and guestlimit and 2)<>0)%><%=dised(web_UBBSupport=false)%> /><label for="guestubb"<%=dised(web_UBBSupport=false)%>>访客留言支持UBB</label></span>
-						<span class="row"><input type="checkbox" value="1" name="guestertn" id="guestertn"<%=cked(clng(web_guestlimit and guestlimit and 4)<>0)%><%=dised(web_AllowNewLine=false)%> /><label for="guestertn"<%=dised(web_AllowNewLine=false)%>>访客不支持HTML和UBB时，允许回车换行</label></span>
+						<span class="row"><input type="checkbox" value="1" name="guesthtml" id="guesthtml"<%=cked(clng(web_guestlimit and guestlimit and 1)<>0)%><%=dised(Not web_HTMLSupport)%> /><label for="guesthtml"<%=dised(Not web_HTMLSupport)%>>访客留言支持HTML</label></span>
+						<span class="row"><input type="checkbox" value="1" name="guestubb" id="guestubb"<%=cked(clng(web_guestlimit and guestlimit and 2)<>0)%><%=dised(Not web_UBBSupport)%> /><label for="guestubb"<%=dised(Not web_UBBSupport)%>>访客留言支持UBB</label></span>
+						<span class="row"><input type="checkbox" value="1" name="guestertn" id="guestertn"<%=cked(clng(web_guestlimit and guestlimit and 4)<>0)%><%=dised(Not web_AllowNewLine)%> /><label for="guestertn"<%=dised(Not web_AllowNewLine)%>>访客不支持HTML和UBB时，允许回车换行</label></span>
 					</span>
 				</div>
 				<div class="field">
@@ -179,11 +179,11 @@ Call CreateConn(cn)
 				<h4>邮件通知（请勿使用重要邮箱以防泄密）</h4>
 				<div class="field">
 					<span class="label">新留言到达通知版主：</span>
-					<span class="value"><input type="checkbox" value="1" name="mailnewinform" id="mailnewinform"<%=cked(clng(web_MailFlag and MailFlag and 1)<>0)%><%=dised(web_MailNewInform=false)%> /><label for="mailnewinform"<%=dised(web_MailNewInform=false)%>>启用</label></span>
+					<span class="value"><input type="checkbox" value="1" name="mailnewinform" id="mailnewinform"<%=cked(clng(web_MailFlag and MailFlag and 1)<>0)%><%=dised(Not web_MailNewInform)%> /><label for="mailnewinform"<%=dised(Not web_MailNewInform)%>>启用</label></span>
 				</div>
 				<div class="field">
 					<span class="label">版主回复通知留言人：</span>
-					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(clng(web_MailFlag and MailFlag and 2)<>0)%><%=dised(web_MailReplyInform=false)%> /><label for="mailreplyinform"<%=dised(web_MailReplyInform=false)%>>开启</label></span>
+					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(clng(web_MailFlag and MailFlag and 2)<>0)%><%=dised(Not web_MailReplyInform)%> /><label for="mailreplyinform"<%=dised(Not web_MailReplyInform)%>>开启</label></span>
 				</div>
 				<div class="field">
 					<span class="label">新留言通知接收地址：</span>
@@ -345,19 +345,19 @@ Call CreateConn(cn)
 					<span class="label">UBB开关(须启用UBB)：</span>
 					<span class="value">
 						<span class="row">
-							<input type="checkbox" name="ubbflag_image" id="ubbflag_image" value="1"<%=cked(web_UbbFlag_image and UbbFlag_image)%><%=dised(web_UbbFlag_image=false)%> /><label for="ubbflag_image"<%=dised(web_UbbFlag_image=false)%>>图片</label>　　　
-							<input type="checkbox" name="ubbflag_url" id="ubbflag_url" value="1"<%=cked(web_UbbFlag_url and UbbFlag_url)%><%=dised(web_UbbFlag_url=false)%> /><label for="ubbflag_url"<%=dised(web_UbbFlag_url=false)%>>URL、Email</label>
-							<input type="checkbox" name="ubbflag_autourl" id="ubbflag_autourl" value="1"<%=cked(web_UbbFlag_autourl and UbbFlag_autourl)%><%=dised(web_UbbFlag_autourl=false)%> /><label for="ubbflag_autourl"<%=dised(web_UbbFlag_autourl=false)%>>自动识别网址</label>
+							<input type="checkbox" name="ubbflag_image" id="ubbflag_image" value="1"<%=cked(web_UbbFlag_image and UbbFlag_image)%><%=dised(Not web_UbbFlag_image)%> /><label for="ubbflag_image"<%=dised(Not web_UbbFlag_image)%>>图片</label>　　　
+							<input type="checkbox" name="ubbflag_url" id="ubbflag_url" value="1"<%=cked(web_UbbFlag_url and UbbFlag_url)%><%=dised(Not web_UbbFlag_url)%> /><label for="ubbflag_url"<%=dised(Not web_UbbFlag_url)%>>URL、Email</label>
+							<input type="checkbox" name="ubbflag_autourl" id="ubbflag_autourl" value="1"<%=cked(web_UbbFlag_autourl and UbbFlag_autourl)%><%=dised(Not web_UbbFlag_autourl)%> /><label for="ubbflag_autourl"<%=dised(Not web_UbbFlag_autourl)%>>自动识别网址</label>
 						</span>
 						<span class="row">
-							<input type="checkbox" name="ubbflag_player" id="ubbflag_player" value="1"<%=cked(web_UbbFlag_player and UbbFlag_player)%><%=dised(web_UbbFlag_player=false)%> /><label for="ubbflag_player"<%=dised(web_UbbFlag_player=false)%>>播放控件</label>　
-							<input type="checkbox" name="ubbflag_paragraph" id="ubbflag_paragraph" value="1"<%=cked(web_UbbFlag_paragraph and UbbFlag_paragraph)%><%=dised(web_UbbFlag_paragraph=false)%> /><label for="ubbflag_paragraph"<%=dised(web_UbbFlag_paragraph=false)%>>段落样式</label>　
-							<input type="checkbox" name="ubbflag_fontstyle" id="ubbflag_fontstyle" value="1"<%=cked(web_UbbFlag_fontstyle and UbbFlag_fontstyle)%><%=dised(web_UbbFlag_fontstyle=false)%> /><label for="ubbflag_fontstyle"<%=dised(web_UbbFlag_fontstyle=false)%>>字体样式</label>
+							<input type="checkbox" name="ubbflag_player" id="ubbflag_player" value="1"<%=cked(web_UbbFlag_player and UbbFlag_player)%><%=dised(Not web_UbbFlag_player)%> /><label for="ubbflag_player"<%=dised(Not web_UbbFlag_player)%>>播放控件</label>　
+							<input type="checkbox" name="ubbflag_paragraph" id="ubbflag_paragraph" value="1"<%=cked(web_UbbFlag_paragraph and UbbFlag_paragraph)%><%=dised(Not web_UbbFlag_paragraph)%> /><label for="ubbflag_paragraph"<%=dised(Not web_UbbFlag_paragraph)%>>段落样式</label>　
+							<input type="checkbox" name="ubbflag_fontstyle" id="ubbflag_fontstyle" value="1"<%=cked(web_UbbFlag_fontstyle and UbbFlag_fontstyle)%><%=dised(Not web_UbbFlag_fontstyle)%> /><label for="ubbflag_fontstyle"<%=dised(Not web_UbbFlag_fontstyle)%>>字体样式</label>
 						</span>
 						<span class="row">
-							<input type="checkbox" name="ubbflag_fontcolor" id="ubbflag_fontcolor" value="1"<%=cked(web_UbbFlag_fontcolor and UbbFlag_fontcolor)%><%=dised(web_UbbFlag_fontcolor=false)%> /><label for="ubbflag_fontcolor"<%=dised(web_UbbFlag_fontcolor=false)%>>字体颜色</label>　
-							<input type="checkbox" name="ubbflag_alignment" id="ubbflag_alignment" value="1"<%=cked(web_UbbFlag_alignment and UbbFlag_alignment)%><%=dised(web_UbbFlag_alignment=false)%> /><label for="ubbflag_alignment"<%=dised(web_UbbFlag_alignment=false)%>>对齐方式</label>　
-							<input type="checkbox" name="ubbflag_face" id="ubbflag_face" value="1"<%=cked(web_UbbFlag_face and UbbFlag_face)%><%=dised(web_UbbFlag_face=false)%> /><label for="ubbflag_face"<%=dised(web_UbbFlag_face=false)%>>表情图标</label>
+							<input type="checkbox" name="ubbflag_fontcolor" id="ubbflag_fontcolor" value="1"<%=cked(web_UbbFlag_fontcolor and UbbFlag_fontcolor)%><%=dised(Not web_UbbFlag_fontcolor)%> /><label for="ubbflag_fontcolor"<%=dised(Not web_UbbFlag_fontcolor)%>>字体颜色</label>　
+							<input type="checkbox" name="ubbflag_alignment" id="ubbflag_alignment" value="1"<%=cked(web_UbbFlag_alignment and UbbFlag_alignment)%><%=dised(Not web_UbbFlag_alignment)%> /><label for="ubbflag_alignment"<%=dised(Not web_UbbFlag_alignment)%>>对齐方式</label>　
+							<input type="checkbox" name="ubbflag_face" id="ubbflag_face" value="1"<%=cked(web_UbbFlag_face and UbbFlag_face)%><%=dised(Not web_UbbFlag_face)%> /><label for="ubbflag_face"<%=dised(Not web_UbbFlag_face)%>>表情图标</label>
 						</span>
 					</span>
 				</div>
