@@ -40,7 +40,7 @@ checkuser cn,rs,false
 	<div class="content">
 		<%
 		rs.Open Replace(sql_webuserinfo,"{0}",ruser),cn,,,1
-		if rs("faceid")>0 then Response.Write "<img src=""" & FacePath & cstr(rs("faceid")) & ".gif" & """ style=""border:0px;"">"
+		if rs("faceid")>0 then Response.Write "<img src=""asset/face/" & rs("faceid") & ".gif" & """>"
 		%>
 		<p class="field">
 			<a href="index.asp?user=<%=rs("adminname")%>" target="_blank">[´ò¿ªÁôÑÔ±¾]</a>
