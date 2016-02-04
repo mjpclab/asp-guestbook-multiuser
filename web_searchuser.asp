@@ -27,12 +27,10 @@ Response.AddHeader "cache-control","private"
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_header.inc" -->
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
-
 	<h4>(搜索结果)注册用户列表：</h4>
-
-
 	<%
 	dim arg
 	arg=""
@@ -96,8 +94,9 @@ Response.AddHeader "cache-control","private"
 	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchuser.asp","(搜索结果)[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","type=" &Request("type")& "&searchtxt=" &server.URLEncode(request("searchtxt"))%>
 
 	<!-- #include file="include/template/web_admin_searchuserbox.inc" -->
-</div>
+	</div>
 
-<!-- #include file="include/template/footer.inc" -->
+	<!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>

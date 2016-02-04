@@ -77,8 +77,8 @@ end if
 <div id="outerborder" class="outerborder">
 
 <%if ShowTitle=true then show_book_title 3,"π‹¿Ì"%>
+<div id="mainborder" class="mainborder">
 <!-- #include file="include/template/admin_mainmenu.inc" -->
-
 <div class="region region-longtext">
 	<h3 class="title">±‡º≠¡Ù—‘</h3>
 	<div class="content">
@@ -115,9 +115,9 @@ end if
 pagename="admin_edit"%>
 <!-- #include file="include/template/admin_listword.inc" -->
 <%rs.Close : cn.Close : set rs=nothing : set cn=nothing%>
-
 </div>
 
 <!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>

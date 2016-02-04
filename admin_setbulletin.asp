@@ -45,8 +45,8 @@ end if
 <div id="outerborder" class="outerborder">
 
 	<%if ShowTitle=true then show_book_title 3,"管理"%>
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/admin_mainmenu.inc" -->
-
 	<%
 	set cn=server.CreateObject("ADODB.Connection")
 	set rs=server.CreateObject("ADODB.Recordset")
@@ -77,17 +77,17 @@ end if
 				<!-- #include file="include/template/ubbtoolbar.inc" -->
 				<%if web_AdminUBBSupport then ShowUbbToolBar(2)%>
 				<p>
-				<%if web_AdminHTMLSupport=true then%><input type="checkbox" name="html2" id="html2" value="1"<%if cint(tflag and 1)<>0 then Response.Write " checked=""checked"""%> /><label for="html2">支持HTML标记</label><br/><%end if%>
-				<%if web_AdminUBBSupport=true then%><input type="checkbox" name="ubb2" id="ubb2" value="1"<%if cint(tflag and 2)<>0 then Response.Write " checked=""checked"""%> /><label for="ubb2">支持UBB标记</label><br/><%end if%>
-				<%if web_AdminAllowNewLine=true then%><input type="checkbox" name="newline2" id="newline2" value="1"<%if cint(tflag and 4)<>0 then Response.Write " checked=""checked"""%> /><label for="newline2">不支持HTML和UBB标记时允许回车换行</label><%end if%>
+				<%if web_AdminHTMLSupport=true then%><input type="checkbox" name="html2" id="html2" value="1"<%=cked(CBool(tflag AND 1))%> /><label for="html2">支持HTML标记</label><br/><%end if%>
+				<%if web_AdminUBBSupport=true then%><input type="checkbox" name="ubb2" id="ubb2" value="1"<%=cked(CBool(tflag AND 2))%> /><label for="ubb2">支持UBB标记</label><br/><%end if%>
+				<%if web_AdminAllowNewLine=true then%><input type="checkbox" name="newline2" id="newline2" value="1"<%=cked(CBool(tflag AND 4))%> /><label for="newline2">不支持HTML和UBB标记时允许回车换行</label><%end if%>
 				</p>
 				<div class="command"><input value="更新数据" type="submit" name="submit1" id="submit1" /></div>
 			</form>
 		</div>
 	</div>
+	</div>
 
+	<!-- #include file="include/template/footer.inc" -->
 </div>
-
-<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

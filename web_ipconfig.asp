@@ -27,7 +27,8 @@ Call CreateConn(cn)
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_header.inc" -->
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 
 <div class="region form-region">
@@ -159,10 +160,10 @@ Call CreateConn(cn)
 		</form>
 	</div>
 </div>
+	</div>
 
-<%cn.Close : set rs=nothing : set cn=nothing%>
+	<!-- #include file="include/template/footer.inc" -->
 </div>
-
-<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>
+<%cn.Close : set rs=nothing : set cn=nothing%>

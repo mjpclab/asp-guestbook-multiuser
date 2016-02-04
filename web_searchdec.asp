@@ -60,9 +60,9 @@ Call CreateConn(cn)
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_header.inc" -->
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
-
 	<div class="region form-region">
 		<h3 class="title">搜索置顶公告</h3>
 		<div class="content">
@@ -140,14 +140,8 @@ end if	'对应for上面一行的if
 <%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchdec.asp","[搜索结果分页]","adminname=" &server.URLEncode(Request("adminname"))& "&searchtxt=" & server.URLEncode(Request("searchtxt")) end if%>
 </div>
 
-<%
-	if ItemsCount<>0 then rs.Close
-	cn.Close
-	set rs=nothing
-	set cn=nothing
-%>
-
 <!-- #include file="include/template/footer.inc" -->
+</div>
 <script type="text/javascript" src="asset/js/jquery-1.x-min.js"></script>
 <script type="text/javascript">
 	(function multiDelConfirm(){
@@ -165,3 +159,9 @@ end if	'对应for上面一行的if
 </script>
 </body>
 </html>
+<%
+	if ItemsCount<>0 then rs.Close
+	cn.Close
+	set rs=nothing
+	set cn=nothing
+%>

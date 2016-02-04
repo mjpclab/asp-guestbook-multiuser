@@ -13,14 +13,14 @@ Call CreateConn(cn1)
 
 dim tlimit
 tlimit=0
-if Request.Form("html2")="1" then tlimit=tlimit+1
-if Request.Form("ubb2")="1" then tlimit=tlimit+2
-if Request.Form("newline2")="1" then tlimit=tlimit+4
+if Request.Form("html2")="1" then tlimit=tlimit OR 1
+if Request.Form("ubb2")="1" then tlimit=tlimit OR 2
+if Request.Form("newline2")="1" then tlimit=tlimit OR 4
 
-if Request.Form("pub_at_face")="1" then tlimit=tlimit+16
-if Request.Form("pub_at_function")="1" then tlimit=tlimit+32
-if Request.Form("pub_at_index")="1" then tlimit=tlimit+64
-if Request.Form("pub_at_search")="1" then tlimit=tlimit+128
+if Request.Form("pub_at_face")="1" then tlimit=tlimit OR 16
+if Request.Form("pub_at_function")="1" then tlimit=tlimit OR 32
+if Request.Form("pub_at_index")="1" then tlimit=tlimit OR 64
+if Request.Form("pub_at_search")="1" then tlimit=tlimit OR 128
 
 dim tbul
 tbul=Request.Form("abulletin")

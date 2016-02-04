@@ -136,7 +136,8 @@ sql_condition=sql_websearch_condition_init & sql_condition
 %>
 
 <div id="outerborder" class="outerborder">
-	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_header.inc" -->
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 
 <div class="region region-2column region-longtext region-search-message">
@@ -248,11 +249,10 @@ if PagesCount>1 and ShowBottomPageList then
 	show_page_list ipage,PagesCount,"web_search.asp","[ËÑË÷½á¹û·ÖÒ³]",param_str
 end if
 %>
-
 </div>
 
-<% cn.Close : set rs=nothing : set cn=nothing %>
-
 <!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>
+<% cn.Close : set rs=nothing : set cn=nothing %>

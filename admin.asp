@@ -62,8 +62,8 @@ get_divided_page cn,rs,sql_pk_main,Replace(sql_admin_words_count,"{0}",adminid),
 <div id="outerborder" class="outerborder">
 
 	<%if ShowTitle=true then show_book_title 3,"¹ÜÀí"%>
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/admin_mainmenu.inc" -->
-	
 	<%dim sys_bul_flag
 	sys_bul_flag=128%>
 	<!-- #include file="include/template/sysbulletin.inc" -->
@@ -93,8 +93,9 @@ get_divided_page cn,rs,sql_pk_main,Replace(sql_admin_words_count,"{0}",adminid),
 	</form>
 
 	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"admin.asp","[ÁôÑÔ·ÖÒ³]",""%>
-</div>
+	</div>
 
-<!-- #include file="include/template/footer.inc" -->
+	<!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>

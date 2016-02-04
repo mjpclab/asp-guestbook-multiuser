@@ -37,9 +37,9 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_header.inc" -->
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
-
 	<div class="region form-region region-longtext">
 		<h3 class="title">ĞŞ¸ÄÃÜÂë</h3>
 		<div class="content">
@@ -60,9 +60,9 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 			</form>
     	</div>
 	</div>
+	</div>
 
+	<!-- #include file="include/template/footer.inc" -->
 </div>
-
-<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

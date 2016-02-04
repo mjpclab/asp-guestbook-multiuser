@@ -33,7 +33,7 @@ end if
 <div class="header">
 	<div class="breadcrumb"><%=web_BookName%></div>
 </div>
-
+<div id="mainborder" class="mainborder">
 <%
 set cn=server.CreateObject("ADODB.Connection")
 Call CreateConn(cn)
@@ -74,9 +74,9 @@ sys_bul_flag=16
 		<p>留言审核、悄悄话、邮件通知等。</p>
 	</div>
 </div>
-
 </div>
 
 <!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>

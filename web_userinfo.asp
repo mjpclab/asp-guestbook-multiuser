@@ -32,9 +32,9 @@ checkuser cn,rs,false
 
 <div id="outerborder" class="outerborder">
 
-<!-- #include file="include/template/web_admin_title.inc" -->
+<!-- #include file="include/template/web_admin_header.inc" -->
 
-
+<div id="mainborder" class="mainborder">
 <div class="region">
 	<h3 class="title">查看用户信息</h3>
 	<div class="content">
@@ -107,12 +107,10 @@ checkuser cn,rs,false
 		</table>
 	</div>
 </div>
-
-<%
-rs.Close : cn.Close : set rs=nothing : set cn=nothing
-%>
 </div>
 
 <!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>
+<%rs.Close : cn.Close : set rs=nothing : set cn=nothing%>

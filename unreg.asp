@@ -54,6 +54,7 @@ if VcodeCount>0 then Session("vcode")=getvcode(VcodeCount)
 <div class="header">
 	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">йврЁ</a> &gt;&gt; вти╬уй╨е</div>
 </div>
+<div id="mainborder" class="mainborder">
 <%
 set cn=server.CreateObject("ADODB.Connection")
 Call CreateConn(cn)
@@ -90,9 +91,10 @@ sys_bul_flag=32
 		</form>
 	</div>
 </div>
-
 </div>
+
 <!-- #include file="include/template/footer.inc" -->
+</div>
 <script type="text/javascript">
 	<!-- #include file="asset/js/refresh-captcha.js" -->
 </script>

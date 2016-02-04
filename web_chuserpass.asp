@@ -47,8 +47,8 @@ set cn=nothing
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_title.inc" -->
-
+	<!-- #include file="include/template/web_admin_header.inc" -->
+	<div id="mainborder" class="mainborder">
 	<div class="region form-region region-longtext">
 		<h3 class="title">重设用户密码</h3>
 		<div class="content">
@@ -69,8 +69,9 @@ set cn=nothing
             </form>
 		</div>
 	</div>
-</div>
+	</div>
 
-<!-- #include file="include/template/footer.inc" -->
+	<!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>

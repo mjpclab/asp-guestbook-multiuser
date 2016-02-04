@@ -58,8 +58,8 @@ end if
 <div id="outerborder" class="outerborder">
 
 	<%if ShowTitle=true then show_book_title 3,"¹ÜÀí"%>
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/admin_mainmenu.inc" -->
-
 	<div class="region form-region region-longtext">
 		<h3 class="title">ĞŞ¸ÄÃÜÂë</h3>
 		<div class="content">
@@ -111,10 +111,11 @@ end if
 			</form>
 		</div>
 	</div>
+	</div>
 
-	<%rs.Close : cn.Close : set rs=nothing : set cn=nothing%>
+	<!-- #include file="include/template/footer.inc" -->
+
 </div>
-
-<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>
+<%rs.Close : cn.Close : set rs=nothing : set cn=nothing%>

@@ -26,7 +26,8 @@ Call CreateConn(cn)
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_header.inc" -->
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 
 	<%rs.Open Replace(sql_adminfloodconfig,"{0}",wm_id),cn,,,1%>
@@ -54,8 +55,9 @@ Call CreateConn(cn)
 		</div>
 	</div>
 
-<%rs.Close : cn.Close : set rs=nothing : set cn=nothing%>
+	</div>
 
+	<!-- #include file="include/template/footer.inc" -->
 </div>
 
 <script type="text/javascript" defer="defer">
@@ -65,7 +67,6 @@ function check()
 	return true;
 }
 </script>
-
-<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>
+<%rs.Close : cn.Close : set rs=nothing : set cn=nothing%>

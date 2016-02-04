@@ -27,9 +27,9 @@ Call CreateConn(cn)
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_header.inc" -->
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
-
 	<%rs.Open Replace(sql_adminconfig_config,"{0}",wm_id),cn,,,1%>
 
 	<div class="region region-config admin-tools">
@@ -319,7 +319,9 @@ Call CreateConn(cn)
 			</form>
 		</div>
 	</div>
+	</div>
 
+	<!-- #include file="include/template/footer.inc" -->
 </div>
 
 <%rs.Close : cn.Close : set rs=nothing : set cn=nothing%>
@@ -423,7 +425,5 @@ function check()
 	return true;
 }
 </script>
-
-<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

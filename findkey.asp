@@ -45,7 +45,7 @@ end if
 <div class="header">
 	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">Ê×Ò³</a> &gt;&gt; <a href="findkey.asp" style="color:<%=TitleColor%>">ÕÒ»ØÃÜÂë</a> &gt;&gt; ²½Öè1</div>
 </div>
-
+<div id="mainborder" class="mainborder">
 <%
 set cn=server.CreateObject("ADODB.Connection")
 Call CreateConn(cn)
@@ -70,9 +70,9 @@ sys_bul_flag=32
 	</form>
 	</div>
 </div>
-
 </div>
 
 <!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>

@@ -71,6 +71,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 <div id="outerborder" class="outerborder">
 	<%if ShowTitle=true then show_book_title 2,""%>
 
+	<div id="mainborder" class="mainborder">
 	<%RPage="index.asp"%><!-- #include file="include/template/guest_func.inc" -->
 	
 	<%dim sys_bul_flag
@@ -100,10 +101,11 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 
 	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"index.asp","[ÁôÑÔ·ÖÒ³]",""%>
 	<%if ItemsCount>0 and StatusSearch and ShowBottomSearchBox then%><!-- #include file="include/template/guest_searchbox.inc" --><%end if%>
+	</div>
 
+	<!-- #include file="include/template/footer.inc" -->
 </div>
 
-<!-- #include file="include/template/footer.inc" -->
 <!-- #include file="include/template/getclientinfo.inc" -->
 </body>
 </html>

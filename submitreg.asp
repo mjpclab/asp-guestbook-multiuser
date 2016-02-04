@@ -110,7 +110,7 @@ gbookaddr=geturlpath & "index.asp?user=" & ruser
 <div class="header">
 	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; <a href="reg.asp" style="color:<%=TitleColor%>">申请留言本</a> &gt;&gt; 申请成功</div>
 </div>
-
+<div id="mainborder" class="mainborder">
 <%
 dim sys_bul_flag
 sys_bul_flag=32
@@ -121,9 +121,9 @@ sys_bul_flag=32
 <!-- #include file="include/template/web_guest_func.inc" -->
 
 <p class="centertext">创建成功！请记下您的留言本首页地址：<br/><%=gbookaddr%><br/>&gt;<a href="<%=gbookaddr%>">转到该页→</a></p>
-
 </div>
 
 <!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>

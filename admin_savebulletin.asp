@@ -26,9 +26,9 @@ Call CreateConn(cn1)
 
 dim tlimit
 tlimit=0
-if Request.Form("html2")="1" then tlimit=tlimit+1
-if Request.Form("ubb2")="1" then tlimit=tlimit+2
-if Request.Form("newline2")="1" then tlimit=tlimit+4
+if Request.Form("html2")="1" then tlimit=tlimit OR 1
+if Request.Form("ubb2")="1" then tlimit=tlimit OR 2
+if Request.Form("newline2")="1" then tlimit=tlimit OR 4
 
 dim tbul
 tbul=Request.Form("abulletin")

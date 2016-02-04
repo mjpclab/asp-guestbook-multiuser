@@ -34,9 +34,10 @@ sub WebErrorPage(errorCode)
 			<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" class="booktitle">Ê×Ò³</a> &gt;&gt; ´íÎó</div>
 		</div>
 
+		<div id="mainborder" class="mainborder">
 		<!-- #include file="include/template/web_guest_func.inc" -->
-
 		<p style="margin-bottom: 3em;">¡¡¡¡¡ö¡¡<%=errmsg%></p>
+		</div>
 	</div>
 
 	<!-- #include file="include/template/footer.inc" -->

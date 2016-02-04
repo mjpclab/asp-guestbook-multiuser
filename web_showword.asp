@@ -53,9 +53,9 @@ end if
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_header.inc" -->
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
-	
 	<form method="post" action="web_searchmdel.asp" name="form7">
 		<!-- #include file="include/template/web_admin_func_search.inc" -->
 		<%
@@ -64,7 +64,7 @@ end if
 			%><!-- #include file="include/template/web_admin_listword.inc" --><%
 			rs.Close : cn.Close : set rs=nothing : set cn=nothing
 		%>
-			
+
 		<input type="hidden" name="rootid" value="<%=request("id")%>" />
 		<input type="hidden" name="s_adminname" value="<%=request("s_adminname")%>" />
 		<input type="hidden" name="s_name" value="<%=request("s_name")%>" />
@@ -81,8 +81,9 @@ end if
 		
 		<!-- #include file="include/template/web_admin_func_search.inc" -->
 	</form>
-</div>
+	</div>
 
-<!-- #include file="include/template/footer.inc" -->
+	<!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>

@@ -101,7 +101,7 @@ cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"
 <div class="header">
 	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; <a href="findkey.asp" style="color:<%=TitleColor%>">找回密码</a> &gt;&gt; 完成</div>
 </div>
-
+<div id="mainborder" class="mainborder">
 <%
 dim sys_bul_flag
 sys_bul_flag=32
@@ -118,9 +118,9 @@ sys_bul_flag=32
 		<p><a href="admin_login.asp?user=<%=ruser%>">用户登录</a></p>
 	</div>
 </div>
-
 </div>
 
 <!-- #include file="include/template/footer.inc" -->
+</div>
 </body>
 </html>

@@ -27,9 +27,9 @@ Response.AddHeader "cache-control","private"
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_title.inc" -->
+	<!-- #include file="include/template/web_admin_header.inc" -->
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
-
 	<h3>注册用户列表：</h3>
 	<%
 	set cn=server.CreateObject("ADODB.Connection")
@@ -75,9 +75,10 @@ Response.AddHeader "cache-control","private"
 	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_admin.asp","[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]",""%>
 
 	<!-- #include file="include/template/web_admin_searchuserbox.inc" -->
-</div>
+	</div>
 
-<!-- #include file="include/template/footer.inc" -->
+	<!-- #include file="include/template/footer.inc" -->
+</div>
 <script type="text/javascript" src="asset/js/jquery-1.x-min.js"></script>
 <script type="text/javascript" src="asset/js/table-select.js"></script>
 </body>

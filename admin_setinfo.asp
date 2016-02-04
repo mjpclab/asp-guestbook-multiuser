@@ -40,8 +40,8 @@ Call CreateConn(cn)
 <div id="outerborder" class="outerborder">
 
 	<%if ShowTitle=true then show_book_title 3,"№ЬАн"%>
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/admin_mainmenu.inc" -->
-
 	<%
 	rs.Open Replace(sql_adminsetinfo,"{0}",adminid),cn,,,1
 	tfaceid=rs("faceid")
@@ -92,9 +92,9 @@ Call CreateConn(cn)
 			</form>
 		</div>
 	</div>
+	</div>
 
+	<!-- #include file="include/template/footer.inc" -->
 </div>
-
-<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>

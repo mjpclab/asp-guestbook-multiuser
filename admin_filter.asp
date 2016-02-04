@@ -40,8 +40,8 @@ Call CreateConn(cn)
 <div id="outerborder" class="outerborder">
 
 	<%if ShowTitle=true then show_book_title 3,"管理"%>
+	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/admin_mainmenu.inc" -->
-
 	<div class="region form-region region-filter">
 		<h3 class="title">内容过滤策略</h3>
 		<div class="content">
@@ -124,9 +124,9 @@ Call CreateConn(cn)
 			%>
 		</div>
 	</div>
+	</div>
 
+	<!-- #include file="include/template/footer.inc" -->
 </div>
-
-<!-- #include file="include/template/footer.inc" -->
 </body>
 </html>
