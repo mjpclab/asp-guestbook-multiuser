@@ -97,8 +97,6 @@ web_UbbFlag_alignment=UbbFlag_alignment
 'web_UbbFlag_cssfilter=UbbFlag_cssfilter
 web_UbbFlag_face=UbbFlag_face
 
-TableBorderWidth=1
-TableAlign=lrs("tablealign")		'表格对齐方式 left:左对齐 center:居中 right:右对齐
 TableWidth=lrs("tablewidth")		'表格宽度，可用百分比
 WindowSpace=lrs("windowspace")		'窗格区块间距
 TableLeftWidth=lrs("tableleftwidth")	'表格左方宽度，可用百分比
@@ -113,8 +111,8 @@ ReplyTextHeight=lrs("replytextheight")				'公告编辑框高度
 ItemsPerPage=lrs("itemsperpage")		'每页显示的项目数
 TitlesPerPage=lrs("titlesperpage")		'每页显示的标题数
 
-PageControl=clng(lrs("pagecontrol"))
-ShowBorder=CBool(PageControl and 1)			'显示边框
+'PageControl=clng(lrs("pagecontrol"))
+'ShowBorder=CBool(PageControl and 1)			'显示边框
 
 DelConfirm=lrs("delconfirm")
 DelTip=CBool(DelConfirm and 1)

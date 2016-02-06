@@ -241,11 +241,8 @@ else
 		'if Request.Form("ubbflag_cssfilter")="1" then tubbflag=tubbflag OR 512
 		if Request.Form("ubbflag_face")="1" then tubbflag=tubbflag OR 1024
 
-		ttablealign=Request.Form("tablealign")
-		if ttablealign<>"left" and ttablealign<>"center" and ttablealign<>"right" then ttablealign="left"
-
 		tpagecontrol=0
-		if Request.Form("showborder")="1" then tpagecontrol=tpagecontrol+1
+		'if Request.Form("showborder")="1" then tpagecontrol=tpagecontrol OR 1
 
 		tdelconfirm=0
 		if Request.Form("deltip")="1" then tdelconfirm=tdelconfirm OR 1
@@ -293,7 +290,6 @@ else
 		rs1("visualflag")=tvisualflag
 		rs1("advpagelistcount")=tadvpagelistcount
 		rs1("ubbflag")=tubbflag
-		rs1("tablealign")=ttablealign
 		rs1("pagecontrol")=tpagecontrol
 		rs1("delconfirm")=tdelconfirm
 	end if
