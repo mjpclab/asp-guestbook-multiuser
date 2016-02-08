@@ -173,11 +173,11 @@ end function
 					<%end if%>
 					<div class="field">
 						<div class="label">称呼<span class="required">*</span></div>
-						<div class="value"><input type="text" name="iname" maxlength="20" value="<%=server.htmlEncode(FormOrCookie("iname"))%>"/></div>
+						<div class="value"><input type="text" name="iname" class="longtext" maxlength="20" value="<%=server.htmlEncode(FormOrCookie("iname"))%>"/></div>
 					</div>
 					<div class="field">
 						<div class="label">标题<span class="required">*</span></div>
-						<div class="value"><input type="text" name="ititle" maxlength="30" value="<%=server.htmlEncode(FormOrSession(InstanceName & "_ititle_" & ruser))%><%if Request.Form("ititle")="" and isnumeric(Request("follow")) and Request("follow")<>"" then response.write "Re:"%>"/></div>
+						<div class="value"><input type="text" name="ititle" class="longtext" maxlength="30" value="<%=server.htmlEncode(FormOrSession(InstanceName & "_ititle_" & ruser))%><%if Request.Form("ititle")="" and isnumeric(Request("follow")) and Request("follow")<>"" then response.write "Re:"%>"/></div>
 					</div>
 					<div class="field">
 						<div class="row">内容： <%=getstatus(web_HTMLSupport and HTMLSupport)%>HTML标记　<%=getstatus(web_UBBSupport and UBBSupport)%>UBB标记<%if not(web_HTMLSupport and HTMLSupport) and not(web_UBBSupport and UBBSupport) and (web_AllowNewLine and AllowNewLine) then Response.Write "　" & getstatus(true) & "允许换行"%></div>
@@ -203,19 +203,19 @@ end function
 					<h4>联系方式：</h4>
 					<div class="field">
 						<div class="label"><img src="asset/image/icon_mail.gif" class="imgicon" />邮件</div>
-						<div class="value"><input type="text" name="imail" maxlength="50" value="<%=server.htmlEncode(FormOrCookie("imail"))%>"/><%if MailReplyInform=true then%><br/><input type="checkbox" name="imailreplyinform" id="imailreplyinform" value="1"<%=cked(Request.Form("imailreplyinform")="1")%> /><label for="imailreplyinform">版主回复后用邮件通知我</label><%end if%></div>
+						<div class="value"><input type="text" name="imail" class="longtext" maxlength="50" value="<%=server.htmlEncode(FormOrCookie("imail"))%>"/><%if MailReplyInform=true then%><br/><input type="checkbox" name="imailreplyinform" id="imailreplyinform" value="1"<%=cked(Request.Form("imailreplyinform")="1")%> /><label for="imailreplyinform">版主回复后用邮件通知我</label><%end if%></div>
 					</div>
 					<div class="field">
 						<div class="label"><img src="asset/image/icon_qq.gif" class="imgicon" />QQ号</div>
-						<div class="value"><input type="text" name="iqq" maxlength="16" value="<%=server.htmlEncode(FormOrCookie("iqq"))%>"/></div>
+						<div class="value"><input type="text" name="iqq" class="longtext" maxlength="16" value="<%=server.htmlEncode(FormOrCookie("iqq"))%>"/></div>
 					</div>
 					<div class="field">
 						<div class="label"><img src="asset/image/icon_skype.gif" class="imgicon" />Skype</div>
-						<div class="value"><input type="text" name="imsn" maxlength="50" value="<%=server.htmlEncode(FormOrCookie("imsn"))%>"/></div>
+						<div class="value"><input type="text" name="imsn" class="longtext" maxlength="50" value="<%=server.htmlEncode(FormOrCookie("imsn"))%>"/></div>
 					</div>
 					<div class="field">
 						<div class="label"><img src="asset/image/icon_homepage.gif" class="imgicon" />主页</div>
-						<div class="value"><input type="text" name="ihomepage" maxlength="127" value="<%=server.htmlEncode(FormOrCookie("ihomepage"))%>"/></div>
+						<div class="value"><input type="text" name="ihomepage" class="longtext" maxlength="127" value="<%=server.htmlEncode(FormOrCookie("ihomepage"))%>"/></div>
 					</div>
 					<div class="field">
 						<input type="checkbox" name="hidecontact" id="hidecontact" value="1"<%=cked(request.form("hidecontact")="1")%> /><label for="hidecontact">联系方式仅版主可见</label>
