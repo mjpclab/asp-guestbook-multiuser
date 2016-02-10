@@ -70,6 +70,7 @@ if VcodeCount>0 then Session("vcode")=getvcode(VcodeCount)
 	<h3 class="title">用户登录</h3>
 	<div class="content">
 		<form method="post" action="login_verify.asp" name="form5" onsubmit="return submitCheck(this);">
+			<input type="hidden" name="referrer" value="<%=Request.QueryString("referrer")%>"/>
 			<div class="field">
 				<span class="label">用户名：</span>
 				<span class="value"><input type="text" name="user" maxlength="32" value="<%=ruser%>" /></span>

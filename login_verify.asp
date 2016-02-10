@@ -24,18 +24,15 @@ elseif StatusLogin=false then
 	Response.End
 end if
 
-Dim cn,rs
-set cn=server.CreateObject("ADODB.Connection")
-set rs=server.CreateObject("ADODB.Recordset")
-
-Call CreateConn(cn)
-
 if StatusStatistics then call addstat("login")
+
+Dim referrer
+referrer=Request.Form("referrer")
 
 if VcodeCount>0 and (Request.Form("ivcode")<>Session("vcode") or Session("vcode")="") then
 	Session("vcode")=""
 	if StatusStatistics then call addstat("loginfailed")
-	Call TipsPage("验证码错误。","admin_login.asp?user=" &ruser)
+	Call TipsPage("验证码错误。","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
 
 	set rs=nothing
 	set cn=nothing
@@ -44,18 +41,34 @@ else
 	Session("vcode")=""
 end if
 
+Dim cn,rs
+set cn=server.CreateObject("ADODB.Connection")
+set rs=server.CreateObject("ADODB.Recordset")
+Call CreateConn(cn)
 rs.Open Replace(sql_adminverify,"{0}",adminid),cn,0,1,1
 
 Session(InstanceName & "_adminpass_" & ruser)=md5(request("iadminpass"),32)
-if Session(InstanceName & "_adminpass_"& ruser)=rs(0) then
-	session.Timeout=cint(AdminTimeOut)
+if Not rs.EOF then
+	if Session(InstanceName & "_adminpass_"& ruser)=rs(0) then
+		session.Timeout=cint(AdminTimeOut)
 
-	cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",now()),"{1}",adminid),,1
-	rs.Close : cn.Close : set rs=nothing : set cn=nothing
-	Response.Redirect "admin.asp?user=" &ruser
+		cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",now()),"{1}",adminid),,1
+		rs.Close : cn.Close : set rs=nothing : set cn=nothing
+		if referrer<>"" then
+			Response.Redirect referrer
+		else
+			Response.Redirect "admin.asp?user=" &ruser
+		end if
+	else
+		if StatusStatistics then call addstat("loginfailed")
+		Call TipsPage("密码不正确。","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
+
+		rs.Close : cn.Close : set rs=nothing : set cn=nothing
+		Response.End
+	end if
 else
 	if StatusStatistics then call addstat("loginfailed")
-	Call TipsPage("密码不正确。","admin_login.asp?user=" &ruser)
+	Call TipsPage("密码不正确。","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
 
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
