@@ -10,5 +10,5 @@
 <!-- #include file="loadconfig.asp" -->
 <%
 Session.Contents.Remove(InstanceName & "_adminpass_" & ruser)
-Response.Redirect "index.asp?user=" &ruser
+Response.Redirect "admin_login.asp?user=" &ruser
 %>
