@@ -85,7 +85,7 @@ dim tnow
 cn.BeginTrans
 tnow=now()
 cn.Execute Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_submitreg_init1,"{0}",ruser),"{1}",md5(Request.Form("pass1"),32)),"{2}",FilterQuote(server.HTMLEncode(Request.Form("nick")))),"{3}",0),"{4}",tnow),"{5}",tnow),"{6}",FilterQuote(Request.Form("question"))),"{7}",md5(Request.Form("key"),32)),"{8}",""),,1
-cn.Execute Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_submitreg_init2,"{0}",ruser),"{1}",143),"{2}",6),"{3}",6),"{4}",20),"{5}",34),"{6}",132),"{7}",132),"{8}",111),"{9}",1270),"{10}",CssFontFamily),"{11}",CssFontSize),"{12}",CssLineHeight),"{13}",styleid),,1
+cn.Execute Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(sql_submitreg_init2,"{0}",ruser),"{1}",143),"{2}",6),"{3}",6),"{4}",20),"{5}",34),"{6}",132),"{7}",132),"{8}",107),"{9}",1270),"{10}",CssFontFamily),"{11}",CssFontSize),"{12}",CssLineHeight),"{13}",styleid),,1
 cn.Execute Replace(sql_submitreg_init3,"{0}",ruser),,1
 cn.CommitTrans
 
