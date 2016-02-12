@@ -50,8 +50,8 @@ Call CreateConn(cn)
 							<p class="row"><textarea name="newipv4status1" rows="6"></textarea></p>
 							<p class="row">选择要删除的IP段：</p>
 							<%rs.Open Replace(sql_adminipv4config_status1,"{0}",wm_id),cn,,,1
-							if rs.EOF=false then
-								while rs.EOF=false
+							if Not rs.EOF then
+								while Not rs.EOF
 									tlistid=rs("listid")
 									tipfrom=rs("ipfrom")
 									tipto=rs("ipto")%>
@@ -70,8 +70,8 @@ Call CreateConn(cn)
 							<p class="row"><textarea name="newipv4status2" rows="6"></textarea></p>
 							<p class="row">选择要删除的IP段：</p>
 							<%rs.Open Replace(sql_adminipv4config_status2,"{0}",wm_id),cn,,,1
-							if rs.EOF=false then
-								while rs.EOF=false
+							if Not rs.EOF then
+								while Not rs.EOF
 									tlistid=rs("listid")
 									tipfrom=rs("ipfrom")
 									tipto=rs("ipto")%>
@@ -100,8 +100,8 @@ Call CreateConn(cn)
 							<p class="row"><textarea name="newipv6status1" rows="6"></textarea></p>
 							<p class="row">选择要删除的IP段：</p>
 							<%rs.Open Replace(sql_adminipv6config_status1,"{0}",wm_id),cn,,,1
-							if rs.EOF=false then
-								while rs.EOF=false
+							if Not rs.EOF then
+								while Not rs.EOF
 									tlistid=rs("listid")
 									tipfrom=rs("ipfrom")
 									tipto=rs("ipto")%>
@@ -120,8 +120,8 @@ Call CreateConn(cn)
 							<p class="row"><textarea name="newipv6status2" rows="6"></textarea></p>
 							<p class="row">选择要删除的IP段：</p>
 							<%rs.Open Replace(sql_adminipv6config_status2,"{0}",wm_id),cn,,,1
-							if rs.EOF=false then
-								while rs.EOF=false
+							if Not rs.EOF then
+								while Not rs.EOF
 									tlistid=rs("listid")
 									tipfrom=rs("ipfrom")
 									tipto=rs("ipto")%>

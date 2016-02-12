@@ -38,7 +38,7 @@ dim t_html
 
 rs.Open sql_adminreply_reply & Request("id"),cn,,,1
 	
-if rs.EOF=false then
+if Not rs.EOF then
 	t_html=rs("htmlflag")
 	c_old="" & rs("reinfo") & ""
 	c_old=replace(server.HTMLEncode(c_old),chr(13)&chr(10),"&#13;&#10;")
@@ -115,7 +115,7 @@ cn.close
 Call CreateConn(cn)
 rs.Open Replace(Replace(sql_adminreply_words,"{0}",Request.QueryString("id")),"{1}",adminid),cn,,,1
 
-if rs.EOF=false then
+if Not rs.EOF then
 	dim pagename
 	pagename="admin_reply"
 	%><!-- #include file="include/template/admin_listword.inc" --><%

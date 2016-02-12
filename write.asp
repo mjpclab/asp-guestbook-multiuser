@@ -159,7 +159,7 @@ for i=1 to 2
 		rs.Open Replace(sql_write_filter,"{0}",adminid),cn,0,1,1
 	end if
 
-	while rs.EOF=false
+	while Not rs.EOF
 		tregexp=rs("regexp")
 		tfiltermode=rs("filtermode")
 		treplacestr=rs("replacestr")

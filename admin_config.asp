@@ -120,18 +120,18 @@ Call CreateConn(cn)
 				<div class="field">
 					<span class="label">管理员默认HTML权限：</span>
 					<span class="value">
-						<span class="row"><input type="checkbox" value="1" name="adminhtml" id="adminhtml"<%=cked(clng(web_adminlimit and adminlimit and 1)<>0)%><%=dised(Not web_AdminHTMLSupport)%> /><label for="adminhtml"<%=dised(Not web_AdminHTMLSupport)%>>管理员回复、公告默认支持HTML</label></span>
-						<span class="row"><input type="checkbox" value="1" name="adminubb" id="adminubb"<%=cked(clng(web_adminlimit and adminlimit and 2)<>0)%><%=dised(Not web_AdminUBBSupport)%> /><label for="adminubb"<%=dised(Not web_AdminUBBSupport)%>>管理员回复、公告默认支持UBB</label></span>
-						<span class="row"><input type="checkbox" value="1" name="adminertn" id="adminertn"<%=cked(clng(web_adminlimit and adminlimit and 4)<>0)%><%=dised(Not web_AdminAllowNewLine)%> /><label for="adminertn"<%=dised(Not web_AdminAllowNewLine)%>>管理员不支持HTML和UBB时，默认允许回车换行</label></span>
+						<span class="row"><input type="checkbox" value="1" name="adminhtml" id="adminhtml"<%=cked(CBool(web_adminlimit and adminlimit and 1))%><%=dised(Not web_AdminHTMLSupport)%> /><label for="adminhtml"<%=dised(Not web_AdminHTMLSupport)%>>管理员回复、公告默认支持HTML</label></span>
+						<span class="row"><input type="checkbox" value="1" name="adminubb" id="adminubb"<%=cked(CBool(web_adminlimit and adminlimit and 2))%><%=dised(Not web_AdminUBBSupport)%> /><label for="adminubb"<%=dised(Not web_AdminUBBSupport)%>>管理员回复、公告默认支持UBB</label></span>
+						<span class="row"><input type="checkbox" value="1" name="adminertn" id="adminertn"<%=cked(CBool(web_adminlimit and adminlimit and 4))%><%=dised(Not web_AdminAllowNewLine)%> /><label for="adminertn"<%=dised(Not web_AdminAllowNewLine)%>>管理员不支持HTML和UBB时，默认允许回车换行</label></span>
 					</span>
 				</div>
 				<%guestlimit=rs("guesthtml")%>
 				<div class="field">
 					<span class="label">访客HTML权限：</span>
 					<span class="value">
-						<span class="row"><input type="checkbox" value="1" name="guesthtml" id="guesthtml"<%=cked(clng(web_guestlimit and guestlimit and 1)<>0)%><%=dised(Not web_HTMLSupport)%> /><label for="guesthtml"<%=dised(Not web_HTMLSupport)%>>访客留言支持HTML</label></span>
-						<span class="row"><input type="checkbox" value="1" name="guestubb" id="guestubb"<%=cked(clng(web_guestlimit and guestlimit and 2)<>0)%><%=dised(Not web_UBBSupport)%> /><label for="guestubb"<%=dised(Not web_UBBSupport)%>>访客留言支持UBB</label></span>
-						<span class="row"><input type="checkbox" value="1" name="guestertn" id="guestertn"<%=cked(clng(web_guestlimit and guestlimit and 4)<>0)%><%=dised(Not web_AllowNewLine)%> /><label for="guestertn"<%=dised(Not web_AllowNewLine)%>>访客不支持HTML和UBB时，允许回车换行</label></span>
+						<span class="row"><input type="checkbox" value="1" name="guesthtml" id="guesthtml"<%=cked(CBool(web_guestlimit and guestlimit and 1))%><%=dised(Not web_HTMLSupport)%> /><label for="guesthtml"<%=dised(Not web_HTMLSupport)%>>访客留言支持HTML</label></span>
+						<span class="row"><input type="checkbox" value="1" name="guestubb" id="guestubb"<%=cked(CBool(web_guestlimit and guestlimit and 2))%><%=dised(Not web_UBBSupport)%> /><label for="guestubb"<%=dised(Not web_UBBSupport)%>>访客留言支持UBB</label></span>
+						<span class="row"><input type="checkbox" value="1" name="guestertn" id="guestertn"<%=cked(CBool(web_guestlimit and guestlimit and 4))%><%=dised(Not web_AllowNewLine)%> /><label for="guestertn"<%=dised(Not web_AllowNewLine)%>>访客不支持HTML和UBB时，允许回车换行</label></span>
 					</span>
 				</div>
 				<div class="field">
@@ -179,11 +179,11 @@ Call CreateConn(cn)
 				<h4>邮件通知（请勿使用重要邮箱以防泄密）</h4>
 				<div class="field">
 					<span class="label">新留言到达通知版主：</span>
-					<span class="value"><input type="checkbox" value="1" name="mailnewinform" id="mailnewinform"<%=cked(clng(web_MailFlag and MailFlag and 1)<>0)%><%=dised(Not web_MailNewInform)%> /><label for="mailnewinform"<%=dised(Not web_MailNewInform)%>>启用</label></span>
+					<span class="value"><input type="checkbox" value="1" name="mailnewinform" id="mailnewinform"<%=cked(CBool(web_MailFlag and MailFlag and 1))%><%=dised(Not web_MailNewInform)%> /><label for="mailnewinform"<%=dised(Not web_MailNewInform)%>>启用</label></span>
 				</div>
 				<div class="field">
 					<span class="label">版主回复通知留言人：</span>
-					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(clng(web_MailFlag and MailFlag and 2)<>0)%><%=dised(Not web_MailReplyInform)%> /><label for="mailreplyinform"<%=dised(Not web_MailReplyInform)%>>开启</label></span>
+					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(CBool(web_MailFlag and MailFlag and 2))%><%=dised(Not web_MailReplyInform)%> /><label for="mailreplyinform"<%=dised(Not web_MailReplyInform)%>>开启</label></span>
 				</div>
 				<div class="field">
 					<span class="label">新留言通知接收地址：</span>
@@ -323,11 +323,11 @@ Call CreateConn(cn)
 				</div>
 				<div class="field">
 					<span class="label">分页窗口显示位置：</span>
-					<span class="value"><input type="radio" name="showpagelist" value="3" id="showpagelist3"<%=cked(clng(tvisualflag and 12)=12)%> /><label for="showpagelist3">上下方</label>　<input type="radio" name="showpagelist" value="1" id="showpagelist1"<%=cked(clng(tvisualflag and 12)=4)%> /><label for="showpagelist1">上方</label>　　<input type="radio" name="showpagelist" value="2" id="showpagelist2"<%=cked(clng(tvisualflag and 12)=8)%> /><label for="showpagelist2">下方</label></span>
+					<span class="value"><input type="radio" name="showpagelist" value="3" id="showpagelist3"<%=cked((tvisualflag and 12)=12)%> /><label for="showpagelist3">上下方</label>　<input type="radio" name="showpagelist" value="1" id="showpagelist1"<%=cked((tvisualflag and 12)=4)%> /><label for="showpagelist1">上方</label>　　<input type="radio" name="showpagelist" value="2" id="showpagelist2"<%=cked((tvisualflag and 12)=8)%> /><label for="showpagelist2">下方</label></span>
 				</div>
 				<div class="field">
 					<span class="label">访客搜索窗口显示位置：</span>
-					<span class="value"><input type="radio" name="showsearchbox" value="3" id="showsearchbox3"<%=cked(clng(tvisualflag and 48)=48)%> /><label for="showsearchbox3">上下方</label>　<input type="radio" name="showsearchbox" value="1" id="showsearchbox1"<%=cked(clng(tvisualflag and 48)=16)%> /><label for="showsearchbox1">上方</label>　　<input type="radio" name="showsearchbox" value="2" id="showsearchbox2"<%=cked(clng(tvisualflag and 48)=32)%> /><label for="showsearchbox2">下方</label></span>
+					<span class="value"><input type="radio" name="showsearchbox" value="3" id="showsearchbox3"<%=cked((tvisualflag and 48)=48)%> /><label for="showsearchbox3">上下方</label>　<input type="radio" name="showsearchbox" value="1" id="showsearchbox1"<%=cked((tvisualflag and 48)=16)%> /><label for="showsearchbox1">上方</label>　　<input type="radio" name="showsearchbox" value="2" id="showsearchbox2"<%=cked((tvisualflag and 48)=32)%> /><label for="showsearchbox2">下方</label></span>
 				</div>
 				<div class="field">
 					<span class="label">分页列表模式：</span>

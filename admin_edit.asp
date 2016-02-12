@@ -36,7 +36,7 @@ Call CreateConn(cn)
 
 rs.Open Replace(Replace(sql_adminedit,"{0}",Request.QueryString("id")),"{1}",adminid),cn,,,1
 	
-if rs.EOF=false then
+if Not rs.EOF then
 	guestflag=rs("guestflag")
 	guest_txt="" & rs("article") & ""
 	guest_txt=replace(server.htmlEncode(guest_txt),chr(13)&chr(10),"&#13;&#10;")

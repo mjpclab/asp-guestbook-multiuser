@@ -99,7 +99,7 @@ dim rsuser,pub_flag,pub
 if ItemsCount=0 then
 	Response.Write "<br/><br/><div class=""centertext"">没有找到符合条件的公告。</div><br/><br/>"
 else
-	while rs.eof=false
+	while Not rs.EOF
 	rsuser=rs("adminname")
 %>
 

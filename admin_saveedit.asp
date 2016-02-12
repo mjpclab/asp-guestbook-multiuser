@@ -37,7 +37,7 @@ if Request.Form("newline1")="1" then tlimit=tlimit+4
 	
 rs.Open Replace(Replace(sql_adminsaveedit_open,"{0}",Request.Form("mainid")),"{1}",adminid),cn,0,3,1
 
-if rs.EOF=false then		'ÁôÑÔ´æÔÚ
+if Not rs.EOF then		'ÁôÑÔ´æÔÚ
 	rs.Fields("guestflag")=cbyte(rs.Fields("guestflag") and 248) + cbyte(tlimit and web_adminlimit)
 	if Request.Form("etitle")<>"" then rs.Fields("title")=Server.HTMLEncode(Request.Form("etitle"))
 	rs.Fields("article")=Request.Form("econtent")

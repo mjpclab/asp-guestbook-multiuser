@@ -64,7 +64,7 @@ Call CreateConn(cn)
 			<%
 			rs.Open Replace(sql_adminfilter,"{0}",wm_id),cn,,,1
 
-			while rs.EOF=false%>
+			while Not rs.EOF%>
 				<form method="post" action="web_updatefilter.asp" class="detail-item">
 					<%tfilterid=rs("filterid")%>
 					<input type="hidden" name="filterid" value="<%=tfilterid%>" />

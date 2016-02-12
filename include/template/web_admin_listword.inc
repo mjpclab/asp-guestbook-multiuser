@@ -4,7 +4,7 @@ dim reply_txt,reply_htmlflag
 dim js_status
 dim param_url
 
-while rs.eof=false
+while Not rs.EOF
 	web_getadmininfo()
 	guestflag=rs("guestflag")
 	adminname=rs("adminname")
@@ -22,9 +22,9 @@ while rs.eof=false
 			rs1.Open Replace(Replace(sql_listword_web,"{0}",rs("id")),"{1}",rs("adminid")),cn,0,1,1
 			while not rs1.eof
 				guestflag=rs1("guestflag")
-				ishidden=(clng(guestflag and 40)=8)
-				iswhisper=(clng(guestflag and 32)<>0)
-				encrypted=(clng(guestflag and 96)=96)
+				ishidden=((guestflag AND 40)=8)
+				iswhisper=CBool(guestflag AND 32)
+				encrypted=((guestflag AND 96)=96)
 
 				outerword(rs1)
 				if rs1.Fields("replied") then outeradminreply(rs1)

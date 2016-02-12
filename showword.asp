@@ -88,9 +88,9 @@ rs.Close
 		rs.Open Replace(Replace(sql_showword,"{0}",Request("id")),"{1}",adminid),cn,,,1
 		if not rs.EOF then
 			idexists=true
-			if clng(rs.Fields("guestflag") and 64)<>0 then
+			if CBool(rs.Fields("guestflag") and 64) then
 				needverify=true
-			elseif clng(rs.Fields("guestflag") and 32)<>0 then
+			elseif CBool(rs.Fields("guestflag") and 32) then
 				cantverify=true
 			end if
 		end if

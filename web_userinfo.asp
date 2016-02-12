@@ -59,7 +59,7 @@ checkuser cn,rs,false
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_count_view,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">留言查看次数：</th><td><%if rs.EOF=false then Response.Write rs(0) else Response.Write "0"%></td></tr>
+			<tr><th scope="row">留言查看次数：</th><td><%if Not rs.EOF then Response.Write rs(0) else Response.Write "0"%></td></tr>
 
 			<%
 			rs.Close
