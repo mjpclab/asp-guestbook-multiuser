@@ -31,7 +31,7 @@ if web_checkIsBannedIP() then
 elseif checkIsBannedIP() then
 	Call ErrorPage(1)
 	Response.End
-elseif StatusOpen=false then
+elseif Not StatusOpen then
 	Call ErrorPage(2)
 	Response.End
 end if
@@ -69,7 +69,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 <body<%=bodylimit%> onload="<%=framecheck%>">
 
 <div id="outerborder" class="outerborder">
-	<%if ShowTitle=true then show_book_title 2,""%>
+	<%if ShowTitle then show_book_title 2,""%>
 
 	<div id="mainborder" class="mainborder">
 	<%RPage="index.asp"%><!-- #include file="include/template/guest_func.inc" -->

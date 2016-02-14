@@ -64,10 +64,10 @@ ReplyInWord=CBool(VisualFlag and 1)					'回复内嵌于留言
 ShowUbbTool=CBool(VisualFlag and 2)					'显示UBB工具栏
 ShowTopPageList=CBool(VisualFlag and 4)			'上方显示分页
 ShowBottomPageList=CBool(VisualFlag and 8)		'下方显示分页
-if ShowTopPageList=false and ShowBottomPageList=false then ShowBottomPageList=true
+if Not ShowTopPageList and Not ShowBottomPageList then ShowBottomPageList=true
 'ShowTopSearchBox=CBool(VisualFlag and 16)		'上方显示搜索
 'ShowBottomSearchBox=CBool(VisualFlag and 32)	'下方显示搜索
-'if ShowTopSearchBox=false and ShowBottomSearchBox=false then ShowBottomSearchBox=true
+'if Not ShowTopSearchBox and Not ShowBottomSearchBox then ShowBottomSearchBox=true
 ShowAdvPageList=CBool(VisualFlag and 64)			'区段式分页
 if CBool(VisualFlag and 1024) then DisplayMode="forum" else DisplayMode="book"			'默认版面模式
 
@@ -127,7 +127,7 @@ dim styleid
 styleid=lrs("styleid")
 lrs.Close
 lrs.Open Replace(sql_loadconfig_style,"{0}",styleid),lcn,0,1,1
-if lrs.EOF=true then
+if lrs.EOF then
 	lrs.Close
 	lrs.Open sql_loadconfig_top1style,lcn,0,1,1
 end if

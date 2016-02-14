@@ -31,7 +31,7 @@ Response.AddHeader "cache-control","private"
 
 <%
 function filterstr(byref str,byval delquote)
-	if delquote=true then
+	if delquote then
 		filterstr=replace(replace(replace(str,"'",""),"[","[\[]"),"""","")
 	else
 		filterstr=replace(replace(replace(str,"'","''"),"[","[\[]"),"""","")
@@ -110,7 +110,7 @@ else
 			pub_flag=rs("declareflag")
 			pub="" &rs("declare")& ""
 
-			if AdminViewCode=true then		'Only view HTML code
+			if AdminViewCode then		'Only view HTML code
 				pub=server.HTMLEncode(pub)
 			else
 				convertstr pub,pub_flag,2
@@ -121,7 +121,7 @@ else
 		</div>
 		<div class="admin-message-tools">
 			<input type="checkbox" name="users" class="users checkbox" id="c<%=rsuser%>" value="<%=rsuser%>"><label for="c<%=rsuser%>">(选定)</label>
-			<a href="web_deldec.asp?user=<%=rsuser%><%if isnumeric(request("page")) and request("page")<>"" then response.write "&page=" & request("page")%>&adminname=<%=server.URLEncode(request("adminname"))%>&searchtxt=<%=server.URLEncode(request("searchtxt"))%>" title="删除公告"<%if DelDecTip=true then Response.Write " onclick=""return confirm('确实要删除公告吗？');"""%>><img border="0" src="asset/image/icon_del.gif" class="imgicon" />[删除公告]</a>
+			<a href="web_deldec.asp?user=<%=rsuser%><%if isnumeric(request("page")) and request("page")<>"" then response.write "&page=" & request("page")%>&adminname=<%=server.URLEncode(request("adminname"))%>&searchtxt=<%=server.URLEncode(request("searchtxt"))%>" title="删除公告"<%if DelDecTip then Response.Write " onclick=""return confirm('确实要删除公告吗？');"""%>><img border="0" src="asset/image/icon_del.gif" class="imgicon" />[删除公告]</a>
 		</div>
 	</div>
 <%

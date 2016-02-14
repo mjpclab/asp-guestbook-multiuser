@@ -81,7 +81,7 @@ cn.close
 
 <div id="outerborder" class="outerborder">
 
-<%if ShowTitle=true then show_book_title 3,"管理"%>
+<%if ShowTitle then show_book_title 3,"管理"%>
 <div id="mainborder" class="mainborder">
 <!-- #include file="include/template/admin_mainmenu.inc" -->
 <div class="region">
@@ -99,9 +99,9 @@ cn.close
 			<input type="hidden" name="type" value="<%=request.QueryString("type")%>" />
 			<input type="hidden" name="searchtxt" value="<%=request.QueryString("searchtxt")%>" ID="Hidden6"/>
 			<p>
-				<%if web_AdminHTMLSupport=true then%><input type="checkbox" name="html1" id="html1" value="1"<%if cint(t_html and 1)<>0 then Response.Write " checked=""checked""" %> /><label for="html1">支持HTML标记</label><br/><%end if%>
-				<%if web_AdminUBBSupport=true then%><input type="checkbox" name="ubb1" id="ubb1" value="1"<%if cint(t_html and 2)<>0 then Response.Write " checked=""checked""" %> /><label for="ubb1">支持UBB标记</label><br/><%end if%>
-				<%if web_AdminAllowNewLine=true then%><input type="checkbox" name="newline1" id="newline1" value="1"<%if cint(t_html and 4)<>0 then Response.Write " checked=""checked""" %> /><label for="newline1">不支持HTML和UBB标记时允许回车换行</label><br/><%end if%>
+				<%if web_AdminHTMLSupport then%><input type="checkbox" name="html1" id="html1" value="1"<%if cint(t_html and 1)<>0 then Response.Write " checked=""checked""" %> /><label for="html1">支持HTML标记</label><br/><%end if%>
+				<%if web_AdminUBBSupport then%><input type="checkbox" name="ubb1" id="ubb1" value="1"<%if cint(t_html and 2)<>0 then Response.Write " checked=""checked""" %> /><label for="ubb1">支持UBB标记</label><br/><%end if%>
+				<%if web_AdminAllowNewLine then%><input type="checkbox" name="newline1" id="newline1" value="1"<%if cint(t_html and 4)<>0 then Response.Write " checked=""checked""" %> /><label for="newline1">不支持HTML和UBB标记时允许回车换行</label><br/><%end if%>
 				<br/>
 				<input type="checkbox" name="lock2top" id="lock2top" value="1" /><label for="lock2top">回复后置顶留言</label><br/>
 				<input type="checkbox" name="bring2top" id="bring2top" value="1" /><label for="bring2top">回复后提前留言</label>

@@ -20,7 +20,7 @@ Response.Expires=-1
 if web_checkIsBannedIP() then
 	Call WebErrorPage(4)
 	Response.End
-elseif StatusReg=false then
+elseif Not StatusReg then
 	Call WebErrorPage(1)
 	Response.End
 end if

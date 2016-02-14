@@ -61,7 +61,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(sql_admin_words_count,"{0}",adminid),
 
 <div id="outerborder" class="outerborder">
 
-	<%if ShowTitle=true then show_book_title 3,"管理"%>
+	<%if ShowTitle then show_book_title 3,"管理"%>
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/admin_mainmenu.inc" -->
 	<%dim sys_bul_flag

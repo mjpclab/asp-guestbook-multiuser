@@ -61,10 +61,10 @@ if web_checkIsBannedIP() then
 elseif checkIsBannedIP() then
 	Call ErrorPage(1)
 	Response.End
-elseif StatusOpen=false then
+elseif Not StatusOpen then
 	Call ErrorPage(2)
 	Response.End
-elseif StatusWrite=false then
+elseif Not StatusWrite then
 	Call ErrorPage(3)
 	Response.End
 elseif (flood_minwait>0 or web_flood_minwait>0) and isdate(Session("wrote_time")) then
@@ -139,9 +139,9 @@ if WordsLimit<>0 and len(content1)>WordsLimit then content1=left(content1,WordsL
 
 guestflag=guestlimit AND web_guestlimit
 whisperpwd=""
-if StatusNeedAudit=true then guestflag=guestflag OR 16
-if StatusWhisper=true and Request.Form("chk_whisper")="1" then guestflag=guestflag OR 32
-if StatusEncryptWhisper=true and Request.Form("chk_encryptwhisper")="1" and Request.Form("iwhisperpwd")<>"" then
+if StatusNeedAudit then guestflag=guestflag OR 16
+if StatusWhisper and Request.Form("chk_whisper")="1" then guestflag=guestflag OR 32
+if StatusEncryptWhisper and Request.Form("chk_encryptwhisper")="1" and Request.Form("iwhisperpwd")<>"" then
 	guestflag=guestflag OR 64
 	whisperpwd=md5(Request.Form("iwhisperpwd"),32)
 end if
@@ -195,7 +195,7 @@ for i=1 to 2
 next
 
 set re=nothing
-if filtered=true and StatusStatistics then addstat("filtered")
+if filtered and StatusStatistics then addstat("filtered")
 '-------------------------
 if name1="" or title1="" then Response.Redirect "index.asp?user=" & ruser
 
@@ -391,7 +391,7 @@ Session(InstanceName & "_icontent_" & ruser)=""
 Session("guestflag")=guestflag
 Session("guestflag_user")=ruser
 
-if web_MailNewInform=true and MailNewInform=true then newinform()
+if web_MailNewInform and MailNewInform then newinform()
 
 if Request.Form("return")="showword" and isnumeric(Request.Form("follow")) and Request.Form("follow")<>"" then
 	Response.Redirect "showword.asp?user=" & ruser & "&id=" & Request.Form("follow")

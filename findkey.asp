@@ -15,7 +15,7 @@ Response.Expires=-1
 if web_checkIsBannedIP() then
 	Call WebErrorPage(4)
 	Response.End
-elseif StatusFindkey=false then
+elseif Not StatusFindkey then
 	Call WebErrorPage(2)
 	Response.End
 end if

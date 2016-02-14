@@ -19,7 +19,7 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 if web_checkIsBannedIP() then
 	Call WebErrorPage(4)
 	Response.End
-elseif StatusLogin=false then
+elseif Not StatusLogin then
 	Call WebErrorPage(3)
 	Response.End
 end if

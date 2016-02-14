@@ -1,7 +1,7 @@
 <%
 function checkuser(byref conn,byref rec,byval ckform)
 dim re
-if ckform=true then
+if ckform then
 	ruser=Request.Form("user")
 else
 	ruser=request("user")

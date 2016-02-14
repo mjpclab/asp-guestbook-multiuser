@@ -76,7 +76,7 @@ end if
 
 <div id="outerborder" class="outerborder">
 
-<%if ShowTitle=true then show_book_title 3,"管理"%>
+<%if ShowTitle then show_book_title 3,"管理"%>
 <div id="mainborder" class="mainborder">
 <!-- #include file="include/template/admin_mainmenu.inc" -->
 <div class="region region-longtext">
@@ -101,9 +101,9 @@ end if
 				<%if web_AdminUBBSupport then ShowUbbToolBar(2)%>
 			</span>
 			<span class="row">
-				<%if web_AdminHTMLSupport=true then%><input type="checkbox" name="html1" id="html1" value="1"<%if cint(guestflag and 1)<>0 then Response.Write " checked=""checked"""%> /><label for="html1">支持HTML标记</label><br/><%end if%>
-				<%if web_AdminUBBSupport=true then%><input type="checkbox" name="ubb1" id="ubb1" value="1"<%if cint(guestflag and 2)<>0 then Response.Write " checked=""checked"""%> /><label for="ubb1">支持UBB标记</label><br/><%end if%>
-				<%if web_AdminAllowNewLine=true then%><input type="checkbox" name="newline1" id="newline1" value="1"<%if cint(guestflag and 4)<>0 then Response.Write " checked=""checked"""%> /><label for="newline1">不支持HTML和UBB标记时允许回车换行</label><%end if%>
+				<%if web_AdminHTMLSupport then%><input type="checkbox" name="html1" id="html1" value="1"<%if cint(guestflag and 1)<>0 then Response.Write " checked=""checked"""%> /><label for="html1">支持HTML标记</label><br/><%end if%>
+				<%if web_AdminUBBSupport then%><input type="checkbox" name="ubb1" id="ubb1" value="1"<%if cint(guestflag and 2)<>0 then Response.Write " checked=""checked"""%> /><label for="ubb1">支持UBB标记</label><br/><%end if%>
+				<%if web_AdminAllowNewLine then%><input type="checkbox" name="newline1" id="newline1" value="1"<%if cint(guestflag and 4)<>0 then Response.Write " checked=""checked"""%> /><label for="newline1">不支持HTML和UBB标记时允许回车换行</label><%end if%>
 			</span>
 		</div>
 		<div class="command"><input type="submit" value="保存留言" name="submit1" id="submit1" /></div>
