@@ -8,6 +8,7 @@
 <!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_error.asp" -->
 <%
@@ -30,9 +31,7 @@ end if
 
 <div id="outerborder" class="outerborder">
 
-<div class="header">
-	<div class="breadcrumb"><%=web_BookName%></div>
-</div>
+<%Call WebInitHeaderData("","","","")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 set cn=server.CreateObject("ADODB.Connection")

@@ -106,7 +106,6 @@ else
 		thomelogo=Trim(Request.Form("homelogo"))
 		if thomelogo<>"" then
 			thomelogo=textfilter(thomelogo,true)
-			if InStr(thomelogo,"//")=0 then thomelogo="http://" & thomelogo
 		end if
 
 		thomename=server.HTMLEncode(Request.Form("homename"))
@@ -114,7 +113,6 @@ else
 		thomeaddr=Trim(Request.Form("homeaddr"))
 		if thomeaddr<>"" then
 			thomeaddr=textfilter(thomeaddr,true)
-			if InStr(thomeaddr,"//")=0 then thomeaddr="http://" & thomeaddr
 		end if
 
 		tadminhtml=0

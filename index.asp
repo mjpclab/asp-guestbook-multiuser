@@ -69,7 +69,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 <body<%=bodylimit%> onload="<%=framecheck%>">
 
 <div id="outerborder" class="outerborder">
-	<%if ShowTitle then show_book_title 2,""%>
+	<%if ShowTitle then%><%Call InitHeaderData("")%><!-- #include file="include/template/header.inc" --><%end if%>
 
 	<div id="mainborder" class="mainborder">
 	<%RPage="index.asp"%><!-- #include file="include/template/guest_func.inc" -->

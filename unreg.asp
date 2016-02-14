@@ -9,6 +9,7 @@
 <!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_error.asp" -->
 <%
@@ -51,9 +52,7 @@ if VcodeCount>0 then Session("vcode")=getvcode(VcodeCount)
 
 <div id="outerborder" class="outerborder">
 
-<div class="header">
-	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">йврЁ</a> &gt;&gt; вти╬уй╨е</div>
-</div>
+<%Call WebInitHeaderData("","вти╬уй╨е","","")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 set cn=server.CreateObject("ADODB.Connection")

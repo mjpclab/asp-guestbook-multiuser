@@ -28,12 +28,8 @@ sub WebErrorPage(errorCode)
 
 	<body>
 
+	<%Call WebInitHeaderData("","´íÎó","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="outerborder" class="outerborder">
-
-		<div class="header">
-			<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" class="booktitle">Ê×Ò³</a> &gt;&gt; ´íÎó</div>
-		</div>
-
 		<div id="mainborder" class="mainborder">
 		<!-- #include file="include/template/web_guest_func.inc" -->
 		<p style="margin-bottom: 3em;">¡¡¡¡¡ö¡¡<%=errmsg%></p>

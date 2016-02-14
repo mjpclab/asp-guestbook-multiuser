@@ -12,6 +12,7 @@
 <!-- #include file="include/utility/md5.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="tips.asp" -->
 <!-- #include file="web_error.asp" -->
@@ -107,9 +108,7 @@ gbookaddr=geturlpath & "index.asp?user=" & ruser
 
 <div id="outerborder" class="outerborder">
 
-<div class="header">
-	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; <a href="reg.asp" style="color:<%=TitleColor%>">申请留言本</a> &gt;&gt; 申请成功</div>
-</div>
+<%Call WebInitHeaderData("reg.asp","申请留言本","","申请成功")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 dim sys_bul_flag

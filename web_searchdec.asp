@@ -12,6 +12,7 @@
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/message.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
 <%
@@ -60,7 +61,7 @@ Call CreateConn(cn)
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_header.inc" -->
+	<%Call WebInitHeaderData("","Webmaster管理中心","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 	<div class="region form-region">

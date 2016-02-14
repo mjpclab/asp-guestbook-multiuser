@@ -5,6 +5,7 @@
 <!-- #include file="include/sql/admin_config.asp" -->
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
 <%
@@ -27,7 +28,7 @@ Call CreateConn(cn)
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_header.inc" -->
+	<%Call WebInitHeaderData("","Webmaster管理中心","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 	<%rs.Open Replace(sql_adminconfig_config,"{0}",wm_id),cn,,,1%>

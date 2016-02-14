@@ -7,6 +7,7 @@
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->
 <%
@@ -47,7 +48,7 @@ set cn=nothing
 
 <div id="outerborder" class="outerborder">
 
-	<!-- #include file="include/template/web_admin_header.inc" -->
+	<%Call WebInitHeaderData("","Webmaster管理中心","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<div class="region form-region region-longtext">
 		<h3 class="title">重设用户密码</h3>

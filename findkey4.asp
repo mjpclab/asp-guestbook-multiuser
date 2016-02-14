@@ -10,6 +10,7 @@
 <!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/md5.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="tips.asp" -->
 <!-- #include file="web_error.asp" -->
@@ -98,9 +99,7 @@ cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"
 
 <div id="outerborder" class="outerborder">
 
-<div class="header">
-	<div class="breadcrumb"><%=web_BookName%> <a href="face.asp" style="color:<%=TitleColor%>">首页</a> &gt;&gt; <a href="findkey.asp" style="color:<%=TitleColor%>">找回密码</a> &gt;&gt; 完成</div>
-</div>
+<%Call WebInitHeaderData("findkey.asp","找回密码","","步骤4")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 dim sys_bul_flag

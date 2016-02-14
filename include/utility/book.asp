@@ -1,26 +1,48 @@
 <%
-sub show_book_title(byval layercount, byval param)%>
-<div class="header">
-	<%if HomeLogo<>"" then%><img class="logo<%if LogoBannerMode then Response.write " banner"%>" src="<%=HomeLogo%>" alt="<%=HomeName%>"/><%end if%>
-	<div class="breadcrumb">
-		<%if HomeName<>"" then
-			if HomeAddr<>"" then%>
-				<a class="name" href="<%=HomeAddr%>"><%=HomeName%></a>
-			<%else%>
-				<span class="name"><%=HomeName%></span>
-			<%end if
-		end if%>
+Dim BannerUrl,LogoUrl,BreadcrumbItems()
+Sub InitHeaderData(PageName)
+	if LogoBannerMode then
+		BannerUrl = HomeLogo
+	else
+		LogoUrl = HomeLogo
+	end if
 
-		<%if layercount=2 then%>
-			<%if HomeName<>"" then%><span class="separator">&gt;&gt;</span><%end if%>
-			<span class="guestbook">¡Ù—‘±æ</span>
-		<%elseif layercount=3 then%>
-			<%if HomeName<>"" then%><span class="separator">&gt;&gt;</span><%end if%>
-			<a class="guestbook" href="index.asp?user=<%=ruser%>">¡Ù—‘±æ</a>
-			<span class="separator">&gt;&gt;</span>
-			<span class="page"><%=param%></span>
-		<%end if%>
-	</div>
-</div>
-<%end sub
+	if PageName="" then
+		Redim BreadcrumbItems(1,1)
+	else
+		Redim BreadcrumbItems(2,1)
+	end if
+
+	BreadcrumbItems(0,0)=HomeAddr
+	BreadcrumbItems(0,1)=HomeName
+	BreadcrumbItems(1,0)="index.asp?user=" & ruser
+	BreadcrumbItems(1,1)="¡Ù—‘±æ"
+	if PageName<>"" then
+		BreadcrumbItems(2,0)=""
+		BreadcrumbItems(2,1)=PageName
+	end if
+End Sub
+
+Sub WebInitHeaderData(PageUrl1, PageName1, PageUrl2, PageName2)
+	if PageName2<>"" then
+		Redim BreadcrumbItems(3,1)
+	elseif PageName1<>"" then
+		Redim BreadcrumbItems(2,1)
+	else
+		Redim BreadcrumbItems(1,1)
+	end if
+
+	BreadcrumbItems(0,0)=""
+	BreadcrumbItems(0,1)=web_BookName
+	BreadcrumbItems(1,0)="face.asp"
+	BreadcrumbItems(1,1)=" ◊“≥"
+	if PageName1<>"" then
+		BreadcrumbItems(2,0)=PageUrl1
+		BreadcrumbItems(2,1)=PageName1
+	end if
+	if PageName2<>"" then
+		BreadcrumbItems(3,0)=PageUrl2
+		BreadcrumbItems(3,1)=PageName2
+	end if
+End Sub
 %>
