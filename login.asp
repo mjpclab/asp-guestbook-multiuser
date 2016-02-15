@@ -8,6 +8,7 @@
 <!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_error.asp" -->
 <%
@@ -35,9 +36,11 @@ if VcodeCount>0 then Session("vcode")=getvcode(VcodeCount)
 </head>
 
 <body onload="if(form5.user.value.length===0)form5.user.focus();else form5.iadminpass.focus()">
+<%Call WebInitHeaderData("","管理员登录","","")%><!-- #include file="include/template/header.inc" -->
+
 <div id="mainborder" class="mainborder narrow-mainborder">
 <div class="region form-region narrow-region">
-	<h3 class="title">用户登录</h3>
+	<h3 class="title">管理员登录</h3>
 	<div class="content">
 		<form method="post" action="login_verify.asp" name="form5" onsubmit="return submitCheck(this);">
 			<div class="field">

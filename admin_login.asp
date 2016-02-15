@@ -9,6 +9,7 @@
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
+<!-- #include file="include/utility/book.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="web_error.asp" -->
 <%
@@ -65,10 +66,11 @@ if VcodeCount>0 then Session("vcode")=getvcode(VcodeCount)
 </head>
 
 <body onload="if(form5.iadminpass.value.length===0)form5.iadminpass.focus()">
+<%if ShowTitle then%><%Call InitHeaderData("管理员登录")%><!-- #include file="include/template/header.inc" --><%end if%>
 
 <div id="mainborder" class="mainborder narrow-mainborder">
 <div class="region form-region narrow-region">
-	<h3 class="title">用户登录</h3>
+	<h3 class="title">管理员登录</h3>
 	<div class="content">
 		<form method="post" action="login_verify.asp" name="form5" onsubmit="return submitCheck(this);">
 			<input type="hidden" name="referrer" value="<%=Request.QueryString("referrer")%>"/>
