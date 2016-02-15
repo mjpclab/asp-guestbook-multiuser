@@ -32,7 +32,7 @@ elseif Not StatusWrite then
 	Response.End
 end if
 if StatusStatistics then call addstat("leaveword")
-if WriteVcodeCount>0 then Session("vcode")=getvcode(WriteVcodeCount)
+if WriteVcodeCount>0 then Session("vcode_write")=getvcode(WriteVcodeCount)
 
 function getstatus(isopen)
 	if isopen then
@@ -169,7 +169,7 @@ end function
 					<%if WriteVcodeCount>0 then%>
 					<div class="field">
 						<div class="label">ÑéÖ¤Âë<span class="required">*</span></div>
-						<div class="value"><input type="text" name="ivcode" autocomplete="off"/><img id="captcha" class="captcha" src="show_vcode.asp?user=<%=ruser%>&t=0"/></div>
+						<div class="value"><input type="text" name="ivcode" autocomplete="off"/><img id="captcha" class="captcha" src="show_vcode.asp?type=write&user=<%=ruser%>&t=0"/></div>
 					</div>
 					<%end if%>
 					<div class="field">

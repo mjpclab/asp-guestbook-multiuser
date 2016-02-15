@@ -29,16 +29,26 @@ if StatusStatistics then call addstat("login")
 Dim referrer
 referrer=Request.Form("referrer")
 
-if VcodeCount>0 and (Request.Form("ivcode")<>Session("vcode") or Session("vcode")="") then
-	Session("vcode")=""
-	if StatusStatistics then call addstat("loginfailed")
-	Call TipsPage("验证码错误。","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
+if VcodeCount>0 then
+	if VcodeCount>Len(Session("vcode")) then
+		Session("vcode")=""
+		if StatusStatistics then call addstat("loginfailed")
+		Call TipsPage("验证码长度不足。","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
 
-	set rs=nothing
-	set cn=nothing
-	Response.End
-else
-	Session("vcode")=""
+		set rs=nothing
+		set cn=nothing
+		Response.End
+	elseif Request.Form("ivcode")<>Session("vcode") or Session("vcode")="" then
+		Session("vcode")=""
+		if StatusStatistics then call addstat("loginfailed")
+		Call TipsPage("验证码错误。","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
+
+		set rs=nothing
+		set cn=nothing
+		Response.End
+	else
+		Session("vcode")=""
+	end if
 end if
 
 Dim cn,rs

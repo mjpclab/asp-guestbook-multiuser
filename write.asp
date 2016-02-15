@@ -85,12 +85,18 @@ if Request.Form("iname")="" or Request.Form("ititle")="" then Response.Redirect(
 Session(InstanceName & "_ititle_" & ruser)=Request.Form("ititle")
 Session(InstanceName & "_icontent_" & ruser)=Request.Form("icontent")
 
-if WriteVcodeCount>0 and (Request.Form("ivcode")<>Session("vcode") or Session("vcode")="") then
-	Session("vcode")=""
-	Call TipsPage("验证码错误。","leaveword.asp?" & Request.Form("qstr"))
-	Response.End
-else
-	Session("vcode")=""
+if WriteVcodeCount>0 then
+	if WriteVcodeCount>Len(Session("vcode_write")) then
+		Session("vcode_write")=""
+		Call TipsPage("验证码长度不足。","leaveword.asp?" & Request.Form("qstr"))
+		Response.End
+	elseif Request.Form("ivcode")<>Session("vcode_write") or Session("vcode_write")="" then
+		Session("vcode_write")=""
+		Call TipsPage("验证码错误。","leaveword.asp?" & Request.Form("qstr"))
+		Response.End
+	else
+		Session("vcode_write")=""
+	end if
 end if
 '===================================================================
 
