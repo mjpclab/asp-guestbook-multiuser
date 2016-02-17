@@ -1,3 +1,3 @@
 <div class="footer">
-	<p>Asp guest book (MU)1.10a Powered by <a href="http://mjpclab.net/" target="_blank">MJ PC Lab</a></p>
+	<p>Asp guest book (MU)1.11 Powered by <a href="http://mjpclab.net/" target="_blank">MJ PC Lab</a></p>
 </div>
