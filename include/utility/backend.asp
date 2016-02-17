@@ -14,7 +14,7 @@ Function UrlDecode(encoded)
 			decoded = decoded & Mid(encoded, startPos, nextPos - startPos)
 			str1 = Mid(encoded, nextPos + 1, 2)
 			code1 = "&H" & str1
-			If Len(str1) > 0 And IsNumeric(code1) Then
+			If str1<>"" And IsNumeric(code1) Then
 				num1 = CLng(code1)
 				If num1 < 128 Then
 					decoded = decoded & Chr(num1)
@@ -24,14 +24,14 @@ Function UrlDecode(encoded)
 					If behindLeadingChar = escape Then
 						str2 = Mid(encoded, nextPos + 4, 2)
 						code2 = "&H" & str2
-						If Len(str2) > 0 And IsNumeric(code2) Then
+						If str2<>"" And IsNumeric(code2) Then
 							decoded = decoded & Chr(CLng("&H" & str1 & str2))
 							startPos = nextPos + 6
 						Else
 							decoded = decoded & Chr(CLng("&H" & str1 & "25"))   '25 is the hex of escape
 							startPos = nextPos + 4
 						End If
-					ElseIf Len(behindLeadingChar) > 0 Then
+					ElseIf behindLeadingChar<>"" Then
 						num2 = Asc(behindLeadingChar)
 						If num2 < 16 Then
 							str2 = "0" & Hex(num2)
@@ -209,7 +209,7 @@ function get_param_str
 	if request("s_originalip")<>"" then param_str=param_str & "&s_originalip=" & server.URLEncode(request("s_originalip"))
 	if request("s_reply")<>"" then param_str=param_str & "&s_reply=" & server.URLEncode(request("s_reply"))
 	if isnumeric(request("page")) and request("page")<>"" then param_str=param_str & "&page=" & request("page")
-	if len(param_str)<>0 then param_str="?" & right(param_str,len(param_str)-1)
+	if param_str<>"" then param_str="?" & right(param_str,len(param_str)-1)
 
 	'get_param_str=Server.HTMLEncode(param_str)
 	get_param_str=param_str

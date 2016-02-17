@@ -28,7 +28,7 @@ function deleteSaved(requestField,sql)
 			listids=listids & "," & clng(listid)
 		end if
 	next
-	if Len(listids)>0 then
+	if listids<>"" then
 		listids=Mid(listids,2)
 		cn.Execute Replace(Replace(sql,"{0}",listids),"{1}",wm_id),,1
 	end if

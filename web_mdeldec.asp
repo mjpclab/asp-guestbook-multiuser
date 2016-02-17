@@ -21,7 +21,7 @@ dim users,affected
 affected=0
 
 users=FilterSql(Request.Form("users"))
-if Len(users)>0 then
+if users<>"" then
 	users="'" & Replace(users,",","','") & "'"
 
 	set cn=server.CreateObject("ADODB.Connection")
