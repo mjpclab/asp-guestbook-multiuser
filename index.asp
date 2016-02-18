@@ -86,8 +86,10 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 	if ItemsCount=0 then
 		Response.Write "<br/><br/><div class=""centertext"">目前尚无留言，请点击“签写留言”。</div><br/><br/>"
 	else
-		dim pagename
+		dim pagename, inAdminPage, inWebAdminPage
 		pagename="index"
+		inAdminPage=false
+		inWebAdminPage=false
 		if GuestDisplayMode()="book" then
 			%><!-- #include file="include/template/guest_listword.inc" --><%
 		elseif GuestDisplayMode()="forum" then

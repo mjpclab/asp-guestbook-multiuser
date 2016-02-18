@@ -60,8 +60,10 @@ end if
 	<form method="post" action="web_searchmdel.asp" name="form7">
 		<!-- #include file="include/template/web_admin_func_search.inc" -->
 		<%
-			dim pagename
+			dim pagename, inAdminPage, inWebAdminPage
 			pagename="web_showword"
+			inAdminPage=true
+			inWebAdminPage=true
 			%><!-- #include file="include/template/web_admin_listword.inc" --><%
 			rs.Close : cn.Close : set rs=nothing : set cn=nothing
 		%>

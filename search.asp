@@ -96,8 +96,10 @@ end if
 		if ItemsCount=0 then
 			Response.Write "<br/><br/><div class=""centertext"">没有找到符合条件的留言。</div><br/><br/>"
 		else
-			dim pagename
+			dim pagename, inAdminPage, inWebAdminPage
 			pagename="search"
+			inAdminPage=false
+			inWebAdminPage=false
 			if GuestDisplayMode()="book" then
 				%><!-- #include file="include/template/guest_listword.inc" --><%
 			elseif GuestDisplayMode()="forum" then

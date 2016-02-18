@@ -116,8 +116,10 @@ Call CreateConn(cn)
 rs.Open Replace(Replace(sql_adminreply_words,"{0}",Request.QueryString("id")),"{1}",adminid),cn,,,1
 
 if Not rs.EOF then
-	dim pagename
+	dim pagename, inAdminPage, inWebAdminPage
 	pagename="admin_reply"
+	inAdminPage=true
+	inWebAdminPage=false
 	%><!-- #include file="include/template/admin_listword.inc" --><%
 end if
 rs.Close : cn.Close : set rs=nothing : set cn=nothing	

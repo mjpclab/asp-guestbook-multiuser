@@ -231,8 +231,10 @@ sql_condition=sql_websearch_condition_init & sql_condition
 	if ItemsCount=0 then
 		Response.Write "<br/><br/><div class=""centertext"">没有找到符合条件的留言。</div><br/><br/>"
 	else
-		dim pagename
+		dim pagename, inAdminPage, inWebAdminPage
 		pagename="web_admin_search"
+		inAdminPage=true
+		inWebAdminPage=true
 		if WebDisplayMode()="book" then
 			%><!-- #include file="include/template/web_admin_listword.inc" --><%
 		elseif WebDisplayMode()="forum" then
