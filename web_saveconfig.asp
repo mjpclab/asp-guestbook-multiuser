@@ -34,48 +34,41 @@ end function
 
 Response.Expires=-1
 
-showpage=15
-if isnumeric(Request.Form("page")) and len(Request.Form("page"))<=2 and Request.Form("page")<>"" then showpage=clng(Request.Form("page"))
-
-
-
-if Not IsNumeric(request.Form("admintimeout")) and CBool(showpage AND 1) then
+if Not IsNumeric(request.Form("admintimeout")) then
 	errbox "“管理员登录超时”必须为数字。"
-elseif Not IsNumeric(request.Form("showipv4")) and CBool(showpage AND 1) then
+elseif Not IsNumeric(request.Form("showipv4")) then
 	errbox "“为访客显示IPv4”必须为数字。"
-elseif Not IsNumeric(request.Form("showipv6")) and CBool(showpage AND 1) then
+elseif Not IsNumeric(request.Form("showipv6")) then
 	errbox "“为访客显示IPv6”必须为数字。"
-elseif Not IsNumeric(request.Form("adminshowipv4")) and CBool(showpage AND 1) then
+elseif Not IsNumeric(request.Form("adminshowipv4")) then
 	errbox "“为管理员显示IPv4”必须为数字。"
-elseif Not IsNumeric(request.Form("adminshowipv6")) and CBool(showpage AND 1) then
+elseif Not IsNumeric(request.Form("adminshowipv6")) then
 	errbox "“为管理员显示IPv6”必须为数字。"
-elseif Not IsNumeric(request.Form("adminshoworiginalipv4")) and CBool(showpage AND 1) then
+elseif Not IsNumeric(request.Form("adminshoworiginalipv4")) then
 	errbox "“为管理员显示原IPv4”必须为数字。"
-elseif Not IsNumeric(request.Form("adminshoworiginalipv6")) and CBool(showpage AND 1) then
+elseif Not IsNumeric(request.Form("adminshoworiginalipv6")) then
 	errbox "“为管理员显示原IPv6”必须为数字。"
-elseif Not IsNumeric(request.Form("vcodecount")) and CBool(showpage AND 1) then
+elseif Not IsNumeric(request.Form("vcodecount")) then
 	errbox "“登录验证码长度”必须为数字。"
-elseif Not IsNumeric(request.Form("writevcodecount")) and CBool(showpage AND 1) then
+elseif Not IsNumeric(request.Form("writevcodecount")) then
 	errbox "“留言验证码长度”必须为数字。"
-elseif isnum(request.Form("tablewidth"))=false and CBool(showpage AND 4) then
+elseif isnum(request.Form("tablewidth"))=false then
 	errbox "“留言本最大宽度”必须为数字或百分比。"
-elseif Not IsNumeric(request.Form("windowspace")) and CBool(showpage AND 4) then
+elseif Not IsNumeric(request.Form("windowspace")) then
 	errbox "“窗口区块间距”必须为数字。"
-elseif isnum(request.Form("tableleftwidth"))=false and CBool(showpage AND 4) then
+elseif isnum(request.Form("tableleftwidth"))=false then
 	errbox "“留言本左窗格宽度”必须为数字或百分比。"
-elseif Not IsNumeric(request.Form("searchtextwidth")) and CBool(showpage AND 4) then
+elseif Not IsNumeric(request.Form("searchtextwidth")) then
 	errbox "“搜索框宽度”必须为数字。"
-elseif Not IsNumeric(request.Form("replytextheight")) and CBool(showpage AND 4) then
+elseif Not IsNumeric(request.Form("replytextheight")) then
 	errbox "“公告编辑框高度”必须为数字。"
-elseif Not IsNumeric(request.Form("itemsperpage")) and CBool(showpage AND 4) then
+elseif Not IsNumeric(request.Form("itemsperpage")) then
 	errbox "“每页显示的项目数”必须为数字。"
-elseif Not IsNumeric(request.Form("titlesperpage")) and CBool(showpage AND 4) then
+elseif Not IsNumeric(request.Form("titlesperpage")) then
 	errbox "“每页显示的标题数”必须为数字。"
-elseif Not IsNumeric(request.Form("advpagelistcount")) and CBool(showpage AND 8) then
+elseif Not IsNumeric(request.Form("advpagelistcount")) then
 	errbox "“区段式分页项数”必须为数字。"
 else
-
-	if CBool(showpage AND 1) then
 		tstatus=0
 		if Request.Form("status1")="1" then tstatus=tstatus OR 1
 		if Request.Form("status2")="1" then tstatus=tstatus OR 2
@@ -140,16 +133,14 @@ else
 		if clng(twritevcodecount)>10 then twritevcodecount=4
 		if clng(twritevcodecount)<0 then twritevcodecount=4
 		twritevcodecount=clng(twritevcodecount) * &H10
-	end if
 
-	if CBool(showpage AND 2) then
+
 		tmailflag=0
 		if Request.Form("mailnewinform")="1" then tmailflag=tmailflag OR 1
 		if Request.Form("mailreplyinform")="1" then tmailflag=tmailflag OR 2
 		if Request.Form("mailcomponent")="1" then tmailflag=tmailflag OR 4
-	end if
 
-	if CBool(showpage AND 4) then
+
 		tcssfontfamily=Request.Form("cssfontfamily")
 		if len(tcssfontfamily)>48 then tcssfontfamily=left(tcssfontfamily,48)
 
@@ -208,9 +199,8 @@ else
 		else
 			tstyleid=clng(tstyleid)
 		end if
-	end if
 
-	if CBool(showpage AND 8) then
+
 		tvisualflag=0
 		if Request.Form("replyinword")="1" then tvisualflag=tvisualflag OR 1
 		select case Request.Form("showpagelist") : case "1","2","3"
@@ -251,55 +241,45 @@ else
 		if Request.Form("deladvtip")="1" then tdelconfirm=tdelconfirm OR 8
 		if Request.Form("deldectip")="1" then tdelconfirm=tdelconfirm OR 16
 		if Request.Form("delseldectip")="1" then tdelconfirm=tdelconfirm OR 32
-	end if
 
 	set cn1=server.CreateObject("ADODB.Connection")
 	set rs1=server.CreateObject("ADODB.Recordset")
 
 	Call CreateConn(cn1)
-
 	rs1.open Replace(sql_adminsaveconfig,"{0}",wm_id),cn1,0,3,1
 
-	if CBool(showpage AND 1) then
-		rs1("status")=tstatus
-		rs1("adminhtml")=tadminhtml
-		rs1("guesthtml")=tguesthtml
-		rs1("admintimeout")=tadmintimeout
-		rs1("showip")=tshowip
-		rs1("adminshowip")=tadminshowip
-		rs1("adminshoworiginalip")=tadminshoworiginalip
-		rs1("vcodecount")=tvcodecount + twritevcodecount
-	end if
-	if CBool(showpage AND 2) then
-		rs1("mailflag")=tmailflag
-	end if
-	if CBool(showpage AND 4) then
-		rs1("cssfontfamily")=tcssfontfamily
-		rs1("cssfontsize")=tcssfontsize
-		rs1("csslineheight")=tcsslineheight
-		rs1("tablewidth")=ttablewidth
-		rs1("windowspace")=twindowspace
-		rs1("tableleftwidth")=ttableleftwidth
-		rs1("searchtextwidth")=tsearchtextwidth
-		rs1("replytextheight")=treplytextheight
-		rs1("itemsperpage")=titemsperpage
-		rs1("titlesperpage")=ttitlesperpage
-		rs1("styleid")=tstyleid
-	end if
-	if CBool(showpage AND 8) then
-		rs1("visualflag")=tvisualflag
-		rs1("advpagelistcount")=tadvpagelistcount
-		rs1("ubbflag")=tubbflag
-		rs1("pagecontrol")=tpagecontrol
-		rs1("delconfirm")=tdelconfirm
-	end if
+	rs1("status")=tstatus
+	rs1("adminhtml")=tadminhtml
+	rs1("guesthtml")=tguesthtml
+	rs1("admintimeout")=tadmintimeout
+	rs1("showip")=tshowip
+	rs1("adminshowip")=tadminshowip
+	rs1("adminshoworiginalip")=tadminshoworiginalip
+	rs1("vcodecount")=tvcodecount + twritevcodecount
+
+	rs1("mailflag")=tmailflag
+
+	rs1("cssfontfamily")=tcssfontfamily
+	rs1("cssfontsize")=tcssfontsize
+	rs1("csslineheight")=tcsslineheight
+	rs1("tablewidth")=ttablewidth
+	rs1("windowspace")=twindowspace
+	rs1("tableleftwidth")=ttableleftwidth
+	rs1("searchtextwidth")=tsearchtextwidth
+	rs1("replytextheight")=treplytextheight
+	rs1("itemsperpage")=titemsperpage
+	rs1("titlesperpage")=ttitlesperpage
+	rs1("styleid")=tstyleid
+
+	rs1("visualflag")=tvisualflag
+	rs1("advpagelistcount")=tadvpagelistcount
+	rs1("ubbflag")=tubbflag
+	rs1("pagecontrol")=tpagecontrol
+	rs1("delconfirm")=tdelconfirm
+
 	rs1.Update
-	
-	rs1.Close
-	cn1.close
-	set rs1=nothing
-	set cn1=nothing
+	rs1.Close : cn1.close : set rs1=nothing : set cn1=nothing
 end if
 
-Response.Redirect "web_config.asp?page=" & showpage
+Response.Redirect "web_config.asp?tabIndex=" & Request.Form("tabIndex")
 %>

@@ -35,22 +35,12 @@ Call CreateConn(cn)
 
 	<div class="region region-config admin-tools">
 		<h3 class="title">留言本参数设置</h3>
-		<div class="content flex-box">
-			<ul>
-				<li><a href="web_config.asp?page=1">基本配置</a></li>
-				<li><a href="web_config.asp?page=2">邮件通知</a></li>
-				<li><a href="web_config.asp?page=4">界面与尺寸</a></li>
-				<li><a href="web_config.asp?page=8">功能设置</a></li>
-				<li><a href="web_config.asp">全部参数</a></li>
-			</ul>
-
+		<div class="content">
 			<form method="post" action="web_saveconfig.asp" name="configform" onsubmit="return check();">
-			<%
-			showpage=15
-			if isnumeric(Request.QueryString("page")) and len(Request.QueryString("page"))<=2 and Request.QueryString("page")<>"" then showpage=clng(Request.QueryString("page"))
 
-			if CBool(showpage AND 1) then
-			%>
+			<div id="tabContainer"></div>
+
+			<div id="tab-basic">
 				<h4>基本配置（当某功能关闭时，用户设置无效，IP显示优先于用户设置，验证码长度作为用户设置最小值）：</h4>
 				<%tstatus=rs("status")%>
 				<div class="field">
@@ -143,13 +133,11 @@ Call CreateConn(cn)
 					<span class="label">留言验证码长度：</span>
 					<span class="value"><input type="text" size="4" maxlength="2" name="writevcodecount" value="<%=(rs("vcodecount") and &HF0) \ &H10%>" />位 (可选值：0～10)</span>
 				</div>
-			<%
-			end if
+			</div>
 
-			if CBool(showpage AND 2) then
-			%>
-				<%MailFlag=rs("mailflag")%>
+			<div id="tab-mail">
 				<h4>邮件通知（设置是否对用户开放）：</h4>
+				<%MailFlag=rs("mailflag")%>
 				<div class="field">
 					<span class="label">新留言到达通知版主：</span>
 					<span class="value"><input type="checkbox" value="1" name="mailnewinform" id="mailnewinform"<%=cked(CBool(MailFlag AND 1))%> /><label for="mailnewinform">启用</label></span>
@@ -162,10 +150,9 @@ Call CreateConn(cn)
 					<span class="label">邮件发送组件：</span>
 					<span class="value"><input type="radio" value="0" name="mailcomponent" id="mailcomponent0"<%=cked(Not CBool(MailFlag AND 4))%> /><label for="mailcomponent0">JMail</label>　<input type="radio" value="1" name="mailcomponent" id="mailcomponent1"<%=cked(CBool(MailFlag AND 4))%> /><label for="mailcomponent1">CDO</label></span>
 				</div>
-			<%end if
+			</div>
 
-			if CBool(showpage AND 4) then
-			%>
+			<div id="tab-ui-size">
 				<h4>界面与尺寸（此项只影响本管理页面）：</h4>
 				<div class="field">
 					<span class="label">字体列表（","分隔）：</span>
@@ -231,11 +218,9 @@ Call CreateConn(cn)
 						</select>
 					</span>
 				</div>
-			<%
-			end if
+			</div>
 
-			if CBool(showpage AND 8) then
-			%>
+			<div id="tab-function">
 				<h4>功能设置：</h4>
 				<%tvisualflag=rs("visualflag")%>
 				<div class="field">
@@ -304,9 +289,9 @@ Call CreateConn(cn)
 					<span class="label">删除选定置顶公告时提示：</span>
 					<span class="value"><input type="radio" name="delseldectip" value="1" id="delseldectip1"<%=cked(CBool(tdelconfirm AND 32))%> /><label for="delseldectip1">提示</label>　　<input type="radio" name="delseldectip" value="0" id="delseldectip2"<%=cked(Not CBool(tdelconfirm AND 32))%> /><label for="delseldectip2">不提示</label></span>
 				</div>
-			<%end if%>
+			</div>
 
-			<input type="hidden" name="page" value="<%=showpage%>" />
+			<input type="hidden" name="tabIndex" id="tabIndex" value="<%=Request.QueryString("tabIndex")%>" />
 			<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>
 			</form>
 		</div>
@@ -321,101 +306,109 @@ Call CreateConn(cn)
 <script type="text/javascript" defer="defer">
 function check()
 {
-	var tv,showpage=<%=showpage%>;
-	if ((showpage & 1) != 0)
-	{
-		if (isNaN(tv=Number(document.configform.admintimeout.value)))
-			{alert('“管理员登录超时”必须为数字。');document.configform.admintimeout.select();return false;}
-		else if (tv<1 || tv>1440)
-			{alert('“管理员登录超时”必须在1～1440的范围内。');document.configform.admintimeout.select();return false;}
+	var tv;
 
-		if (isNaN(tv=Number(document.configform.showipv4.value)))
-			{alert('“为访客显示IPv4”必须为数字。');document.configform.showipv4.select();return false;}
-		else if (tv<0 || tv>4 || document.configform.showipv4.value==='')
-			{alert('“为访客显示IPv4”必须在0～4的范围内。');document.configform.showipv4.select();return false;}
+	if (isNaN(tv=Number(document.configform.admintimeout.value)))
+		{alert('“管理员登录超时”必须为数字。');document.configform.admintimeout.select();return false;}
+	else if (tv<1 || tv>1440)
+		{alert('“管理员登录超时”必须在1～1440的范围内。');document.configform.admintimeout.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.showipv6.value)))
-			{alert('“为访客显示IPv6”必须为数字。');document.configform.showipv6.select();return false;}
-		else if (tv<0 || tv>8 || document.configform.showipv6.value==='')
-			{alert('“为访客显示IPv6”必须在0～8的范围内。');document.configform.showipv6.select();return false;}
+	if (isNaN(tv=Number(document.configform.showipv4.value)))
+		{alert('“为访客显示IPv4”必须为数字。');document.configform.showipv4.select();return false;}
+	else if (tv<0 || tv>4 || document.configform.showipv4.value==='')
+		{alert('“为访客显示IPv4”必须在0～4的范围内。');document.configform.showipv4.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.adminshowipv4.value)))
-			{alert('“为管理员显示IPv4”必须为数字。');document.configform.adminshowipv4.select();return false;}
-		else if (tv<0 || tv>4 || document.configform.adminshowipv4.value==='')
-			{alert('“为管理员显示IPv4”必须在0～4的范围内。');document.configform.adminshowipv4.select();return false;}
+	if (isNaN(tv=Number(document.configform.showipv6.value)))
+		{alert('“为访客显示IPv6”必须为数字。');document.configform.showipv6.select();return false;}
+	else if (tv<0 || tv>8 || document.configform.showipv6.value==='')
+		{alert('“为访客显示IPv6”必须在0～8的范围内。');document.configform.showipv6.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.adminshowipv6.value)))
-			{alert('“为管理员显示IPv6”必须为数字。');document.configform.adminshowipv6.select();return false;}
-		else if (tv<0 || tv>8 || document.configform.adminshowipv6.value==='')
-			{alert('“为管理员显示IPv6”必须在0～8的范围内。');document.configform.adminshowipv6.select();return false;}
+	if (isNaN(tv=Number(document.configform.adminshowipv4.value)))
+		{alert('“为管理员显示IPv4”必须为数字。');document.configform.adminshowipv4.select();return false;}
+	else if (tv<0 || tv>4 || document.configform.adminshowipv4.value==='')
+		{alert('“为管理员显示IPv4”必须在0～4的范围内。');document.configform.adminshowipv4.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.adminshoworiginalipv4.value)))
-			{alert('“为管理员显示原IPv4”必须为数字');document.configform.adminshoworiginalipv4.select();return false;}
-		else if (tv<0 || tv>4 || document.configform.adminshoworiginalipv4.value==='')
-			{alert('“为管理员显示原IPv4”必须在0～4的范围内。');document.configform.adminshoworiginalipv4.select();return false;}
+	if (isNaN(tv=Number(document.configform.adminshowipv6.value)))
+		{alert('“为管理员显示IPv6”必须为数字。');document.configform.adminshowipv6.select();return false;}
+	else if (tv<0 || tv>8 || document.configform.adminshowipv6.value==='')
+		{alert('“为管理员显示IPv6”必须在0～8的范围内。');document.configform.adminshowipv6.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.adminshoworiginalipv6.value)))
-			{alert('“为管理员显示原IPv6”必须为数字');document.configform.adminshoworiginalipv6.select();return false;}
-		else if (tv<0 || tv>8 || document.configform.adminshoworiginalipv6.value==='')
-			{alert('“为管理员显示原IPv6”必须在0～8的范围内。');document.configform.adminshoworiginalipv6.select();return false;}
+	if (isNaN(tv=Number(document.configform.adminshoworiginalipv4.value)))
+		{alert('“为管理员显示原IPv4”必须为数字');document.configform.adminshoworiginalipv4.select();return false;}
+	else if (tv<0 || tv>4 || document.configform.adminshoworiginalipv4.value==='')
+		{alert('“为管理员显示原IPv4”必须在0～4的范围内。');document.configform.adminshoworiginalipv4.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.vcodecount.value)))
-			{alert('“登录验证码长度”必须为数字。');document.configform.vcodecount.select();return false;}
-		else if (tv<0 || tv>10)
-			{alert('“登录验证码长度”必须在0～10的范围内。');document.configform.vcodecount.select();return false;}
+	if (isNaN(tv=Number(document.configform.adminshoworiginalipv6.value)))
+		{alert('“为管理员显示原IPv6”必须为数字');document.configform.adminshoworiginalipv6.select();return false;}
+	else if (tv<0 || tv>8 || document.configform.adminshoworiginalipv6.value==='')
+		{alert('“为管理员显示原IPv6”必须在0～8的范围内。');document.configform.adminshoworiginalipv6.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.writevcodecount.value)))
-			{alert('“留言验证码长度”必须为数字。');document.configform.writevcodecount.select();return false;}
-		else if (tv<0 || tv>10)
-			{alert('“留言验证码长度”必须在0～10的范围内。');document.configform.writevcodecount.select();return false;}
-	}
-	if ((showpage & 4) != 0)
-	{
-		if (isNaN(tv=Number(document.configform.tablewidth.value)))
-			{if (/^\d+%$/.test(document.configform.tablewidth.value)==false) {alert('“留言本最大宽度”必须为正数或正百分比。');document.configform.tablewidth.select();return false;}}
-		else if (tv<1)
-			{alert('“留言本最大宽度”必须大于零。');document.configform.tablewidth.select();return false;}
+	if (isNaN(tv=Number(document.configform.vcodecount.value)))
+		{alert('“登录验证码长度”必须为数字。');document.configform.vcodecount.select();return false;}
+	else if (tv<0 || tv>10)
+		{alert('“登录验证码长度”必须在0～10的范围内。');document.configform.vcodecount.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.windowspace.value)))
-			{alert('“窗口区块间距”必须为数字。');document.configform.windowspace.select();return false;}
-		else if (tv<1 || tv>255)
-			{alert('“窗口区块间距”必须在1～255的范围内。');document.configform.windowspace.select();return false;}
+	if (isNaN(tv=Number(document.configform.writevcodecount.value)))
+		{alert('“留言验证码长度”必须为数字。');document.configform.writevcodecount.select();return false;}
+	else if (tv<0 || tv>10)
+		{alert('“留言验证码长度”必须在0～10的范围内。');document.configform.writevcodecount.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.tableleftwidth.value)))
-			{if (/^\d+%$/.test(document.configform.tableleftwidth.value)==false) {alert('“留言本左窗格宽度”必须为正数或正百分比。');document.configform.tableleftwidth.select();return false;}}
-		else if (tv<1)
-			{alert('“留言本左窗格宽度”必须大于零。');document.configform.tableleftwidth.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.searchtextwidth.value)))
-			{alert('“搜索框宽度”必须为数字。');document.configform.searchtextwidth.select();return false;}
-		else if (tv<1 || tv>255)
-			{alert('“搜索框宽度”必须在1～255的范围内。');document.configform.searchtextwidth.select();return false;}
+	if (isNaN(tv=Number(document.configform.tablewidth.value)))
+		{if (/^\d+%$/.test(document.configform.tablewidth.value)==false) {alert('“留言本最大宽度”必须为正数或正百分比。');document.configform.tablewidth.select();return false;}}
+	else if (tv<1)
+		{alert('“留言本最大宽度”必须大于零。');document.configform.tablewidth.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.replytextheight.value)))
-			{alert('“回复、公告编辑框高度”必须为数字。');document.configform.replytextheight.select();return false;}
-		else if (tv<1 || tv>255)
-			{alert('“回复、公告编辑框高度”必须在1～255的范围内。');document.configform.replytextheight.select();return false;}
+	if (isNaN(tv=Number(document.configform.windowspace.value)))
+		{alert('“窗口区块间距”必须为数字。');document.configform.windowspace.select();return false;}
+	else if (tv<1 || tv>255)
+		{alert('“窗口区块间距”必须在1～255的范围内。');document.configform.windowspace.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.itemsperpage.value)))
-			{alert('“每页显示的留言数”必须为数字。');document.configform.itemsperpage.select();return false;}
-		else if (tv<1 || tv>32767)
-			{alert('“每页显示的留言数”必须在1～32767的范围内。');document.configform.itemsperpage.select();return false;}
+	if (isNaN(tv=Number(document.configform.tableleftwidth.value)))
+		{if (/^\d+%$/.test(document.configform.tableleftwidth.value)==false) {alert('“留言本左窗格宽度”必须为正数或正百分比。');document.configform.tableleftwidth.select();return false;}}
+	else if (tv<1)
+		{alert('“留言本左窗格宽度”必须大于零。');document.configform.tableleftwidth.select();return false;}
 
-		if (isNaN(tv=Number(document.configform.titlesperpage.value)))
-			{alert('“每页显示的标题数”必须为数字。');document.configform.titlesperpage.select();return false;}
-		else if (tv<1 || tv>32767)
-			{alert('“每页显示的标题数”必须在1～32767的范围内。');document.configform.titlesperpage.select();return false;}
-	}
-	if ((showpage & 8) != 0)
-	{
-		if (isNaN(tv=Number(document.configform.advpagelistcount.value)))
-			{alert('“区段式分页项数”必须为数字。');document.configform.advpagelistcount.select();return false;}
-		else if (tv<1 || tv>255 || document.configform.advpagelistcount.value=='')
-			{alert('“区段式分页项数”必须在1～255的范围内。');document.configform.advpagelistcount.select();return false;}
-	}
+	if (isNaN(tv=Number(document.configform.searchtextwidth.value)))
+		{alert('“搜索框宽度”必须为数字。');document.configform.searchtextwidth.select();return false;}
+	else if (tv<1 || tv>255)
+		{alert('“搜索框宽度”必须在1～255的范围内。');document.configform.searchtextwidth.select();return false;}
+
+	if (isNaN(tv=Number(document.configform.replytextheight.value)))
+		{alert('“回复、公告编辑框高度”必须为数字。');document.configform.replytextheight.select();return false;}
+	else if (tv<1 || tv>255)
+		{alert('“回复、公告编辑框高度”必须在1～255的范围内。');document.configform.replytextheight.select();return false;}
+
+	if (isNaN(tv=Number(document.configform.itemsperpage.value)))
+		{alert('“每页显示的留言数”必须为数字。');document.configform.itemsperpage.select();return false;}
+	else if (tv<1 || tv>32767)
+		{alert('“每页显示的留言数”必须在1～32767的范围内。');document.configform.itemsperpage.select();return false;}
+
+	if (isNaN(tv=Number(document.configform.titlesperpage.value)))
+		{alert('“每页显示的标题数”必须为数字。');document.configform.titlesperpage.select();return false;}
+	else if (tv<1 || tv>32767)
+		{alert('“每页显示的标题数”必须在1～32767的范围内。');document.configform.titlesperpage.select();return false;}
+
+
+	if (isNaN(tv=Number(document.configform.advpagelistcount.value)))
+		{alert('“区段式分页项数”必须为数字。');document.configform.advpagelistcount.select();return false;}
+	else if (tv<1 || tv>255 || document.configform.advpagelistcount.value=='')
+		{alert('“区段式分页项数”必须在1～255的范围内。');document.configform.advpagelistcount.select();return false;}
+
 	document.configform.submit1.disabled=true;
 	return true;
 }
+</script>
+<script type="text/javascript" src="asset/js/tabcontrol.js"></script>
+<script type="text/javascript">
+var tab=new TabControl('tabContainer');
+
+tab.addPage('tab-basic','基本配置');
+tab.addPage('tab-mail','邮件通知');
+tab.addPage('tab-ui-size','界面与尺寸');
+tab.addPage('tab-function','功能设置');
+
+tab.restoreFromField('tabIndex');
 </script>
 </body>
 </html>
