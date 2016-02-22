@@ -21,22 +21,25 @@ if web_checkIsBannedIP() then
 	Response.End
 end if
 
-set cn1=server.CreateObject("ADODB.Connection")
-Call CreateConn(cn1)
+if Not IsEmpty(Request.Form) then
+	dim tlimit
+	tlimit=0
+	if Request.Form("html2")="1" then tlimit=tlimit OR 1
+	if Request.Form("ubb2")="1" then tlimit=tlimit OR 2
+	if Request.Form("newline2")="1" then tlimit=tlimit OR 4
 
-dim tlimit
-tlimit=0
-if Request.Form("html2")="1" then tlimit=tlimit OR 1
-if Request.Form("ubb2")="1" then tlimit=tlimit OR 2
-if Request.Form("newline2")="1" then tlimit=tlimit OR 4
+	dim tbul
+	tbul=Request.Form("abulletin")
+	tbul=replace(tbul,"'","''")
+	tbul=replace(tbul,"<%","< %")
 
-dim tbul
-tbul=Request.Form("abulletin")
-tbul=replace(tbul,"'","''")
-tbul=replace(tbul,"<%","< %")
+	set cn1=server.CreateObject("ADODB.Connection")
+	Call CreateConn(cn1)
+	cn1.Execute Replace(Replace(Replace(sql_adminsavebulletin,"{0}",clng(web_adminlimit and tlimit)),"{1}",tbul),"{2}",adminid),,1
 
-cn1.Execute Replace(Replace(Replace(sql_adminsavebulletin,"{0}",clng(web_adminlimit and tlimit)),"{1}",tbul),"{2}",adminid),,1
-
-cn1.close : set cn1=nothing:
-Response.Redirect "admin.asp?user=" &ruser
+	cn1.close : set cn1=nothing
+	Response.Redirect "admin.asp?user=" &ruser
+else
+	Response.Redirect "admin_setbulletin.asp?user=" &ruser
+end if
 %>

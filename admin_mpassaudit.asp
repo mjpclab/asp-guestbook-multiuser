@@ -19,25 +19,19 @@ if web_checkIsBannedIP() then
 	Call WebErrorPage(4)
 	Response.End
 end if
-if Request.Form("seltodel")="" then
-	if isnumeric(Request.Form("tpage")) and Request.Form("tpage")<>"" then
-		Response.Redirect "admin.asp?user=" &ruser& "&page=" & Request.Form("tpage")
-	else
-		Response.Redirect "admin.asp?user=" &ruser
+if Request.Form("seltodel")<>"" then
+	dim ids
+	ids=FilterSql(Request.Form("seltodel"))
+	if Left(ids,1) = "," then
+		ids=Mid(ids,2)
 	end if
+
+	set cn=server.CreateObject("ADODB.Connection")
+	set rs=server.CreateObject("ADODB.Recordset")
+	Call CreateConn(cn)
+
+	cn.Execute Replace(Replace(sql_adminmpass,"{0}",ids),"{1}",adminid),,1
+	cn.Close : set rs=nothing : set cn=nothing
 end if
-
-dim ids
-ids=FilterSql(Request.Form("seltodel"))
-if Left(ids,1) = "," then
-	ids=Mid(ids,2)
-end if
-
-set cn=server.CreateObject("ADODB.Connection")
-set rs=server.CreateObject("ADODB.Recordset")
-Call CreateConn(cn)
-
-cn.Execute Replace(Replace(sql_adminmpass,"{0}",ids),"{1}",adminid),,1
-cn.Close : set rs=nothing : set cn=nothing
 %>
 <!-- #include file="include/template/admin_traceback.inc" -->

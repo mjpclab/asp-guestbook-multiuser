@@ -254,11 +254,14 @@ case "18"
 	cn1.CommitTrans
 	
 	Call TipsPage("已删除" &affected& "个用户。","web_advdel.asp")
+case else
+	cn1.Close : set cn1=nothing
+	Response.Redirect "web_advdel.asp"
+	Response.End
 end select
 cn1.Execute sql_webdoadvdel_clearfragment_main,,1
 cn1.Execute sql_webdoadvdel_clearfragment_reply,,1
 cn1.Execute sql_webdoadvdel_adjustadminreply_flag,,1
 cn1.Execute sql_webdoadvdel_adjustguestreply_flag,,1
-cn1.Close
-set cn1=nothing
+cn1.Close : set cn1=nothing
 %>

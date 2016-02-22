@@ -24,30 +24,27 @@ if isnumeric(request.form("mainid"))=false or request.form("mainid")="" then
 	Response.End
 end if
 
-set cn=server.CreateObject("ADODB.Connection")
-set rs=server.CreateObject("ADODB.Recordset")
-Call CreateConn(cn)
+if Not IsEmpty(Request.Form) then
+	dim tlimit
+	tlimit=0
+	if Request.Form("html1")="1" then tlimit=tlimit+1
+	if Request.Form("ubb1")="1" then tlimit=tlimit+2
+	if Request.Form("newline1")="1" then tlimit=tlimit+4
 
+	set cn=server.CreateObject("ADODB.Connection")
+	set rs=server.CreateObject("ADODB.Recordset")
+	Call CreateConn(cn)
+	rs.Open Replace(Replace(sql_adminsaveedit_open,"{0}",Request.Form("mainid")),"{1}",adminid),cn,0,3,1
 
-dim tlimit
-tlimit=0
-if Request.Form("html1")="1" then tlimit=tlimit+1
-if Request.Form("ubb1")="1" then tlimit=tlimit+2
-if Request.Form("newline1")="1" then tlimit=tlimit+4
-	
-rs.Open Replace(Replace(sql_adminsaveedit_open,"{0}",Request.Form("mainid")),"{1}",adminid),cn,0,3,1
+	if Not rs.EOF then		'¡Ù—‘¥Ê‘⁄
+		rs.Fields("guestflag")=cbyte(rs.Fields("guestflag") and 248) + cbyte(tlimit and web_adminlimit)
+		if Request.Form("etitle")<>"" then rs.Fields("title")=Server.HTMLEncode(Request.Form("etitle"))
+		rs.Fields("article")=Request.Form("econtent")
+		rs.Update
 
-if Not rs.EOF then		'¡Ù—‘¥Ê‘⁄
-	rs.Fields("guestflag")=cbyte(rs.Fields("guestflag") and 248) + cbyte(tlimit and web_adminlimit)
-	if Request.Form("etitle")<>"" then rs.Fields("title")=Server.HTMLEncode(Request.Form("etitle"))
-	rs.Fields("article")=Request.Form("econtent")
-	rs.Update
-
-	%><!-- #include file="include/template/admin_traceback.inc" --><%
-	rs.close : cn.close : set rs=nothing : set cn=nothing
-else
-	rs.close : cn.close : set rs=nothing : set cn=nothing
-	Response.Redirect "admin.asp?user=" & ruser
+		rs.close : cn.close : set rs=nothing : set cn=nothing
+	else
+		rs.close : cn.close : set rs=nothing : set cn=nothing
+	end if
 end if
-rs.close : cn.close : set rs=nothing : set cn=nothing
-%>
+%><!-- #include file="include/template/admin_traceback.inc" -->

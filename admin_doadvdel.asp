@@ -119,10 +119,14 @@ case "7"
 case "8"
 	cn.Execute Replace(sql_admindoadvdel_main,"{0}",adminid),affected,1
 	Call TipsPage("ÒÑÉ¾³ý" &affected& "ÌõÁôÑÔ¡£","admin_advdel.asp?user=" & ruser)
+case else
+	cn.Close : set cn=nothing
+	Response.Redirect "admin_advdel.asp?user=" & ruser
+	Response.End
 end select
 
 cn.Execute Replace(sql_admindoadvdel_adjustguestreply_flag,"{0}",adminid),,1
 cn.Execute sql_admindoadvdel_clearfragment_main,,1
 cn.Execute sql_admindoadvdel_clearfragment_reply,,1
-cn.Close : set cn=nothing		
+cn.Close : set cn=nothing
 %>

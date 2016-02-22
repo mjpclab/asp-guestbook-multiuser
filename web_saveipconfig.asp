@@ -34,19 +34,6 @@ function deleteSaved(requestField,sql)
 	end if
 end function
 
-'IPv4 delete status 1
-deleteSaved "savedipv4status1",sql_adminsaveipv4config_delete
-
-'IPv4 delete status 2
-deleteSaved "savedipv4status2",sql_adminsaveipv4config_delete
-
-'IPv6 delete status 1
-deleteSaved "savedipv6status1",sql_adminsaveipv6config_delete
-
-'IPv6 delete status 2
-deleteSaved "savedipv6status2",sql_adminsaveipv6config_delete
-
-
 function addNewIPv4(requestField,sql)
 	Dim entries,iprange,maxIndex,ipfrom,ipto
 
@@ -70,6 +57,7 @@ function addNewIPv4(requestField,sql)
 		end if
 	next
 end function
+
 function addNewIPv6(requestField,sql)
 	Dim entries,iprange,maxIndex,ipfrom,ipto
 
@@ -94,18 +82,33 @@ function addNewIPv6(requestField,sql)
 	next
 end function
 
-'IPv4 add status 1
-addNewIPv4 "newipv4status1",sql_adminsaveipv4config_insert1
+if Not IsEmpty(Request.Form) then
+	'IPv4 delete status 1
+	deleteSaved "savedipv4status1",sql_adminsaveipv4config_delete
 
-'IPv4 add status 2
-addNewIPv4 "newipv4status2",sql_adminsaveipv4config_insert2
+	'IPv4 delete status 2
+	deleteSaved "savedipv4status2",sql_adminsaveipv4config_delete
 
-'IPv6 add status 1
-addNewIPv6 "newipv6status1",sql_adminsaveipv6config_insert1
+	'IPv6 delete status 1
+	deleteSaved "savedipv6status1",sql_adminsaveipv6config_delete
 
-'IPv6 add status 2
-addNewIPv6 "newipv6status2",sql_adminsaveipv6config_insert2
+	'IPv6 delete status 2
+	deleteSaved "savedipv6status2",sql_adminsaveipv6config_delete
 
-cn.Close : set cn=nothing
+
+	'IPv4 add status 1
+	addNewIPv4 "newipv4status1",sql_adminsaveipv4config_insert1
+
+	'IPv4 add status 2
+	addNewIPv4 "newipv4status2",sql_adminsaveipv4config_insert2
+
+	'IPv6 add status 1
+	addNewIPv6 "newipv6status1",sql_adminsaveipv6config_insert1
+
+	'IPv6 add status 2
+	addNewIPv6 "newipv6status2",sql_adminsaveipv6config_insert2
+
+	cn.Close : set cn=nothing
+end if
 Response.Redirect "web_ipconfig.asp?tabIndex=" & Request.Form("tabIndex")
 %>

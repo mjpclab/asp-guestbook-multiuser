@@ -19,15 +19,6 @@ if web_checkIsBannedIP() then
 	Response.End
 end if
 
-set cn=server.CreateObject("ADODB.Connection")
-Call CreateConn(cn)
-
-'IPConStatus
-Dim tipconstatus
-tipconstatus=clng(Request.Form("ipv4constatus"))+clng(Request.Form("ipv6constatus"))*16
-cn.Execute Replace(Replace(sql_adminsaveipconfig_update,"{0}",tipconstatus),"{1}",adminid),,1
-
-
 function deleteSaved(requestField,sql)
 	Dim inputIds,listid,listids
 	inputIds=split(Request.Form(requestField),",")
@@ -42,19 +33,6 @@ function deleteSaved(requestField,sql)
 		cn.Execute Replace(Replace(sql,"{0}",listids),"{1}",adminid),,1
 	end if
 end function
-
-'IPv4 delete status 1
-deleteSaved "savedipv4status1",sql_adminsaveipv4config_delete
-
-'IPv4 delete status 2
-deleteSaved "savedipv4status2",sql_adminsaveipv4config_delete
-
-'IPv6 delete status 1
-deleteSaved "savedipv6status1",sql_adminsaveipv6config_delete
-
-'IPv6 delete status 2
-deleteSaved "savedipv6status2",sql_adminsaveipv6config_delete
-
 
 function addNewIPv4(requestField,sql)
 	Dim entries,iprange,maxIndex,ipfrom,ipto
@@ -79,6 +57,7 @@ function addNewIPv4(requestField,sql)
 		end if
 	next
 end function
+
 function addNewIPv6(requestField,sql)
 	Dim entries,iprange,maxIndex,ipfrom,ipto
 
@@ -103,18 +82,42 @@ function addNewIPv6(requestField,sql)
 	next
 end function
 
-'IPv4 add status 1
-addNewIPv4 "newipv4status1",sql_adminsaveipv4config_insert1
+if Not IsEmpty(Request.Form) then
+	set cn=server.CreateObject("ADODB.Connection")
+	Call CreateConn(cn)
 
-'IPv4 add status 2
-addNewIPv4 "newipv4status2",sql_adminsaveipv4config_insert2
+	'IPConStatus
+	Dim tipconstatus
+	tipconstatus=clng(Request.Form("ipv4constatus"))+clng(Request.Form("ipv6constatus"))*16
+	cn.Execute Replace(Replace(sql_adminsaveipconfig_update,"{0}",tipconstatus),"{1}",adminid),,1
 
-'IPv6 add status 1
-addNewIPv6 "newipv6status1",sql_adminsaveipv6config_insert1
 
-'IPv6 add status 2
-addNewIPv6 "newipv6status2",sql_adminsaveipv6config_insert2
+	'IPv4 delete status 1
+	deleteSaved "savedipv4status1",sql_adminsaveipv4config_delete
 
-cn.Close : set cn=nothing
+	'IPv4 delete status 2
+	deleteSaved "savedipv4status2",sql_adminsaveipv4config_delete
+
+	'IPv6 delete status 1
+	deleteSaved "savedipv6status1",sql_adminsaveipv6config_delete
+
+	'IPv6 delete status 2
+	deleteSaved "savedipv6status2",sql_adminsaveipv6config_delete
+
+
+	'IPv4 add status 1
+	addNewIPv4 "newipv4status1",sql_adminsaveipv4config_insert1
+
+	'IPv4 add status 2
+	addNewIPv4 "newipv4status2",sql_adminsaveipv4config_insert2
+
+	'IPv6 add status 1
+	addNewIPv6 "newipv6status1",sql_adminsaveipv6config_insert1
+
+	'IPv6 add status 2
+	addNewIPv6 "newipv6status2",sql_adminsaveipv6config_insert2
+
+	cn.Close : set cn=nothing
+end if
 Response.Redirect "admin_ipconfig.asp?user=" & ruser & "&tabIndex=" & Request.Form("tabIndex")
 %>
