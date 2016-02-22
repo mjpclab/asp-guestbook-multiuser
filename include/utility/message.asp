@@ -509,10 +509,10 @@ sub outerword(byref rs)%>
 		<%
 		if CBool(rs.Fields("replied") AND 1) and ReplyInWord then inneradminreply(rs)	'ÄÚÇ¶
 
-		if inAdminPage and ReplyInWord then
-			Call showAdminMessageTools(rs)
-		elseif inWebAdminPage and ReplyInWord then
+		if inWebAdminPage and ReplyInWord then
 			Call showWebAdminMessageTools(rs,rs("adminname"))
+		elseif inAdminPage and ReplyInWord then
+			Call showAdminMessageTools(rs)
 		end if
 
 		if rs.Fields("parent_id")<=0 and CBool(rs.Fields("replied") AND 2) and (encrypted=false or pagename="showword" or inAdminPage) and ReplyInWord then
@@ -536,10 +536,10 @@ sub outerword(byref rs)%>
 					if rs1.Fields("replied") then inneradminreply(rs1)
 				end if
 
-				if inAdminPage then
-					Call showAdminMessageTools(rs1)
-				elseif inWebAdminPage then
+				if inWebAdminPage then
 					Call showWebAdminMessageTools(rs1,rs("adminname"))
+				elseif inAdminPage then
+					Call showAdminMessageTools(rs1)
 				end if
 				rs1.movenext
 			wend
