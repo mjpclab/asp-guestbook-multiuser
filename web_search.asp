@@ -147,55 +147,55 @@ sql_condition=sql_websearch_condition_init & sql_condition
 		<form method="post" action="web_search.asp" name="form1">
 		<p>搜索：("%"代表任意个字符，"_"代表一个字符)</p>
 		<div class="field">
-			<span class="label">用户名：</span>
+			<span class="label">用户名</span>
 			<span class="value"><input type="text" name="s_adminname" value="<%=Request("s_adminname")%>" maxlength="32" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客姓名：</span>
+			<span class="label">访客姓名</span>
 			<span class="value"><input type="text" name="s_name" value="<%=Request("s_name")%>" maxlength="64" /></span>
 		</div>
 		<div class="field">
-			<span class="label">留言标题：</span>
+			<span class="label">留言标题</span>
 			<span class="value"><input type="text" name="s_title" value="<%=Request("s_title")%>" maxlength="64" /></span>
 		</div>
 		<div class="field">
-			<span class="label">留言内容：</span>
+			<span class="label">留言内容</span>
 			<span class="value"><input type="text" name="s_article" value="<%=Request("s_article")%>" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客邮件地址：</span>
+			<span class="label">访客邮件地址</span>
 			<span class="value"><input type="text" name="s_email" value="<%=Request("s_email")%>" maxlength="48" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客QQ号码：</span>
+			<span class="label">访客QQ号码</span>
 			<span class="value"><input type="text" name="s_qqid" value="<%=Request("s_qqid")%>" maxlength="16" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客Skype地址：</span>
+			<span class="label">访客Skype地址</span>
 			<span class="value"><input type="text" name="s_msnid" value="<%=Request("s_msnid")%>" maxlength="48" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客主页地址：</span>
+			<span class="label">访客主页地址</span>
 			<span class="value"><input type="text" name="s_homepage" value="<%=Request("s_homepage")%>" maxlength="255" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客IPv4地址：</span>
+			<span class="label">访客IPv4地址</span>
 			<span class="value"><input type="text" name="s_ipv4addr" value="<%=Request("s_ipv4addr")%>" maxlength="15" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客原IPv4地址：</span>
+			<span class="label">访客原IPv4地址</span>
 			<span class="value"><input type="text" name="s_originalipv4" value="<%=Request("s_originalipv4")%>" maxlength="15" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客IPv6地址：</span>
+			<span class="label">访客IPv6地址</span>
 			<span class="value"><input type="text" name="s_ipv6addr" value="<%=Request("s_ipv6addr")%>" maxlength="15" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客原IPv6地址：</span>
+			<span class="label">访客原IPv6地址</span>
 			<span class="value"><input type="text" name="s_originalipv6" value="<%=Request("s_originalipv6")%>" maxlength="15" /></span>
 		</div>
 		<div class="field">
-			<span class="label">版主回复内容：</span>
+			<span class="label">版主回复内容</span>
 			<span class="value"><input type="text" name="s_reply" value="<%=request("s_reply")%>" /></span>
 		</div>
 		<div class="command"><input type="submit" value="搜索留言" name="searchsubmit" /></div>

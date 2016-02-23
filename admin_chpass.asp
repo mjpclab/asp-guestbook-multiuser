@@ -66,15 +66,15 @@ end if
 			<form method="post" action="admin_savepass.asp" onsubmit="return checkpass(this)" name="form4">
 			<input type="hidden" name="user" value="<%=ruser%>" />
 			<div class="field">
-				<span class="label">原密码：</span>
+				<span class="label">原密码</span>
 				<span class="value"><input type="password" name="ioldpass" maxlength="32" /></span>
 			</div>
 			<div class="field">
-				<span class="label">新密码：</span>
+				<span class="label">新密码</span>
 				<span class="value"><input type="password" name="inewpass1" maxlength="32" /></span>
 			</div>
 			<div class="field">
-				<span class="label">确认密码：</span>
+				<span class="label">确认密码</span>
 				<span class="value"><input type="password" name="inewpass2" maxlength="32" /></span>
 			</div>
 			<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>
@@ -96,15 +96,15 @@ end if
 			<form method="post" action="admin_saveqa.asp" onsubmit="return checkqa(this)" name="form5">
 				<input type="hidden" name="user" value="<%=ruser%>" />
 				<div class="field">
-					<span class="label">密码：</span>
+					<span class="label">密码</span>
 					<span class="value"><input type="password" name="ioldpass" maxlength="32" /></span>
 				</div>
 				<div class="field">
-					<span class="label">问题：</span>
+					<span class="label">问题</span>
 					<span class="value"><input type="text" name="question" maxlength="32" value="<%=server.HTMLEncode("" & rs("question") & "")%>" /></span>
 				</div>
 				<div class="field">
-					<span class="label">答案：</span>
+					<span class="label">答案</span>
 					<span class="value"><input type="text" name="key" maxlength="32" /></span>
 				</div>
 				<div class="command"><input value="更新数据" type="submit" name="submit1" /></div>

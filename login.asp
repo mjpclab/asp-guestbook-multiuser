@@ -44,16 +44,16 @@ if VcodeCount>0 then Session("vcode")=getvcode(VcodeCount)
 	<div class="content">
 		<form method="post" action="login_verify.asp" name="form5" onsubmit="return submitCheck(this);">
 			<div class="field">
-				<span class="label">用户名：</span>
+				<span class="label">用户名</span>
 				<span class="value"><input type="text" name="user" maxlength="32" value="<%=ruser%>" <%if ruser="" then Response.Write "autofocus='autofocus'"%>/></span>
 			</div>
 			<div class="field">
-				<span class="label">密码：</span>
+				<span class="label">密码</span>
 				<span class="value"><input type="password" name="iadminpass" maxlength="32" <%if ruser<>"" then Response.Write "autofocus='autofocus'"%>/></span>
 			</div>
 			<%if VcodeCount>0 then%>
 			<div class="field">
-				<span class="label">验证码：</span>
+				<span class="label">验证码</span>
 				<span class="value"><input type="text" name="ivcode" size="10" autocomplete="off" /><img id="captcha" class="captcha" src="show_vcode.asp?t=0"/></span>
 			</div>
 			<%end if%>

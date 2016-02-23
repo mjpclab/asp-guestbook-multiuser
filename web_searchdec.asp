@@ -70,11 +70,11 @@ Call CreateConn(cn)
 			<form method="post" action="web_searchdec.asp" name="form1">
 			<p>搜索：("%"代表任意个字符，"_"代表一个字符)</p>
 			<div class="field">
-				<span class="label">用户名：</span>
+				<span class="label">用户名</span>
 				<span class="value"><input type="text" name="adminname" value="<%=Request("adminname")%>" size="<%=SearchTextWidth%>" /></span>
 			</div>
 			<div class="field">
-				<span class="label">公告内容：</span>
+				<span class="label">公告内容</span>
 				<span class="value"><input type="text" name="searchtxt" value="<%=Request("searchtxt")%>" size="<%=SearchTextWidth%>" /></span>
 			</div>
 			<div class="command"><input type="submit" value="搜索公告" name="searchsubmit" /></div>

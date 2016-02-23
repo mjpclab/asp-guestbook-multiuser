@@ -50,47 +50,49 @@ Response.Expires=-1
 			<div id="tabContainer"></div>
 
 			<div id="tab-switch">
+				<h4>开关</h4>
 				<div class="field">
-					<span class="label">留言本创建功能：</span>
+					<span class="label">留言本创建功能</span>
 					<span class="value"><input type="radio" name="status4" value="1" id="status41"<%=cked(CBool(tstatus AND 8))%> /><label for="status41">开启</label>　　<input type="radio" name="status4" value="0" id="status42"<%=cked(Not CBool(tstatus AND 8))%> /><label for="status42">关闭</label></span>
 				</div>
 				<div class="field">
-					<span class="label">找回密码功能：</span>
+					<span class="label">找回密码功能</span>
 					<span class="value"><input type="radio" name="status5" value="1" id="status51"<%=cked(CBool(tstatus AND 16))%> /><label for="status51">开启</label>　　<input type="radio" name="status5" value="0" id="status52"<%=cked(Not CBool(tstatus AND 16))%> /><label for="status52">关闭</label></span>
 				</div>
 				<div class="field">
-					<span class="label">用户登录维护功能：</span>
+					<span class="label">用户登录维护功能</span>
 					<span class="value"><input type="radio" name="status6" value="1" id="status61"<%=cked(CBool(tstatus AND 32))%> /><label for="status61">开启</label>　　<input type="radio" name="status6" value="0" id="status62"<%=cked(Not CBool(tstatus AND 32))%> /><label for="status62">关闭</label></span>
 				</div>
 				<div class="field">
-					<span class="label">用户自删帐号功能：</span>
+					<span class="label">用户自删帐号功能</span>
 					<span class="value"><input type="radio" name="status7" value="1" id="status71"<%=cked(CBool(tstatus AND 64))%> /><label for="status71">开启</label>　　<input type="radio" name="status7" value="0" id="status72"<%=cked(Not CBool(tstatus AND 64))%> /><label for="status72">关闭</label></span>
 				</div>
 				<div class="field">
-					<span class="label">留言本状态：</span>
+					<span class="label">留言本状态</span>
 					<span class="value"><input type="radio" name="status1" value="1" id="status11"<%=cked(CBool(tstatus AND 1))%> /><label for="status11">开启</label>　　<input type="radio" name="status1" value="0" id="status12"<%=cked(Not CBool(tstatus AND 1))%> /><label for="status12">关闭</label></span>
 				</div>
 				<div class="field">
-					<span class="label">访客留言权限：</span>
+					<span class="label">访客留言权限</span>
 					<span class="value"><input type="radio" name="status2" value="1" id="status21"<%=cked(CBool(tstatus AND 2))%> /><label for="status21">开启</label>　　<input type="radio" name="status2" value="0" id="status22"<%=cked(Not CBool(tstatus AND 2))%> /><label for="status22">关闭</label></span>
 				</div>
 				<div class="field">
-					<span class="label">访客搜索留言权限：</span>
+					<span class="label">访客搜索留言权限</span>
 					<span class="value"><input type="radio" name="status3" value="1" id="status31"<%=cked(CBool(tstatus AND 4))%> /><label for="status31">开启</label>　　<input type="radio" name="status3" value="0" id="status32"<%=cked(Not CBool(tstatus AND 4))%> /><label for="status32">关闭</label></span>
 				</div>
 				<div class="field">
-					<span class="label">访问统计：</span>
+					<span class="label">访问统计</span>
 					<span class="value"><input type="radio" name="status9" value="1" id="status91"<%=cked(CBool(tstatus AND 256))%> /><label for="status91">开启</label>　　<input type="radio" name="status9" value="0" id="status92"<%=cked(Not CBool(tstatus AND 256))%> /><label for="status92">关闭</label></span>
 				</div>
 			</div>
 
 			<div id="tab-code">
+				<h4>代码</h4>
 				<div class="field">
-					<span class="label">管理中心安全性设置：</span>
+					<span class="label">管理中心安全性设置</span>
 					<span class="value"><input type="checkbox" value="1" name="adminviewcode" id="adminviewcode"<%=cked(CBool(adminlimit AND 8))%> /><label for="adminviewcode">用户及访客留言显示实际HTML或UBB代码</label></span>
 				</div>
 				<div class="field">
-					<span class="label">用户管理员HTML权限：</span>
+					<span class="label">用户管理员HTML权限</span>
 					<span class="value">
 						<span class="row"><input type="checkbox" value="1" name="adminhtml" id="adminhtml"<%=cked(CBool(adminlimit AND 1))%> /><label for="adminhtml">开启HTML权限（不推荐）</label></span>
 						<span class="row"><input type="checkbox" value="1" name="adminubb" id="adminubb"<%=cked(CBool(adminlimit AND 2))%> /><label for="adminubb">开启UBB权限</label></span>
@@ -98,7 +100,7 @@ Response.Expires=-1
 					</span>
 				</div>
 				<div class="field">
-					<span class="label">访客HTML权限：</span>
+					<span class="label">访客HTML权限</span>
 					<span class="value">
 						<span class="row"><input type="checkbox" value="1" name="guesthtml" id="guesthtml"<%=cked(CBool(guestlimit AND 1))%> /><label for="guesthtml">开启HTML权限（不推荐）</label></span>
 						<span class="row"><input type="checkbox" value="1" name="guestubb" id="guestubb"<%=cked(CBool(guestlimit AND 2))%> /><label for="guestubb">开启UBB权限</label></span>
@@ -106,7 +108,7 @@ Response.Expires=-1
 					</span>
 				</div>
 				<div class="field">
-					<span class="label">UBB开关(须启用UBB)：</span>
+					<span class="label">UBB开关(须启用UBB)</span>
 					<span class="value">
 						<span class="row">
 							<input type="checkbox" name="ubbflag_image" id="ubbflag_image" value="1"<%=cked(UbbFlag_image)%> /><label for="ubbflag_image">图片</label>
@@ -128,87 +130,89 @@ Response.Expires=-1
 			</div>
 
 			<div id="tab-security">
+				<h4>安全</h4>
 				<div class="field">
-					<span class="label">管理员登录超时：</span>
+					<span class="label">管理员登录超时</span>
 					<span class="value"><input type="text" size="4" maxlength="4" name="admintimeout" value="<%=rs("admintimeout")%>" />分 (默认=20)</span>
 				</div>
 				<div class="field">
-					<span class="label">为访客显示IPv4前：</span>
+					<span class="label">为访客显示IPv4前</span>
 					<span class="value"><input type="text" size="4" maxlength="1" name="showipv4" value="<%=ShowIPv4%>" />字节 (可选值：0～4)</span>
 				</div>
 				<div class="field">
-					<span class="label">为访客显示IPv6前：</span>
+					<span class="label">为访客显示IPv6前</span>
 					<span class="value"><input type="text" size="4" maxlength="1" name="showipv6" value="<%=ShowIPv6%>" />组 (可选值：0～8)</span>
 				</div>
 				<div class="field">
-					<span class="label">为管理员显示IPv4前：</span>
+					<span class="label">为管理员显示IPv4前</span>
 					<span class="value"><input type="text" size="4" maxlength="1" name="adminshowipv4" value="<%=AdminShowIPv4%>" />字节 (可选值：0～4)</span>
 				</div>
 				<div class="field">
-					<span class="label">为管理员显示IPv6前：</span>
+					<span class="label">为管理员显示IPv6前</span>
 					<span class="value"><input type="text" size="4" maxlength="1" name="adminshowipv6" value="<%=AdminShowIPv6%>" />组 (可选值：0～8)</span>
 				</div>
 				<div class="field">
-					<span class="label">为管理员显示原IPv4前：</span>
+					<span class="label">为管理员显示原IPv4前</span>
 					<span class="value"><input type="text" size="4" maxlength="1" name="adminshoworiginalipv4" value="<%=AdminShowOriginalIPv4%>" />字节 (可选值：0～4,使用代理服务器时此项显示原始IP)</span>
 				</div>
 				<div class="field">
-					<span class="label">为管理员显示原IPv6前：</span>
+					<span class="label">为管理员显示原IPv6前</span>
 					<span class="value"><input type="text" size="4" maxlength="1" name="adminshoworiginalipv6" value="<%=AdminShowOriginalIPv6%>" />组 (可选值：0～8,使用代理服务器时此项显示原始IP)</span>
 				</div>
 				<div class="field">
-					<span class="label">登录验证码长度：</span>
+					<span class="label">登录验证码长度</span>
 					<span class="value"><input type="text" size="4" maxlength="2" name="vcodecount" value="<%=rs("vcodecount") AND &H0F%>" />位 (可选值：0～10)</span>
 				</div>
 				<div class="field">
-					<span class="label">留言验证码长度：</span>
+					<span class="label">留言验证码长度</span>
 					<span class="value"><input type="text" size="4" maxlength="2" name="writevcodecount" value="<%=(rs("vcodecount") and &HF0) \ &H10%>" />位 (可选值：0～10)</span>
 				</div>
 			</div>
 
 			<div id="tab-ui">
+				<h4>界面</h4>
 				<div class="field">
-					<span class="label">字体列表（","分隔）：</span>
+					<span class="label">字体列表(","分隔)</span>
 					<span class="value"><input type="text" class="longtext" maxlength="48" name="cssfontfamily" value="<%=rs("cssfontfamily")%>" /></span>
 				</div>
 				<div class="field">
-					<span class="label">字体大小：</span>
+					<span class="label">字体大小</span>
 					<span class="value"><input type="text" size="10" maxlength="8" name="cssfontsize" value="<%=rs("cssfontsize")%>" /></span>
 				</div>
 				<div class="field">
-					<span class="label">文字行间距：</span>
+					<span class="label">文字行间距</span>
 					<span class="value"><input type="text" size="10" maxlength="8" name="csslineheight" value="<%=rs("csslineheight")%>" /></span>
 				</div>
 				<div class="field">
-					<span class="label">留言本最大宽度：</span>
+					<span class="label">留言本最大宽度</span>
 					<span class="value"><input type="text" size="10" maxlength="5" name="tablewidth" value="<%=rs("tablewidth")%>" /> (默认=630,可用百分比)</span>
 				</div>
 				<div class="field">
-					<span class="label">窗格区块间距：</span>
+					<span class="label">窗格区块间距</span>
 					<span class="value"><input type="text" size="10" maxlength="3" name="windowspace" value="<%=rs("windowspace")%>" /> (默认=20,单位:象素)</span>
 				</div>
 				<div class="field">
-					<span class="label">留言本左窗格宽度：</span>
+					<span class="label">留言本左窗格宽度</span>
 					<span class="value"><input type="text" size="10" maxlength="5" name="tableleftwidth" value="<%=rs("tableleftwidth")%>" /> (默认=150,可用百分比)</span>
 				</div>
 				<div class="field">
-					<span class="label">搜索框宽度：</span>
+					<span class="label">搜索框宽度</span>
 					<span class="value"><input type="text" size="10" maxlength="3" name="searchtextwidth" value="<%=rs("searchtextwidth")%>" /> (默认=20,单位:字母宽度)</span>
 				</div>
 				<div class="field">
-					<span class="label">公告编辑框高度：</span>
+					<span class="label">公告编辑框高度</span>
 					<span class="value"><input type="text" size="10" maxlength="3" name="replytextheight" value="<%=rs("replytextheight")%>" /> (默认=10,单位:字母高度)</span>
 				</div>
 				<div class="field">
-					<span class="label">每页显示的留言数：</span>
+					<span class="label">每页显示的留言数</span>
 					<span class="value"><input type="text" size="10" maxlength="5" name="itemsperpage" value="<%=rs("itemsperpage")%>" /> (默认=5)</span>
 				</div>
 				<div class="field">
-					<span class="label">每页显示的标题数：</span>
+					<span class="label">每页显示的标题数</span>
 					<span class="value"><input type="text" size="10" maxlength="5" name="titlesperpage" value="<%=rs("titlesperpage")%>" /> (默认=20)</span>
 				</div>
 				<div class="field">
-					<span class="label">留言本配色方案：</span>
+					<span class="label">留言本配色方案</span>
 					<span class="value">
 						<select name="style">
 						<%
@@ -234,66 +238,69 @@ Response.Expires=-1
 			</div>
 
 			<div id="tab-behavior">
+				<h4>行为</h4>
 				<div class="field">
-					<span class="label">默认版面模式：</span>
+					<span class="label">默认版面模式</span>
 					<span class="value"><input type="radio" name="displaymode" value="1" id="displaymode1"<%=cked(CBool(tvisualflag AND 1024))%> /><label for="displaymode1">标题模式</label>　　<input type="radio" name="displaymode" value="0" id="displaymode2"<%=cked(Not CBool(tvisualflag AND 1024))%> /><label for="displaymode2">完整模式</label></span>
 				</div>
 				<div class="field">
-					<span class="label">回复内容显示位置：</span>
+					<span class="label">回复内容显示位置</span>
 					<span class="value"><input type="radio" name="replyinword" value="1" id="replyinword1"<%=cked(CBool(tvisualflag AND 1))%> /><label for="replyinword1">内嵌于访客留言</label>　　<input type="radio" name="replyinword" value="0" id="replyinword2"<%=cked(Not CBool(tvisualflag AND 1))%> /><label for="replyinword2">显示在访客留言下方</label></span>
 				</div>
 				<div class="field">
-					<span class="label">分页窗口显示位置：</span>
+					<span class="label">分页窗口显示位置</span>
 					<span class="value"><input type="radio" name="showpagelist" value="3" id="showpagelist3"<%=cked((tvisualflag and 12)=12)%> /><label for="showpagelist3">上下方</label>　<input type="radio" name="showpagelist" value="1" id="showpagelist1"<%=cked((tvisualflag and 12)=4)%> /><label for="showpagelist1">上方</label>　　<input type="radio" name="showpagelist" value="2" id="showpagelist2"<%=cked((tvisualflag and 12)=8)%> /><label for="showpagelist2">下方</label></span>
 				</div>
 				<div class="field">
-					<span class="label">分页列表模式：</span>
+					<span class="label">分页列表模式</span>
 					<span class="value"><input type="radio" name="advpagelist" value="1" id="advpagelist1"<%=cked(CBool(tvisualflag AND 64))%> /><label for="advpagelist1">区段式</label>　<input type="radio" name="advpagelist" value="0" id="advpagelist2"<%=cked(Not CBool(tvisualflag AND 64))%> /><label for="advpagelist2">平面式</label></span>
 				</div>
 				<div class="field">
-					<span class="label">区段式分页项数：</span>
+					<span class="label">区段式分页项数</span>
 					<span class="value"><input type="text" size="5" maxlength="3" name="advpagelistcount" value="<%=rs("advpagelistcount")%>" /> (默认=10)</span>
 				</div>
 			</div>
 
 			<div id="tab-mail">
+				<h4>邮件</h4>
 				<div class="field">
-					<span class="label">新留言到达通知版主：</span>
+					<span class="label">新留言到达通知版主</span>
 					<span class="value"><input type="checkbox" value="1" name="mailnewinform" id="mailnewinform"<%=cked(CBool(MailFlag AND 1))%> /><label for="mailnewinform">启用</label></span>
 				</div>
 				<div class="field">
-					<span class="label">版主回复通知留言人：</span>
+					<span class="label">版主回复通知留言人</span>
 					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(CBool(MailFlag AND 2))%> /><label for="mailreplyinform">开启</label></span>
 				</div>
 				<div class="field">
-					<span class="label">邮件发送组件：</span>
+					<span class="label">邮件发送组件</span>
 					<span class="value"><input type="radio" value="0" name="mailcomponent" id="mailcomponent0"<%=cked(Not CBool(MailFlag AND 4))%> /><label for="mailcomponent0">JMail</label>　<input type="radio" value="1" name="mailcomponent" id="mailcomponent1"<%=cked(CBool(MailFlag AND 4))%> /><label for="mailcomponent1">CDO</label></span>
 				</div>
 			</div>
 
 			<div id="tab-confirm">
+				<h4>确认</h4>
 				<div class="field">
-					<span class="label">删除留言：</span>
+					<span class="label">删除留言</span>
 					<span class="value"><input type="radio" name="deltip" value="1" id="deltip1"<%=cked(CBool(tdelconfirm AND 1))%> /><label for="deltip1">提示确认</label>　　<input type="radio" name="deltip" value="0" id="deltip2"<%=cked(Not CBool(tdelconfirm AND 1))%> /><label for="deltip2">不提示</label></span>
 				</div>
 				<div class="field">
-					<span class="label">删除回复：</span>
+					<span class="label">删除回复</span>
 					<span class="value"><input type="radio" name="delretip" value="1" id="delretip1"<%=cked(CBool(tdelconfirm AND 2))%> /><label for="delretip1">提示确认</label>　　<input type="radio" name="delretip" value="0" id="delretip2"<%=cked(Not CBool(tdelconfirm AND 2))%> /><label for="delretip2">不提示</label></span>
 				</div>
 				<div class="field">
-					<span class="label">删除选定留言：</span>
+					<span class="label">删除选定留言</span>
 					<span class="value"><input type="radio" name="delseltip" value="1" id="delseltip1"<%=cked(CBool(tdelconfirm AND 4))%> /><label for="delseltip1">提示确认</label>　　<input type="radio" name="delseltip" value="0" id="delseltip2"<%=cked(Not CBool(tdelconfirm AND 4))%> /><label for="delseltip2">不提示</label></span>
 				</div>
 				<div class="field">
-					<span class="label">执行高级删除：</span>
+					<span class="label">执行高级删除</span>
 					<span class="value"><input type="radio" name="deladvtip" value="1" id="deladvtip1"<%=cked(CBool(tdelconfirm AND 8))%> /><label for="deladvtip1">提示确认</label>　　<input type="radio" name="deladvtip" value="0" id="deladvtip2"<%=cked(Not CBool(tdelconfirm AND 8))%> /><label for="deladvtip2">不提示</label></span>
 				</div>
 				<div class="field">
-					<span class="label">删除置顶公告：</span>
+					<span class="label">删除置顶公告</span>
 					<span class="value"><input type="radio" name="deldectip" value="1" id="deldectip1"<%=cked(CBool(tdelconfirm AND 16))%> /><label for="deldectip1">提示确认</label>　　<input type="radio" name="deldectip" value="0" id="deldectip2"<%=cked(Not CBool(tdelconfirm AND 16))%> /><label for="deldectip2">不提示</label></span>
 				</div>
 				<div class="field">
-					<span class="label">删除选定置顶公告：</span>
+					<span class="label">删除选定置顶公告</span>
 					<span class="value"><input type="radio" name="delseldectip" value="1" id="delseldectip1"<%=cked(CBool(tdelconfirm AND 32))%> /><label for="delseldectip1">提示确认</label>　　<input type="radio" name="delseldectip" value="0" id="delseldectip2"<%=cked(Not CBool(tdelconfirm AND 32))%> /><label for="delseldectip2">不提示</label></span>
 				</div>
 			</div>
@@ -310,7 +317,20 @@ Response.Expires=-1
 
 <%rs.Close : cn.Close : set rs=nothing : set cn=nothing%>
 
-<script type="text/javascript" defer="defer">
+<script type="text/javascript" src="asset/js/tabcontrol.js"></script>
+<script type="text/javascript">
+var tab=new TabControl('tabContainer');
+
+tab.addPage('tab-switch','开关');
+tab.addPage('tab-code','代码');
+tab.addPage('tab-security','安全');
+tab.addPage('tab-ui','界面');
+tab.addPage('tab-behavior','行为');
+tab.addPage('tab-mail','邮件');
+tab.addPage('tab-confirm','确认');
+
+tab.restoreFromField('tabIndex');
+
 function check()
 {
 	function checkRange(tabIndex, name, textbox, min, max) {
@@ -368,20 +388,6 @@ function check()
 		checkRange(4, "区段式分页项数", frm.advpagelistcount, 1, 255) &&
 		(document.configform.submit1.disabled=true, true);
 }
-</script>
-<script type="text/javascript" src="asset/js/tabcontrol.js"></script>
-<script type="text/javascript">
-var tab=new TabControl('tabContainer');
-
-tab.addPage('tab-switch','开关');
-tab.addPage('tab-code','代码');
-tab.addPage('tab-security','安全');
-tab.addPage('tab-ui','界面');
-tab.addPage('tab-behavior','行为');
-tab.addPage('tab-mail','邮件');
-tab.addPage('tab-confirm','确认');
-
-tab.restoreFromField('tabIndex');
 </script>
 </body>
 </html>
