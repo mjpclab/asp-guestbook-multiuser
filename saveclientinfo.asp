@@ -10,21 +10,24 @@
 <!-- #include file="loadconfig.asp" -->
 <%
 Response.ContentType="application/x-javascript"
-if Session("gotclientuser")="" then Session("gotclientuser")="|"
-if instr(Session("gotclientuser"),"|" &ruser& "|")=0 then
-	Dim cn
-	Dim adminname,os,browser,screenwidth,screenheight,sourceaddr,fullsource
 
-	'Get Parameters
-	adminname=ruser
-	os=Request.QueryString("sys")
-	browser=Request.QueryString("brow")
-	screenwidth=Request.QueryString("sw")
-	screenheight=Request.QueryString("sh")
-	sourceaddr=Request.QueryString("src")
-	fullsource=Request.QueryString("fsrc")
+Dim keyGotClientinfo
+keyGotClientInfo=InstanceName & "_gotclientinfo_" & ruser
 
-	if not (adminname="" and os="" and browser="" and screenwidth="" and screenheight="" and sourceaddr="" and fullsource="") then
+if StatusStatistics and Not IsEmpty(Session(keyGotClientInfo)) and Not Session(keyGotClientInfo) then
+	if Not IsEmpty(Request.QueryString) and Request.QueryString("user")=ruser then
+		Dim cn
+		Dim adminname,os,browser,screenwidth,screenheight,sourceaddr,fullsource
+
+		'Get Parameters
+		adminname=ruser
+		os=Request.QueryString("sys")
+		browser=Request.QueryString("brow")
+		screenwidth=Request.QueryString("sw")
+		screenheight=Request.QueryString("sh")
+		sourceaddr=Request.QueryString("src")
+		fullsource=Request.QueryString("fsrc")
+
 		'Verify Parameters
 		if len(os)>25 then os=left(os,25)
 		if os="" then os="δ֪"
@@ -58,7 +61,7 @@ if instr(Session("gotclientuser"),"|" &ruser& "|")=0 then
 		cn.Close : set cn=nothing
 
 		'Got Complete
-		Session("gotclientuser")=Session("gotclientuser") & ruser & "|"
+		Session(keyGotClientInfo)=true
 	end if
 end if
 %>
