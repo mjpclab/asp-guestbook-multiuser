@@ -22,12 +22,12 @@ elseif Not StatusUnreg then
 	Response.End
 end if
 
-if VcodeCount>0 and (Request.Form("vcode")<>Session("vcode") or Session("vcode")="") then
-	Session("vcode")=""
+if VcodeCount>0 and (Request.Form("vcode")<>Session(InstanceName & "_vcode") or Session(InstanceName & "_vcode")="") then
+	Session(InstanceName & "_vcode")=""
 	Call TipsPage("验证码错误。","unreg.asp")
 	Response.End
 else
-	Session("vcode")=""
+	Session(InstanceName & "_vcode")=""
 end if
 
 '===============================合式验证

@@ -16,12 +16,12 @@ Response.Expires = -1
 Response.AddHeader "Pragma","no-cache"
 Response.AddHeader "cache-control","no-cache, must-revalidate"
 
-if VcodeCount>0 and (Request.Form("ivcode")<>Session("vcode") or Session("vcode")="") then
-	Session("vcode")=""
+if VcodeCount>0 and (Request.Form("ivcode")<>Session(InstanceName & "_vcode") or Session(InstanceName & "_vcode")="") then
+	Session(InstanceName & "_vcode")=""
 	Call TipsPage("ÑéÖ¤Âë´íÎó¡£","web_login.asp")
 	Response.End
 else
-	Session("vcode")=""
+	Session(InstanceName & "_vcode")=""
 end if
 
 Dim cn,rs

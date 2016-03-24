@@ -25,7 +25,7 @@ elseif Not StatusLogin then
 	Response.End
 end if
 
-if VcodeCount>0 then Session("vcode")=getvcode(VcodeCount)
+if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 %>
 
 <!-- #include file="include/template/dtd.inc" -->
