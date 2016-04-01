@@ -62,7 +62,7 @@ if Not rs.EOF then
 	if Session(InstanceName & "_adminpass_"& ruser)=rs(0) then
 		session.Timeout=cint(AdminTimeOut)
 
-		cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",now()),"{1}",adminid),,1
+		cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",ServerTimeToUTC(now())),"{1}",adminid),,1
 		rs.Close : cn.Close : set rs=nothing : set cn=nothing
 		if referrer<>"" then
 			Response.Redirect referrer

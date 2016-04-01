@@ -5,6 +5,7 @@
 <!-- #include file="include/sql/common.asp" -->
 <!-- #include file="include/sql/web_admin_userinfo.asp" -->
 <!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
@@ -96,8 +97,8 @@ checkuser cn,rs,false
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_reginfo,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">注册日期</th><td><%=rs("regdate")%></td></tr>
-			<tr><th scope="row">最后登录日期</th><td><%=rs("lastlogin")%></td></tr>
+			<tr><th scope="row">注册日期</th><td><%=UTCToDisplayTime(rs("regdate"))%></td></tr>
+			<tr><th scope="row">最后登录日期</th><td><%=UTCToDisplayTime(rs("lastlogin"))%></td></tr>
 
 			<%
 			rs.Close

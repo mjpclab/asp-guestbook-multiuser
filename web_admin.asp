@@ -6,6 +6,7 @@
 <!-- #include file="include/sql/common.asp" -->
 <!-- #include file="include/sql/web_admin.asp" -->
 <!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="include/utility/message.asp" -->
 <!-- #include file="include/utility/book.asp" -->
@@ -54,7 +55,7 @@ Response.AddHeader "cache-control","private"
 			</thead>
 			<tbody>
 			<%while not rs.EOF%>
-				<tr><td class="select"><input type="checkbox" name="users" class="users checkbox" value="<%=rs("adminname")%>" /></td><td><a href="web_userinfo.asp?user=<%=rs("adminname")%>" target="_blank"><%=rs("adminname")%></a></td><td><%=rs("name")%></td><td><%=rs("regdate")%></td><td><%=rs("lastlogin")%></td><td><a href="index.asp?user=<%=rs("adminname")%>" target="_blank">打开留言本</a></td></tr>
+				<tr><td class="select"><input type="checkbox" name="users" class="users checkbox" value="<%=rs("adminname")%>" /></td><td><a href="web_userinfo.asp?user=<%=rs("adminname")%>" target="_blank"><%=rs("adminname")%></a></td><td><%=rs("name")%></td><td><%=UTCToDisplayTime(rs("regdate"))%></td><td><%=UTCToDisplayTime(rs("lastlogin"))%></td><td><a href="index.asp?user=<%=rs("adminname")%>" target="_blank">打开留言本</a></td></tr>
 			<%rs.MoveNext : wend%>
 			</tbody>
 			</table>

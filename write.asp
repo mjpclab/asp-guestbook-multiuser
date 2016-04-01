@@ -259,7 +259,7 @@ msnid1=left(msnid1,50)
 
 content1=replace(content1,"<%","< %")
 
-logdate1=now()
+logdate1=ServerTimeToUTC(now())
 
 homepage1=Trim(homepage1)
 if homepage1<>"" then
@@ -403,7 +403,7 @@ if isnumeric(Request.Form("follow")) and Request.Form("follow")<>"" and StatusGu
 	rs2.Open Replace(Replace(sql_write_verify_repliable,"{0}",Request.Form("follow")),"{1}",adminid),cn,0,1,1
 	if not rs2.EOF then
 		rs("parent_id")=Request.Form("follow")
-		cn.Execute Replace(Replace(Replace(sql_write_updatelastupdated,"{0}",now()),"{1}",Request.Form("follow")),"{2}",adminid),,1
+		cn.Execute Replace(Replace(Replace(sql_write_updatelastupdated,"{0}",logdate1),"{1}",Request.Form("follow")),"{2}",adminid),,1
 		cn.Execute Replace(Replace(sql_write_updateparentflag,"{0}",Request.Form("follow")),"{1}",adminid),,1
 	end if
 	rs2.Close : set rs2=nothing
@@ -422,8 +422,10 @@ rs.Close : cn.Close : set rs=nothing : set cn=nothing
 
 if StatusStatistics then call addstat("written")
 
-SetTimelessCookie "wrote_time",now()
-Session(InstanceName & "_wrote_time")=now()
+Dim NowTime
+NowTime=Now
+SetTimelessCookie "wrote_time",NowTime
+Session(InstanceName & "_wrote_time")=NowTime
 Session(InstanceName & "_ititle_" & ruser)=""
 Session(InstanceName & "_icontent_" & ruser)=""
 Session(InstanceName & "_guestflag")=guestflag
