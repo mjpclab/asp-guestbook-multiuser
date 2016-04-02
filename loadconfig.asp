@@ -62,6 +62,9 @@ web_AdminShowOriginalIPv6=web_AdminShowOriginalIP \ 16
 web_VcodeCount=clng(lrs("vcodecount") and &H0F)		'登录验证码长度
 web_WriteVcodeCount=clng(lrs("vcodecount") and &HF0) \ &H10		'留言验证码长度
 
+'========行为========
+ServerTimezoneOffset=lrs("servertimezoneoffset")
+
 '========邮件设置========
 web_MailFlag=lrs("mailflag")
 web_MailNewInform=CBool(web_Mailflag and 1)		'新留言通知
@@ -183,6 +186,8 @@ MailLevel=lrs("maillevel")				'紧急程度
 CssFontFamily=lrs("cssfontfamily")
 CssFontSize=lrs("cssfontsize")
 CssLineHeight=lrs("csslineheight")
+
+DisplayTimezoneOffset=lrs("displaytimezoneoffset")
 
 VisualFlag=lrs("visualflag")
 ReplyInWord=CBool(VisualFlag and 1)					'回复内嵌于留言

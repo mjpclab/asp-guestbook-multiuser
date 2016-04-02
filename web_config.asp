@@ -240,6 +240,14 @@ Response.Expires=-1
 			<div id="tab-behavior">
 				<h4>行为</h4>
 				<div class="field">
+					<span class="label">服务器时区偏移</span>
+					<span class="value"><input type="text" size="10" maxlength="5" name="servertimezoneoffset" value="<%=rs("servertimezoneoffset")%>" /> (默认=0,单位:分钟)</span>
+				</div>
+				<div class="field">
+					<span class="label">显示时区偏移</span>
+					<span class="value"><input type="text" size="10" maxlength="5" name="displaytimezoneoffset" value="<%=rs("displaytimezoneoffset")%>" /> (默认=0,单位:分钟)</span>
+				</div>
+				<div class="field">
 					<span class="label">默认版面模式</span>
 					<span class="value"><input type="radio" name="displaymode" value="1" id="displaymode1"<%=cked(CBool(tvisualflag AND 1024))%> /><label for="displaymode1">标题模式</label>　　<input type="radio" name="displaymode" value="0" id="displaymode2"<%=cked(Not CBool(tvisualflag AND 1024))%> /><label for="displaymode2">完整模式</label></span>
 				</div>
@@ -385,6 +393,8 @@ function check()
 		checkRange(3, "回复、公告编辑框高度", frm.replytextheight, 1, 255) &&
 		checkRange(3, "每页显示的留言数", frm.itemsperpage, 1, 32767) &&
 		checkRange(3, "每页显示的标题数", frm.titlesperpage, 1, 32767) &&
+		checkRange(4, "服务器时区偏移", frm.servertimezoneoffset, -1440, 1440) &&
+		checkRange(4, "显示时区偏移", frm.displaytimezoneoffset, -1440, 1440) &&
 		checkRange(4, "区段式分页项数", frm.advpagelistcount, 1, 255) &&
 		(document.configform.submit1.disabled=true, true);
 }

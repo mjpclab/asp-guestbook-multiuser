@@ -70,6 +70,8 @@ if Not IsEmpty(Request.Form) then
 	Call CheckRange("回复、公告编辑框高度", "replytextheight", 1, 255)
 	Call CheckRange("每页显示的留言数", "itemsperpage", 1, 32767)
 	Call CheckRange("每页显示的标题数", "titlesperpage", 1, 32767)
+	Call CheckRange("服务器时区偏移", "servertimezoneoffset", -1440, 1440)
+	Call CheckRange("显示时区偏移", "displaytimezoneoffset", -1440, 1440)
 	Call CheckRange("区段式分页项数", "advpagelistcount", 1, 255)
 
 
@@ -205,6 +207,12 @@ if Not IsEmpty(Request.Form) then
 	if Request.Form("mailcomponent")="1" then tmailflag=tmailflag OR 4
 
 
+	tservertimezoneoffset=CInt(Request.Form("servertimezoneoffset"))
+	if tservertimezoneoffset<-1440 or tservertimezoneoffset>1440 then tservertimezoneoffset=0
+
+	tdisplaytimezoneoffset=CInt(Request.Form("displaytimezoneoffset"))
+	if tdisplaytimezoneoffset<-1440 or tdisplaytimezoneoffset>1440 then tdisplaytimezoneoffset=0
+
 	tvisualflag=0
 	if Request.Form("replyinword")="1" then tvisualflag=tvisualflag OR 1
 	select case Request.Form("showpagelist") : case "1","2","3"
@@ -273,6 +281,8 @@ if Not IsEmpty(Request.Form) then
 	rs1("titlesperpage")=ttitlesperpage
 	rs1("styleid")=tstyleid
 
+	rs1("servertimezoneoffset")=tservertimezoneoffset
+	rs1("displaytimezoneoffset")=tdisplaytimezoneoffset
 	rs1("visualflag")=tvisualflag
 	rs1("advpagelistcount")=tadvpagelistcount
 	rs1("ubbflag")=tubbflag
