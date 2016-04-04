@@ -49,67 +49,67 @@ param_str=""
 
 if Len(Request("s_adminname"))>0 then	'用户名
 	sql_condition=sql_condition & Replace(sql_websearch_condition_adminname,"{0}",FilterAdminLike(Request("s_adminname")))
-	param_str=param_str & "&s_adminname=" & server.URLEncode(Request("s_adminname"))
+	param_str=param_str & ",s_adminname"
 end if
 
 if Len(Request("s_name"))>0 then	'访客名
 	sql_condition=sql_condition & Replace(sql_websearch_condition_name,"{0}",FilterAdminLike(Request("s_name")))
-	param_str=param_str & "&s_name=" & server.URLEncode(Request("s_name"))
+	param_str=param_str & ",s_name"
 end if
 
 if Len(Request("s_title"))>0 then	'标题
 	sql_condition=sql_condition & Replace(sql_websearch_condition_title,"{0}",FilterAdminLike(Request("s_title")))
-	param_str=param_str & "&s_title=" & server.URLEncode(Request("s_title"))
+	param_str=param_str & ",s_title"
 end if
 
 if Len(Request("s_article"))>0 then	'留言内容
 	sql_condition=sql_condition & Replace(sql_websearch_condition_article,"{0}",FilterAdminLike(Request("s_article")))
-	param_str=param_str & "&s_article=" & server.URLEncode(Request("s_article"))
+	param_str=param_str & ",s_article"
 end if
 
 if Len(Request("s_email"))>0 then	'邮件
 	sql_condition=sql_condition & Replace(sql_websearch_condition_email,"{0}",FilterAdminLike(Request("s_email")))
-	param_str=param_str & "&s_email=" & server.URLEncode(Request("s_email"))
+	param_str=param_str & ",s_email"
 end if
 
 if Len(Request("s_qqid"))>0 then	'QQ号码
 	sql_condition=sql_condition & Replace(sql_websearch_condition_qqid,"{0}",FilterAdminLike(Request("s_qqid")))
-	param_str=param_str & "&s_qqid=" & server.URLEncode(Request("s_qqid"))
+	param_str=param_str & ",s_qqid"
 end if
 
 if Len(Request("s_msnid"))>0 then	'Skype号
 	sql_condition=sql_condition & Replace(sql_websearch_condition_msnid,"{0}",FilterAdminLike(Request("s_msnid")))
-	param_str=param_str & "&s_msnid=" & server.URLEncode(Request("s_msnid"))
+	param_str=param_str & ",s_msnid"
 end if
 
 if Len(Request("s_homepage"))>0 then	'主页
 	sql_condition=sql_condition & Replace(sql_websearch_condition_homepage,"{0}",FilterAdminLike(Request("s_homepage")))
-	param_str=param_str & "&s_homepage=" & server.URLEncode(Request("s_homepage"))
+	param_str=param_str & ",s_homepage"
 end if
 
 if Len(Request("s_ipv4addr"))>0 then	'IPv4
 	sql_condition=sql_condition & Replace(sql_websearch_condition_ipv4addr,"{0}",FilterAdminLike(Request("s_ipv4addr")))
-	param_str=param_str & "&s_ipv4addr=" & server.URLEncode(Request("s_ipv4addr"))
+	param_str=param_str & ",s_ipv4addr"
 end if
 
 if Len(Request("s_originalipv4"))>0 then	'原始IPv4
 	sql_condition=sql_condition & Replace(sql_websearch_condition_originalipv4,"{0}",FilterAdminLike(Request("s_originalipv4")))
-	param_str=param_str & "&s_originalipv4=" & server.URLEncode(Request("s_originalipv4"))
+	param_str=param_str & ",s_originalipv4"
 end if
 
 if Len(Request("s_ipv6addr"))>0 then	'IPv6
 	sql_condition=sql_condition & Replace(sql_websearch_condition_ipv6addr,"{0}",FilterAdminLike(Request("s_ipv6addr")))
-	param_str=param_str & "&s_ipv6addr=" & server.URLEncode(Request("s_ipv6addr"))
+	param_str=param_str & ",s_ipv6addr"
 end if
 
 if Len(Request("s_originalipv6"))>0 then	'原始IPv6
 	sql_condition=sql_condition & Replace(sql_websearch_condition_originalipv6,"{0}",FilterAdminLike(Request("s_originalipv6")))
-	param_str=param_str & "&s_originalipv6=" & server.URLEncode(Request("s_originalipv6"))
+	param_str=param_str & ",s_originalipv6"
 end if
 
 if Len(Request("s_reply"))>0 then	'回复内容
 	sql_condition=sql_condition & Replace(sql_websearch_condition_reply,"{0}",FilterAdminLike(Request("s_reply")))
-	param_str=param_str & "&s_reply=" & server.URLEncode(Request("s_reply"))
+	param_str=param_str & ",s_reply"
 end if
 
 

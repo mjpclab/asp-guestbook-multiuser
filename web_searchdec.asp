@@ -82,7 +82,7 @@ Call CreateConn(cn)
 		</div>
 	</div>
 
-<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"web_searchdec.asp","[搜索结果分页]","adminname=" &server.URLEncode(Request("adminname"))& "&searchtxt=" & server.URLEncode(Request("searchtxt")) end if%>
+<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"web_searchdec.asp","[搜索结果分页]","adminname,searchtxt" end if%>
 <form method="post" action="web_mdeldec.asp" name="form7">
 
 <input type="hidden" name="adminname" value="<%=request("adminname")%>" />
@@ -138,7 +138,7 @@ end if	'对应for上面一行的if
 
 </form>
 
-<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchdec.asp","[搜索结果分页]","adminname=" &server.URLEncode(Request("adminname"))& "&searchtxt=" & server.URLEncode(Request("searchtxt")) end if%>
+<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchdec.asp","[搜索结果分页]","adminname,searchtxt" end if%>
 </div>
 
 <!-- #include file="include/template/footer.inc" -->
