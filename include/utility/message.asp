@@ -68,14 +68,13 @@ sub show_page_list(byval CurPage,byval PagesCount,byval filename,byval pagetitle
 	arr_param_names=split(param,",")
 	ReDim arr_param_values(UBound(arr_param_names))
 	Dim url_param
-	if ruser<>"" then url_param="user=" & ruser else url_param=""
+	if ruser<>"" then url_param="&user=" & ruser else url_param=""
 	for i=0 to ubound(arr_param_names)
 		param_name=arr_param_names(i)
 		if(param_name)<>"" then
 			param_value=Request(param_name)
 			arr_param_values(i)=param_value
-			if url_param<>"" then url_param = url_param & "&"
-			url_param = url_param & param_name & "=" & Server.UrlEncode(param_value)
+			url_param = url_param & "&" & param_name & "=" & Server.UrlEncode(param_value)
 		end if
 	next
 
@@ -131,7 +130,7 @@ sub show_page_list(byval CurPage,byval PagesCount,byval filename,byval pagetitle
 			<%end if%>
 			<form method="get" action="<%=filename%>">
 			<div class="pagenum-list">
-				<%for j=start_page to end_page%><a name="pagenum" class="pagenum<%if j=CurPage then Response.Write " pagenum-current"%>" href="<%=filename%>?page=<%=j & "&" & url_param%>"><%=j%></a><%next%>
+				<%for j=start_page to end_page%><a name="pagenum" class="pagenum<%if j=CurPage then Response.Write " pagenum-current"%>" href="<%=filename%>?page=<%=j & url_param%>"><%=j%></a><%next%>
 			</div>
 			<div class="goto">(共<%=PagesCount%>页)　转到页数<input type="text" name="page" class="page" maxlength="10" /> <input type="submit" class="submit" value="GO" /></div>
 			<%if ruser<>"" then%><input type="hidden" name="user" value="<%=ruser%>" /><%end if%>
