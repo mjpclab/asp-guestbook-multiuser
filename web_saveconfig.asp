@@ -63,16 +63,16 @@ if Not IsEmpty(Request.Form) then
 	Call CheckRange("为管理员显示原IPv6", "adminshoworiginalipv6", 0, 8)
 	Call CheckRange("登录验证码长度", "vcodecount", 0, 10)
 	Call CheckRange("留言验证码长度", "writevcodecount", 0, 10)
+	Call CheckRange("每页显示的留言数", "itemsperpage", 1, 32767)
+	Call CheckRange("每页显示的标题数", "titlesperpage", 1, 32767)
+	Call CheckRange("区段式分页项数", "advpagelistcount", 1, 255)
 	Call CheckCssSize("留言本最大宽度", "tablewidth")
 	Call CheckRange("窗口区块间距", "windowspace", 1, 255)
 	Call CheckCssSize("留言本左窗格宽度", "tableleftwidth")
 	Call CheckRange("搜索框宽度", "searchtextwidth", 1, 255)
 	Call CheckRange("回复、公告编辑框高度", "replytextheight", 1, 255)
-	Call CheckRange("每页显示的留言数", "itemsperpage", 1, 32767)
-	Call CheckRange("每页显示的标题数", "titlesperpage", 1, 32767)
 	Call CheckRange("服务器时区偏移", "servertimezoneoffset", -1440, 1440)
 	Call CheckRange("显示时区偏移", "displaytimezoneoffset", -1440, 1440)
-	Call CheckRange("区段式分页项数", "advpagelistcount", 1, 255)
 
 
 	tstatus=0

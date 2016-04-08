@@ -169,6 +169,34 @@ Response.Expires=-1
 				</div>
 			</div>
 
+			<div id="tab-paging">
+				<h4>分页</h4>
+				<div class="field">
+					<span class="label">默认版面模式</span>
+					<span class="value"><input type="radio" name="displaymode" value="0" id="displaymode2"<%=cked(Not CBool(tvisualflag AND 1024))%> /><label for="displaymode2">完整模式</label>　　<input type="radio" name="displaymode" value="1" id="displaymode1"<%=cked(CBool(tvisualflag AND 1024))%> /><label for="displaymode1">标题模式</label></span>
+				</div>
+				<div class="field">
+					<span class="label">每页显示的留言数</span>
+					<span class="value"><input type="text" size="10" maxlength="5" name="itemsperpage" value="<%=rs("itemsperpage")%>" /> (默认=5)</span>
+				</div>
+				<div class="field">
+					<span class="label">每页显示的标题数</span>
+					<span class="value"><input type="text" size="10" maxlength="5" name="titlesperpage" value="<%=rs("titlesperpage")%>" /> (默认=20)</span>
+				</div>
+				<div class="field">
+					<span class="label">分页窗口显示位置</span>
+					<span class="value"><input type="radio" name="showpagelist" value="3" id="showpagelist3"<%=cked((tvisualflag and 12)=12)%> /><label for="showpagelist3">上下方</label>　<input type="radio" name="showpagelist" value="1" id="showpagelist1"<%=cked((tvisualflag and 12)=4)%> /><label for="showpagelist1">上方</label>　　<input type="radio" name="showpagelist" value="2" id="showpagelist2"<%=cked((tvisualflag and 12)=8)%> /><label for="showpagelist2">下方</label></span>
+				</div>
+				<div class="field">
+					<span class="label">分页列表模式</span>
+					<span class="value"><input type="radio" name="advpagelist" value="1" id="advpagelist1"<%=cked(CBool(tvisualflag AND 64))%> /><label for="advpagelist1">区段式</label>　<input type="radio" name="advpagelist" value="0" id="advpagelist2"<%=cked(Not CBool(tvisualflag AND 64))%> /><label for="advpagelist2">平面式</label></span>
+				</div>
+				<div class="field">
+					<span class="label">区段式分页项数</span>
+					<span class="value"><input type="text" size="5" maxlength="3" name="advpagelistcount" value="<%=rs("advpagelistcount")%>" /> (默认=10)</span>
+				</div>
+			</div>
+
 			<div id="tab-ui">
 				<h4>界面</h4>
 				<div class="field">
@@ -202,14 +230,6 @@ Response.Expires=-1
 				<div class="field">
 					<span class="label">公告编辑框高度</span>
 					<span class="value"><input type="text" size="10" maxlength="3" name="replytextheight" value="<%=rs("replytextheight")%>" /> (默认=10,单位:字母高度)</span>
-				</div>
-				<div class="field">
-					<span class="label">每页显示的留言数</span>
-					<span class="value"><input type="text" size="10" maxlength="5" name="itemsperpage" value="<%=rs("itemsperpage")%>" /> (默认=5)</span>
-				</div>
-				<div class="field">
-					<span class="label">每页显示的标题数</span>
-					<span class="value"><input type="text" size="10" maxlength="5" name="titlesperpage" value="<%=rs("titlesperpage")%>" /> (默认=20)</span>
 				</div>
 				<div class="field">
 					<span class="label">留言本配色方案</span>
@@ -248,24 +268,8 @@ Response.Expires=-1
 					<span class="value"><input type="text" size="10" maxlength="5" name="displaytimezoneoffset" value="<%=rs("displaytimezoneoffset")%>" /> (默认=0,单位:分钟)</span>
 				</div>
 				<div class="field">
-					<span class="label">默认版面模式</span>
-					<span class="value"><input type="radio" name="displaymode" value="1" id="displaymode1"<%=cked(CBool(tvisualflag AND 1024))%> /><label for="displaymode1">标题模式</label>　　<input type="radio" name="displaymode" value="0" id="displaymode2"<%=cked(Not CBool(tvisualflag AND 1024))%> /><label for="displaymode2">完整模式</label></span>
-				</div>
-				<div class="field">
 					<span class="label">回复内容显示位置</span>
 					<span class="value"><input type="radio" name="replyinword" value="1" id="replyinword1"<%=cked(CBool(tvisualflag AND 1))%> /><label for="replyinword1">内嵌于访客留言</label>　　<input type="radio" name="replyinword" value="0" id="replyinword2"<%=cked(Not CBool(tvisualflag AND 1))%> /><label for="replyinword2">显示在访客留言下方</label></span>
-				</div>
-				<div class="field">
-					<span class="label">分页窗口显示位置</span>
-					<span class="value"><input type="radio" name="showpagelist" value="3" id="showpagelist3"<%=cked((tvisualflag and 12)=12)%> /><label for="showpagelist3">上下方</label>　<input type="radio" name="showpagelist" value="1" id="showpagelist1"<%=cked((tvisualflag and 12)=4)%> /><label for="showpagelist1">上方</label>　　<input type="radio" name="showpagelist" value="2" id="showpagelist2"<%=cked((tvisualflag and 12)=8)%> /><label for="showpagelist2">下方</label></span>
-				</div>
-				<div class="field">
-					<span class="label">分页列表模式</span>
-					<span class="value"><input type="radio" name="advpagelist" value="1" id="advpagelist1"<%=cked(CBool(tvisualflag AND 64))%> /><label for="advpagelist1">区段式</label>　<input type="radio" name="advpagelist" value="0" id="advpagelist2"<%=cked(Not CBool(tvisualflag AND 64))%> /><label for="advpagelist2">平面式</label></span>
-				</div>
-				<div class="field">
-					<span class="label">区段式分页项数</span>
-					<span class="value"><input type="text" size="5" maxlength="3" name="advpagelistcount" value="<%=rs("advpagelistcount")%>" /> (默认=10)</span>
 				</div>
 			</div>
 
@@ -332,6 +336,7 @@ var tab=new TabControl('tabContainer');
 tab.addPage('tab-switch','开关');
 tab.addPage('tab-code','代码');
 tab.addPage('tab-security','安全');
+tab.addPage('tab-paging','分页');
 tab.addPage('tab-ui','界面');
 tab.addPage('tab-behavior','行为');
 tab.addPage('tab-mail','邮件');
@@ -386,16 +391,16 @@ function check()
 		checkRange(2, "为管理员显示原IPv6", frm.adminshoworiginalipv6, 0, 8) &&
 		checkRange(2, "登录验证码长度", frm.vcodecount, 0, 10) &&
 		checkRange(2, "留言验证码长度", frm.writevcodecount, 0, 10) &&
-		checkCssSize(3, "留言本最大宽度", frm.tablewidth) &&
-		checkRange(3, "窗口区块间距", frm.windowspace, 1, 255) &&
-		checkCssSize(3, "留言本左窗格宽度", frm.tableleftwidth) &&
-		checkRange(3, "搜索框宽度", frm.searchtextwidth, 1, 255) &&
-		checkRange(3, "回复、公告编辑框高度", frm.replytextheight, 1, 255) &&
 		checkRange(3, "每页显示的留言数", frm.itemsperpage, 1, 32767) &&
 		checkRange(3, "每页显示的标题数", frm.titlesperpage, 1, 32767) &&
-		checkRange(4, "服务器时区偏移", frm.servertimezoneoffset, -1440, 1440) &&
-		checkRange(4, "显示时区偏移", frm.displaytimezoneoffset, -1440, 1440) &&
-		checkRange(4, "区段式分页项数", frm.advpagelistcount, 1, 255) &&
+		checkRange(3, "区段式分页项数", frm.advpagelistcount, 1, 255) &&
+		checkCssSize(4, "留言本最大宽度", frm.tablewidth) &&
+		checkRange(4, "窗口区块间距", frm.windowspace, 1, 255) &&
+		checkCssSize(4, "留言本左窗格宽度", frm.tableleftwidth) &&
+		checkRange(4, "搜索框宽度", frm.searchtextwidth, 1, 255) &&
+		checkRange(4, "回复、公告编辑框高度", frm.replytextheight, 1, 255) &&
+		checkRange(5, "服务器时区偏移", frm.servertimezoneoffset, -1440, 1440) &&
+		checkRange(5, "显示时区偏移", frm.displaytimezoneoffset, -1440, 1440) &&
 		(document.configform.submit1.disabled=true, true);
 }
 </script>
