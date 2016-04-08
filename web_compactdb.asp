@@ -2,6 +2,7 @@
 <!-- #include file="config/system.asp" -->
 <!-- #include file="config/database.asp" -->
 <!-- #include file="include/sql/init.asp" -->
+<!-- #include file="include/sql/web_admin_compact.asp" -->
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
@@ -53,7 +54,7 @@ if dbtype>=1 and dbtype<=3 then
 	End If
 	Set fso = nothing
 	Set Engine = nothing
-elseif dbtype=10 then
+elseif dbtype>=10 and dbtype<=13 then
 	set cn=Server.CreateObject("ADODB.Connection")
 	Call CreateConn(cn)
 	cn.Execute sql_compact_dbfile,,1
