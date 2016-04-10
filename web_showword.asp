@@ -21,19 +21,7 @@
 <%
 Response.Expires=-1
 Response.AddHeader "cache-control","private"
-%>
 
-<!-- #include file="include/template/dtd.inc" -->
-<html>
-<head>
-	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster管理中心 查看留言</title>
-	<!-- #include file="inc_web_admin_stylesheet.asp" -->
-</head>
-
-<body>
-
-<%
 dim id,ipage
 ipage=Request("page")
 if isnumeric(Request.QueryString("id")) and Request.QueryString("id")<>"" then
@@ -52,6 +40,15 @@ if rs.EOF then		'留言不存在，退回主界面
 end if
 %>
 
+<!-- #include file="include/template/dtd.inc" -->
+<html>
+<head>
+	<!-- #include file="include/template/metatag.inc" -->
+	<title><%=web_BookName%> Webmaster管理中心 查看留言 <%=rs.Fields("title")%></title>
+	<!-- #include file="inc_web_admin_stylesheet.asp" -->
+</head>
+
+<body>
 <div id="outerborder" class="outerborder">
 
 	<%Call WebInitHeaderData("","Webmaster管理中心","","")%><!-- #include file="include/template/header.inc" -->
