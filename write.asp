@@ -78,6 +78,13 @@ sub filtercheck(byref re,byref field,byval tfiltermode,byval bitflag,byref trepl
 	end if
 end sub
 '======================================================
+Function getLeaveWordUrl
+	Dim qstr
+	qstr=Request.Form("qstr")
+	if qstr<>"" then qstr="?" & qstr
+	getLeaveWordUrl = "leaveword.asp" & qstr
+End Function
+'======================================================
 
 Response.Expires=-1
 if web_checkIsBannedIP() then
@@ -113,11 +120,11 @@ Session(InstanceName & "_icontent_" & ruser)=Request.Form("icontent")
 if WriteVcodeCount>0 then
 	if WriteVcodeCount>Len(Session(InstanceName & "_vcode_write")) then
 		Session(InstanceName & "_vcode_write")=""
-		Call TipsPage("验证码长度不足。","leaveword.asp?" & Request.Form("qstr"))
+		Call TipsPage("验证码长度不足。", getLeaveWordUrl)
 		Response.End
 	elseif Request.Form("ivcode")<>Session(InstanceName & "_vcode_write") or Session(InstanceName & "_vcode_write")="" then
 		Session(InstanceName & "_vcode_write")=""
-		Call TipsPage("验证码错误。","leaveword.asp?" & Request.Form("qstr"))
+		Call TipsPage("验证码错误。", getLeaveWordUrl)
 		Response.End
 	else
 		Session(InstanceName & "_vcode_write")=""
