@@ -50,7 +50,7 @@ if id="" Or Not Isnumeric(id) then
 	Response.Status="404 Not Found"
 	showMessage="¡Ù—‘≤ª¥Ê‘⁄°£"
 Else
-	rs.Open Replace(Replace(sql_showword,"{0}",Request("id")),"{1}",adminid),cn,,,1
+	rs.Open Replace(Replace(sql_showword,"{0}",id),"{1}",adminid),cn,,,1
 
 	if rs.EOF then
 		Response.Status="404 Not Found"

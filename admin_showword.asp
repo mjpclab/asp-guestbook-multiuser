@@ -30,26 +30,29 @@ if web_checkIsBannedIP() then
 	Response.End
 end if
 
-dim id,ipage
-ipage=Request("page")
-if isnumeric(Request.QueryString("id")) and Request.QueryString("id")<>"" then
-	id=Request.QueryString("id")
-else
-	id=0
-end if
-
-set cn=server.CreateObject("ADODB.Connection")
-set rs=server.CreateObject("ADODB.Recordset")
-Call CreateConn(cn)
-rs.Open Replace(Replace(sql_admin_showword,"{0}",id),"{1}",adminid),cn,0,1,1
-if rs.EOF then		'留言不存在，退回主界面
-	rs.Close : cn.Close : set rs=nothing : set cn=nothing
+Sub GoBack
 	if Request("type")<>"" and Request("searchtxt")<>"" then
 		Response.Redirect "admin_search.asp?user=" &ruser& "&page=" & Request("page") & "&type=" & server.URLEncode(Request("type")) & "&searchtxt=" & server.URLEncode(Request("searchtxt"))
 	else
 		Response.Redirect "admin.asp?user=" &ruser& "&page=" & Request("page")
 	end if
 	Response.End
+End Sub
+
+dim id,ipage
+ipage=Request("page")
+id=FilterKeyword(Trim(Request.QueryString("id")))
+if id="" Or Not Isnumeric(id) then
+	Call GoBack
+else
+	set cn=server.CreateObject("ADODB.Connection")
+	set rs=server.CreateObject("ADODB.Recordset")
+	Call CreateConn(cn)
+	rs.Open Replace(Replace(sql_admin_showword,"{0}",id),"{1}",adminid),cn,0,1,1
+	if rs.EOF then
+		rs.Close : cn.Close : set rs=nothing : set cn=nothing
+		Call Goback
+	end if
 end if
 %>
 
