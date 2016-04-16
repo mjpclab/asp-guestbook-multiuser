@@ -281,7 +281,7 @@ Response.Expires=-1
 				</div>
 				<div class="field">
 					<span class="label">版主回复通知留言人</span>
-					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(CBool(MailFlag AND 2))%> /><label for="mailreplyinform">开启</label></span>
+					<span class="value"><input type="checkbox" value="1" name="mailreplyinform" id="mailreplyinform"<%=cked(CBool(MailFlag AND 2))%> /><label for="mailreplyinform">启用</label></span>
 				</div>
 				<div class="field">
 					<span class="label">邮件发送组件</span>
