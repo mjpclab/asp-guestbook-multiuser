@@ -5,6 +5,7 @@
 <!-- #include file="include/sql/web_admin_savepass.asp" -->
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/md5.asp" -->
+<!-- #include file="include/utility/string.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->
 <!-- #include file="web_admin_verify.asp" -->

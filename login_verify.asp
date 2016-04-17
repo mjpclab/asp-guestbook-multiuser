@@ -6,6 +6,7 @@
 <!-- #include file="include/sql/admin_verify.asp" -->
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/ip.asp" -->
+<!-- #include file="include/utility/string.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->

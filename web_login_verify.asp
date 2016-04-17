@@ -5,6 +5,7 @@
 <!-- #include file="include/sql/sysbulletin.asp" -->
 <!-- #include file="include/sql/web_admin_verify.asp" -->
 <!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/string.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/md5.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->

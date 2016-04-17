@@ -6,6 +6,7 @@
 <!-- #include file="include/sql/web_submitunreg.asp" -->
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/ip.asp" -->
+<!-- #include file="include/utility/string.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/md5.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->

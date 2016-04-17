@@ -5,6 +5,7 @@
 <!-- #include file="include/sql/web_admin_mdeldec.asp" -->
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/string.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="webconfig.asp" -->

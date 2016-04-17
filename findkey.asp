@@ -6,6 +6,7 @@
 <!-- #include file="include/sql/sysbulletin.asp" -->
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/ip.asp" -->
+<!-- #include file="include/utility/string.asp" -->
 <!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="include/utility/book.asp" -->

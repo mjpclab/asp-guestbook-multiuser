@@ -6,6 +6,7 @@
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/string.asp" -->
 <!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="loadconfig.asp" -->
