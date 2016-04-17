@@ -4,6 +4,7 @@
 <!-- #include file="include/sql/init.asp" -->
 <!-- #include file="include/sql/web_admin_setbulletin.asp" -->
 <!-- #include file="include/utility/database.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="include/utility/book.asp" -->
 <!-- #include file="webconfig.asp" -->
@@ -51,7 +52,7 @@
 	if isnull(tbul) then
 		tbul=""
 	else
-		tbul=replace(server.HTMLEncode(tbul),chr(13)&chr(10),"&#13;&#10;")
+		tbul=HtmlNewLineEncode(HtmlEncode(tbul))
 	end if
 
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing

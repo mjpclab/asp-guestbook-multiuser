@@ -11,8 +11,8 @@
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
-<!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="include/utility/book.asp" -->
@@ -63,7 +63,7 @@ if CanOpenDB then
 	elseif request("type")="name" then
 		sql_condition=Replace(Replace(sql_search_condition_name,"{0}",tparam),"{1}",adminid)
 	elseif request("type")="title" then
-		sql_condition=Replace(Replace(sql_search_condition_title,"{0}",Server.HTMLEncode(tparam)),"{1}",adminid)
+		sql_condition=Replace(Replace(sql_search_condition_title,"{0}",HtmlEncode(tparam)),"{1}",adminid)
 	elseif request("type")="article" then
 		sql_condition=Replace(Replace(sql_search_condition_article,"{0}",tparam),"{1}",adminid)
 	end if

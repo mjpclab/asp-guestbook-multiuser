@@ -8,6 +8,7 @@
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="include/utility/book.asp" -->
@@ -101,7 +102,7 @@ end if
 				</div>
 				<div class="field">
 					<span class="label">Œ Ã‚</span>
-					<span class="value"><input type="text" name="question" maxlength="32" value="<%=server.HTMLEncode("" & rs("question") & "")%>" /></span>
+					<span class="value"><input type="text" name="question" maxlength="32" value="<%=HtmlEncode("" & rs("question") & "")%>" /></span>
 				</div>
 				<div class="field">
 					<span class="label">¥∞∏</span>

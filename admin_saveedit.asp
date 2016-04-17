@@ -38,7 +38,7 @@ if Not IsEmpty(Request.Form) then
 
 	if Not rs.EOF then		'¡Ù—‘¥Ê‘⁄
 		rs.Fields("guestflag")=cbyte(rs.Fields("guestflag") and 248) + cbyte(tlimit and web_adminlimit)
-		if Request.Form("etitle")<>"" then rs.Fields("title")=Server.HTMLEncode(Request.Form("etitle"))
+		if Request.Form("etitle")<>"" then rs.Fields("title")=HtmlEncode(Request.Form("etitle"))
 		rs.Fields("article")=Request.Form("econtent")
 		rs.Update
 

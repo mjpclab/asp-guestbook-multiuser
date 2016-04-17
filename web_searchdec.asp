@@ -112,7 +112,7 @@ else
 			pub="" &rs("declare")& ""
 
 			if AdminViewCode then		'Only view HTML code
-				pub=server.HTMLEncode(pub)
+				pub=HtmlEncode(pub)
 			else
 				convertstr pub,pub_flag,2
 			end if

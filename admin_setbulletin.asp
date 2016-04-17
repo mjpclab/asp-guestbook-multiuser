@@ -8,6 +8,7 @@
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="include/utility/book.asp" -->
@@ -61,7 +62,7 @@ end if
 	if isnull(tbul) then
 		tbul=""
 	else
-		tbul=replace(server.HTMLEncode(tbul),chr(13)&chr(10),"&#13;&#10;")
+		tbul=HtmlNewLineEncode(HtmlEncode(tbul))
 	end if
 	if tbul="" then tflag=(web_adminlimit and adminlimit)
 

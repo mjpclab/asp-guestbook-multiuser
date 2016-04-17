@@ -9,8 +9,8 @@
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
-<!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="include/utility/book.asp" -->
@@ -40,7 +40,7 @@ rs.Open Replace(Replace(sql_adminedit,"{0}",Request.QueryString("id")),"{1}",adm
 if Not rs.EOF then
 	guestflag=rs("guestflag")
 	guest_txt="" & rs("article") & ""
-	guest_txt=replace(server.htmlEncode(guest_txt),chr(13)&chr(10),"&#13;&#10;")
+	guest_txt=HtmlNewLineEncode(HtmlEncode(guest_txt))
 else
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.Redirect "admin.asp?user=" &ruser

@@ -9,6 +9,7 @@
 <!-- #include file="include/utility/ip.asp" -->
 <!-- #include file="include/utility/string.asp" -->
 <!-- #include file="include/utility/sqlfilter.asp" -->
+<!-- #include file="include/utility/backend.asp" -->
 <!-- #include file="include/utility/user.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="loadconfig.asp" -->
@@ -107,7 +108,7 @@ if Not IsEmpty(Request.Form) then
 		thomelogo=textfilter(thomelogo,true)
 	end if
 
-	thomename=server.HTMLEncode(Request.Form("homename"))
+	thomename=HtmlEncode(Request.Form("homename"))
 
 	thomeaddr=Trim(Request.Form("homeaddr"))
 	if thomeaddr<>"" then

@@ -7,8 +7,8 @@
 <!-- #include file="include/sql/web_findkey2.asp" -->
 <!-- #include file="include/utility/database.asp" -->
 <!-- #include file="include/utility/ip.asp" -->
-<!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/backend.asp" -->
+<!-- #include file="include/utility/ubbcode.asp" -->
 <!-- #include file="include/utility/frontend.asp" -->
 <!-- #include file="include/utility/book.asp" -->
 <!-- #include file="webconfig.asp" -->
@@ -99,7 +99,7 @@ sys_bul_flag=32
 
 			<div class="field">
 				<span class="label">Œ Ã‚£∫</span>
-				<span class="value"><%=server.HTMLEncode(question)%></span>
+				<span class="value"><%=HtmlEncode(question)%></span>
 			</div>
 			<div class="field">
 				<span class="label">¥∞∏£∫</span>
