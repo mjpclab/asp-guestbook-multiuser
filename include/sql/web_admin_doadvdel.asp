@@ -8,17 +8,31 @@ elseif IsSqlServer then
 end if
 sql_webdoadvdel_firstn_main=				"DELETE FROM " &table_main& " WHERE id IN (SELECT top {0} id FROM " &table_main& " WHERE parent_id<=0 ORDER BY lastupdated ASC)"
 sql_webdoadvdel_lastn_main=					"DELETE FROM " &table_main& " WHERE id IN (SELECT top {0} id FROM " &table_main& " WHERE parent_id<=0 ORDER BY lastupdated DESC)"
-sql_webdoadvdel_name_main=					"DELETE FROM " &table_main& " WHERE name LIKE '%{0}%'"
-sql_webdoadvdel_title_main=					"DELETE FROM " &table_main& " WHERE title LIKE '%{0}%'"
-sql_webdoadvdel_article_main=				"DELETE FROM " &table_main& " WHERE article LIKE '%{0}%'"
-sql_webdoadvdel_reply_main=					"DELETE FROM " &table_main& " WHERE id IN (SELECT articleid FROM " &table_reply& " WHERE reinfo LIKE '%{0}%')"
-sql_webdoadvdel_reply_reply=				"DELETE FROM " &table_reply& " WHERE reinfo LIKE '%{0}%'"
-sql_webdoadvdel_reply_unsetreply=			"UPDATE " &table_main& " SET replied=0 WHERE id IN (SELECT articleid FROM " &table_reply& " WHERE reinfo LIKE '%{0}%')"
-sql_webdoadvdel_main=						"DELETE FROM " &table_main
-sql_webdoadvdel_unsetreply=					"UPDATE " &table_main& " SET replied=0"
-sql_webdoadvdel_reply=						"DELETE FROM " &table_reply
-sql_webdoadvdel_deldeclare=					"UPDATE " &table_supervisor& " SET [declare]='' WHERE [declare] LIKE '%{0}%'"
-sql_webdoadvdel_cleardeclare=				"UPDATE " &table_supervisor& " SET [declare]='' WHERE [declare] LIKE '_%'"
+if IsAccess then
+	sql_webdoadvdel_name_main=					"DELETE FROM " &table_main& " WHERE name LIKE '%{0}%'"
+	sql_webdoadvdel_title_main=					"DELETE FROM " &table_main& " WHERE title LIKE '%{0}%'"
+	sql_webdoadvdel_article_main=				"DELETE FROM " &table_main& " WHERE article LIKE '%{0}%'"
+	sql_webdoadvdel_reply_main=					"DELETE FROM " &table_main& " WHERE id IN (SELECT articleid FROM " &table_reply& " WHERE reinfo LIKE '%{0}%')"
+	sql_webdoadvdel_reply_reply=				"DELETE FROM " &table_reply& " WHERE reinfo LIKE '%{0}%'"
+	sql_webdoadvdel_reply_unsetreply=			"UPDATE " &table_main& " SET replied=0 WHERE id IN (SELECT articleid FROM " &table_reply& " WHERE reinfo LIKE '%{0}%')"
+elseif IsSqlServer then
+	sql_webdoadvdel_name_main=					"DELETE FROM " &table_main& " WHERE name LIKE N'%{0}%'"
+	sql_webdoadvdel_title_main=					"DELETE FROM " &table_main& " WHERE title LIKE N'%{0}%'"
+	sql_webdoadvdel_article_main=				"DELETE FROM " &table_main& " WHERE article LIKE N'%{0}%'"
+	sql_webdoadvdel_reply_main=					"DELETE FROM " &table_main& " WHERE id IN (SELECT articleid FROM " &table_reply& " WHERE reinfo LIKE N'%{0}%')"
+	sql_webdoadvdel_reply_reply=				"DELETE FROM " &table_reply& " WHERE reinfo LIKE N'%{0}%'"
+	sql_webdoadvdel_reply_unsetreply=			"UPDATE " &table_main& " SET replied=0 WHERE id IN (SELECT articleid FROM " &table_reply& " WHERE reinfo LIKE N'%{0}%')"
+end if
+sql_webdoadvdel_main=							"DELETE FROM " &table_main
+sql_webdoadvdel_unsetreply=						"UPDATE " &table_main& " SET replied=0"
+sql_webdoadvdel_reply=							"DELETE FROM " &table_reply
+if IsAccess then
+	sql_webdoadvdel_deldeclare=					"UPDATE " &table_supervisor& " SET [declare]='' WHERE [declare] LIKE '%{0}%'"
+	sql_webdoadvdel_cleardeclare=					"UPDATE " &table_supervisor& " SET [declare]='' WHERE Len([declare])>0"
+elseif IsSqlServer then
+	sql_webdoadvdel_deldeclare=					"UPDATE " &table_supervisor& " SET [declare]='' WHERE [declare] LIKE N'%{0}%'"
+	sql_webdoadvdel_cleardeclare=					"UPDATE " &table_supervisor& " SET [declare]='' WHERE [declare] LIKE N'_%'"
+end if
 if IsAccess then
 	sql_webdoadvdel_regdate_filterconfig=		"DELETE FROM " &table_filterconfig&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<=#{0}#)"
 	sql_webdoadvdel_regdate_ipv4config=			"DELETE FROM " &table_ipv4config&		" WHERE adminid IN (SELECT adminid FROM " &table_supervisor& " WHERE regdate<=#{0}#)"
