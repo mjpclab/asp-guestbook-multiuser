@@ -10,6 +10,7 @@
 	<tr><td>Flash</td>					<td>[flash]Flash地址[/flash]<br/>[flash=宽,高]Flash地址[/flash]</td>	<td><%=getstatus(web_UbbFlag_player and UbbFlag_player)%></td>		<td>播放控件</td></tr>
 	<tr><td>Windows Media Player</td>	<td>[mp]媒体文件地址[/mp]<br/>[mp=宽,高]媒体文件地址[/mp]</td>		<td><%=getstatus(web_UbbFlag_player and UbbFlag_player)%></td>			<td>播放控件</td></tr>
 	<tr><td>HTML5 视频</td>				<td>[video]视频文件地址[/video]<br/>[video=宽,高]视频文件地址[/video]</td>	<td><%=getstatus(web_UbbFlag_player and UbbFlag_player)%></td>	<td>播放控件</td></tr>
+	<tr><td>HTML5 音频</td>				<td>[audio]音频文件地址[/audio]<br/>[audio=宽,高]音频文件地址[/audio]</td>	<td><%=getstatus(web_UbbFlag_player and UbbFlag_player)%></td>	<td>播放控件</td></tr>
 	<tr><td>引用（缩进）</td>				<td>[quote]引用文字[/quote]</td>									<td><%=getstatus(web_UbbFlag_paragraph and UbbFlag_paragraph)%></td>	<td>段落样式</td></tr>
 	<tr><td>无序列表</td>				<td>[li]列表项[/li]</td>											<td><%=getstatus(web_UbbFlag_paragraph and UbbFlag_paragraph)%></td>	<td>段落样式</td></tr>
 	<tr><td>指定字体</td>				<td>[font=字体名]文字[/font]</td>									<td><%=getstatus(web_UbbFlag_fontstyle and UbbFlag_fontstyle)%></td>	<td>字体样式</td></tr>
