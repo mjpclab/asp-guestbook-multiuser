@@ -1,5 +1,5 @@
 <%
-function UBBCode(byref strContent,byval allUbbFlags)
+function UBBCode(byref strContent,byval ubblimit)
 if strContent="" then
 	UBBCode=""
 else
@@ -19,14 +19,14 @@ else
 	if Instr(strContent,"[") > 0 then
 		NeedSecureCheck=true
 
-		if UbbFlag_image or allUbbFlags then
+		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_image) or (web_UbbFlag_image and UbbFlag_image) then
 			reCase.Pattern="\[[iI][mM][gG]\]([^\[]+)\[\/[iI][mM][gG]\]"
 			strContent=reCase.Replace(strContent,embed_prefix & "<img src=""$1""/>" & embed_postfix)
 			reCase.Pattern="\[[iI][mM][gG]=(\d+),(\d+)\]([^\[]+)\[\/[iI][mM][gG]\]"
 			strContent=reCase.Replace(strContent,embed_prefix & "<img src=""$3"" style=""width:$1px;height:$2px;""/>" & embed_postfix)
 		end if
 
-		if UbbFlag_url or allUbbFlags then
+		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_url) or (web_UbbFlag_url and UbbFlag_url) then
 			reCase.Pattern="\[[uU][rR][lL]\](\w+://[^\[]+)\[\/[uU][rR][lL]\]"
 			strContent= reCase.Replace(strContent,"<a href=""$1"" target=""_blank"">$1</a>")
 			reCase.Pattern="\[[uU][rR][lL]\]([^\[]+)\[\/[uU][rR][lL]\]"
@@ -43,7 +43,7 @@ else
 			strContent= reCase.Replace(strContent,"<a href=""mailto:$1"" target=""_blank"">$1</a>")
 		end if
 
-		if UbbFlag_player or allUbbFlags then
+		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_player) or (web_UbbFlag_player and UbbFlag_player) then
 			'Flash
 			reCase.Pattern="\[[fF][lL][aA][sS][hH]\]([^\[]+)\[\/[fF][lL][aA][sS][hH]\]"
 			strContent= reCase.Replace(strContent,embed_prefix & "<object classid=""clsid:d27cdb6e-ae6d-11cf-96b8-444553540000""  codebase=""http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"">" & _
@@ -79,14 +79,12 @@ else
 			'Html5 Video
 			reCase.Pattern="\[video\]([^\[]+)\[\/video\]"
 			strContent=reCase.Replace(strContent,embed_prefix & "<video src=""$1"" controls=""controls""></video>" &  embed_postfix)
-
 			reCase.Pattern="\[video=(\d+),(\d+)\]([^\[]+)\[\/video]"
 			strContent=reCase.Replace(strContent,embed_prefix & "<video src=""$3"" style=""width:$1px;height:$2px;"" controls=""controls""></video>" &  embed_postfix)
 
 			'Html5 Audio
 			reCase.Pattern="\[audio\]([^\[]+)\[\/audio\]"
 			strContent=reCase.Replace(strContent,embed_prefix & "<audio src=""$1"" controls=""controls""></audio>" &  embed_postfix)
-
 			reCase.Pattern="\[audio=(\d+),(\d+)\]([^\[]+)\[\/audio]"
 			strContent=reCase.Replace(strContent,embed_prefix & "<audio src=""$3"" style=""width:$1px;height:$2px;"" controls=""controls""></audio>" &  embed_postfix)
 		end if
@@ -94,7 +92,7 @@ else
 		for i_count=1 to 5
 			originalStr=strContent
 
-			if UbbFlag_paragraph or allUbbFlags then
+			if ubblimit=1 or (ubblimit=2 and web_UbbFlag_paragraph) or (web_UbbFlag_paragraph and UbbFlag_paragraph) then
 				reCase.Pattern="\[[qQ][uU][oO][tT][eE]\]([^\[]+)\[\/[qQ][uU][oO][tT][eE]\]"
 				strContent=reCase.Replace(strContent,"<blockquote>$1</blockquote>")
 
@@ -104,7 +102,7 @@ else
 				strContent=reCase.Replace(strContent,"")
 			end if
 
-			if UbbFlag_fontstyle or allUbbFlags then
+			if ubblimit=1 or (ubblimit=2 and web_UbbFlag_fontstyle) or (web_UbbFlag_fontstyle and UbbFlag_fontstyle) then
 				reCase.Pattern="\[[fF][oO][nN][tT]=([^\[\]]+)\]([^\[]+)\[\/[fF][oO][nN][tT]\]"
 				strContent=reCase.Replace(strContent,"<span style=""font-family:$1"">$2</span>")
 				reCase.Pattern="\[[iI]\]([^\[]+)\[\/[iI]\]"
@@ -117,14 +115,14 @@ else
 				strContent=reCase.Replace(strContent,"<span style=""text-decoration:line-through"">$1</span>")
 			end if
 
-			if UbbFlag_fontcolor or allUbbFlags then
+			if ubblimit=1 or (ubblimit=2 and web_UbbFlag_fontcolor) or (web_UbbFlag_fontcolor and UbbFlag_fontcolor) then
 				reCase.Pattern="\[[cC][oO][lL][oO][rR]=([^\[\]]+)\]([^\[]+)\[\/[cC][oO][lL][oO][rR]\]"
 				strContent=reCase.Replace(strContent,"<span style=""color:$1"">$2</span>")
 				reCase.Pattern="\[[bB][gG][cC][oO][lL][oO][rR]=([^\[\]]+)\]([^\[]+)\[\/[bB][gG][cC][oO][lL][oO][rR]\]"
 				strContent=reCase.Replace(strContent,"<span style=""background-color:$1"">$2</span>")
 			end if
 
-			if UbbFlag_alignment or allUbbFlags then
+			if ubblimit=1 or (ubblimit=2 and web_UbbFlag_alignment) or (web_UbbFlag_alignment and UbbFlag_alignment) then
 				reCase.Pattern="\[[aA][lL][iI][gG][nN]=([^\[\]]+)\]([^\[]+)\[\/[aA][lL][iI][gG][nN]\]"
 				strContent=reCase.Replace(strContent,"<span style=""display:block; text-align:$1"">$2</span>")
 				reCase.Pattern="\[[cC][eE][nN][tT][eE][rR]\]([^\[]+)\[\/[cC][eE][nN][tT][eE][rR]\]"
@@ -136,13 +134,29 @@ else
 			end if
 		next
 
-		if UbbFlag_face or allUbbFlags then
+		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_face) or (web_UbbFlag_face and UbbFlag_face) then
 			reCase.Pattern="\[[fF][aA][cC][eE](\d+)\]"
 			strContent=reCase.Replace(strContent,"<img src=""asset/smallface/$1.gif"" />")
 		end if
 	end if
 
-	if UbbFlag_autourl or allUbbFlags then
+	if ubblimit=1 or (ubblimit=2 and web_UbbFlag_markdown_paragraph) or (web_UbbFlag_markdown_paragraph and UbbFlag_markdown_paragraph) then
+		reCase.Multiline=True
+		reCase.Pattern="^-\s*(.*)"
+		strContent=reCase.replace(strContent,"<ul><li>$1</li></ul>")
+		reCase.Multiline=False
+		reCase.Pattern="\<\/[uU][lL]\>\s*\<[uU][lL]\>"
+		strContent=reCase.Replace(strContent,"")
+	end if
+
+	if ubblimit=1 or (ubblimit=2 and web_UbbFlag_markdown_fontstyle) or (web_UbbFlag_markdown_fontstyle and UbbFlag_markdown_fontstyle) then
+		reCase.Pattern="\*\*([^*]+(\*[^*]+)*)\*\*"
+		strContent=reCase.Replace(strContent,"<span style=""font-weight:bold"">$1</span>")
+		reCase.Pattern="__([^_]+(_[^_]+)*)__"
+		strContent=reCase.Replace(strContent,"<span style=""font-style:italic"">$1</span>")
+	end if
+
+	if ubblimit=1 or (ubblimit=2 and web_UbbFlag_autourl) or (web_UbbFlag_autourl and UbbFlag_autourl) then
 		NeedSecureCheck=true
 
 		'http://
@@ -181,7 +195,7 @@ else
 end if
 end function
 
-function convertstr(byref str,byval htmlflag,byval allUbbFlags)
+function convertstr(byref str,byval htmlflag,byval ubblimit)
 	dim tHTML,tUBB,tNewline
 	tHTML=CBool(htmlflag and 1)
 	tUBB=CBool(htmlflag and 2)
@@ -195,7 +209,7 @@ function convertstr(byref str,byval htmlflag,byval allUbbFlags)
 	end if
 
 	if tUBB then
-		str=ubbcode(str,allUbbFlags)
+		str=ubbcode(str,ubblimit)
 	end if
 
 	if Not tHTML and Not tUBB and tNewline then

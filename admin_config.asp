@@ -153,19 +153,23 @@ end if
 					<span class="label">UBB开关(须启用UBB)</span>
 					<span class="value">
 						<span class="row">
-							<input type="checkbox" name="ubbflag_image" id="ubbflag_image" value="1"<%=cked(web_UbbFlag_image and UbbFlag_image)%><%=dised(Not web_UbbFlag_image)%> /><label for="ubbflag_image"<%=dised(Not web_UbbFlag_image)%>>图片</label>　　　
+							<input type="checkbox" name="ubbflag_image" id="ubbflag_image" value="1"<%=cked(web_UbbFlag_image and UbbFlag_image)%><%=dised(Not web_UbbFlag_image)%> /><label for="ubbflag_image"<%=dised(Not web_UbbFlag_image)%>>图片</label>
 							<input type="checkbox" name="ubbflag_url" id="ubbflag_url" value="1"<%=cked(web_UbbFlag_url and UbbFlag_url)%><%=dised(Not web_UbbFlag_url)%> /><label for="ubbflag_url"<%=dised(Not web_UbbFlag_url)%>>URL、Email</label>
 							<input type="checkbox" name="ubbflag_autourl" id="ubbflag_autourl" value="1"<%=cked(web_UbbFlag_autourl and UbbFlag_autourl)%><%=dised(Not web_UbbFlag_autourl)%> /><label for="ubbflag_autourl"<%=dised(Not web_UbbFlag_autourl)%>>自动识别网址</label>
 						</span>
 						<span class="row">
-							<input type="checkbox" name="ubbflag_player" id="ubbflag_player" value="1"<%=cked(web_UbbFlag_player and UbbFlag_player)%><%=dised(Not web_UbbFlag_player)%> /><label for="ubbflag_player"<%=dised(Not web_UbbFlag_player)%>>播放控件</label>　
-							<input type="checkbox" name="ubbflag_paragraph" id="ubbflag_paragraph" value="1"<%=cked(web_UbbFlag_paragraph and UbbFlag_paragraph)%><%=dised(Not web_UbbFlag_paragraph)%> /><label for="ubbflag_paragraph"<%=dised(Not web_UbbFlag_paragraph)%>>段落样式</label>　
+							<input type="checkbox" name="ubbflag_player" id="ubbflag_player" value="1"<%=cked(web_UbbFlag_player and UbbFlag_player)%><%=dised(Not web_UbbFlag_player)%> /><label for="ubbflag_player"<%=dised(Not web_UbbFlag_player)%>>播放控件</label>
+							<input type="checkbox" name="ubbflag_paragraph" id="ubbflag_paragraph" value="1"<%=cked(web_UbbFlag_paragraph and UbbFlag_paragraph)%><%=dised(Not web_UbbFlag_paragraph)%> /><label for="ubbflag_paragraph"<%=dised(Not web_UbbFlag_paragraph)%>>段落样式</label>
 							<input type="checkbox" name="ubbflag_fontstyle" id="ubbflag_fontstyle" value="1"<%=cked(web_UbbFlag_fontstyle and UbbFlag_fontstyle)%><%=dised(Not web_UbbFlag_fontstyle)%> /><label for="ubbflag_fontstyle"<%=dised(Not web_UbbFlag_fontstyle)%>>字体样式</label>
 						</span>
 						<span class="row">
-							<input type="checkbox" name="ubbflag_fontcolor" id="ubbflag_fontcolor" value="1"<%=cked(web_UbbFlag_fontcolor and UbbFlag_fontcolor)%><%=dised(Not web_UbbFlag_fontcolor)%> /><label for="ubbflag_fontcolor"<%=dised(Not web_UbbFlag_fontcolor)%>>字体颜色</label>　
-							<input type="checkbox" name="ubbflag_alignment" id="ubbflag_alignment" value="1"<%=cked(web_UbbFlag_alignment and UbbFlag_alignment)%><%=dised(Not web_UbbFlag_alignment)%> /><label for="ubbflag_alignment"<%=dised(Not web_UbbFlag_alignment)%>>对齐方式</label>　
+							<input type="checkbox" name="ubbflag_fontcolor" id="ubbflag_fontcolor" value="1"<%=cked(web_UbbFlag_fontcolor and UbbFlag_fontcolor)%><%=dised(Not web_UbbFlag_fontcolor)%> /><label for="ubbflag_fontcolor"<%=dised(Not web_UbbFlag_fontcolor)%>>字体颜色</label>
+							<input type="checkbox" name="ubbflag_alignment" id="ubbflag_alignment" value="1"<%=cked(web_UbbFlag_alignment and UbbFlag_alignment)%><%=dised(Not web_UbbFlag_alignment)%> /><label for="ubbflag_alignment"<%=dised(Not web_UbbFlag_alignment)%>>对齐方式</label>
 							<input type="checkbox" name="ubbflag_face" id="ubbflag_face" value="1"<%=cked(web_UbbFlag_face and UbbFlag_face)%><%=dised(Not web_UbbFlag_face)%> /><label for="ubbflag_face"<%=dised(Not web_UbbFlag_face)%>>表情图标</label>
+						</span>
+						<span class="row">
+							<input type="checkbox" name="ubbflag_markdown_paragraph" id="ubbflag_markdown_paragraph" value="1"<%=cked(web_UbbFlag_markdown_paragraph and UbbFlag_markdown_paragraph)%><%=dised(Not web_UbbFlag_markdown_paragraph)%> /><label for="ubbflag_markdown_paragraph"<%=dised(Not web_UbbFlag_markdown_paragraph)%>>Markdown段落样式</label>
+							<input type="checkbox" name="ubbflag_markdown_fontstyle" id="ubbflag_markdown_fontstyle" value="1"<%=cked(web_UbbFlag_markdown_fontstyle and UbbFlag_markdown_fontstyle)%><%=dised(Not web_UbbFlag_markdown_fontstyle)%> /><label for="ubbflag_markdown_fontstyle"<%=dised(Not web_UbbFlag_markdown_fontstyle)%>>Markdown字体样式</label>
 						</span>
 					</span>
 				</div>

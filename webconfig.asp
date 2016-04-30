@@ -88,6 +88,8 @@ UbbFlag_alignment=CBool(UbbFlag and 128)
 'UbbFlag_movement=CBool(UbbFlag and 256)
 'UbbFlag_cssfilter=CBool(UbbFlag and 512)
 UbbFlag_face=CBool(UbbFlag and 1024)
+UbbFlag_markdown_paragraph=CBool(UbbFlag and 32768)
+UbbFlag_markdown_fontstyle=CBool(UbbFlag and 65536)
 web_UbbFlag_image=UbbFlag_image
 web_UbbFlag_url=UbbFlag_url
 web_UbbFlag_autourl=UbbFlag_autourl
@@ -99,6 +101,8 @@ web_UbbFlag_alignment=UbbFlag_alignment
 'web_UbbFlag_movement=UbbFlag_movement
 'web_UbbFlag_cssfilter=UbbFlag_cssfilter
 web_UbbFlag_face=UbbFlag_face
+web_UbbFlag_markdown_paragraph=UbbFlag_markdown_paragraph
+web_UbbFlag_markdown_fontstyle=UbbFlag_markdown_fontstyle
 
 TableWidth=lrs("tablewidth")		'表格宽度，可用百分比
 WindowSpace=lrs("windowspace")		'窗格区块间距
