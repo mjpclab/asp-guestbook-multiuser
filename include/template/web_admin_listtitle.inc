@@ -33,7 +33,7 @@ while Not rs.eof
 			<%end if%>
 		</td>
 		<td class="name"><%=rs.Fields("name")%></td>
-		<td class="date"><%=rs.Fields("logdate")%></td>
+		<td class="date"><%=UTCToDisplayTime(rs.Fields("logdate"))%></td>
 		<td class="user"><a href="web_userinfo.asp?user=<%=rs.Fields("adminname")%>" target="_blank"><%=rs.Fields("adminname")%></a></td>
 	</tr>
 	<%rs.MoveNext
