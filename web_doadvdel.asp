@@ -209,15 +209,15 @@ case "16"
 	if isdate(tparam) then
 		tparam=DateTimeStr(tparam)
 		cn1.BeginTrans
-		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_filterconfig,"{0}",tparam),"{1}",wm_name),,1
-		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_ipv4config,"{0}",tparam),"{1}",wm_name),,1
-		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_ipv6config,"{0}",tparam),"{1}",wm_name),,1
-		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_floodconfig,"{0}",tparam),"{1}",wm_name),,1
+		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_filterconfig,"{0}",tparam),"{1}",wm_id),,1
+		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_ipv4config,"{0}",tparam),"{1}",wm_id),,1
+		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_ipv6config,"{0}",tparam),"{1}",wm_id),,1
+		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_floodconfig,"{0}",tparam),"{1}",wm_id),,1
 		cn1.Execute Replace(sql_webdoadvdel_logdate_stats,"{0}",tparam),,1
 		cn1.Execute Replace(sql_webdoadvdel_logdate_stats_clientinfo,"{0}",tparam),,1
 		cn1.Execute Replace(sql_webdoadvdel_logdate_reply,"{0}",tparam),,1
 		cn1.Execute Replace(sql_webdoadvdel_logdate_main,"{0}",tparam),,1
-		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_config,"{0}",tparam),"{1}",wm_name),,1
+		cn1.Execute Replace(Replace(sql_webdoadvdel_logdate_config,"{0}",tparam),"{1}",wm_id),,1
 		cn1.Execute Replace(sql_webdoadvdel_logdate_supervisor,"{0}",tparam),affected,1
 		cn1.CommitTrans
 	
@@ -227,30 +227,30 @@ case "16"
 	end if
 case "17"
 		cn1.BeginTrans
-		cn1.Execute sql_webdoadvdel_neverlogin_filterconfig,,1
-		cn1.Execute sql_webdoadvdel_neverlogin_ipv4config,,1
-		cn1.Execute sql_webdoadvdel_neverlogin_ipv6config,,1
-		cn1.Execute sql_webdoadvdel_neverlogin_floodconfig,,1
+		cn1.Execute Replace(sql_webdoadvdel_neverlogin_filterconfig,"{0}",wm_id),,1
+		cn1.Execute Replace(sql_webdoadvdel_neverlogin_ipv4config,"{0}",wm_id),,1
+		cn1.Execute Replace(sql_webdoadvdel_neverlogin_ipv6config,"{0}",wm_id),,1
+		cn1.Execute Replace(sql_webdoadvdel_neverlogin_floodconfig,"{0}",wm_id),,1
 		cn1.Execute sql_webdoadvdel_neverlogin_stats,,1
 		cn1.Execute sql_webdoadvdel_neverlogin_stats_clientinfo,,1
 		cn1.Execute sql_webdoadvdel_neverlogin_reply,,1
 		cn1.Execute sql_webdoadvdel_neverlogin_main,,1
-		cn1.Execute sql_webdoadvdel_neverlogin_config,,1
+		cn1.Execute Replace(sql_webdoadvdel_neverlogin_config,"{0}",wm_id),,1
 		cn1.Execute sql_webdoadvdel_neverlogin_supervisor,affected,1
 		cn1.CommitTrans
 	
 		Call TipsPage("已删除" &affected& "个用户。","web_advdel.asp")
 case "18"
 	cn1.BeginTrans
-	cn1.Execute Replace(sql_webdoadvdel_all_filterconfig,"{0}",wm_name),,1
-	cn1.Execute Replace(sql_webdoadvdel_all_ipv4config,"{0}",wm_name),,1
-	cn1.Execute Replace(sql_webdoadvdel_all_ipv6config,"{0}",wm_name),,1
-	cn1.Execute Replace(sql_webdoadvdel_all_floodconfig,"{0}",wm_name),,1
+	cn1.Execute Replace(sql_webdoadvdel_all_filterconfig,"{0}",wm_id),,1
+	cn1.Execute Replace(sql_webdoadvdel_all_ipv4config,"{0}",wm_id),,1
+	cn1.Execute Replace(sql_webdoadvdel_all_ipv6config,"{0}",wm_id),,1
+	cn1.Execute Replace(sql_webdoadvdel_all_floodconfig,"{0}",wm_id),,1
 	cn1.Execute sql_webdoadvdel_all_stats,,1
 	cn1.Execute sql_webdoadvdel_all_stats_clientinfo,,1
 	cn1.Execute sql_webdoadvdel_all_reply,,1
 	cn1.Execute sql_webdoadvdel_all_main,,1
-	cn1.Execute Replace(sql_webdoadvdel_all_config,"{0}",wm_name),,1
+	cn1.Execute Replace(sql_webdoadvdel_all_config,"{0}",wm_id),,1
 	cn1.Execute sql_webdoadvdel_all_supervisor,affected,1
 	cn1.CommitTrans
 	
