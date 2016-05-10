@@ -19,24 +19,19 @@ elseif Not StatusLogin then
 	Response.End
 end if
 
-Dim cn,rs
+Dim cn,rs,refPass
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 checkuser cn,rs,false
 
 rs.Open Replace(sql_adminverify,"{0}",adminid),cn,0,1,1
+if Not rs.EOF then
+	refPass=rs.Fields(0)
+end if
+rs.Close : cn.Close : set rs=nothing : set cn=nothing
 
-if not rs.eof then
-	if Session(InstanceName & "_adminpass_" & ruser)<>rs(0) then
-		rs.Close : cn.Close : set rs=nothing : set cn=nothing
-		Response.Redirect "admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(GetReferrer())
-		Response.End
-	else
-		rs.Close : cn.Close : set rs=nothing : set cn=nothing
-	end if
-else
-	rs.Close : cn.Close : set rs=nothing : set cn=nothing
+if refPass="" Or Session(InstanceName & "_adminpass_" & ruser)<>refPass then
 	Response.Redirect "admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(GetReferrer())
 	Response.End
 end if

@@ -52,37 +52,30 @@ if VcodeCount>0 then
 	end if
 end if
 
-Dim cn,rs
+Dim cn,rs,refPass
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 rs.Open Replace(sql_adminverify,"{0}",adminid),cn,0,1,1
+if Not rs.EOF then
+	refPass=rs.Fields(0)
+end if
+rs.Close : set rs=nothing
 
 Session(InstanceName & "_adminpass_" & ruser)=md5(request("iadminpass"),32)
-if Not rs.EOF then
-	if Session(InstanceName & "_adminpass_"& ruser)=rs(0) then
-		session.Timeout=cint(AdminTimeOut)
+if Session(InstanceName & "_adminpass_"& ruser)=refPass then
+	cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",ServerTimeToUTC(now())),"{1}",adminid),,1
+	cn.Close : set cn=nothing
 
-		cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",ServerTimeToUTC(now())),"{1}",adminid),,1
-		rs.Close : cn.Close : set rs=nothing : set cn=nothing
-		if referrer<>"" then
-			Response.Redirect referrer
-		else
-			Response.Redirect "admin.asp?user=" &ruser
-		end if
+	session.Timeout=AdminTimeOut
+	if referrer<>"" then
+		Response.Redirect referrer
 	else
-		if StatusStatistics then call addstat("loginfailed")
-		Call TipsPage("密码不正确。","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
-
-		rs.Close : cn.Close : set rs=nothing : set cn=nothing
-		Response.End
+		Response.Redirect "admin.asp?user=" &ruser
 	end if
 else
+	cn.Close : set cn=nothing
 	if StatusStatistics then call addstat("loginfailed")
 	Call TipsPage("密码不正确。","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
-
-	rs.Close : cn.Close : set rs=nothing : set cn=nothing
-	Response.End
 end if
-rs.Close : cn.Close : set rs=nothing : set cn=nothing
 %>
