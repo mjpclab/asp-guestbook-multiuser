@@ -89,6 +89,11 @@ else
 			strContent=reCase.Replace(strContent,embed_prefix & "<audio src=""$3"" style=""width:$1px;height:$2px;"" controls=""controls""></audio>" &  embed_postfix)
 		end if
 
+		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_face) or (web_UbbFlag_face and UbbFlag_face) then
+			reCase.Pattern="\[[fF][aA][cC][eE](\d+)\]"
+			strContent=reCase.Replace(strContent,"<img src=""asset/smallface/$1.gif"" />")
+		end if
+
 		for i_count=1 to 5
 			originalStr=strContent
 
@@ -133,11 +138,6 @@ else
 				if originalStr=strContent then exit for
 			end if
 		next
-
-		if ubblimit=1 or (ubblimit=2 and web_UbbFlag_face) or (web_UbbFlag_face and UbbFlag_face) then
-			reCase.Pattern="\[[fF][aA][cC][eE](\d+)\]"
-			strContent=reCase.Replace(strContent,"<img src=""asset/smallface/$1.gif"" />")
-		end if
 	end if
 
 	if ubblimit=1 or (ubblimit=2 and web_UbbFlag_markdown_paragraph) or (web_UbbFlag_markdown_paragraph and UbbFlag_markdown_paragraph) then
