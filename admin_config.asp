@@ -99,7 +99,7 @@ end if
 				</div>
 				<div class="field">
 					<span class="label">访问统计</span>
-					<span class="value"><input type="radio" name="status9" value="1" id="status91"<%=cked(CBool(tstatus AND 256))%> /><label for="status91">开启</label>　　<input type="radio" name="status9" value="0" id="status92"<%=cked(Not CBool(tstatus AND 256))%> /><label for="status92">关闭</label></span>
+					<span class="value"><input type="radio" name="status9" value="1" id="status91"<%=cked(CBool(tstatus AND 256))%><%=dised(Not web_StatusStatistics)%> /><label for="status91"<%=dised(Not web_StatusStatistics)%>>开启</label>　　<input type="radio" name="status9" value="0" id="status92"<%=cked(Not CBool(tstatus AND 256))%><%=dised(Not web_StatusStatistics)%> /><label for="status92"<%=dised(Not web_StatusStatistics)%>>关闭</label></span>
 				</div>
 			</div>
 
