@@ -10,7 +10,6 @@ Function GetReferrer
 	end if
 End Function
 
-Response.Expires=-1
 if web_checkIsBannedIP() then
 	Call WebErrorPage(4)
 	Response.End
@@ -19,20 +18,31 @@ elseif Not StatusLogin then
 	Response.End
 end if
 
-Dim cn,rs,refPass
-set cn=server.CreateObject("ADODB.Connection")
-set rs=server.CreateObject("ADODB.Recordset")
-Call CreateConn(cn)
-checkuser cn,rs,false
-
-rs.Open Replace(sql_adminverify,"{0}",adminid),cn,0,1,1
-if Not rs.EOF then
-	refPass=rs.Fields(0)
-end if
-rs.Close : cn.Close : set rs=nothing : set cn=nothing
-
-if refPass="" Or Session(InstanceName & "_adminpass_" & ruser)<>refPass then
+Sub VerifyFailed
 	Response.Redirect "admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(GetReferrer())
 	Response.End
+End Sub
+
+Response.Expires=-1
+Dim iadminpass
+iadminpass=Session(InstanceName & "_adminpass_" & ruser)
+if iadminpass="" then
+	Call VerifyFailed
+else
+	Dim cn,rs,refPass
+	set cn=server.CreateObject("ADODB.Connection")
+	set rs=server.CreateObject("ADODB.Recordset")
+	Call CreateConn(cn)
+	checkuser cn,rs,false
+
+	rs.Open Replace(sql_adminverify,"{0}",adminid),cn,0,1,1
+	if Not rs.EOF then
+		refPass=rs.Fields(0)
+	end if
+	rs.Close : cn.Close : set rs=nothing : set cn=nothing
+
+	if iadminpass<>refPass then
+		Call VerifyFailed
+	end if
 end if
 %>

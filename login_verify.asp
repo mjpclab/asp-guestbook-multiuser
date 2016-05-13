@@ -52,30 +52,42 @@ if VcodeCount>0 then
 	end if
 end if
 
-Dim cn,rs,refPass
-set cn=server.CreateObject("ADODB.Connection")
-set rs=server.CreateObject("ADODB.Recordset")
-Call CreateConn(cn)
-rs.Open Replace(sql_adminverify,"{0}",adminid),cn,0,1,1
-if Not rs.EOF then
-	refPass=rs.Fields(0)
-end if
-rs.Close : set rs=nothing
-
-Session(InstanceName & "_adminpass_" & ruser)=md5(request("iadminpass"),32)
-if Session(InstanceName & "_adminpass_"& ruser)=refPass then
-	cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",ServerTimeToUTC(now())),"{1}",adminid),,1
-	cn.Close : set cn=nothing
-
-	session.Timeout=AdminTimeOut
-	if referrer<>"" then
-		Response.Redirect referrer
-	else
-		Response.Redirect "admin.asp?user=" &ruser
-	end if
-else
-	cn.Close : set cn=nothing
+Sub LoginFailed
 	if StatusStatistics then call addstat("loginfailed")
 	Call TipsPage("ÃÜÂë²»ÕýÈ·¡£","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
+End Sub
+
+Dim iadminpass
+iadminpass=Request.Form("iadminpass")
+if iadminpass="" then
+	Call LoginFailed
+else
+	iadminpass=md5(iadminpass,32)
+
+	Dim cn,rs,refPass
+	set cn=server.CreateObject("ADODB.Connection")
+	set rs=server.CreateObject("ADODB.Recordset")
+	Call CreateConn(cn)
+	rs.Open Replace(sql_adminverify,"{0}",adminid),cn,0,1,1
+	if Not rs.EOF then
+		refPass=rs.Fields(0)
+	end if
+	rs.Close : set rs=nothing
+
+	if iadminpass=refPass then
+		cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",ServerTimeToUTC(now())),"{1}",adminid),,1
+		cn.Close : set cn=nothing
+
+		Session(InstanceName & "_adminpass_"& ruser)=iadminpass
+		session.Timeout=AdminTimeOut
+		if referrer<>"" then
+			Response.Redirect referrer
+		else
+			Response.Redirect "admin.asp?user=" &ruser
+		end if
+	else
+		cn.Close : set cn=nothing
+		Call LoginFailed
+	end if
 end if
 %>

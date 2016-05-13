@@ -25,22 +25,34 @@ else
 	Session(InstanceName & "_vcode")=""
 end if
 
-Dim cn,rs,refPass
-set cn=server.CreateObject("ADODB.Connection")
-set rs=server.CreateObject("ADODB.Recordset")
-
-Call CreateConn(cn)
-rs.Open sql_web_admin_verify,cn,0,1,1
-if Not rs.EOF then
-	refPass=rs.Fields(0)
-end if
-rs.Close : cn.Close : set rs=nothing : set cn=nothing
-
-Session(InstanceName & "_webpass")=md5(request("iadminpass"),32)
-if Session(InstanceName & "_webpass")=refPass then
-	session.Timeout=AdminTimeOut
-	Response.Redirect "web_admin.asp"
-else
+Sub LoginFailed
 	Call TipsPage("ÃÜÂë²»ÕýÈ·¡£","web_login.asp")
+End Sub
+
+Dim iadminpass
+iadminpass=Request.Form("iadminpass")
+if iadminpass="" then
+	Call LoginFailed
+else
+	iadminpass=md5(iadminpass,32)
+
+	Dim cn,rs,refPass
+	set cn=server.CreateObject("ADODB.Connection")
+	set rs=server.CreateObject("ADODB.Recordset")
+
+	Call CreateConn(cn)
+	rs.Open sql_web_admin_verify,cn,0,1,1
+	if Not rs.EOF then
+		refPass=rs.Fields(0)
+	end if
+	rs.Close : cn.Close : set rs=nothing : set cn=nothing
+
+	if iadminpass=refPass then
+		Session(InstanceName & "_webpass")=iadminpass
+		session.Timeout=AdminTimeOut
+		Response.Redirect "web_admin.asp"
+	else
+		Call LoginFailed
+	end if
 end if
 %>
