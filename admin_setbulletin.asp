@@ -62,7 +62,7 @@ end if
 	if isnull(tbul) then
 		tbul=""
 	else
-		tbul=HtmlNewLineEncode(HtmlEncode(tbul))
+		tbul=HtmlEncode(tbul)
 	end if
 	if tbul="" then tflag=(web_adminlimit and adminlimit)
 

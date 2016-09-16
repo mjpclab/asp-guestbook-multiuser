@@ -52,7 +52,7 @@
 	if isnull(tbul) then
 		tbul=""
 	else
-		tbul=HtmlNewLineEncode(HtmlEncode(tbul))
+		tbul=HtmlEncode(tbul)
 	end if
 
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing

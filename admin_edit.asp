@@ -41,7 +41,6 @@ rs.Open Replace(Replace(sql_adminedit,"{0}",Request.QueryString("id")),"{1}",adm
 if Not rs.EOF then
 	guestflag=rs("guestflag")
 	guest_txt="" & rs("article") & ""
-	guest_txt=HtmlNewLineEncode(HtmlEncode(guest_txt))
 else
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.Redirect "admin.asp?user=" &ruser
