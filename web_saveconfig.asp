@@ -254,8 +254,10 @@ if Not IsEmpty(Request.Form) then
 	if Request.Form("delretip")="1" then tdelconfirm=tdelconfirm OR 2
 	if Request.Form("delseltip")="1" then tdelconfirm=tdelconfirm OR 4
 	if Request.Form("deladvtip")="1" then tdelconfirm=tdelconfirm OR 8
-	if Request.Form("deldectip")="1" then tdelconfirm=tdelconfirm OR 16
-	if Request.Form("delseldectip")="1" then tdelconfirm=tdelconfirm OR 32
+	if Request.Form("passaudittip")="1" then tdelconfirm=tdelconfirm OR 16
+	if Request.Form("passseltip")="1" then tdelconfirm=tdelconfirm OR 32
+	if Request.Form("deldectip")="1" then tdelconfirm=tdelconfirm OR 64
+	if Request.Form("delseldectip")="1" then tdelconfirm=tdelconfirm OR 128
 
 	set cn1=server.CreateObject("ADODB.Connection")
 	set rs1=server.CreateObject("ADODB.Recordset")

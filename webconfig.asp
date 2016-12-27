@@ -126,8 +126,10 @@ DelTip=CBool(DelConfirm and 1)
 DelReTip=CBool(DelConfirm and 2)
 DelSelTip=CBool(DelConfirm and 4)
 DelAdvTip=CBool(DelConfirm and 8)
-DelDecTip=CBool(DelConfirm and 16)
-DelSelDecTip=CBool(DelConfirm and 32)
+PassAuditTip=CBool(DelConfirm and 16)
+PassSelTip=CBool(DelConfirm and 32)
+DelDecTip=CBool(DelConfirm and 64)
+DelSelDecTip=CBool(DelConfirm and 128)
 
 '==========================
 dim styleid

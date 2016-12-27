@@ -296,6 +296,14 @@ Response.Expires=-1
 			<div id="tab-confirm">
 				<h4>确认</h4>
 				<div class="field">
+					<span class="label">通过审核留言</span>
+					<span class="value"><input type="radio" name="passaudittip" value="1" id="passaudittip1"<%=cked(CBool(tdelconfirm AND 16))%> /><label for="passaudittip1">提示确认</label>　　<input type="radio" name="passaudittip" value="0" id="passaudittip2"<%=cked(Not CBool(tdelconfirm AND 16))%> /><label for="passaudittip2">不提示</label></span>
+				</div>
+				<div class="field">
+					<span class="label">通过审核选定留言</span>
+					<span class="value"><input type="radio" name="passseltip" value="1" id="passseltip1"<%=cked(CBool(tdelconfirm AND 32))%> /><label for="passseltip1">提示确认</label>　　<input type="radio" name="passseltip" value="0" id="passseltip2"<%=cked(Not CBool(tdelconfirm AND 32))%> /><label for="passseltip2">不提示</label></span>
+				</div>
+				<div class="field">
 					<span class="label">删除留言</span>
 					<span class="value"><input type="radio" name="deltip" value="1" id="deltip1"<%=cked(CBool(tdelconfirm AND 1))%> /><label for="deltip1">提示确认</label>　　<input type="radio" name="deltip" value="0" id="deltip2"<%=cked(Not CBool(tdelconfirm AND 1))%> /><label for="deltip2">不提示</label></span>
 				</div>
@@ -313,11 +321,11 @@ Response.Expires=-1
 				</div>
 				<div class="field">
 					<span class="label">删除置顶公告</span>
-					<span class="value"><input type="radio" name="deldectip" value="1" id="deldectip1"<%=cked(CBool(tdelconfirm AND 16))%> /><label for="deldectip1">提示确认</label>　　<input type="radio" name="deldectip" value="0" id="deldectip2"<%=cked(Not CBool(tdelconfirm AND 16))%> /><label for="deldectip2">不提示</label></span>
+					<span class="value"><input type="radio" name="deldectip" value="1" id="deldectip1"<%=cked(CBool(tdelconfirm AND 64))%> /><label for="deldectip1">提示确认</label>　　<input type="radio" name="deldectip" value="0" id="deldectip2"<%=cked(Not CBool(tdelconfirm AND 64))%> /><label for="deldectip2">不提示</label></span>
 				</div>
 				<div class="field">
 					<span class="label">删除选定置顶公告</span>
-					<span class="value"><input type="radio" name="delseldectip" value="1" id="delseldectip1"<%=cked(CBool(tdelconfirm AND 32))%> /><label for="delseldectip1">提示确认</label>　　<input type="radio" name="delseldectip" value="0" id="delseldectip2"<%=cked(Not CBool(tdelconfirm AND 32))%> /><label for="delseldectip2">不提示</label></span>
+					<span class="value"><input type="radio" name="delseldectip" value="1" id="delseldectip1"<%=cked(CBool(tdelconfirm AND 128))%> /><label for="delseldectip1">提示确认</label>　　<input type="radio" name="delseldectip" value="0" id="delseldectip2"<%=cked(Not CBool(tdelconfirm AND 128))%> /><label for="delseldectip2">不提示</label></span>
 				</div>
 			</div>
 
