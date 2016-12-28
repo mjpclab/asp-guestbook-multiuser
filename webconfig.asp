@@ -18,6 +18,7 @@ StatusFindkey=CBool(status and 16)	'找回密码权限开启
 StatusLogin=CBool(status and 32)	'用户登录权限开启
 StatusUnreg=CBool(status and 64)	'自删帐号功能开启
 StatusStatistics=CBool(status and 256)  	'统计开启
+StatusNeedAudit=CBool(status and 512)  	'全局审核开启
 
 web_IPConStatus=lrs("ipconstatus")	'IP屏蔽策略，低4位用于IPv4，高4位用于IPv6
 web_IPv4ConStatus=web_IPConStatus mod 16

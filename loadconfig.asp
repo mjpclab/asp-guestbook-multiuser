@@ -22,11 +22,13 @@ StatusWrite=CBool(status and 2)	'留言权限开启
 StatusSearch=CBool(status and 4)	'搜索权限开启
 StatusLogin=CBool(status and 32)	'用户登录权限开启
 StatusStatistics=CBool(status and 256)	'统计开启
+StatusNeedAudit=CBool(status and 512)	'全局审核开启
 
 web_StatusOpen=StatusOpen
 web_StatusWrite=StatusWrite
 web_StatusSearch=StatusSearch
 web_StatusStatistics=StatusStatistics
+web_StatusNeedAudit=StatusNeedAudit
 
 web_IPConStatus=lrs("ipconstatus")	'IP屏蔽策略，低4位用于IPv4，高4位用于IPv6
 web_IPv4ConStatus=web_IPConStatus mod 16
@@ -116,7 +118,7 @@ if StatusOpen then StatusOpen=CBool(status and 1)	'留言本开启
 if StatusWrite then StatusWrite=CBool(status and 2)	'留言权限开启
 if StatusSearch then StatusSearch=CBool(status and 4)	'搜索权限开启
 StatusShowHead=CBool(status and 8)	'访客头像显示开关
-StatusNeedAudit=CBool(status and 16)	'留言需要审核
+if Not StatusNeedAudit then StatusNeedAudit=CBool(status and 16)	'留言需要审核
 StatusWhisper=CBool(status and 32)	'允许悄悄话
 StatusEncryptWhisper=CBool(status and 64)	'允许访客加密悄悄话回复
 StatusGuestReply=CBool(status and 128)	'允许访客回复

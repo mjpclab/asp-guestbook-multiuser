@@ -76,6 +76,10 @@ Response.Expires=-1
 					<span class="value"><input type="radio" name="status2" value="1" id="status21"<%=cked(CBool(tstatus AND 2))%> /><label for="status21">¿ªÆô</label>¡¡¡¡<input type="radio" name="status2" value="0" id="status22"<%=cked(Not CBool(tstatus AND 2))%> /><label for="status22">¹Ø±Õ</label></span>
 				</div>
 				<div class="field">
+					<span class="label">ÁôÑÔÏÔÊ¾Ç°ÐèÉóºË</span>
+					<span class="value"><input type="radio" name="status10" value="1" id="status101"<%=cked(CBool(tstatus AND 512))%> /><label for="status101">ÉóºË</label>¡¡¡¡<input type="radio" name="status10" value="0" id="status102"<%=cked(Not CBool(tstatus AND 512))%> /><label for="status102">²»ÉóºË</label></span>
+				</div>
+				<div class="field">
 					<span class="label">·Ã¿ÍËÑË÷ÁôÑÔÈ¨ÏÞ</span>
 					<span class="value"><input type="radio" name="status3" value="1" id="status31"<%=cked(CBool(tstatus AND 4))%> /><label for="status31">¿ªÆô</label>¡¡¡¡<input type="radio" name="status3" value="0" id="status32"<%=cked(Not CBool(tstatus AND 4))%> /><label for="status32">¹Ø±Õ</label></span>
 				</div>

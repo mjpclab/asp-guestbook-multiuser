@@ -85,6 +85,7 @@ if Not IsEmpty(Request.Form) then
 	if Request.Form("status6")="1" then tstatus=tstatus OR 32
 	if Request.Form("status7")="1" then tstatus=tstatus OR 64
 	if Request.Form("status9")="1" then tstatus=tstatus OR 256
+	if Request.Form("status10")="1" then tstatus=tstatus OR 512
 
 	tadminhtml=0
 	if Request.Form("adminhtml")="1" then tadminhtml=tadminhtml OR 1
