@@ -147,6 +147,8 @@ else
 		reCase.Multiline=False
 		reCase.Pattern="\<\/[uU][lL]\>\s*\<[uU][lL]\>"
 		strContent=reCase.Replace(strContent,"")
+		reCase.Pattern="\<\/[uU][lL]\>[\r\n]"
+		strContent=reCase.Replace(strContent,"</ul>")
 	end if
 
 	if ubblimit=1 or (ubblimit=2 and web_UbbFlag_markdown_fontstyle) or (web_UbbFlag_markdown_fontstyle and UbbFlag_markdown_fontstyle) then
