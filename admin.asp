@@ -69,7 +69,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(sql_admin_words_count,"{0}",adminid),
 	sys_bul_flag=128%>
 	<!-- #include file="include/template/sysbulletin.inc" -->
 	<!-- #include file="include/template/topbulletin.inc" -->
-	<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"admin.asp","[ÁôÑÔ·ÖÒ³]",""%>
+	<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"[ÁôÑÔ·ÖÒ³]",""%>
 
 	<form method="post" action="admin_mdel.asp" name="form7">
 		<%RPage="admin.asp"%><!-- #include file="include/template/admin_func.inc" -->
@@ -95,7 +95,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(sql_admin_words_count,"{0}",adminid),
 		<!-- #include file="include/template/admin_func.inc" -->
 	</form>
 
-	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"admin.asp","[ÁôÑÔ·ÖÒ³]",""%>
+	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"[ÁôÑÔ·ÖÒ³]",""%>
 	</div>
 
 	<!-- #include file="include/template/footer.inc" -->

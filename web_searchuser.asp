@@ -60,7 +60,7 @@ Response.AddHeader "cache-control","private"
 
 	if ItemsCount>0 then
 	%>
-		<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"web_searchuser.asp","(搜索结果)[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","type,searchtxt"%>
+		<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"(搜索结果)[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","type,searchtxt"%>
 		<form method="post" action="web_deluser.asp" name="frm_user" onsubmit="for(var i=0;i<=elements.length-1;i++)if(elements[i].name=='users' && elements[i].checked){if(confirm('警告！删除的用户和数据将不能恢复！\n确实要执行删除操作吗？'))return confirm('请再次确认是否要删除用户？');else return false;}alert('请先选择要删除的用户。');return false;">
 
 			<input type="hidden" name="source" value="2" />
@@ -92,7 +92,7 @@ Response.AddHeader "cache-control","private"
 	cn.Close : set rs=nothing : set cn=nothing
 	%>
 
-	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"web_searchuser.asp","(搜索结果)[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","type,searchtxt"%>
+	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"(搜索结果)[用户列表分页，共" &PagesCount& "页，" &ItemsCount& "个用户]","type,searchtxt"%>
 
 	<!-- #include file="include/template/web_admin_searchuserbox.inc" -->
 	</div>

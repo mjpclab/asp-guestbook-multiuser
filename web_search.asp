@@ -206,7 +206,7 @@ sql_condition=sql_websearch_condition_init & sql_condition
 
 	<%
 	if PagesCount>1 and ShowTopPageList then
-		show_page_list ipage,PagesCount,"web_search.asp","[搜索结果分页]",param_str
+		show_page_list ipage,PagesCount,"[搜索结果分页]",param_str
 	end if
 	%>
 	<form method="post" action="web_searchmdel.asp" name="form7">
@@ -250,7 +250,7 @@ sql_condition=sql_websearch_condition_init & sql_condition
 
 <%
 if PagesCount>1 and ShowBottomPageList then
-	show_page_list ipage,PagesCount,"web_search.asp","[搜索结果分页]",param_str
+	show_page_list ipage,PagesCount,"[搜索结果分页]",param_str
 end if
 %>
 </div>
