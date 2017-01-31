@@ -75,7 +75,7 @@ else
 	rs.Close : set rs=nothing
 
 	if iadminpass=refPass then
-		cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",ServerTimeToUTC(now())),"{1}",adminid),,1
+		cn.Execute Replace(Replace(sql_updatelastlogin,"{0}",ServerTimeToUTC(now())),"{1}",adminid),,129
 		cn.Close : set cn=nothing
 
 		Session(InstanceName & "_adminpass_"& ruser)=iadminpass

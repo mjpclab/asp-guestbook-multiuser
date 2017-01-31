@@ -40,7 +40,7 @@ else
 
 	if Session(InstanceName & "_adminpass_" & ruser)=rs(0) then
 		if md5(request.Form("ioldpass"),32)=Session(InstanceName & "_adminpass_" & ruser) then
-			cn.Execute Replace(Replace(Replace(sql_adminsaveqa_update,"{0}",replace(Request.Form("question"),"'","''")),"{1}",md5(Request.Form("key"),32)),"{2}",adminid),,1
+			cn.Execute Replace(Replace(Replace(sql_adminsaveqa_update,"{0}",replace(Request.Form("question"),"'","''")),"{1}",md5(Request.Form("key"),32)),"{2}",adminid),,129
 			rs.Close : cn.Close : set rs=nothing : set cn=nothing
 			Response.Redirect "admin.asp?user=" &ruser
 		else

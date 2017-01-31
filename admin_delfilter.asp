@@ -26,7 +26,7 @@ if isnumeric(Request.Form("filterid")) and Request.Form("filterid")<>"" then
 	set rs=server.CreateObject("ADODB.Recordset")
 	Call CreateConn(cn)
 
-	cn.Execute Replace(Replace(sql_admindelfilter,"{0}",tfilterid),"{1}",adminid),,1
+	cn.Execute Replace(Replace(sql_admindelfilter,"{0}",tfilterid),"{1}",adminid),,129
 	
 	cn.Close : set rs=nothing : set cn=nothing
 end if

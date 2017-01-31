@@ -30,7 +30,7 @@ if Request.Form("seltodel")<>"" then
 	set rs=server.CreateObject("ADODB.Recordset")
 	Call CreateConn(cn)
 
-	cn.Execute Replace(Replace(sql_adminmpass,"{0}",ids),"{1}",adminid),,1
+	cn.Execute Replace(Replace(sql_adminmpass,"{0}",ids),"{1}",adminid),,129
 	cn.Close : set rs=nothing : set cn=nothing
 end if
 %>

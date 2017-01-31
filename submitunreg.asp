@@ -75,16 +75,16 @@ del_adminid=rs.Fields("adminid")
 rs.Close : set rs=nothing
 
 cn.BeginTrans
-	cn.Execute Replace(sql_submitunreg_delete_filterconfig,"{0}",del_adminid),,1
-	cn.Execute Replace(sql_submitunreg_delete_ipv4config,"{0}",del_adminid),,1
-	cn.Execute Replace(sql_submitunreg_delete_ipv6config,"{0}",del_adminid),,1
-	cn.Execute Replace(sql_submitunreg_delete_floodconfig,"{0}",del_adminid),,1
-	cn.Execute Replace(sql_submitunreg_delete_stats,"{0}",del_adminid),,1
-	cn.Execute Replace(sql_submitunreg_delete_stats_clientinfo,"{0}",del_adminid),,1
-	cn.Execute Replace(sql_submitunreg_delete_reply,"{0}",del_adminid),,1
-	cn.Execute Replace(sql_submitunreg_delete_main,"{0}",del_adminid),,1
-	cn.Execute Replace(sql_submitunreg_delete_config,"{0}",del_adminid),,1
-	cn.Execute Replace(sql_submitunreg_delete_supervisor,"{0}",del_adminid),,1
+	cn.Execute Replace(sql_submitunreg_delete_filterconfig,"{0}",del_adminid),,129
+	cn.Execute Replace(sql_submitunreg_delete_ipv4config,"{0}",del_adminid),,129
+	cn.Execute Replace(sql_submitunreg_delete_ipv6config,"{0}",del_adminid),,129
+	cn.Execute Replace(sql_submitunreg_delete_floodconfig,"{0}",del_adminid),,129
+	cn.Execute Replace(sql_submitunreg_delete_stats,"{0}",del_adminid),,129
+	cn.Execute Replace(sql_submitunreg_delete_stats_clientinfo,"{0}",del_adminid),,129
+	cn.Execute Replace(sql_submitunreg_delete_reply,"{0}",del_adminid),,129
+	cn.Execute Replace(sql_submitunreg_delete_main,"{0}",del_adminid),,129
+	cn.Execute Replace(sql_submitunreg_delete_config,"{0}",del_adminid),,129
+	cn.Execute Replace(sql_submitunreg_delete_supervisor,"{0}",del_adminid),,129
 cn.CommitTrans
 
 cn.Close : set cn=nothing

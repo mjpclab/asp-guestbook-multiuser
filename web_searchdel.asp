@@ -19,9 +19,9 @@ set cn=server.CreateObject("ADODB.Connection")
 Call CreateConn(cn)
 
 cn.BeginTrans
-	cn.Execute Replace(sql_webnoguestreply_flag,"{0}",Request.QueryString("id")),,1
-	cn.Execute Replace(sql_websearchdel_reply,"{0}",Request.QueryString("id")),,1
-	cn.Execute Replace(sql_websearchdel_main,"{0}",Request.QueryString("id")),,1
+	cn.Execute Replace(sql_webnoguestreply_flag,"{0}",Request.QueryString("id")),,129
+	cn.Execute Replace(sql_websearchdel_reply,"{0}",Request.QueryString("id")),,129
+	cn.Execute Replace(sql_websearchdel_main,"{0}",Request.QueryString("id")),,129
 cn.CommitTrans
 
 cn.close : set cn=nothing

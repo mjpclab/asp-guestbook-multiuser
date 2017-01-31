@@ -48,7 +48,7 @@ if Not IsEmpty(Request.Form) then
 	set cn1=server.CreateObject("ADODB.Connection")
 	Call CreateConn(cn1)
 
-	cn1.Execute Replace(Replace(Replace(Replace(sql_adminsavefloodconfig,"{0}",flood_minwait),"{1}",flood_searchrange),"{2}",flood_searchflag),"{3}",wm_id),,1
+	cn1.Execute Replace(Replace(Replace(Replace(sql_adminsavefloodconfig,"{0}",flood_minwait),"{1}",flood_searchrange),"{2}",flood_searchflag),"{3}",wm_id),,129
 
 	cn1.Close : set cn1=nothing
 end if

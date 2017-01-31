@@ -17,7 +17,7 @@ Call CreateConn(cn)
 'IPConStatus
 Dim tipconstatus
 tipconstatus=clng(Request.Form("ipv4constatus"))+clng(Request.Form("ipv6constatus"))*16
-cn.Execute Replace(Replace(sql_adminsaveipconfig_update,"{0}",tipconstatus),"{1}",wm_id),,1
+cn.Execute Replace(Replace(sql_adminsaveipconfig_update,"{0}",tipconstatus),"{1}",wm_id),,129
 
 function deleteSaved(requestField,sql)
 	Dim inputIds,listid,listids
@@ -30,7 +30,7 @@ function deleteSaved(requestField,sql)
 	next
 	if listids<>"" then
 		listids=Mid(listids,2)
-		cn.Execute Replace(Replace(sql,"{0}",listids),"{1}",wm_id),,1
+		cn.Execute Replace(Replace(sql,"{0}",listids),"{1}",wm_id),,129
 	end if
 end function
 
@@ -53,7 +53,7 @@ function addNewIPv4(requestField,sql)
 		end if
 
 		if isIPv4Range(ipfrom) and isIPv4Range(ipto) then
-			cn.Execute Replace(Replace(Replace(sql,"{0}",ipv4ToHex(ipfrom,false)),"{1}",ipv4ToHex(ipto,true)),"{2}",wm_id),,1
+			cn.Execute Replace(Replace(Replace(sql,"{0}",ipv4ToHex(ipfrom,false)),"{1}",ipv4ToHex(ipto,true)),"{2}",wm_id),,129
 		end if
 	next
 end function
@@ -77,7 +77,7 @@ function addNewIPv6(requestField,sql)
 		end if
 
 		if isIPv6Range(ipfrom) and isIPv6Range(ipto) then
-			cn.Execute Replace(Replace(Replace(sql,"{0}",ipv6ToHex(ipfrom,false)),"{1}",ipv6ToHex(ipto,true)),"{2}",wm_id),,1
+			cn.Execute Replace(Replace(Replace(sql,"{0}",ipv6ToHex(ipfrom,false)),"{1}",ipv6ToHex(ipto,true)),"{2}",wm_id),,129
 		end if
 	next
 end function

@@ -44,15 +44,15 @@ if isnumeric(Request.Form("filterid")) and Request.Form("filterid")<>"" and (Req
 				
 				select case Request.Form("movedirection")
 				case "up","down"
-					cn.Execute Replace(Replace(sql_adminmovefilter_update_updown1,"{0}",filterid1),"{1}",wm_id),,1
-					cn.Execute Replace(Replace(Replace(sql_adminmovefilter_update_updown2,"{0}",qid1),"{1}",qid2),"{2}",wm_id),,1
-					cn.Execute Replace(Replace(sql_adminmovefilter_update_updown3,"{0}",qid2),"{1}",wm_id),,1
+					cn.Execute Replace(Replace(sql_adminmovefilter_update_updown1,"{0}",filterid1),"{1}",wm_id),,129
+					cn.Execute Replace(Replace(Replace(sql_adminmovefilter_update_updown2,"{0}",qid1),"{1}",qid2),"{2}",wm_id),,129
+					cn.Execute Replace(Replace(sql_adminmovefilter_update_updown3,"{0}",qid2),"{1}",wm_id),,129
 				case "top"
-					cn.Execute Replace(Replace(sql_adminmovefilter_update_top1,"{0}",qid1),"{1}",wm_id),,1
-					cn.Execute Replace(Replace(Replace(sql_adminmovefilter_update_top2,"{0}",qid2),"{1}",filterid1),"{2}",wm_id),,1
+					cn.Execute Replace(Replace(sql_adminmovefilter_update_top1,"{0}",qid1),"{1}",wm_id),,129
+					cn.Execute Replace(Replace(Replace(sql_adminmovefilter_update_top2,"{0}",qid2),"{1}",filterid1),"{2}",wm_id),,129
 				case "bottom"
-					cn.Execute Replace(Replace(sql_adminmovefilter_update_bottom1,"{0}",qid1),"{1}",wm_id),,1
-					cn.Execute Replace(Replace(Replace(sql_adminmovefilter_update_bottom2,"{0}",qid2),"{1}",filterid1),"{2}",wm_id),,1
+					cn.Execute Replace(Replace(sql_adminmovefilter_update_bottom1,"{0}",qid1),"{1}",wm_id),,129
+					cn.Execute Replace(Replace(Replace(sql_adminmovefilter_update_bottom2,"{0}",qid2),"{1}",filterid1),"{2}",wm_id),,129
 				end select
 									
 				cn.CommitTrans

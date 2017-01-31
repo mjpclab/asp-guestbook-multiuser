@@ -33,9 +33,9 @@ if Request.Form("seltodel")<>"" then
 	Call CreateConn(cn)
 
 	cn.BeginTrans
-		cn.Execute Replace(Replace(sql_noguestreply_flag,"{0}",ids),"{1}",adminid),,1
-		cn.Execute Replace(Replace(sql_adminmdel_reply,"{0}",ids),"{1}",adminid),,1
-		cn.Execute Replace(Replace(sql_adminmdel_main,"{0}",ids),"{1}",adminid),,1
+		cn.Execute Replace(Replace(sql_noguestreply_flag,"{0}",ids),"{1}",adminid),,129
+		cn.Execute Replace(Replace(sql_adminmdel_reply,"{0}",ids),"{1}",adminid),,129
+		cn.Execute Replace(Replace(sql_adminmdel_main,"{0}",ids),"{1}",adminid),,129
 	cn.CommitTrans
 
 	cn.Close : set rs=nothing : set cn=nothing

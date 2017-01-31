@@ -25,16 +25,16 @@ if Not IsEmpty(Request.Form) then
 		Call CreateConn(cn)
 
 		cn.BeginTrans
-		cn.Execute Replace(sql_webdeluser_filterconfig,"{0}",users),,1
-		cn.Execute Replace(sql_webdeluser_ipv4config,"{0}",users),,1
-		cn.Execute Replace(sql_webdeluser_ipv6config,"{0}",users),,1
-		cn.Execute Replace(sql_webdeluser_floodconfig,"{0}",users),,1
-		cn.Execute Replace(sql_webdeluser_stats,"{0}",users),,1
-		cn.Execute Replace(sql_webdeluser_stats_clientinfo,"{0}",users),,1
-		cn.Execute Replace(sql_webdeluser_reply,"{0}",users),,1
-		cn.Execute Replace(sql_webdeluser_main,"{0}",users),,1
-		cn.Execute Replace(sql_webdeluser_config,"{0}",users),,1
-		cn.Execute Replace(sql_webdeluser_supervisor,"{0}",users),affected,1
+		cn.Execute Replace(sql_webdeluser_filterconfig,"{0}",users),,129
+		cn.Execute Replace(sql_webdeluser_ipv4config,"{0}",users),,129
+		cn.Execute Replace(sql_webdeluser_ipv6config,"{0}",users),,129
+		cn.Execute Replace(sql_webdeluser_floodconfig,"{0}",users),,129
+		cn.Execute Replace(sql_webdeluser_stats,"{0}",users),,129
+		cn.Execute Replace(sql_webdeluser_stats_clientinfo,"{0}",users),,129
+		cn.Execute Replace(sql_webdeluser_reply,"{0}",users),,129
+		cn.Execute Replace(sql_webdeluser_main,"{0}",users),,129
+		cn.Execute Replace(sql_webdeluser_config,"{0}",users),,129
+		cn.Execute Replace(sql_webdeluser_supervisor,"{0}",users),affected,129
 		cn.CommitTrans
 
 		cn.Close

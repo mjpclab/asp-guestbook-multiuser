@@ -25,8 +25,8 @@ set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 
 tnow=now()
-cn.Execute Replace(Replace(sql_adminclearstats_startdate,"{0}",tnow),"{1}",adminid),,1
-cn.Execute Replace(sql_adminclearstats_client,"{0}",adminid),,1
+cn.Execute Replace(Replace(sql_adminclearstats_startdate,"{0}",tnow),"{1}",adminid),,129
+cn.Execute Replace(sql_adminclearstats_client,"{0}",adminid),,129
 
 cn.close
 set rs=nothing

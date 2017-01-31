@@ -33,12 +33,12 @@ function addstat(byref fieldname)
 	rsa.Open Replace(Replace(sql_common_getstat,"{0}",fieldname),"{1}",adminid),cna,0,1,1
 
 	if rsa.EOF then
-		cna.Execute Replace(Replace(sql_common_initstat,"{0}",DateTimeStr(Now())),"{1}",adminid),,1
+		cna.Execute Replace(Replace(sql_common_initstat,"{0}",DateTimeStr(Now())),"{1}",adminid),,129
 	elseif isdate(rsa.Fields("startdate"))=false then
-		cna.Execute Replace(Replace(sql_common_updatetime,"{0}",DateTimeStr(Now())),"{1}",adminid),,1
+		cna.Execute Replace(Replace(sql_common_updatetime,"{0}",DateTimeStr(Now())),"{1}",adminid),,129
 	end if
 	rsa.Close
-	cna.Execute Replace(Replace(sql_common_addstat,"{0}",fieldname),"{1}",adminid),,1
+	cna.Execute Replace(Replace(sql_common_addstat,"{0}",fieldname),"{1}",adminid),,129
 
 	cna.Close
 	set rsa=nothing

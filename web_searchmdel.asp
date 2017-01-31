@@ -22,9 +22,9 @@ if Request.Form("seltodel")<>"" then
 	Call CreateConn(cn)
 
 	cn.BeginTrans
-		cn.Execute Replace(sql_webnoguestreply_flag,"{0}",ids),,1
-		cn.Execute Replace(sql_websearchmdel_reply,"{0}",ids),,1
-		cn.Execute Replace(sql_websearchmdel_main,"{0}",ids),,1
+		cn.Execute Replace(sql_webnoguestreply_flag,"{0}",ids),,129
+		cn.Execute Replace(sql_websearchmdel_reply,"{0}",ids),,129
+		cn.Execute Replace(sql_websearchmdel_main,"{0}",ids),,129
 	cn.CommitTrans
 
 	cn.close : set cn=nothing

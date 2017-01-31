@@ -78,7 +78,7 @@ if tfindexp<>"" then
 	pfilterid=rs(0)
 	rs.Close
 	
-	cn.Execute Replace(Replace(sql_adminfilter_update,"{0}",pfilterid),"{1}",wm_id),,1
+	cn.Execute Replace(Replace(sql_adminfilter_update,"{0}",pfilterid),"{1}",wm_id),,129
 
 	cn.CommitTrans
 	

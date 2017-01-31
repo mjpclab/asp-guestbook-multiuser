@@ -24,7 +24,7 @@ if Request.Form("users")<>"" then
 		set cn=server.CreateObject("ADODB.Connection")
 		Call CreateConn(cn)
 
-		cn.execute Replace(sql_webmdeldec,"{0}",users),affected,1
+		cn.execute Replace(sql_webmdeldec,"{0}",users),affected,129
 
 		cn.Close
 		set cn=nothing

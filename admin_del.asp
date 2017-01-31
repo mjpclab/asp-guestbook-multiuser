@@ -30,9 +30,9 @@ set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 
 cn.BeginTrans
-	cn.Execute Replace(Replace(sql_noguestreply_flag,"{0}",Request.QueryString("id")),"{1}",adminid),,1
-	cn.Execute Replace(Replace(sql_admindelmessage_reply,"{0}",Request.QueryString("id")),"{1}",adminid),,1
-	cn.Execute Replace(Replace(sql_admindelmessage_main,"{0}",Request.QueryString("id")),"{1}",adminid),,1
+	cn.Execute Replace(Replace(sql_noguestreply_flag,"{0}",Request.QueryString("id")),"{1}",adminid),,129
+	cn.Execute Replace(Replace(sql_admindelmessage_reply,"{0}",Request.QueryString("id")),"{1}",adminid),,129
+	cn.Execute Replace(Replace(sql_admindelmessage_main,"{0}",Request.QueryString("id")),"{1}",adminid),,129
 cn.CommitTrans
 
 cn.close : set rs=nothing : set cn=nothing

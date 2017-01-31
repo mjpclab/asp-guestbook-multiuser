@@ -17,7 +17,7 @@ end if
 set cn=server.CreateObject("ADODB.Connection")
 Call CreateConn(cn)
 
-cn.Execute sql_web_searchpassaudit & Request.QueryString("id"),,1
+cn.Execute sql_web_searchpassaudit & Request.QueryString("id"),,129
 
 cn.close : set cn=nothing
 %>

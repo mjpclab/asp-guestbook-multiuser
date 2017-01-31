@@ -46,7 +46,7 @@ Call CreateConn(cn)
 <%
 rs.Open Replace(sql_adminstats_startdate,"{0}",adminid),cn,0,3,1
 if rs.EOF then
-	cn.Execute Replace(Replace(sql_adminstats_insert,"{0}",now()),"{1}",adminid),,1
+	cn.Execute Replace(Replace(sql_adminstats_insert,"{0}",now()),"{1}",adminid),,129
 else
 	if isdate(rs(0))=false then
 		rs(0)=now()

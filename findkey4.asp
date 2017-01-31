@@ -84,7 +84,7 @@ if md5(Request.Form("key"),32)<>rs("key") then
 	Response.End
 end if
 rs.Close : set rs=nothing
-cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"),32)),"{1}",ruser),,1
+cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"),32)),"{1}",ruser),,129
 
 %>
 
