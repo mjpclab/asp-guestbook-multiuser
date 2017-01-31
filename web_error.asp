@@ -14,6 +14,8 @@ sub WebErrorPage(errorCode)
 		errmsg="对不起，您的访问已被禁止，请稍后再试。"
 	case 5
 		errmsg="对不起，自删帐号功能已关闭，请稍后再试。"
+	case 6
+		errmsg="对不起，留言本账号已被禁用，请联系管理员。"
 	case else
 		errmsg="未知错误，请联系管理员。"
 	end select
