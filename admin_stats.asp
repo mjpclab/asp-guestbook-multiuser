@@ -17,10 +17,6 @@
 <!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
 
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")

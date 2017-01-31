@@ -15,11 +15,6 @@
 <%
 Response.Expires=-1
 
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
-
 if Not IsEmpty(Request.Form) then
 	dim flood_minwait,flood_searchrange,flood_searchflag
 

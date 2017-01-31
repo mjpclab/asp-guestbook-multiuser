@@ -27,11 +27,6 @@
 Response.Expires=-1
 Response.AddHeader "cache-control","private"
 
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
-
 Sub GoBack
 	if Request("type")<>"" and Request("searchtxt")<>"" then
 		Response.Redirect "admin_search.asp?user=" &ruser& "&page=" & Request("page") & "&type=" & server.URLEncode(Request("type")) & "&searchtxt=" & server.URLEncode(Request("searchtxt"))

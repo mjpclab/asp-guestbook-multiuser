@@ -14,10 +14,6 @@
 <!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
 
 if isnumeric(Request.Form("filterid")) and Request.Form("filterid")<>"" and (Request.Form("movedirection")="up" or Request.Form("movedirection")="down" or Request.Form("movedirection")="top" or Request.Form("movedirection")="bottom") then
 	 filterid1=clng(Request.Form("filterid"))

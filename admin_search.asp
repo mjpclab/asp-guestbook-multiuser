@@ -25,10 +25,6 @@
 <%
 Response.Expires=-1
 Response.AddHeader "cache-control","private"
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
 %>
 
 <!-- #include file="include/template/dtd.inc" -->

@@ -15,10 +15,6 @@
 <!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
 if isnumeric(Request.QueryString("id"))=false or Request.QueryString("id")="" then
 	Response.Redirect "admin.asp?user=" &ruser
 	Response.End 

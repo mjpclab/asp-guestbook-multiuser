@@ -13,11 +13,8 @@
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="admin_verify.asp" -->
 <!-- #include file="web_error.asp" -->
-<%Response.Expires=-1
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
+<%
+Response.Expires=-1
 %>
 
 <!-- #include file="include/template/dtd.inc" -->

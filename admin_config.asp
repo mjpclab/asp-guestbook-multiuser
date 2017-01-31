@@ -16,10 +16,6 @@
 <!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
 %>
 
 <!-- #include file="include/template/dtd.inc" -->

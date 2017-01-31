@@ -19,11 +19,6 @@
 Response.Expires = -1
 Response.AddHeader "Pragma","no-cache"
 Response.AddHeader "cache-control","no-cache, must-revalidate"
-
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
 %>
 
 <!-- #include file="include/template/dtd.inc" -->

@@ -14,10 +14,6 @@
 <!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
 
 tfindexp=Request.Form("findexp")
 if tfindexp<>"" then

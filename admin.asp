@@ -40,11 +40,6 @@ Response.AddHeader "cache-control","private"
 <body<%=bodylimit%> onload="<%=framecheck%>">
 
 <%
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
-
 set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)

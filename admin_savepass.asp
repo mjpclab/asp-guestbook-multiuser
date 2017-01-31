@@ -19,10 +19,6 @@
 <!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
 
 if IsEmpty(Request.Form) then
 	Response.Redirect "admin_chpass.asp?user=" &ruser

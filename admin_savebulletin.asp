@@ -16,10 +16,6 @@
 <!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
 
 if Not IsEmpty(Request.Form) then
 	dim tlimit

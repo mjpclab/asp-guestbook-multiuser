@@ -18,10 +18,6 @@
 <%
 Response.Expires=-1
 
-if web_checkIsBannedIP() then
-	Call WebErrorPage(4)
-	Response.End
-end if
 
 sub errorbox(errmsg)
 	Call TipsPage(errmsg,"admin_config.asp?user=" & ruser & "&tabIndex=" & Request.Form("tabIndex"))
