@@ -123,6 +123,9 @@ StatusWhisper=CBool(status and 32)	'允许悄悄话
 StatusEncryptWhisper=CBool(status and 64)	'允许访客加密悄悄话回复
 StatusGuestReply=CBool(status and 128)	'允许访客回复
 if StatusStatistics then StatusStatistics=CBool(status and 256)	'统计开启
+StatusAccountEnabled=Not CBool(status and 1073741824)	'账号启用状态
+StatusAccountLoginEnabled=Not CBool(status and 536870912)	'账号启用状态
+StatusAccountLeavewordEnabled=Not CBool(status and 268435456)	'账号启用状态
 
 IPConStatus=lrs("ipconstatus")	'IP屏蔽策略，低4位用于IPv4，高4位用于IPv6
 IPv4ConStatus=IPConStatus mod 16

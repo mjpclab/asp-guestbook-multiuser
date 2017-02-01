@@ -22,6 +22,12 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 if web_checkIsBannedIP() then
 	Call WebErrorPage(4)
 	Response.End
+elseif Not StatusAccountEnabled then
+	Call WebErrorPage(6)
+	Response.End
+elseif Not StatusAccountLeavewordEnabled then
+	Call ErrorPage(102)
+	Response.End
 elseif checkIsBannedIP() then
 	Call ErrorPage(1)
 	Response.End

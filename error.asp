@@ -18,6 +18,10 @@ sub ErrorPage(errorCode)
 		errmsg="对不起，您的发言速度太快了，请休息一下。"
 	case 7
 		errmsg="对不起，请不要发送重复内容。"
+	case 101
+		errmsg="对不起，留言本账号登陆已被禁用，请联系管理员。"
+	case 102
+		errmsg="对不起，留言本账号签写留言已被禁用，请联系管理员。"
 	case else
 		errmsg="未知错误，请联系管理员。"
 	end select

@@ -45,8 +45,9 @@ checkuser cn,rs,false
 		if rs("faceid")>0 then Response.Write "<img src=""asset/face/" & rs("faceid") & ".gif" & """>"
 		%>
 		<p class="field">
-			<a href="index.asp?user=<%=rs("adminname")%>" target="_blank">[打开留言本]</a>
-			<a href="web_chuserpass.asp?user=<%=rs("adminname")%>">[重设用户密码]</a>
+			<a href="index.asp?user=<%=ruser%>" target="_blank">[打开留言本]</a>
+			<a href="web_chuserpass.asp?user=<%=ruser%>">[重设用户密码]</a>
+			<a href="web_chuserstatus.asp?user=<%=ruser%>">[更改账号状态]</a>
 		</p>
 		<table cellpadding="5">
 			<tr><th scope="row">用户名</th><td><%=rs("adminname")%></td></tr>
@@ -57,7 +58,16 @@ checkuser cn,rs,false
 			<tr><th scope="row">主页</th><td><%=rs("homepage") & ""%></td></tr>
 
 			<%
-			adminid=rs.Fields("adminid")
+			rs.Close
+			rs.Open Replace(sql_webuserinfo_status,"{0}",adminid),cn,,,1
+			Dim userstatus
+			userstatus=rs.Fields(0)
+			%>
+			<tr><th scope="row">账号状态</th><td><%if CBool(userstatus AND 1073741824) then Response.Write "禁用" else Response.Write "启用"%></td></tr>
+			<tr><th scope="row">账号管理登陆状态</th><td><%if CBool(userstatus AND 536870912) then Response.Write "禁用" else Response.Write "启用"%></td></tr>
+			<tr><th scope="row">账号签写留言状态</th><td><%if CBool(userstatus AND 268435456) then Response.Write "禁用" else Response.Write "启用"%></td></tr>
+
+			<%
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_count_view,"{0}",adminid),cn,,,1
 			%>

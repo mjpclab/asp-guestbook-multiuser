@@ -12,6 +12,7 @@
 <!-- #include file="include/utility/book.asp" -->
 <!-- #include file="loadconfig.asp" -->
 <!-- #include file="web_error.asp" -->
+<!-- #include file="error.asp" -->
 <%
 Response.Expires = -1
 Response.AddHeader "Pragma","no-cache"
@@ -19,6 +20,12 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 
 if web_checkIsBannedIP() then
 	Call WebErrorPage(4)
+	Response.End
+elseif Not StatusAccountEnabled then
+	Call WebErrorPage(6)
+	Response.End
+elseif Not StatusAccountLoginEnabled then
+	Call ErrorPage(101)
 	Response.End
 elseif Not StatusLogin then
 	Call WebErrorPage(3)

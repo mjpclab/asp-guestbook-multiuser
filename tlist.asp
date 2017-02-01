@@ -15,6 +15,9 @@
 Response.Expires=-1
 if web_checkIsBannedIP() then
 	Response.End
+elseif Not StatusAccountEnabled then
+	Call WebErrorPage(6)
+	Response.End
 elseif checkIsBannedIP() then
 	Response.End
 elseif Not StatusOpen then
