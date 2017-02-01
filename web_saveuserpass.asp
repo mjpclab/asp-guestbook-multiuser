@@ -28,7 +28,7 @@ elseif request.Form("inewpass1")="" then
 	cn.Close : set rs=nothing : set cn=nothing
 	Call TipsPage("密码不能为空，请重新输入。","web_chuserpass.asp?user=" & ruser)
 else
-	cn.Execute Replace(Replace(sql_websaveuserpass,"{0}",md5(Request.Form("inewpass1"),32)),"{1}",ruser),,129
+	cn.Execute Replace(Replace(Replace(sql_websaveuserpass,"{0}",md5(Request.Form("inewpass1"),32)),"{1}",adminid),"{2}",ruser),,129
 	cn.Close : set rs=nothing : set cn=nothing
 	Response.Redirect "web_userinfo.asp?user=" & ruser
 end if
