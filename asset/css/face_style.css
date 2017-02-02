@@ -1,0 +1,36 @@
+.main {
+	overflow: hidden;
+	padding: 10px;
+}
+
+.main .image {
+	float: left;
+	margin-right: 15px;
+}
+
+.main .image img {
+	display: block;
+	margin-bottom: 15px;
+	border: 1px #ddd solid;
+}
+
+.main .content {
+	overflow: hidden;
+}
+
+* html .main .content {
+	zoom: 1;
+}
+
+.main h3 {
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 0;
+	padding-bottom: 1em;
+	border-bottom: 1px dashed;
+}
+
+.main h4 {
+	font-size: 14px;
+	font-weight: bold;
+}
