@@ -1,7 +1,5 @@
 <!-- #include file="include/sql/loadconfig.asp" -->
 <%
-web_BookName="多用户留言本系统"
-
 dim lcn,lrs
 set lcn=server.CreateObject("ADODB.Connection")
 set lrs=server.CreateObject("ADODB.Recordset")

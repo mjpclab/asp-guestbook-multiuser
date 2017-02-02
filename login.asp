@@ -1,5 +1,6 @@
 <!-- #include file="include/template/page_instruction.inc" -->
 <!-- #include file="config/system.asp" -->
+<!-- #include file="config/web.asp" -->
 <!-- #include file="config/database.asp" -->
 <!-- #include file="include/sql/init.asp" -->
 <!-- #include file="include/sql/common.asp" -->
@@ -31,7 +32,7 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=HomeName%> 留言本 管理员登录</title>
+	<title><%=web_BookName%> 留言本 管理员登录</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
 
