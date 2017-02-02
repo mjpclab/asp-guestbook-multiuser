@@ -109,6 +109,8 @@ cn.close
 </div>
 
 <%
+iPage=Request.QueryString("page")
+
 Call CreateConn(cn)
 rs.Open Replace(Replace(sql_adminreply_words,"{0}",Request.QueryString("id")),"{1}",adminid),cn,,,1
 
