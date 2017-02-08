@@ -162,13 +162,13 @@ sub web_getadmininfo()
 	set rs3=server.CreateObject("ADODB.Recordset")
 	rs3.open Replace(sql_websearch_admininfo,"{0}",rs.Fields("adminid")),cn,0,1,1
 
-	admin_name="" & rs3.fields("name") & ""
-	admin_faceid="" & rs3.fields("faceid") & ""
-	admin_faceurl="" & rs3.fields("faceurl") & ""
-	admin_email="" & rs3.fields("email") & ""
-	admin_qqid="" & rs3.fields("qqid") & ""
-	admin_msnid="" & rs3.fields("msnid") & ""
-	admin_homepage="" & rs3.fields("homepage") & ""
+	admin_name="" & rs3.fields("name")
+	admin_faceid="" & rs3.fields("faceid")
+	admin_faceurl="" & rs3.fields("faceurl")
+	admin_email="" & rs3.fields("email")
+	admin_qqid="" & rs3.fields("qqid")
+	admin_msnid="" & rs3.fields("msnid")
+	admin_homepage="" & rs3.fields("homepage")
 
 	rs3.close
 	set rs3=nothing
@@ -180,13 +180,13 @@ sub getadmininfo()
 	set rs3=server.CreateObject("ADODB.Recordset")
 	rs3.open Replace(sql_common2_getadmininfo,"{0}",adminid),cn,0,1,1
 
-	admin_name="" & rs3.fields("name") & ""
-	admin_faceid="" & rs3.fields("faceid") & ""
-	admin_faceurl="" & rs3.fields("faceurl") & ""
-	admin_email="" & rs3.fields("email") & ""
-	admin_qqid="" & rs3.fields("qqid") & ""
-	admin_msnid="" & rs3.fields("msnid") & ""
-	admin_homepage="" & rs3.fields("homepage") & ""
+	admin_name="" & rs3.fields("name")
+	admin_faceid="" & rs3.fields("faceid")
+	admin_faceurl="" & rs3.fields("faceurl")
+	admin_email="" & rs3.fields("email")
+	admin_qqid="" & rs3.fields("qqid")
+	admin_msnid="" & rs3.fields("msnid")
+	admin_homepage="" & rs3.fields("homepage")
 
 	rs3.close
 	set rs3=nothing
