@@ -79,7 +79,7 @@ Response.Expires=-1
 				</div>
 				<div class="field">
 					<span class="label">ÁôÑÔÏÔÊ¾Ç°ÐèÉóºË</span>
-					<span class="value"><input type="radio" name="status5" value="1" id="status51"<%=cked(CBool(tstatus AND 16))%> /><label for="status51">ÉóºË</label>¡¡¡¡<input type="radio" name="status5" value="0" id="status52"<%=cked(Not CBool(tstatus AND 16))%> /><label for="status52">²»ÉóºË</label></span>
+					<span class="value"><input type="radio" name="status5" value="1" id="status51"<%=cked(CBool(tstatus AND 16))%><%=dised(web_StatusNeedAudit)%> /><label for="status51">ÉóºË</label>¡¡¡¡<input type="radio" name="status5" value="0" id="status52"<%=cked(Not CBool(tstatus AND 16))%><%=dised(web_StatusNeedAudit)%> /><label for="status52">²»ÉóºË</label></span>
 				</div>
 				<div class="field">
 					<span class="label">ÇÄÇÄ»°¹¦ÄÜ</span>
