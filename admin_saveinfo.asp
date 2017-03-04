@@ -17,7 +17,6 @@
 <!-- #include file="web_error.asp" -->
 <%
 Response.Expires=-1
-
 if Not IsEmpty(Request.Form) then
 	tname=HtmlEncode(Request.Form("aname"))
 
@@ -35,6 +34,7 @@ if Not IsEmpty(Request.Form) then
 	tfaceurl=replace(HtmlEncode(Request.Form("afaceurl"))," ","")
 	if tfaceurl<>"" then
 		if InStr(tfaceurl,"://")=0 then tfaceurl="http://" & tfaceurl
+		tfaceurl=Left(tfaceurl,127)
 	end if
 
 	temail=replace(HtmlEncode(Request.Form("aemail"))," ","")
@@ -44,6 +44,7 @@ if Not IsEmpty(Request.Form) then
 	thomepage=replace(HtmlEncode(Request.Form("ahomepage"))," ","")
 	if thomepage<>"" then
 		if InStr(thomepage,"://")=0 then thomepage="http://" & thomepage
+		thomepage=Left(thomepage,127)
 	end if
 
 	set cn1=server.CreateObject("ADODB.Connection")
