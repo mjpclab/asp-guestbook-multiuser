@@ -297,7 +297,7 @@ param_url=param_url & param_temp
 %>
 <div class="admin-message-tools">
 	<label class="tool" for="c<%=rs("id")%>"><input type="checkbox" name="seltodel" class="seltodel checkbox" id="c<%=rs("id")%>" value="<%=rs("id")%>" />(选定)</label>
-	<span class="tool">所属用户：<a href="web_userinfo.asp?user=<%=adminname%>" target="_blank"><%=adminname%></a></span>
+	<span class="tool">用户：<a href="web_userinfo.asp?user=<%=adminname%>" target="_blank"><%=adminname%></a></span>
 	<a class="tool" href="web_searchdel.asp<%=param_url%>" title="删除留言"<%if DelTip then Response.Write " onclick=""return confirm('确实要删除留言吗？');"""%>><img src="asset/image/icon_del.gif"/>删除</a>
 	<%if CBool(rs("replied") AND 1) then%><a class="tool" href="web_searchdelreply.asp<%=param_url%><%if isnumeric(Request.QueryString("page")) and Request.QueryString("page")<>"" then response.write "&page=" & Request.QueryString("page")%><%=param_str%>" title="删除回复"<%if DelReTip then Response.Write " onclick=""return confirm('确实要删除回复吗？')"""%>><img border="0" src="asset/image/icon_delreply.gif" />删除回复</a><%end if%>
 	<%if CBool(guestflag AND 16) then%><a class="tool" href="web_searchpassaudit.asp<%=param_url%>" title="通过审核"<%if PassAuditTip then response.Write " onclick=""return confirm('确实要通过审核吗？');"""%>><img src="asset/image/icon_pass.gif" />通过审核</a><%end if%>

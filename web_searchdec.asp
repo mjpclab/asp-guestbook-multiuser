@@ -107,7 +107,7 @@ else
 %>
 
 	<div class="region region-bulletin">
-		<h3 class="title">所属用户：<a href="web_userinfo.asp?user=<%=rsuser%>" target="_blank"><%=rsuser%></a></h3>
+		<h3 class="title">用户：<a href="web_userinfo.asp?user=<%=rsuser%>" target="_blank"><%=rsuser%></a></h3>
 		<div class="content">
 			<%
 			pub_flag=rs("declareflag")

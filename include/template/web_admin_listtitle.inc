@@ -1,7 +1,7 @@
 <table class="topic-list">
 <thead>
 <tr>
-	<th class="select"><input type="checkbox" name="seltodel" class="seltodel checkbox" value=""/></th><th class="icon"></th><th class="title">标题</th><th class="name">姓名</th><th class="date">留言时间</th><th class="user">所属用户</th>
+	<th class="select"><input type="checkbox" name="seltodel" class="seltodel checkbox" value=""/></th><th class="icon"></th><th class="title">标题</th><th class="name">姓名</th><th class="date">留言时间</th><th class="user">用户</th>
 </tr>
 </thead>
 <tbody>
