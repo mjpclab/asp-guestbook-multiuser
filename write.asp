@@ -211,7 +211,7 @@ for i=1 to 2
 			re.IgnoreCase=Not CBool(tfiltermode AND 8192)
 			if CBool(tfiltermode AND 512) then  'wildcard
 				re.Multiline=false
-				re.Pattern=Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(re.Pattern,"(","\("),")","\)"),"[","\["),"]","\]"),"{","\{"),"}","\}"),"<","\<"),">","\>"),"^","\^"),"$","\$"),"\","\\"),".","\."),"?","."),"*",".*?")
+				re.Pattern=Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(re.Pattern,"(","\("),")","\)"),"[","\["),"]","\]"),"{","\{"),"}","\}"),"<","\<"),">","\>"),"^","\^"),"$","\$"),"+","\+"),"\","\\"),".","\."),"?","."),"*",".*?")
 			elseif CBool(tfiltermode AND 1024) then     'regexp
 				re.Multiline=false
 			elseif CBool(tfiltermode AND 2048) then     'regexp multiline
