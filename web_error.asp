@@ -1,7 +1,5 @@
 <%
 sub WebErrorPage(errorCode)
-	Response.Status="403 Forbidden"
-
 	dim errmsg
 	select case errorCode
 	case 1
