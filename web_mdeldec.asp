@@ -30,7 +30,7 @@ if Request.Form("users")<>"" then
 		set cn=nothing
 	end if
 
-	Call TipsPage("ÒÑÉ¾³ı" &affected& "Ìõ¹«¸æ¡£",Replace(Replace(Replace("web_searchdec.asp?adminname={0}&searchtxt={1}&page={2}","{0}",server.URLEncode(Request.Form("adminname"))),"{1}",server.URLEncode(request.Form("searchtxt"))),"{2}",request.Form("page")))
+	Call TipsPage("å·²åˆ é™¤" &affected& "æ¡å…¬å‘Šã€‚",Replace(Replace(Replace("web_searchdec.asp?adminname={0}&searchtxt={1}&page={2}","{0}",server.URLEncode(Request.Form("adminname"))),"{1}",server.URLEncode(request.Form("searchtxt"))),"{2}",request.Form("page")))
 else
 	Response.Redirect "web_searchdec.asp"
 end if

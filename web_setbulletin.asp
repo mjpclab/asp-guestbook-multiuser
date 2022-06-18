@@ -16,7 +16,7 @@
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster¹ÜÀíÖÐÐÄ ·¢²¼ÏµÍ³¹«¸æ</title>
+	<title><%=web_BookName%> Webmasterç®¡ç†ä¸­å¿ƒ å‘å¸ƒç³»ç»Ÿå…¬å‘Š</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 
 	<script type="text/javascript">
@@ -35,7 +35,7 @@
 
 <div id="outerborder" class="outerborder">
 
-	<%Call WebInitHeaderData("","Webmaster¹ÜÀíÖÐÐÄ","","")%><!-- #include file="include/template/header.inc" -->
+	<%Call WebInitHeaderData("","Webmasterç®¡ç†ä¸­å¿ƒ","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 	<%
@@ -60,23 +60,23 @@
 	%>
 
 	<div class="region">
-		<h3 class="title">·¢²¼ÏµÍ³¹«¸æ</h3>
+		<h3 class="title">å‘å¸ƒç³»ç»Ÿå…¬å‘Š</h3>
 		<div class="content">
 			<form method="post" action="web_savebulletin.asp" name="form6" onsubmit="form6.submit1.disabled=true;">
-			¹«¸æÄÚÈÝ£º<br/><textarea name="abulletin" id="abulletin" onkeydown="if(!this.modified)this.modified=true; var e=event?event:arguments[0]; if(e && e.ctrlKey && e.keyCode==13 && this.form.submit1)this.form.submit1.click();" rows="<%=ReplyTextHeight%>"><%=tbul%></textarea>
+			å…¬å‘Šå†…å®¹ï¼š<br/><textarea name="abulletin" id="abulletin" onkeydown="if(!this.modified)this.modified=true; var e=event?event:arguments[0]; if(e && e.ctrlKey && e.keyCode==13 && this.form.submit1)this.form.submit1.click();" rows="<%=ReplyTextHeight%>"><%=tbul%></textarea>
 			<!-- #include file="include/template/ubbtoolbar.inc" -->
 			<%ShowUbbToolBar(1)%>
 			<p>
-			<input type="checkbox" name="html2" id="html2" value="1"<%=cked(CBool(tflag AND 1))%> /><label for="html2">Ö§³ÖHTML±ê¼Ç</label><br/>
-			<input type="checkbox" name="ubb2" id="ubb2" value="1"<%=cked(CBool(tflag AND 2))%> /><label for="ubb2">Ö§³ÖUBB±ê¼Ç</label><br/>
-			<input type="checkbox" name="newline2" id="newline2" value="1"<%=cked(CBool(tflag AND 4))%> /><label for="newline2">²»Ö§³ÖHTMLºÍUBB±ê¼ÇÊ±ÔÊÐí»Ø³µ»»ÐÐ</label><br/><br/>
+			<input type="checkbox" name="html2" id="html2" value="1"<%=cked(CBool(tflag AND 1))%> /><label for="html2">æ”¯æŒHTMLæ ‡è®°</label><br/>
+			<input type="checkbox" name="ubb2" id="ubb2" value="1"<%=cked(CBool(tflag AND 2))%> /><label for="ubb2">æ”¯æŒUBBæ ‡è®°</label><br/>
+			<input type="checkbox" name="newline2" id="newline2" value="1"<%=cked(CBool(tflag AND 4))%> /><label for="newline2">ä¸æ”¯æŒHTMLå’ŒUBBæ ‡è®°æ—¶å…è®¸å›žè½¦æ¢è¡Œ</label><br/><br/>
 
-			<input type="checkbox" name="pub_at_face" id="pub_at_face" value="1"<%=cked(CBool(tflag AND 16))%> /><label for="pub_at_face">ÔÚÊ×Ò³·¢²¼</label><br/>
-			<input type="checkbox" name="pub_at_function" id="pub_at_function" value="1"<%=cked(CBool(tflag AND 32))%> /><label for="pub_at_function">ÔÚ¹¦ÄÜÒ³·¢²¼(×¢²á¡¢Î¬»¤¡­¡­)</label><br/>
-			<input type="checkbox" name="pub_at_index" id="pub_at_index" value="1"<%=cked(CBool(tflag AND 64))%> /><label for="pub_at_index">ÔÚÓÃ»§ÁôÑÔ¡¢ËÑË÷Ò³·¢²¼</label><br/>
-			<input type="checkbox" name="pub_at_search" id="pub_at_search" value="1"<%=cked(CBool(tflag AND 128))%> /><label for="pub_at_search">ÔÚÓÃ»§¹ÜÀíÔ±Ê×Ò³·¢²¼</label>
+			<input type="checkbox" name="pub_at_face" id="pub_at_face" value="1"<%=cked(CBool(tflag AND 16))%> /><label for="pub_at_face">åœ¨é¦–é¡µå‘å¸ƒ</label><br/>
+			<input type="checkbox" name="pub_at_function" id="pub_at_function" value="1"<%=cked(CBool(tflag AND 32))%> /><label for="pub_at_function">åœ¨åŠŸèƒ½é¡µå‘å¸ƒ(æ³¨å†Œã€ç»´æŠ¤â€¦â€¦)</label><br/>
+			<input type="checkbox" name="pub_at_index" id="pub_at_index" value="1"<%=cked(CBool(tflag AND 64))%> /><label for="pub_at_index">åœ¨ç”¨æˆ·ç•™è¨€ã€æœç´¢é¡µå‘å¸ƒ</label><br/>
+			<input type="checkbox" name="pub_at_search" id="pub_at_search" value="1"<%=cked(CBool(tflag AND 128))%> /><label for="pub_at_search">åœ¨ç”¨æˆ·ç®¡ç†å‘˜é¦–é¡µå‘å¸ƒ</label>
 			</p>
-			<div class="command"><input value="¸üÐÂÊý¾Ý" type="submit" name="submit1" id="submit1" /></div>
+			<div class="command"><input value="æ›´æ–°æ•°æ®" type="submit" name="submit1" id="submit1" /></div>
 			</form>
 		</div>
 	</div>

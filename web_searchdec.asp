@@ -26,7 +26,7 @@ Response.AddHeader "cache-control","private"
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster¹ÜÀíÖĞĞÄ ËÑË÷ÖÃ¶¥¹«¸æ</title>
+	<title><%=web_BookName%> Webmasterç®¡ç†ä¸­å¿ƒ æœç´¢ç½®é¡¶å…¬å‘Š</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
 
@@ -49,7 +49,7 @@ set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 '====================================
 
-	'=============·ÖÒ³¿ØÖÆ=============
+	'=============åˆ†é¡µæ§åˆ¶=============
 	Dim ItemsCount,PagesCount,CurrentItemsCount,ipage
 	ItemsCount=0:PagesCount=0
 	
@@ -63,28 +63,28 @@ Call CreateConn(cn)
 
 <div id="outerborder" class="outerborder">
 
-	<%Call WebInitHeaderData("","Webmaster¹ÜÀíÖĞĞÄ","","")%><!-- #include file="include/template/header.inc" -->
+	<%Call WebInitHeaderData("","Webmasterç®¡ç†ä¸­å¿ƒ","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 	<div class="region form-region">
-		<h3 class="title">ËÑË÷ÖÃ¶¥¹«¸æ</h3>
+		<h3 class="title">æœç´¢ç½®é¡¶å…¬å‘Š</h3>
 		<div class="content">
 			<form method="post" action="web_searchdec.asp" name="form1">
-			<p>ËÑË÷£º("%"´ú±íÈÎÒâ¸ö×Ö·û£¬"_"´ú±íÒ»¸ö×Ö·û)</p>
+			<p>æœç´¢ï¼š("%"ä»£è¡¨ä»»æ„ä¸ªå­—ç¬¦ï¼Œ"_"ä»£è¡¨ä¸€ä¸ªå­—ç¬¦)</p>
 			<div class="field">
-				<span class="label">ÓÃ»§Ãû</span>
+				<span class="label">ç”¨æˆ·å</span>
 				<span class="value"><input type="text" name="adminname" value="<%=Request("adminname")%>" size="<%=SearchTextWidth%>" /></span>
 			</div>
 			<div class="field">
-				<span class="label">¹«¸æÄÚÈİ</span>
+				<span class="label">å…¬å‘Šå†…å®¹</span>
 				<span class="value"><input type="text" name="searchtxt" value="<%=Request("searchtxt")%>" size="<%=SearchTextWidth%>" /></span>
 			</div>
-			<div class="command"><input type="submit" value="ËÑË÷¹«¸æ" name="searchsubmit" /></div>
+			<div class="command"><input type="submit" value="æœç´¢å…¬å‘Š" name="searchsubmit" /></div>
 			</form>
 		</div>
 	</div>
 
-<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"[ËÑË÷½á¹û·ÖÒ³]","adminname,searchtxt" end if%>
+<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"[æœç´¢ç»“æœåˆ†é¡µ]","adminname,searchtxt" end if%>
 <form method="post" action="web_mdeldec.asp" name="form7">
 
 <input type="hidden" name="adminname" value="<%=request("adminname")%>" />
@@ -92,7 +92,7 @@ Call CreateConn(cn)
 <input type="hidden" name="page" value="<%if isnumeric(request("page")) and request("page")<>"" then response.write request("page")%>" />
 <div class="guest-functions">
 	<div class="main">
-		<a class="function-multi-del" href="javascript:void 0;"><img src="asset/image/icon_mdel.gif" />É¾³ıÑ¡¶¨¹«¸æ</a>
+		<a class="function-multi-del" href="javascript:void 0;"><img src="asset/image/icon_mdel.gif" />åˆ é™¤é€‰å®šå…¬å‘Š</a>
 	</div>
 </div>
 
@@ -100,14 +100,14 @@ Call CreateConn(cn)
 <%
 dim rsuser,pub_flag,pub
 if ItemsCount=0 then
-	Response.Write "<br/><br/><div class=""centertext"">Ã»ÓĞÕÒµ½·ûºÏÌõ¼şµÄ¹«¸æ¡£</div><br/><br/>"
+	Response.Write "<br/><br/><div class=""centertext"">æ²¡æœ‰æ‰¾åˆ°ç¬¦åˆæ¡ä»¶çš„å…¬å‘Šã€‚</div><br/><br/>"
 else
 	while Not rs.EOF
 	rsuser=rs("adminname")
 %>
 
 	<div class="region region-bulletin">
-		<h3 class="title">ÓÃ»§£º<a href="web_userinfo.asp?user=<%=rsuser%>" target="_blank"><%=rsuser%></a></h3>
+		<h3 class="title">ç”¨æˆ·ï¼š<a href="web_userinfo.asp?user=<%=rsuser%>" target="_blank"><%=rsuser%></a></h3>
 		<div class="content">
 			<%
 			pub_flag=rs("declareflag")
@@ -123,24 +123,24 @@ else
 			%>
 		</div>
 		<div class="admin-message-tools">
-			<input type="checkbox" name="users" class="users checkbox" id="c<%=rsuser%>" value="<%=rsuser%>"><label for="c<%=rsuser%>">(Ñ¡¶¨)</label>
-			<a href="web_deldec.asp?user=<%=rsuser%><%if isnumeric(request("page")) and request("page")<>"" then response.write "&page=" & request("page")%>&adminname=<%=server.URLEncode(request("adminname"))%>&searchtxt=<%=server.URLEncode(request("searchtxt"))%>" title="É¾³ı¹«¸æ"<%if DelDecTip then Response.Write " onclick=""return confirm('È·ÊµÒªÉ¾³ı¹«¸æÂğ£¿');"""%>><img border="0" src="asset/image/icon_del.gif" class="imgicon" />[É¾³ı¹«¸æ]</a>
+			<input type="checkbox" name="users" class="users checkbox" id="c<%=rsuser%>" value="<%=rsuser%>"><label for="c<%=rsuser%>">(é€‰å®š)</label>
+			<a href="web_deldec.asp?user=<%=rsuser%><%if isnumeric(request("page")) and request("page")<>"" then response.write "&page=" & request("page")%>&adminname=<%=server.URLEncode(request("adminname"))%>&searchtxt=<%=server.URLEncode(request("searchtxt"))%>" title="åˆ é™¤å…¬å‘Š"<%if DelDecTip then Response.Write " onclick=""return confirm('ç¡®å®è¦åˆ é™¤å…¬å‘Šå—ï¼Ÿ');"""%>><img border="0" src="asset/image/icon_del.gif" class="imgicon" />[åˆ é™¤å…¬å‘Š]</a>
 		</div>
 	</div>
 <%
 	rs.MoveNext
 	wend
-end if	'¶ÔÓ¦forÉÏÃæÒ»ĞĞµÄif
+end if	'å¯¹åº”forä¸Šé¢ä¸€è¡Œçš„if
 %>
 <div class="guest-functions">
 	<div class="main">
-		<a class="function-multi-del" href="javascript:void 0;"><img src="asset/image/icon_mdel.gif" />É¾³ıÑ¡¶¨¹«¸æ</a>
+		<a class="function-multi-del" href="javascript:void 0;"><img src="asset/image/icon_mdel.gif" />åˆ é™¤é€‰å®šå…¬å‘Š</a>
 	</div>
 </div>
 
 </form>
 
-<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"[ËÑË÷½á¹û·ÖÒ³]","adminname,searchtxt" end if%>
+<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"[æœç´¢ç»“æœåˆ†é¡µ]","adminname,searchtxt" end if%>
 </div>
 
 <!-- #include file="include/template/footer.inc" -->
@@ -153,8 +153,8 @@ end if	'¶ÔÓ¦forÉÏÃæÒ»ĞĞµÄif
 			var delSelDecTip = <%=LCase(CStr(DelSelDecTip))%>;
 			var $selected = $('input.users:checked');
 			if (!$selected.length) {
-				alert('ÇëÏÈÑ¡¶¨ÒªÉ¾³ıµÄ¹«¸æ¡£');
-			} else if (!delSelDecTip || confirm('È·ÊµÒªÉ¾³ıÑ¡¶¨¹«¸æÂğ£¿')) {
+				alert('è¯·å…ˆé€‰å®šè¦åˆ é™¤çš„å…¬å‘Šã€‚');
+			} else if (!delSelDecTip || confirm('ç¡®å®è¦åˆ é™¤é€‰å®šå…¬å‘Šå—ï¼Ÿ')) {
 				form7.submit();
 			}
 		});

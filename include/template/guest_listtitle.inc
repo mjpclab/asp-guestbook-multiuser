@@ -1,7 +1,7 @@
 <table class="topic-list">
 <thead>
 <tr>
-	<th class="icon"></th><th class="title">±êÌâ</th><th class="name">ĞÕÃû</th><th class="date">ÁôÑÔÊ±¼ä</th>
+	<th class="icon"></th><th class="title">æ ‡é¢˜</th><th class="name">å§“å</th><th class="date">ç•™è¨€æ—¶é—´</th>
 </tr>
 </thead>
 <tbody>
@@ -15,17 +15,17 @@ while Not rs.eof
 	%>
 	<tr class="message<%if isauditting then%> auditting-message<%end if%>">
 		<td class="icon">
-			<%if isauditting then%><img src="asset/image/icon_wait2pass.gif" title="´ıÉóºË" alt="´ıÉóºË"/>
-			<%elseif ishidden then%><img src="asset/image/icon_hide.gif" title="±»Òş²Ø" alt="±»Òş²Ø"/>
-			<%elseif iswhisper then%><img src="asset/image/icon_whisper.gif" title="ÇÄÇÄ»°" alt="ÇÄÇÄ»°"/>
-			<%elseif rs.Fields("parent_id")<0 then%><img src="asset/image/icon_toplocked.gif" title="ÖÃ¶¥" alt="ÖÃ¶¥"/>
+			<%if isauditting then%><img src="asset/image/icon_wait2pass.gif" title="å¾…å®¡æ ¸" alt="å¾…å®¡æ ¸"/>
+			<%elseif ishidden then%><img src="asset/image/icon_hide.gif" title="è¢«éšè—" alt="è¢«éšè—"/>
+			<%elseif iswhisper then%><img src="asset/image/icon_whisper.gif" title="æ‚„æ‚„è¯" alt="æ‚„æ‚„è¯"/>
+			<%elseif rs.Fields("parent_id")<0 then%><img src="asset/image/icon_toplocked.gif" title="ç½®é¡¶" alt="ç½®é¡¶"/>
 			<%end if%>
 		</td>
 		<td class="title">
-			<%if isauditting then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(ÁôÑÔ´ıÉóºË...)</a>
-			<%elseif ishidden then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(ÁôÑÔ±»¹ÜÀíÔ±Òş²Ø...)</a>
-			<%elseif iswhisper then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(¸ø°æÖ÷µÄÇÄÇÄ»°...)</a>
-			<%elseif Trim(rs.Fields("title"))="" then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(ÎŞ±êÌâ)</a>
+			<%if isauditting then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(ç•™è¨€å¾…å®¡æ ¸...)</a>
+			<%elseif ishidden then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(ç•™è¨€è¢«ç®¡ç†å‘˜éšè—...)</a>
+			<%elseif iswhisper then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(ç»™ç‰ˆä¸»çš„æ‚„æ‚„è¯...)</a>
+			<%elseif Trim(rs.Fields("title"))="" then%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>">(æ— æ ‡é¢˜)</a>
 			<%else%><a href="showword.asp?user=<%=ruser%>&id=<%=rs.Fields("id")%>" title="<%=rs.Fields("title")%>"><%=rs.Fields("title")%></a>
 			<%end if%>
 		</td>

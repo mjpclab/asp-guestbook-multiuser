@@ -34,7 +34,7 @@ else
 	set rs=server.CreateObject("ADODB.Recordset")
 	Call CreateConn(cn)
 	rs.Open sql_web_showword & id,cn,0,1,1
-	if rs.EOF then		'留言不存在，退回主界面
+	if rs.EOF then		'鐣欒█涓嶅瓨鍦紝閫�鍥炰富鐣岄潰
 		rs.Close : cn.Close : set rs=nothing : set cn=nothing
 		Response.Redirect "web_search.asp" & get_param_str()
 	end if
@@ -45,14 +45,14 @@ end if
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster管理中心 查看留言 <%=rs.Fields("title")%></title>
+	<title><%=web_BookName%> Webmaster绠＄悊涓績 鏌ョ湅鐣欒█ <%=rs.Fields("title")%></title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
 
 <body>
 <div id="outerborder" class="outerborder">
 
-	<%Call WebInitHeaderData("","Webmaster管理中心","","")%><!-- #include file="include/template/header.inc" -->
+	<%Call WebInitHeaderData("","Webmaster绠＄悊涓績","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 	<form method="post" action="web_searchmdel.asp" name="form7">

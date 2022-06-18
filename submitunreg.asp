@@ -25,32 +25,32 @@ end if
 
 if VcodeCount>0 and (Request.Form("vcode")<>Session(InstanceName & "_vcode") or Session(InstanceName & "_vcode")="") then
 	Session(InstanceName & "_vcode")=""
-	Call TipsPage("ÑéÖ¤Âë´íÎó¡£","unreg.asp")
+	Call TipsPage("éªŒè¯ç é”™è¯¯ã€‚","unreg.asp")
 	Response.End
 else
 	Session(InstanceName & "_vcode")=""
 end if
 
-'===============================ºÏÊ½ÑéÖ¤
+'===============================åˆå¼éªŒè¯
 dim re
 set re=new RegExp
 re.Pattern="^\w+$"
 
 ruser=Request.Form("user")
 if ruser="" then
-	Call TipsPage("ÓÃ»§Ãû²»ÄÜÎª¿Õ¡£","unreg.asp")
+	Call TipsPage("ç”¨æˆ·åä¸èƒ½ä¸ºç©ºã€‚","unreg.asp")
 	Response.End
 elseif re.Test(ruser)=false then
-	Call TipsPage("ÓÃ»§ÃûÖĞÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß¡£","unreg.asp")
+	Call TipsPage("ç”¨æˆ·åä¸­åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚","unreg.asp")
 	Response.End
 elseif len(ruser)>32 then
-	Call TipsPage("ÓÃ»§Ãû³¤¶È²»ÄÜ³¬¹ı32×Ö¡£","unreg.asp")
+	Call TipsPage("ç”¨æˆ·åé•¿åº¦ä¸èƒ½è¶…è¿‡32å­—ã€‚","unreg.asp")
 	Response.End
 elseif Request.Form("pass1")="" then
-	Call TipsPage("ÃÜÂë²»ÄÜÎª¿Õ¡£","unreg.asp")
+	Call TipsPage("å¯†ç ä¸èƒ½ä¸ºç©ºã€‚","unreg.asp")
 	Response.End
 elseif len(Request.Form("pass1"))>32 then
-	Call TipsPage("ÃÜÂë³¤¶È²»ÄÜ³¬¹ı32×Ö¡£","unreg.asp")
+	Call TipsPage("å¯†ç é•¿åº¦ä¸èƒ½è¶…è¿‡32å­—ã€‚","unreg.asp")
 	Response.End
 end if
 
@@ -59,15 +59,15 @@ set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 
-'=============================´æÔÚĞÔÑéÖ¤
+'=============================å­˜åœ¨æ€§éªŒè¯
 Dim del_adminid
 rs.Open Replace(Replace(sql_submitunreg_checkuser,"{0}",ruser),"{1}",wm_name),cn,,,1
 if rs.EOF then
-	Call TipsPage("ÓÃ»§Ãû²»´æÔÚ¡£","unreg.asp")
+	Call TipsPage("ç”¨æˆ·åä¸å­˜åœ¨ã€‚","unreg.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 elseif rs("adminpass")<>md5(Request.Form("pass1"),32) then
-	Call TipsPage("ÃÜÂë²»ÕıÈ·¡£","unreg.asp")
+	Call TipsPage("å¯†ç ä¸æ­£ç¡®ã€‚","unreg.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
@@ -89,5 +89,5 @@ cn.CommitTrans
 
 cn.Close : set cn=nothing
 
-Call TipsPage("ÕÊºÅÉ¾³ıÍê³É¡£","face.asp")
+Call TipsPage("å¸å·åˆ é™¤å®Œæˆã€‚","face.asp")
 %>

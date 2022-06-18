@@ -1,9 +1,9 @@
 <%
-const FaceCount=51			'头像总数
-const SmallFaceCount=77		'表情总数
-const InstanceName=""		'留言本实例名，部署多个留言本时避免Session冲突
+const FaceCount=51			'澶村儚鎬绘暟
+const SmallFaceCount=77		'琛ㄦ儏鎬绘暟
+const InstanceName=""		'鐣欒█鏈疄渚嬪悕锛岄儴缃插涓暀瑷�鏈椂閬垮厤Session鍐茬獊
 
-'此部分代码供内部处理之用,请勿修改
+'姝ら儴鍒嗕唬鐮佷緵鍐呴儴澶勭悊涔嬬敤,璇峰嬁淇敼
 const wm_name="@admin"
 const wm_id=-1
 Dim adminid

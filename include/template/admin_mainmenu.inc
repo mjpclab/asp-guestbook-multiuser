@@ -1,20 +1,20 @@
 <div class="region">
-	<h3 class="title">ÓÃ»§¹ÜÀíÔ±¿ØÖÆÖÐÐÄ</h3>
+	<h3 class="title">ç”¨æˆ·ç®¡ç†å‘˜æŽ§åˆ¶ä¸­å¿ƒ</h3>
 	<div class="content flex-box">
 		<ul>
-			<li><a href="admin.asp?user=<%=ruser%>">¹ÜÀíÊ×Ò³</a></li>
-			<li><a href="admin_search.asp?user=<%=ruser%>">ËÑË÷ÁôÑÔ</a></li>
-			<li><a href="admin_advdel.asp?user=<%=ruser%>">¸ß¼¶É¾³ý</a></li>
-			<li><a href="admin_setbulletin.asp?user=<%=ruser%>">·¢²¼ÖÃ¶¥¹«¸æ</a></li>
-			<li><a href="admin_chpass.asp?user=<%=ruser%>">ÐÞ¸ÄÃÜÂë/ÎÊÌâ</a></li>
-			<li><a href="admin_setinfo.asp?user=<%=ruser%>">ÐÞ¸Ä°æÖ÷×ÊÁÏ</a></li>
-			<li><a href="admin_callgen.asp?user=<%=ruser%>">Éú³Éµ÷ÓÃ´úÂë</a></li>
-			<li><a href="admin_config.asp?user=<%=ruser%>&page=1">ÁôÑÔ±¾²ÎÊý</a></li>
-			<li><a href="admin_ipconfig.asp?user=<%=ruser%>">IPÆÁ±Î²ßÂÔ</a></li>
-			<li><a href="admin_filter.asp?user=<%=ruser%>">ÄÚÈÝ¹ýÂË²ßÂÔ</a></li>
-			<li><a href="admin_floodconfig.asp?user=<%=ruser%>">·À¹àË®²ßÂÔ</a></li>
-			<li><a href="admin_stats.asp?user=<%=ruser%>">·ÃÎÊÍ³¼Æ</a></li>
-			<li><a href="admin_logoff.asp?user=<%=ruser%>">ÍË³ö¹ÜÀí</a></li>
+			<li><a href="admin.asp?user=<%=ruser%>">ç®¡ç†é¦–é¡µ</a></li>
+			<li><a href="admin_search.asp?user=<%=ruser%>">æœç´¢ç•™è¨€</a></li>
+			<li><a href="admin_advdel.asp?user=<%=ruser%>">é«˜çº§åˆ é™¤</a></li>
+			<li><a href="admin_setbulletin.asp?user=<%=ruser%>">å‘å¸ƒç½®é¡¶å…¬å‘Š</a></li>
+			<li><a href="admin_chpass.asp?user=<%=ruser%>">ä¿®æ”¹å¯†ç /é—®é¢˜</a></li>
+			<li><a href="admin_setinfo.asp?user=<%=ruser%>">ä¿®æ”¹ç‰ˆä¸»èµ„æ–™</a></li>
+			<li><a href="admin_callgen.asp?user=<%=ruser%>">ç”Ÿæˆè°ƒç”¨ä»£ç </a></li>
+			<li><a href="admin_config.asp?user=<%=ruser%>&page=1">ç•™è¨€æœ¬å‚æ•°</a></li>
+			<li><a href="admin_ipconfig.asp?user=<%=ruser%>">IPå±è”½ç­–ç•¥</a></li>
+			<li><a href="admin_filter.asp?user=<%=ruser%>">å†…å®¹è¿‡æ»¤ç­–ç•¥</a></li>
+			<li><a href="admin_floodconfig.asp?user=<%=ruser%>">é˜²çŒæ°´ç­–ç•¥</a></li>
+			<li><a href="admin_stats.asp?user=<%=ruser%>">è®¿é—®ç»Ÿè®¡</a></li>
+			<li><a href="admin_logoff.asp?user=<%=ruser%>">é€€å‡ºç®¡ç†</a></li>
 		</ul>
 	</div>
 </div>

@@ -34,17 +34,17 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> ×ÔÉ¾ÕÊºÅ</title>
+	<title><%=web_BookName%> è‡ªåˆ å¸å·</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function submitcheck(frm)
 	{
-		if (frm.user.value.length===0) {alert('ÇëÊäÈëÓÃ»§Ãû¡£'); frm.user.focus(); return false;}
-		else if (/^\w+$/.test(frm.user.value)===false) {alert('ÓÃ»§ÃûÖĞÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß¡£'); frm.user.focus(); return false;}
-		else if (frm.pass1.value.length===0) {alert('ÇëÊäÈëÃÜÂë¡£'); frm.pass1.focus(); return false;}
-		else if (frm.vcode && frm.vcode.value.length===0) {alert('ÇëÊäÈëÑéÖ¤Âë¡£'); frm.vcode.focus(); return false;}
-		else return confirm('É¾³ıÓÃ»§Ãû½«Í¬Ê±Çå³ıÈ«²¿ÁôÑÔ¡¢»Ø¸´¼°¹«¸æ£¬È·ÊµÒª¼ÌĞøÂğ£¿');
+		if (frm.user.value.length===0) {alert('è¯·è¾“å…¥ç”¨æˆ·åã€‚'); frm.user.focus(); return false;}
+		else if (/^\w+$/.test(frm.user.value)===false) {alert('ç”¨æˆ·åä¸­åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚'); frm.user.focus(); return false;}
+		else if (frm.pass1.value.length===0) {alert('è¯·è¾“å…¥å¯†ç ã€‚'); frm.pass1.focus(); return false;}
+		else if (frm.vcode && frm.vcode.value.length===0) {alert('è¯·è¾“å…¥éªŒè¯ç ã€‚'); frm.vcode.focus(); return false;}
+		else return confirm('åˆ é™¤ç”¨æˆ·åå°†åŒæ—¶æ¸…é™¤å…¨éƒ¨ç•™è¨€ã€å›å¤åŠå…¬å‘Šï¼Œç¡®å®è¦ç»§ç»­å—ï¼Ÿ');
 	}
 	</script>
 	
@@ -54,7 +54,7 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 
 <div id="outerborder" class="outerborder">
 
-<%Call WebInitHeaderData("","×ÔÉ¾ÕÊºÅ","","")%><!-- #include file="include/template/header.inc" -->
+<%Call WebInitHeaderData("","è‡ªåˆ å¸å·","","")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 set cn=server.CreateObject("ADODB.Connection")
@@ -69,25 +69,25 @@ sys_bul_flag=32
 <!-- #include file="include/template/web_guest_func.inc" -->
 
 <div class="region form-region">
-	<h3 class="title">×ÔÉ¾ÕÊºÅ</h3>
+	<h3 class="title">è‡ªåˆ å¸å·</h3>
 	<div class="content">
 		<form name="unregform" method="post" action="submitunreg.asp" onsubmit="return submitcheck(this)">
 
 		<div class="field">
-			<span class="label">ÓÃ»§Ãû£º</span>
-			<span class="value"><input type="text" name="user" maxlength="32" size="32" title="Ö»ÄÜ°üº¬Ó¢ÎÄ¡¢Êı×ÖºÍÏÂ»®Ïß£¬×î´ó32Î»" /></span>
+			<span class="label">ç”¨æˆ·åï¼š</span>
+			<span class="value"><input type="text" name="user" maxlength="32" size="32" title="åªèƒ½åŒ…å«è‹±æ–‡ã€æ•°å­—å’Œä¸‹åˆ’çº¿ï¼Œæœ€å¤§32ä½" /></span>
 		</div>
 		<div class="field">
-			<span class="label">ÃÜÂë£º</span>
+			<span class="label">å¯†ç ï¼š</span>
 			<span class="value"><input type="password" name="pass1" maxlength="32" size="32" /></span>
 		</div>
 		<%if VcodeCount>0 then%>
 		<div class="field">
-			<span class="label">ÑéÖ¤Âë£º</span>
+			<span class="label">éªŒè¯ç ï¼š</span>
 			<span class="value"><input type="text" name="vcode" size="10" /><img id="captcha" class="captcha" src="show_vcode.asp?t=0"/></span>
 		</div>
 		<%end if%>
-		<div class="command"><input type="submit" value="Ìá½»" />¡¡¡¡<input type="reset" value="ÖØĞ´" /></div>
+		<div class="command"><input type="submit" value="æäº¤" />ã€€ã€€<input type="reset" value="é‡å†™" /></div>
 
 		</form>
 	</div>

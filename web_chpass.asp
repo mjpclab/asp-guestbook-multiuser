@@ -18,16 +18,16 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster¹ÜÀíÖĞĞÄ ĞŞ¸Ä¹ÜÀíÔ±ÃÜÂë</title>
+	<title><%=web_BookName%> Webmasterç®¡ç†ä¸­å¿ƒ ä¿®æ”¹ç®¡ç†å‘˜å¯†ç </title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function checkpass(cobject)
 	{
-		if (cobject.ioldpass.value.length===0) {alert('ÇëÊäÈëÔ­ÃÜÂë¡£'); cobject.ioldpass.focus(); return(false);}
-		if (cobject.inewpass1.value.length===0) {alert('ÇëÊäÈëĞÂÃÜÂë¡£'); cobject.inewpass1.focus(); return(false);}
-		if (cobject.inewpass2.value.length===0) {alert('ÇëÊäÈëÈ·ÈÏÃÜÂë¡£'); cobject.inewpass2.focus(); return(false);}
-		if (cobject.inewpass1.value!==cobject.inewpass2.value) {alert('ĞÂÃÜÂëÓëÈ·ÈÏÃÜÂë²»Í¬£¬ÇëÖØĞÂÊäÈë¡£'); cobject.inewpass1.focus(); return(false);}
+		if (cobject.ioldpass.value.length===0) {alert('è¯·è¾“å…¥åŸå¯†ç ã€‚'); cobject.ioldpass.focus(); return(false);}
+		if (cobject.inewpass1.value.length===0) {alert('è¯·è¾“å…¥æ–°å¯†ç ã€‚'); cobject.inewpass1.focus(); return(false);}
+		if (cobject.inewpass2.value.length===0) {alert('è¯·è¾“å…¥ç¡®è®¤å¯†ç ã€‚'); cobject.inewpass2.focus(); return(false);}
+		if (cobject.inewpass1.value!==cobject.inewpass2.value) {alert('æ–°å¯†ç ä¸ç¡®è®¤å¯†ç ä¸åŒï¼Œè¯·é‡æ–°è¾“å…¥ã€‚'); cobject.inewpass1.focus(); return(false);}
 		cobject.submit1.disabled=true;
 		return (true);
 	}
@@ -39,26 +39,26 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 
 <div id="outerborder" class="outerborder">
 
-	<%Call WebInitHeaderData("","Webmaster¹ÜÀíÖĞĞÄ","","")%><!-- #include file="include/template/header.inc" -->
+	<%Call WebInitHeaderData("","Webmasterç®¡ç†ä¸­å¿ƒ","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 	<div class="region form-region region-longtext">
-		<h3 class="title">ĞŞ¸ÄÃÜÂë</h3>
+		<h3 class="title">ä¿®æ”¹å¯†ç </h3>
 		<div class="content">
 			<form method="post" action="web_savepass.asp" onsubmit="return checkpass(this)" name="form4">
 			<div class="field">
-				<span class="label">Ô­ÃÜÂë</span>
+				<span class="label">åŸå¯†ç </span>
 				<span class="value"><input type="password" name="ioldpass" maxlength="32" /></span>
 			</div>
 			<div class="field">
-				<span class="label">ĞÂÃÜÂë</span>
+				<span class="label">æ–°å¯†ç </span>
 				<span class="value"><input type="password" name="inewpass1" maxlength="32" /></span>
 			</div>
 			<div class="field">
-				<span class="label">È·ÈÏÃÜÂë</span>
+				<span class="label">ç¡®è®¤å¯†ç </span>
 				<span class="value"><input type="password" name="inewpass2" maxlength="32" /></span>
 			</div>
-			<div class="command"><input value="¸üĞÂÊı¾İ" type="submit" name="submit1" /></div>
+			<div class="command"><input value="æ›´æ–°æ•°æ®" type="submit" name="submit1" /></div>
 			</form>
     	</div>
 	</div>

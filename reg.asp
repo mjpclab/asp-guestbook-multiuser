@@ -34,20 +34,20 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> ÉêÇëÁôÑÔ±¾</title>
+	<title><%=web_BookName%> ç”³è¯·ç•™è¨€æœ¬</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function submitcheck(frm)
 	{
-		if (frm.user.value.length===0) {alert('ÇëÊäÈëÓÃ»§Ãû¡£'); frm.user.focus(); return false;}
-		else if (/^\w+$/.test(frm.user.value)==false) {alert('ÓÃ»§ÃûÖĞÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß¡£'); frm.user.select(); return false;}
-		else if (frm.pass1.value.length===0) {alert('ÇëÊäÈëÃÜÂë¡£'); frm.pass1.focus(); return false;}
-		else if (frm.pass2.value.length===0) {alert('ÇëÊäÈëÈ·ÈÏÃÜÂë¡£'); frm.pass2.focus(); return false;}
-		else if (frm.pass1.value!==frm.pass2.value) {alert('ÃÜÂë²»Ò»ÖÂ£¬Çë¼ì²é¡£'); frm.pass2.select(); return false;}
-		else if (frm.question.value.length===0) {alert('ÇëÊäÈëÕÒ»ØÃÜÂëÎÊÌâ¡£'); frm.question.focus(); return false;}
-		else if (frm.key.value.length===0) {alert('ÇëÊäÈëÕÒ»ØÃÜÂë´ğ°¸¡£'); frm.key.focus(); return false;}
-		else if (frm.vcode && frm.vcode.value.length===0) {alert('ÇëÊäÈëÑéÖ¤Âë¡£'); frm.vcode.focus(); return false;}
+		if (frm.user.value.length===0) {alert('è¯·è¾“å…¥ç”¨æˆ·åã€‚'); frm.user.focus(); return false;}
+		else if (/^\w+$/.test(frm.user.value)==false) {alert('ç”¨æˆ·åä¸­åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚'); frm.user.select(); return false;}
+		else if (frm.pass1.value.length===0) {alert('è¯·è¾“å…¥å¯†ç ã€‚'); frm.pass1.focus(); return false;}
+		else if (frm.pass2.value.length===0) {alert('è¯·è¾“å…¥ç¡®è®¤å¯†ç ã€‚'); frm.pass2.focus(); return false;}
+		else if (frm.pass1.value!==frm.pass2.value) {alert('å¯†ç ä¸ä¸€è‡´ï¼Œè¯·æ£€æŸ¥ã€‚'); frm.pass2.select(); return false;}
+		else if (frm.question.value.length===0) {alert('è¯·è¾“å…¥æ‰¾å›å¯†ç é—®é¢˜ã€‚'); frm.question.focus(); return false;}
+		else if (frm.key.value.length===0) {alert('è¯·è¾“å…¥æ‰¾å›å¯†ç ç­”æ¡ˆã€‚'); frm.key.focus(); return false;}
+		else if (frm.vcode && frm.vcode.value.length===0) {alert('è¯·è¾“å…¥éªŒè¯ç ã€‚'); frm.vcode.focus(); return false;}
 		else return true;
 	}
 	
@@ -55,8 +55,8 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 	function checkuser(frm,showChecking)
 	{
 		/*
-		if (frm.user.value.length===0) {alert('ÇëÊäÈëÓÃ»§Ãû¡£'); frm.user.focus(); return;}
-		else if (/^\w+$/.test(frm.user.value)==false) {alert('ÓÃ»§ÃûÖĞÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß¡£'); frm.user.select(); return;}
+		if (frm.user.value.length===0) {alert('è¯·è¾“å…¥ç”¨æˆ·åã€‚'); frm.user.focus(); return;}
+		else if (/^\w+$/.test(frm.user.value)==false) {alert('ç”¨æˆ·åä¸­åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚'); frm.user.select(); return;}
 		else window.open('checkuser.asp?user=' + frm.user.value,'win_checkuser','width=300,height=185,menubar=no,toolbar=no,status=no,scrollbars=no,resizable=no');
 		*/
 		var username=frm.user.value;
@@ -64,15 +64,15 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 		if(divCheckuser)
 		{
 			while(divCheckuser.childNodes.length>0) divCheckuser.removeChild(divCheckuser.lastChild);
-			if(username=='') setPureText(divCheckuser,'ÇëÊäÈëÓÃ»§Ãû¡£');
-			else if(!/^\w+$/.test(username)) setPureText(divCheckuser,'ÓÃ»§ÃûÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß¡£');
+			if(username=='') setPureText(divCheckuser,'è¯·è¾“å…¥ç”¨æˆ·åã€‚');
+			else if(!/^\w+$/.test(username)) setPureText(divCheckuser,'ç”¨æˆ·ååªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚');
 			else
 			{
 				window.xmlHttp=createXmlHttp();
 				if(xmlHttp)
 				{
 					if(showChecking)
-						{setPureText(divCheckuser,'ÕıÔÚ¼ì²âÓÃ»§Ãû£¬ÇëÉÔºò¡­¡­');}
+						{setPureText(divCheckuser,'æ­£åœ¨æ£€æµ‹ç”¨æˆ·åï¼Œè¯·ç¨å€™â€¦â€¦');}
 					else
 						{clearChildren(divCheckuser);}
 						
@@ -101,7 +101,7 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 
 <div id="outerborder" class="outerborder">
 
-<%Call WebInitHeaderData("","ÉêÇëÁôÑÔ±¾","","")%><!-- #include file="include/template/header.inc" -->
+<%Call WebInitHeaderData("","ç”³è¯·ç•™è¨€æœ¬","","")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 set cn=server.CreateObject("ADODB.Connection")
@@ -116,14 +116,14 @@ sys_bul_flag=32
 <!-- #include file="include/template/web_guest_func.inc" -->
 
 <div class="region form-region">
-	<h3 class="title">ÉêÇëÁôÑÔ±¾</h3>
+	<h3 class="title">ç”³è¯·ç•™è¨€æœ¬</h3>
 	<div class="content">
 	<form name="regform" method="post" action="submitreg.asp" onsubmit="return submitcheck(this)">
 		<div class="field">
-			<span class="label">ÓÃ»§Ãû<span class="required">*</span></span>
+			<span class="label">ç”¨æˆ·å<span class="required">*</span></span>
 			<span class="value">
-				<input type="text" name="user" maxlength="32" size="18" title="Ö»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß£¬×î´ó32Î»" onchange="checkuser(this.form,false)" />
-				<input type="button" value="¼ì²âÕÊºÅ" onclick="checkuser(this.form,true)" />
+				<input type="text" name="user" maxlength="32" size="18" title="åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ï¼Œæœ€å¤§32ä½" onchange="checkuser(this.form,false)" />
+				<input type="button" value="æ£€æµ‹å¸å·" onclick="checkuser(this.form,true)" />
 			</span>
 		</div>
 		<div class="field">
@@ -131,32 +131,32 @@ sys_bul_flag=32
 			<span class="value"><div id="divCheckuser">&nbsp;</div></span>
 		</div>
 		<div class="field">
-			<span class="label">ÃÜÂë<span class="required">*</span></span>
+			<span class="label">å¯†ç <span class="required">*</span></span>
 			<span class="value"><input type="password" name="pass1" maxlength="32" size="32" /></span>
 		</div>
 		<div class="field">
-			<span class="label">È·ÈÏÃÜÂë<span class="required">*</span></span>
+			<span class="label">ç¡®è®¤å¯†ç <span class="required">*</span></span>
 			<span class="value"><input type="password" name="pass2" maxlength="32" size="32" /></span>
 		</div>
 		<div class="field">
-			<span class="label">°æÖ÷êÇ³Æ</span>
+			<span class="label">ç‰ˆä¸»æ˜µç§°</span>
 			<span class="value"><input type="text" name="nick" maxlength="64" size="32" /></span>
 		</div>
 		<div class="field">
-			<span class="label">ÌáÊ¾ÎÊÌâ<span class="required">*</span></span>
-			<span class="value"><input type="text" name="question" maxlength="32" size="32" title="ÓÃÓÚÕÒ»ØÃÜÂë" /></span>
+			<span class="label">æç¤ºé—®é¢˜<span class="required">*</span></span>
+			<span class="value"><input type="text" name="question" maxlength="32" size="32" title="ç”¨äºæ‰¾å›å¯†ç " /></span>
 		</div>
 		<div class="field">
-			<span class="label">ÎÊÌâ´ğ°¸<span class="required">*</span></span>
+			<span class="label">é—®é¢˜ç­”æ¡ˆ<span class="required">*</span></span>
 			<span class="value"><input type="text" name="key" maxlength="32" size="32" /></span>
 		</div>
 		<%if VcodeCount>0 then%>
 		<div class="field">
-			<span class="label">ÑéÖ¤Âë<span class="required">*</span></span>
+			<span class="label">éªŒè¯ç <span class="required">*</span></span>
 			<span class="value"><input type="text" name="vcode" size="10" /><img id="captcha" class="captcha" src="show_vcode.asp?t=0"/></span>
 		</div>
 		<%end if%>
-		<div class="command"><input type="submit" value="Ìá½»"/>¡¡¡¡<input type="reset" value="Çå¿Õ"/></div>
+		<div class="command"><input type="submit" value="æäº¤"/>ã€€ã€€<input type="reset" value="æ¸…ç©º"/></div>
 	</form>
 	</div>
 </div>

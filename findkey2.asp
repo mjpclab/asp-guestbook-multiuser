@@ -30,17 +30,17 @@ elseif Not StatusFindkey then
 end if
 
 if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
-'===============================ºÏÊ½ÑéÖ¤
+'===============================åˆå¼éªŒè¯
 dim re
 set re=new RegExp
 re.Pattern="^\w+$"
 
 ruser=Request.Form("user")
 if ruser="" then
-	Call TipsPage("ÓÃ»§Ãû²»ÄÜÎª¿Õ¡£","findkey.asp")
+	Call TipsPage("ç”¨æˆ·åä¸èƒ½ä¸ºç©ºã€‚","findkey.asp")
 	Response.End
 elseif re.Test(ruser)=false then
-	Call TipsPage("ÓÃ»§ÃûÖĞÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß¡£","findkey.asp")
+	Call TipsPage("ç”¨æˆ·åä¸­åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚","findkey.asp")
 	Response.End
 end if
 
@@ -49,10 +49,10 @@ set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 
-'=============================´æÔÚĞÔÑéÖ¤
+'=============================å­˜åœ¨æ€§éªŒè¯
 rs.Open Replace(sql_findkey2_checkuser,"{0}",ruser),cn,,,1
 if rs.EOF then
-	Call TipsPage("ÓÃ»§Ãû²»´æÔÚ¡£","findkey.asp")
+	Call TipsPage("ç”¨æˆ·åä¸å­˜åœ¨ã€‚","findkey.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
@@ -65,14 +65,14 @@ rs.Close : set rs=nothing
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> ÕÒ»ØÃÜÂë²½Öè2</title>
+	<title><%=web_BookName%> æ‰¾å›å¯†ç æ­¥éª¤2</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function submitcheck(frm)
 	{
-		if (frm.key.value.length===0) {alert('ÇëÊäÈëÕÒ»ØÃÜÂë´ğ°¸¡£'); frm.key.focus(); return false;}
-		else if (frm.vcode && frm.vcode.value.length===0) {alert('ÇëÊäÈëÑéÖ¤Âë¡£'); frm.vcode.focus(); return false;}
+		if (frm.key.value.length===0) {alert('è¯·è¾“å…¥æ‰¾å›å¯†ç ç­”æ¡ˆã€‚'); frm.key.focus(); return false;}
+		else if (frm.vcode && frm.vcode.value.length===0) {alert('è¯·è¾“å…¥éªŒè¯ç ã€‚'); frm.vcode.focus(); return false;}
 		else {frm.submit1.disabled=true; return true;}
 	}
 	</script>
@@ -82,7 +82,7 @@ rs.Close : set rs=nothing
 
 <div id="outerborder" class="outerborder">
 
-<%Call WebInitHeaderData("findkey.asp","ÕÒ»ØÃÜÂë","","²½Öè2")%><!-- #include file="include/template/header.inc" -->
+<%Call WebInitHeaderData("findkey.asp","æ‰¾å›å¯†ç ","","æ­¥éª¤2")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 dim sys_bul_flag
@@ -94,26 +94,26 @@ sys_bul_flag=32
 <!-- #include file="include/template/web_guest_func.inc" -->
 
 <div class="region form-region">
-	<h3 class="title">ÕÒ»ØÃÜÂë ²½Öè2</h3>
+	<h3 class="title">æ‰¾å›å¯†ç  æ­¥éª¤2</h3>
 	<div class="content">
 		<form name="findform2" method="post" action="findkey3.asp" onsubmit="return submitcheck(this)">
 			<input type="hidden" name="user" value="<%=ruser%>">
 
 			<div class="field">
-				<span class="label">ÎÊÌâ£º</span>
+				<span class="label">é—®é¢˜ï¼š</span>
 				<span class="value"><%=HtmlEncode(question)%></span>
 			</div>
 			<div class="field">
-				<span class="label">´ğ°¸£º</span>
+				<span class="label">ç­”æ¡ˆï¼š</span>
 				<span class="value"><input type="text" name="key" maxlength="32" size="32" /></span>
 			</div>
 			<%if VcodeCount>0 then%>
 			<div class="field">
-				<span class="label">ÑéÖ¤Âë£º</span>
+				<span class="label">éªŒè¯ç ï¼š</span>
 				<span class="value"><input type="text" name="vcode" size="10" autocomplete="off" /><img id="captcha" class="captcha" src="show_vcode.asp?t=0" /></span>
 			</div>
 			<%end if%>
-			<div class="command"><input type="submit" name="submit1" value="ÏÂÒ»²½" />¡¡¡¡<input type="reset" value="ÖØĞÂÌîĞ´" /></div>
+			<div class="command"><input type="submit" name="submit1" value="ä¸‹ä¸€æ­¥" />ã€€ã€€<input type="reset" value="é‡æ–°å¡«å†™" /></div>
 		</form>
 	</div>
 </div>

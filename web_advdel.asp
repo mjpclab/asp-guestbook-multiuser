@@ -14,14 +14,14 @@
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster�������� �߼�ɾ��</title>
+	<title><%=web_BookName%> Webmaster管理中心 高级删除</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function del_all_user_warning(frm)
 	{
-		if(confirm('���棡ɾ�����û������ݽ����ָܻ���\nȷʵҪִ��ɾ��������'))
-			if (confirm('���ٴ�ȷ���Ƿ�Ҫɾ���û���'))
+		if(confirm('警告！删除的用户和数据将不能恢复！\n确实要执行删除操作吗？'))
+			if (confirm('请再次确认是否要删除用户？'))
 				{frm.submit1.disabled=true;return true;}
 			else
 				return false;
@@ -35,120 +35,120 @@
 
 <div id="outerborder" class="outerborder">
 
-	<%Call WebInitHeaderData("","Webmaster��������","","")%><!-- #include file="include/template/header.inc" -->
+	<%Call WebInitHeaderData("","Webmaster管理中心","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 	<div class="region form-region">
-		<h3 class="title">�߼�ɾ��</h3>
+		<h3 class="title">高级删除</h3>
 		<div class="content">
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ��ָ�����ں�ʱ��ǰ�����ԣ�����������/ʱ�䡣<br/>
+				删除指定日期和时间前的留言，包括此日期/时间。<br/>
 				<input type="hidden" name="option" value="1" />
 				<input type="text" name="iparam" maxlength="20" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />(ʱ��Ĭ��Ϊ0:0:0)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />(时间默认为0:0:0)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ��ָ�����ں�ʱ�������ԣ�����������/ʱ�䡣<br/>
+				删除指定日期和时间后的留言，包括此日期/时间。<br/>
 				<input type="hidden" name="option" value="2" />
 				<input type="text" name="iparam" maxlength="20" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />(ʱ��Ĭ��Ϊ0:0:0)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />(时间默认为0:0:0)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ���ǰ(����)��n�����ԣ�������n��ֵ��<br/>
+				删除最靠前(最老)的n条留言，请输入n的值：<br/>
 				<input type="hidden" name="option" value="3" />
 				<input type="text" name="iparam" maxlength="10" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ�����(����)��n�����ԣ�������n��ֵ��<br/>
+				删除最靠后(最新)的n条留言，请输入n的值：<br/>
 				<input type="hidden" name="option" value="4" />
 				<input type="text" name="iparam" maxlength="10" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ���ƺ��а����ض��ַ��������ԣ�<br/>
+				删除称呼中包含特定字符串的留言：<br/>
 				<input type="hidden" name="option" value="5" />
 				<input type="text" name="iparam" maxlength="64" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />("%"Ϊ����ַ���"_"Ϊһ���ַ�)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />("%"为多个字符，"_"为一个字符)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ�������а����ض��ַ��������ԣ�<br/>
+				删除标题中包含特定字符串的留言：<br/>
 				<input type="hidden" name="option" value="6" />
 				<input type="text" name="iparam" maxlength="64" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />("%"Ϊ����ַ���"_"Ϊһ���ַ�)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />("%"为多个字符，"_"为一个字符)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ���ÿ������а����ض��ַ��������ԣ�<br/>
+				删除访客留言中包含特定字符串的留言：<br/>
 				<input type="hidden" name="option" value="7" />
 				<input type="text" name="iparam" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />("%"Ϊ����ַ���"_"Ϊһ���ַ�)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />("%"为多个字符，"_"为一个字符)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ�������ظ��а����ض��ַ��������ԣ�<br/>
+				删除版主回复中包含特定字符串的留言：<br/>
 				<input type="hidden" name="option" value="8" />
 				<input type="text" name="iparam" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />("%"Ϊ����ַ���"_"Ϊһ���ַ�)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />("%"为多个字符，"_"为一个字符)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ�������ظ��а����ض��ַ����Ļظ���<br/>
+				删除版主回复中包含特定字符串的回复：<br/>
 				<input type="hidden" name="option" value="9" />
 				<input type="text" name="iparam" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />("%"Ϊ����ַ���"_"Ϊһ���ַ�)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />("%"为多个字符，"_"为一个字符)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ���ö������а����ض��ַ����Ĺ��棺<br/>
+				删除置顶公告中包含特定字符串的公告：<br/>
 				<input type="hidden" name="option" value="12" />
 				<input type="text" name="iparam" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />("%"Ϊ����ַ���"_"Ϊһ���ַ�)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />("%"为多个字符，"_"为一个字符)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ��ȫ�����ԣ�������Ա��������ʹ�ã�
+				删除全部留言，清空留言本，请谨慎使用：
 				<input type="hidden" name="option" value="10" />
 				<input type="hidden" name="iparam" value="DEL_ALL" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ��ȫ�������ظ��������ʹ�ã�
+				删除全部版主回复，请谨慎使用：
 				<input type="hidden" name="option" value="11" />
 				<input type="hidden" name="iparam" value="DEL_ALL_REPLY" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="this.submit1.disabled=true;">
-				ɾ��ȫ���ö����棬�����ʹ�ã�
+				删除全部置顶公告，请谨慎使用：
 				<input type="hidden" name="option" value="13" />
 				<input type="hidden" name="iparam" value="DEL_ALL_DECLARE" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />
 			</form>
 
 			<form method="post" action="web_doadvdel.asp" onsubmit="return del_all_user_warning(this)">
-				ɾ��ע��������ָ�����ں�ʱ��ǰ���û�������������/ʱ�䣺<br/>
+				删除注册日期在指定日期和时间前的用户，包括此日期/时间：<br/>
 				<input type="hidden" name="option" value="14" />
 				<input type="text" name="iparam" maxlength="20" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />(ʱ��Ĭ��Ϊ0:0:0)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />(时间默认为0:0:0)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="return del_all_user_warning(this)" id=form1 name=form1>
-				ɾ������¼������ָ�����ں�ʱ��ǰ���û�������������/ʱ�䣺<br/>
+				删除最后登录日期在指定日期和时间前的用户，包括此日期/时间：<br/>
 				<input type="hidden" name="option" value="15" />
 				<input type="text" name="iparam" maxlength="20" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />(ʱ��Ĭ��Ϊ0:0:0)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />(时间默认为0:0:0)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="return del_all_user_warning(this)" id=form2 name=form2>
-				ɾ���������������ָ�����ں�ʱ��ǰ���û�������������/ʱ�䣺<br/>
+				删除最后留言日期在指定日期和时间前的用户，包括此日期/时间：<br/>
 				<input type="hidden" name="option" value="16" />
 				<input type="text" name="iparam" maxlength="20" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />(ʱ��Ĭ��Ϊ0:0:0)
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />(时间默认为0:0:0)
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="return del_all_user_warning(this)">
-				ɾ����δ��¼�����û��������ʹ�ã�
+				删除从未登录过的用户，请谨慎使用：
 				<input type="hidden" name="option" value="17" />
 				<input type="hidden" name="iparam" value="DEL_NeverLogined_USER" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />
 			</form>
 			<form method="post" action="web_doadvdel.asp" onsubmit="return del_all_user_warning(this)">
-				ɾ��ȫ��ע���û��������ʹ�ã�
+				删除全部注册用户，请谨慎使用：
 				<input type="hidden" name="option" value="18" />
 				<input type="hidden" name="iparam" value="DEL_ALL_USER" />
-				<input type="submit" value="ִ��" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('ȷʵҪִ��ɾ��������');"""%> />
+				<input type="submit" value="执行" name="submit1"<%if DelAdvTip then Response.Write " onclick=""return confirm('确实要执行删除操作吗？');"""%> />
 			</form>
 		</div>
 	</div>

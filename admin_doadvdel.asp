@@ -32,41 +32,41 @@ case "1"
 	if isdate(tparam) then
 		tparam=DateTimeStr(tparam)
 		cn.execute Replace(Replace(sql_admindoadvdel_beforedate_main,"{0}",tparam),"{1}",adminid),affected,129
-		Call TipsPage("ÒÑÉ¾³ı" &affected& "ÌõÁôÑÔ¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("å·²åˆ é™¤" &affected& "æ¡ç•™è¨€ã€‚","admin_advdel.asp?user=" & ruser)
 	else
-		Call TipsPage("ÄúÊäÈëµÄÈÕÆÚÓĞÎó£¬Çë¼ì²é¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("æ‚¨è¾“å…¥çš„æ—¥æœŸæœ‰è¯¯ï¼Œè¯·æ£€æŸ¥ã€‚","admin_advdel.asp?user=" & ruser)
 	end if
 case "2"
 	if isdate(tparam) then
 		tparam=DateTimeStr(tparam)
 		cn.execute Replace(Replace(sql_admindoadvdel_afterdate_main,"{0}",tparam),"{1}",adminid),affected,129
-		Call TipsPage("ÒÑÉ¾³ı" &affected& "ÌõÁôÑÔ¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("å·²åˆ é™¤" &affected& "æ¡ç•™è¨€ã€‚","admin_advdel.asp?user=" & ruser)
 	else
-		Call TipsPage("ÄúÊäÈëµÄÈÕÆÚÓĞÎó£¬Çë¼ì²é¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("æ‚¨è¾“å…¥çš„æ—¥æœŸæœ‰è¯¯ï¼Œè¯·æ£€æŸ¥ã€‚","admin_advdel.asp?user=" & ruser)
 	end if
 case "3"
 	if isnumeric(tparam) then
 		if clng(tparam)>0 then
 			tparam=clng(tparam)
 			cn.execute Replace(Replace(sql_admindoadvdel_firstn_main,"{0}",tparam),"{1}",adminid),affected,129
-			Call TipsPage("ÒÑÉ¾³ı" &affected& "ÌõÁôÑÔ¡£","admin_advdel.asp?user=" & ruser)
+			Call TipsPage("å·²åˆ é™¤" &affected& "æ¡ç•™è¨€ã€‚","admin_advdel.asp?user=" & ruser)
 		else
-			Call TipsPage("ÇëÊäÈëÕıÈ·µÄÊıÖµ¡£","admin_advdel.asp?user=" & ruser)
+			Call TipsPage("è¯·è¾“å…¥æ­£ç¡®çš„æ•°å€¼ã€‚","admin_advdel.asp?user=" & ruser)
 		end if
 	else
-		Call TipsPage("ÇëÊäÈëÕıÈ·µÄÊıÖµ¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("è¯·è¾“å…¥æ­£ç¡®çš„æ•°å€¼ã€‚","admin_advdel.asp?user=" & ruser)
 	end if
 case "4"
 	if isnumeric(tparam) then
 		if clng(tparam)>0 then
 			tparam=clng(tparam)
 			cn.execute Replace(Replace(sql_admindoadvdel_lastn_main,"{0}",tparam),"{1}",adminid),affected,129
-			Call TipsPage("ÒÑÉ¾³ı" &affected& "ÌõÁôÑÔ¡£","admin_advdel.asp?user=" & ruser)
+			Call TipsPage("å·²åˆ é™¤" &affected& "æ¡ç•™è¨€ã€‚","admin_advdel.asp?user=" & ruser)
 		else
-			Call TipsPage("ÇëÊäÈëÕıÈ·µÄÊıÖµ¡£","admin_advdel.asp?user=" & ruser)
+			Call TipsPage("è¯·è¾“å…¥æ­£ç¡®çš„æ•°å€¼ã€‚","admin_advdel.asp?user=" & ruser)
 		end if
 	else
-		Call TipsPage("ÇëÊäÈëÕıÈ·µÄÊıÖµ¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("è¯·è¾“å…¥æ­£ç¡®çš„æ•°å€¼ã€‚","admin_advdel.asp?user=" & ruser)
 	end if
 case "5"
 	tparam=replace(tparam,"'","''")
@@ -79,9 +79,9 @@ case "5"
 	wend
 	if tparam<>"" then
 		cn.execute Replace(Replace(sql_admindoadvdel_name_main,"{0}",tparam),"{1}",adminid),affected,129
-		Call TipsPage("ÒÑÉ¾³ı" &affected& "ÌõÁôÑÔ¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("å·²åˆ é™¤" &affected& "æ¡ç•™è¨€ã€‚","admin_advdel.asp?user=" & ruser)
 	else
-		Call TipsPage("²»ÄÜÊäÈë¿Õ×Ö·û´®»òÈ«²¿ÎªÍ¨Åä·û¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("ä¸èƒ½è¾“å…¥ç©ºå­—ç¬¦ä¸²æˆ–å…¨éƒ¨ä¸ºé€šé…ç¬¦ã€‚","admin_advdel.asp?user=" & ruser)
 	end if
 case "6"
 	tparam=replace(tparam,"'","''")
@@ -94,9 +94,9 @@ case "6"
 	wend
 	if tparam<>"" then
 		cn.execute Replace(Replace(sql_admindoadvdel_title_main,"{0}",tparam),"{1}",adminid),affected,129
-		Call TipsPage("ÒÑÉ¾³ı" &affected& "ÌõÁôÑÔ¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("å·²åˆ é™¤" &affected& "æ¡ç•™è¨€ã€‚","admin_advdel.asp?user=" & ruser)
 	else
-		Call TipsPage("²»ÄÜÊäÈë¿Õ×Ö·û´®»òÈ«²¿ÎªÍ¨Åä·û¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("ä¸èƒ½è¾“å…¥ç©ºå­—ç¬¦ä¸²æˆ–å…¨éƒ¨ä¸ºé€šé…ç¬¦ã€‚","admin_advdel.asp?user=" & ruser)
 	end if
 case "7"
 	tparam=replace(tparam,"'","''")
@@ -109,13 +109,13 @@ case "7"
 	wend
 	if tparam<>"" then
 		cn.execute Replace(Replace(sql_admindoadvdel_article_main,"{0}",tparam),"{1}",adminid),affected,129
-		Call TipsPage("ÒÑÉ¾³ı" &affected& "ÌõÁôÑÔ¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("å·²åˆ é™¤" &affected& "æ¡ç•™è¨€ã€‚","admin_advdel.asp?user=" & ruser)
 	else
-		Call TipsPage("²»ÄÜÊäÈë¿Õ×Ö·û´®»òÈ«²¿ÎªÍ¨Åä·û¡£","admin_advdel.asp?user=" & ruser)
+		Call TipsPage("ä¸èƒ½è¾“å…¥ç©ºå­—ç¬¦ä¸²æˆ–å…¨éƒ¨ä¸ºé€šé…ç¬¦ã€‚","admin_advdel.asp?user=" & ruser)
 	end if
 case "8"
 	cn.Execute Replace(sql_admindoadvdel_main,"{0}",adminid),affected,129
-	Call TipsPage("ÒÑÉ¾³ı" &affected& "ÌõÁôÑÔ¡£","admin_advdel.asp?user=" & ruser)
+	Call TipsPage("å·²åˆ é™¤" &affected& "æ¡ç•™è¨€ã€‚","admin_advdel.asp?user=" & ruser)
 case else
 	cn.Close : set cn=nothing
 	Response.Redirect "admin_advdel.asp?user=" & ruser

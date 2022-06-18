@@ -23,10 +23,10 @@ checkuser cn,rs,true
 
 if request.Form("inewpass1")<> request.Form("inewpass2") then
 	cn.Close : set rs=nothing : set cn=nothing
-	Call TipsPage("ĞÂÃÜÂë²»Ò»ÖÂ£¬Çë¼ì²é¡£","web_chuserpass.asp?user=" & ruser)
+	Call TipsPage("æ–°å¯†ç ä¸ä¸€è‡´ï¼Œè¯·æ£€æŸ¥ã€‚","web_chuserpass.asp?user=" & ruser)
 elseif request.Form("inewpass1")="" then
 	cn.Close : set rs=nothing : set cn=nothing
-	Call TipsPage("ÃÜÂë²»ÄÜÎª¿Õ£¬ÇëÖØĞÂÊäÈë¡£","web_chuserpass.asp?user=" & ruser)
+	Call TipsPage("å¯†ç ä¸èƒ½ä¸ºç©ºï¼Œè¯·é‡æ–°è¾“å…¥ã€‚","web_chuserpass.asp?user=" & ruser)
 else
 	cn.Execute Replace(Replace(Replace(sql_websaveuserpass,"{0}",md5(Request.Form("inewpass1"),32)),"{1}",adminid),"{2}",ruser),,129
 	cn.Close : set rs=nothing : set cn=nothing

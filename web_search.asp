@@ -29,7 +29,7 @@ Response.AddHeader "cache-control","private"
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster¹ÜÀíÖĞĞÄ ËÑË÷ÁôÑÔ</title>
+	<title><%=web_BookName%> Webmasterç®¡ç†ä¸­å¿ƒ æœç´¢ç•™è¨€</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 	<script type="text/javascript" src="asset/js/jquery-1.x-min.js"></script>
 </head>
@@ -44,47 +44,47 @@ set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 
 '==================================================
-'Á¬½ÓWhere×Ó¾ä
+'è¿æ¥Whereå­å¥
 
 sql_condition=""
 param_str=""
 
-if Len(Request("s_adminname"))>0 then	'ÓÃ»§Ãû
+if Len(Request("s_adminname"))>0 then	'ç”¨æˆ·å
 	sql_condition=sql_condition & Replace(sql_websearch_condition_adminname,"{0}",FilterAdminLike(Request("s_adminname")))
 	param_str=param_str & ",s_adminname"
 end if
 
-if Len(Request("s_name"))>0 then	'·Ã¿ÍÃû
+if Len(Request("s_name"))>0 then	'è®¿å®¢å
 	sql_condition=sql_condition & Replace(sql_websearch_condition_name,"{0}",FilterAdminLike(Request("s_name")))
 	param_str=param_str & ",s_name"
 end if
 
-if Len(Request("s_title"))>0 then	'±êÌâ
+if Len(Request("s_title"))>0 then	'æ ‡é¢˜
 	sql_condition=sql_condition & Replace(sql_websearch_condition_title,"{0}",FilterAdminLike(Request("s_title")))
 	param_str=param_str & ",s_title"
 end if
 
-if Len(Request("s_article"))>0 then	'ÁôÑÔÄÚÈİ
+if Len(Request("s_article"))>0 then	'ç•™è¨€å†…å®¹
 	sql_condition=sql_condition & Replace(sql_websearch_condition_article,"{0}",FilterAdminLike(Request("s_article")))
 	param_str=param_str & ",s_article"
 end if
 
-if Len(Request("s_email"))>0 then	'ÓÊ¼ş
+if Len(Request("s_email"))>0 then	'é‚®ä»¶
 	sql_condition=sql_condition & Replace(sql_websearch_condition_email,"{0}",FilterAdminLike(Request("s_email")))
 	param_str=param_str & ",s_email"
 end if
 
-if Len(Request("s_qqid"))>0 then	'QQºÅÂë
+if Len(Request("s_qqid"))>0 then	'QQå·ç 
 	sql_condition=sql_condition & Replace(sql_websearch_condition_qqid,"{0}",FilterAdminLike(Request("s_qqid")))
 	param_str=param_str & ",s_qqid"
 end if
 
-if Len(Request("s_msnid"))>0 then	'SkypeºÅ
+if Len(Request("s_msnid"))>0 then	'Skypeå·
 	sql_condition=sql_condition & Replace(sql_websearch_condition_msnid,"{0}",FilterAdminLike(Request("s_msnid")))
 	param_str=param_str & ",s_msnid"
 end if
 
-if Len(Request("s_homepage"))>0 then	'Ö÷Ò³
+if Len(Request("s_homepage"))>0 then	'ä¸»é¡µ
 	sql_condition=sql_condition & Replace(sql_websearch_condition_homepage,"{0}",FilterAdminLike(Request("s_homepage")))
 	param_str=param_str & ",s_homepage"
 end if
@@ -94,7 +94,7 @@ if Len(Request("s_ipv4addr"))>0 then	'IPv4
 	param_str=param_str & ",s_ipv4addr"
 end if
 
-if Len(Request("s_originalipv4"))>0 then	'Ô­Ê¼IPv4
+if Len(Request("s_originalipv4"))>0 then	'åŸå§‹IPv4
 	sql_condition=sql_condition & Replace(sql_websearch_condition_originalipv4,"{0}",FilterAdminLike(Request("s_originalipv4")))
 	param_str=param_str & ",s_originalipv4"
 end if
@@ -104,12 +104,12 @@ if Len(Request("s_ipv6addr"))>0 then	'IPv6
 	param_str=param_str & ",s_ipv6addr"
 end if
 
-if Len(Request("s_originalipv6"))>0 then	'Ô­Ê¼IPv6
+if Len(Request("s_originalipv6"))>0 then	'åŸå§‹IPv6
 	sql_condition=sql_condition & Replace(sql_websearch_condition_originalipv6,"{0}",FilterAdminLike(Request("s_originalipv6")))
 	param_str=param_str & ",s_originalipv6"
 end if
 
-if Len(Request("s_reply"))>0 then	'»Ø¸´ÄÚÈİ
+if Len(Request("s_reply"))>0 then	'å›å¤å†…å®¹
 	sql_condition=sql_condition & Replace(sql_websearch_condition_reply,"{0}",FilterAdminLike(Request("s_reply")))
 	param_str=param_str & ",s_reply"
 end if
@@ -118,7 +118,7 @@ end if
 '====================================
 sql_condition=sql_websearch_condition_init & sql_condition
 
-	'=============·ÖÒ³¿ØÖÆ=============
+	'=============åˆ†é¡µæ§åˆ¶=============
 
 	Dim WordsPerPage
 	if WebDisplayMode()="book" then
@@ -139,75 +139,75 @@ sql_condition=sql_websearch_condition_init & sql_condition
 %>
 
 <div id="outerborder" class="outerborder">
-	<%Call WebInitHeaderData("","Webmaster¹ÜÀíÖĞĞÄ","","")%><!-- #include file="include/template/header.inc" -->
+	<%Call WebInitHeaderData("","Webmasterç®¡ç†ä¸­å¿ƒ","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
 
 <div class="region region-2column region-longtext region-search-message">
-	<h3 class="title">ËÑË÷ÁôÑÔ</h3>
+	<h3 class="title">æœç´¢ç•™è¨€</h3>
 	<div class="content">
 		<form method="post" action="web_search.asp" name="form1">
-		<p>ËÑË÷£º("%"´ú±íÈÎÒâ¸ö×Ö·û£¬"_"´ú±íÒ»¸ö×Ö·û)</p>
+		<p>æœç´¢ï¼š("%"ä»£è¡¨ä»»æ„ä¸ªå­—ç¬¦ï¼Œ"_"ä»£è¡¨ä¸€ä¸ªå­—ç¬¦)</p>
 		<div class="field">
-			<span class="label">ÓÃ»§Ãû</span>
+			<span class="label">ç”¨æˆ·å</span>
 			<span class="value"><input type="text" name="s_adminname" value="<%=Request("s_adminname")%>" maxlength="32" /></span>
 		</div>
 		<div class="field">
-			<span class="label">·Ã¿ÍĞÕÃû</span>
+			<span class="label">è®¿å®¢å§“å</span>
 			<span class="value"><input type="text" name="s_name" value="<%=Request("s_name")%>" maxlength="64" /></span>
 		</div>
 		<div class="field">
-			<span class="label">ÁôÑÔ±êÌâ</span>
+			<span class="label">ç•™è¨€æ ‡é¢˜</span>
 			<span class="value"><input type="text" name="s_title" value="<%=Request("s_title")%>" maxlength="64" /></span>
 		</div>
 		<div class="field">
-			<span class="label">ÁôÑÔÄÚÈİ</span>
+			<span class="label">ç•™è¨€å†…å®¹</span>
 			<span class="value"><input type="text" name="s_article" value="<%=Request("s_article")%>" /></span>
 		</div>
 		<div class="field">
-			<span class="label">·Ã¿ÍÓÊ¼şµØÖ·</span>
+			<span class="label">è®¿å®¢é‚®ä»¶åœ°å€</span>
 			<span class="value"><input type="text" name="s_email" value="<%=Request("s_email")%>" maxlength="48" /></span>
 		</div>
 		<div class="field">
-			<span class="label">·Ã¿ÍQQºÅÂë</span>
+			<span class="label">è®¿å®¢QQå·ç </span>
 			<span class="value"><input type="text" name="s_qqid" value="<%=Request("s_qqid")%>" maxlength="16" /></span>
 		</div>
 		<div class="field">
-			<span class="label">·Ã¿ÍSkypeµØÖ·</span>
+			<span class="label">è®¿å®¢Skypeåœ°å€</span>
 			<span class="value"><input type="text" name="s_msnid" value="<%=Request("s_msnid")%>" maxlength="48" /></span>
 		</div>
 		<div class="field">
-			<span class="label">·Ã¿ÍÖ÷Ò³µØÖ·</span>
+			<span class="label">è®¿å®¢ä¸»é¡µåœ°å€</span>
 			<span class="value"><input type="text" name="s_homepage" value="<%=Request("s_homepage")%>" maxlength="255" /></span>
 		</div>
 		<div class="field">
-			<span class="label">·Ã¿ÍIPv4µØÖ·</span>
+			<span class="label">è®¿å®¢IPv4åœ°å€</span>
 			<span class="value"><input type="text" name="s_ipv4addr" value="<%=Request("s_ipv4addr")%>" maxlength="15" /></span>
 		</div>
 		<div class="field">
-			<span class="label">·Ã¿ÍÔ­IPv4µØÖ·</span>
+			<span class="label">è®¿å®¢åŸIPv4åœ°å€</span>
 			<span class="value"><input type="text" name="s_originalipv4" value="<%=Request("s_originalipv4")%>" maxlength="15" /></span>
 		</div>
 		<div class="field">
-			<span class="label">·Ã¿ÍIPv6µØÖ·</span>
+			<span class="label">è®¿å®¢IPv6åœ°å€</span>
 			<span class="value"><input type="text" name="s_ipv6addr" value="<%=Request("s_ipv6addr")%>" maxlength="15" /></span>
 		</div>
 		<div class="field">
-			<span class="label">·Ã¿ÍÔ­IPv6µØÖ·</span>
+			<span class="label">è®¿å®¢åŸIPv6åœ°å€</span>
 			<span class="value"><input type="text" name="s_originalipv6" value="<%=Request("s_originalipv6")%>" maxlength="15" /></span>
 		</div>
 		<div class="field">
-			<span class="label">°æÖ÷»Ø¸´ÄÚÈİ</span>
+			<span class="label">ç‰ˆä¸»å›å¤å†…å®¹</span>
 			<span class="value"><input type="text" name="s_reply" value="<%=request("s_reply")%>" /></span>
 		</div>
-		<div class="command"><input type="submit" value="ËÑË÷ÁôÑÔ" name="searchsubmit" /></div>
+		<div class="command"><input type="submit" value="æœç´¢ç•™è¨€" name="searchsubmit" /></div>
 		</form>
 	</div>
 </div>
 
 	<%
 	if PagesCount>1 and ShowTopPageList then
-		show_page_list ipage,PagesCount,"[ËÑË÷½á¹û·ÖÒ³]",param_str
+		show_page_list ipage,PagesCount,"[æœç´¢ç»“æœåˆ†é¡µ]",param_str
 	end if
 	%>
 	<form method="post" action="web_searchmdel.asp" name="form7">
@@ -231,7 +231,7 @@ sql_condition=sql_websearch_condition_init & sql_condition
 
 	<%
 	if ItemsCount=0 then
-		Response.Write "<br/><br/><div class=""centertext"">Ã»ÓĞÕÒµ½·ûºÏÌõ¼şµÄÁôÑÔ¡£</div><br/><br/>"
+		Response.Write "<br/><br/><div class=""centertext"">æ²¡æœ‰æ‰¾åˆ°ç¬¦åˆæ¡ä»¶çš„ç•™è¨€ã€‚</div><br/><br/>"
 	else
 		dim pagename, inAdminPage, inWebAdminPage
 		pagename="web_admin_search"
@@ -251,7 +251,7 @@ sql_condition=sql_websearch_condition_init & sql_condition
 
 <%
 if PagesCount>1 and ShowBottomPageList then
-	show_page_list ipage,PagesCount,"[ËÑË÷½á¹û·ÖÒ³]",param_str
+	show_page_list ipage,PagesCount,"[æœç´¢ç»“æœåˆ†é¡µ]",param_str
 end if
 %>
 </div>

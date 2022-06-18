@@ -39,7 +39,7 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=HomeName%> ÁôÑÔ±¾ ¹ÜÀíÔ±µÇÂ¼</title>
+	<title><%=HomeName%> ç•™è¨€æœ¬ ç®¡ç†å‘˜ç™»å½•</title>
 	<!-- #include file="inc_admin_stylesheet.asp" -->
 	
 	<script type="text/javascript">
@@ -47,19 +47,19 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 	{
 		if(obj.user.value.length===0)
 		{
-			alert('ÇëÊäÈëÓÃ»§Ãû¡£');
+			alert('è¯·è¾“å…¥ç”¨æˆ·åã€‚');
 			obj.user.focus();
 			return false;
 		}
 		else if(obj.iadminpass.value.length===0)
 		{
-			alert('ÇëÊäÈëÃÜÂë¡£');
+			alert('è¯·è¾“å…¥å¯†ç ã€‚');
 			obj.iadminpass.focus();
 			return false;
 		}
 		else if(obj.ivcode && obj.ivcode.value.length===0)
 		{
-			alert('ÇëÊäÈëÑéÖ¤Âë¡£');
+			alert('è¯·è¾“å…¥éªŒè¯ç ã€‚');
 			obj.ivcode.focus();
 			return false;
 		}
@@ -73,30 +73,30 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 </head>
 
 <body onload="if(form5.iadminpass.value.length===0)form5.iadminpass.focus()">
-<%if ShowTitle then%><%Call InitHeaderData("¹ÜÀíÔ±µÇÂ¼")%><!-- #include file="include/template/header.inc" --><%end if%>
+<%if ShowTitle then%><%Call InitHeaderData("ç®¡ç†å‘˜ç™»å½•")%><!-- #include file="include/template/header.inc" --><%end if%>
 
 <div id="mainborder" class="mainborder narrow-mainborder">
 <div class="region form-region narrow-region">
-	<h3 class="title">¹ÜÀíÔ±µÇÂ¼</h3>
+	<h3 class="title">ç®¡ç†å‘˜ç™»å½•</h3>
 	<div class="content">
 		<form method="post" action="login_verify.asp" name="form5" onsubmit="return submitCheck(this);">
 			<input type="hidden" name="referrer" value="<%=Request.QueryString("referrer")%>"/>
 			<div class="field">
-				<span class="label">ÓÃ»§Ãû</span>
+				<span class="label">ç”¨æˆ·å</span>
 				<span class="value"><input type="text" name="user" maxlength="32" value="<%=ruser%>" /></span>
 			</div>
 			<div class="field">
-				<span class="label">ÃÜÂë</span>
+				<span class="label">å¯†ç </span>
 				<span class="value"><input type="password" name="iadminpass" maxlength="32" autofocus="autofocus" /></span>
 			</div>
 			<%if VcodeCount>0 then%>
 			<div class="field">
-				<span class="label">ÑéÖ¤Âë</span>
+				<span class="label">éªŒè¯ç </span>
 				<span class="value"><input type="text" name="ivcode" autocomplete="off" /><img id="captcha" class="captcha" src="show_vcode.asp?user=<%=ruser%>&t=0"/></span>
 			</div>
 			<%end if%>
 			<div class="command">
-				<input type="submit" value="µÇÂ¼" name="submit1" />
+				<input type="submit" value="ç™»å½•" name="submit1" />
 			</div>
 			</form>
 	</div>

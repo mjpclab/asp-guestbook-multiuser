@@ -1,19 +1,19 @@
 <div class="region">
-	<h3 class="title">Webmaster¹ÜÀíÔ±¿ØÖÆÖÐÐÄ</h3>
+	<h3 class="title">Webmasterç®¡ç†å‘˜æŽ§åˆ¶ä¸­å¿ƒ</h3>
 	<div class="content flex-box">
 		<ul>
-			<li><a href="web_admin.asp">¹ÜÀíÖÐÐÄÊ×Ò³</a></li>
-			<li><a href="web_search.asp">ËÑË÷ÁôÑÔ</a></li>
-			<li><a href="web_searchdec.asp">ËÑË÷ÖÃ¶¥¹«¸æ</a></li>
-			<li><a href="web_advdel.asp">¸ß¼¶É¾³ý</a></li>
-			<li><a href="web_setbulletin.asp">·¢²¼ÏµÍ³¹«¸æ</a></li>
-			<li><a href="web_chpass.asp">ÐÞ¸ÄÃÜÂë</a></li>
-			<li><a href="web_config.asp?page=1">¹ÜÀíÖÐÐÄ²ÎÊý</a></li>
-			<li><a href="web_ipconfig.asp">IPÆÁ±Î²ßÂÔ</a></li>
-			<li><a href="web_filter.asp">ÄÚÈÝ¹ýÂË²ßÂÔ</a></li>
-			<li><a href="web_floodconfig.asp">·À¹àË®²ßÂÔ</a></li>
-			<li><a href="web_compactdb.asp">Ñ¹ËõÊý¾Ý¿â</a></li>
-			<li><a href="web_logoff.asp">ÍË³ö¹ÜÀí</a></li>
+			<li><a href="web_admin.asp">ç®¡ç†ä¸­å¿ƒé¦–é¡µ</a></li>
+			<li><a href="web_search.asp">æœç´¢ç•™è¨€</a></li>
+			<li><a href="web_searchdec.asp">æœç´¢ç½®é¡¶å…¬å‘Š</a></li>
+			<li><a href="web_advdel.asp">é«˜çº§åˆ é™¤</a></li>
+			<li><a href="web_setbulletin.asp">å‘å¸ƒç³»ç»Ÿå…¬å‘Š</a></li>
+			<li><a href="web_chpass.asp">ä¿®æ”¹å¯†ç </a></li>
+			<li><a href="web_config.asp?page=1">ç®¡ç†ä¸­å¿ƒå‚æ•°</a></li>
+			<li><a href="web_ipconfig.asp">IPå±è”½ç­–ç•¥</a></li>
+			<li><a href="web_filter.asp">å†…å®¹è¿‡æ»¤ç­–ç•¥</a></li>
+			<li><a href="web_floodconfig.asp">é˜²çŒæ°´ç­–ç•¥</a></li>
+			<li><a href="web_compactdb.asp">åŽ‹ç¼©æ•°æ®åº“</a></li>
+			<li><a href="web_logoff.asp">é€€å‡ºç®¡ç†</a></li>
 		</ul>
 	</div>
 </div>

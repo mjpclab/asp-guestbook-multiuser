@@ -23,7 +23,7 @@ Response.Expires=-1
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=HomeName%> ÁôÑÔ±¾ ·¢²¼ÖÃ¶¥¹«¸æ</title>
+	<title><%=HomeName%> ç•™è¨€æœ¬ å‘å¸ƒç½®é¡¶å…¬å‘Š</title>
 	<!-- #include file="inc_admin_stylesheet.asp" -->
 
 	<script type="text/javascript">
@@ -42,7 +42,7 @@ Response.Expires=-1
 
 <div id="outerborder" class="outerborder">
 
-	<%if ShowTitle then%><%Call InitHeaderData("¹ÜÀí")%><!-- #include file="include/template/header.inc" --><%end if%>
+	<%if ShowTitle then%><%Call InitHeaderData("ç®¡ç†")%><!-- #include file="include/template/header.inc" --><%end if%>
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/admin_mainmenu.inc" -->
 	<%
@@ -67,19 +67,19 @@ Response.Expires=-1
 	%>
 
 	<div class="region">
-		<h3 class="title">·¢²¼ÖÃ¶¥¹«¸æ</h3>
+		<h3 class="title">å‘å¸ƒç½®é¡¶å…¬å‘Š</h3>
 		<div class="content">
 			<form method="post" action="admin_savebulletin.asp" name="form6" onsubmit="form6.submit1.disabled=true;">
 				<input type="hidden" name="user" value="<%=ruser%>" />
-				¹«¸æÄÚÈÝ£º<br/><textarea name="abulletin" id="abulletin" onkeydown="if(!this.modified)this.modified=true; var e=event?event:arguments[0]; if(e && e.ctrlKey && e.keyCode==13 && this.form.submit1)this.form.submit1.click();" rows="<%=ReplyTextHeight%>"><%=tbul%></textarea>
+				å…¬å‘Šå†…å®¹ï¼š<br/><textarea name="abulletin" id="abulletin" onkeydown="if(!this.modified)this.modified=true; var e=event?event:arguments[0]; if(e && e.ctrlKey && e.keyCode==13 && this.form.submit1)this.form.submit1.click();" rows="<%=ReplyTextHeight%>"><%=tbul%></textarea>
 				<!-- #include file="include/template/ubbtoolbar.inc" -->
 				<%if web_AdminUBBSupport then ShowUbbToolBar(2)%>
 				<p>
-				<%if web_AdminHTMLSupport then%><input type="checkbox" name="html2" id="html2" value="1"<%=cked(CBool(tflag AND 1))%> /><label for="html2">Ö§³ÖHTML±ê¼Ç</label><br/><%end if%>
-				<%if web_AdminUBBSupport then%><input type="checkbox" name="ubb2" id="ubb2" value="1"<%=cked(CBool(tflag AND 2))%> /><label for="ubb2">Ö§³ÖUBB±ê¼Ç</label><br/><%end if%>
-				<%if web_AdminAllowNewLine then%><input type="checkbox" name="newline2" id="newline2" value="1"<%=cked(CBool(tflag AND 4))%> /><label for="newline2">²»Ö§³ÖHTMLºÍUBB±ê¼ÇÊ±ÔÊÐí»Ø³µ»»ÐÐ</label><%end if%>
+				<%if web_AdminHTMLSupport then%><input type="checkbox" name="html2" id="html2" value="1"<%=cked(CBool(tflag AND 1))%> /><label for="html2">æ”¯æŒHTMLæ ‡è®°</label><br/><%end if%>
+				<%if web_AdminUBBSupport then%><input type="checkbox" name="ubb2" id="ubb2" value="1"<%=cked(CBool(tflag AND 2))%> /><label for="ubb2">æ”¯æŒUBBæ ‡è®°</label><br/><%end if%>
+				<%if web_AdminAllowNewLine then%><input type="checkbox" name="newline2" id="newline2" value="1"<%=cked(CBool(tflag AND 4))%> /><label for="newline2">ä¸æ”¯æŒHTMLå’ŒUBBæ ‡è®°æ—¶å…è®¸å›žè½¦æ¢è¡Œ</label><%end if%>
 				</p>
-				<div class="command"><input value="¸üÐÂÊý¾Ý" type="submit" name="submit1" id="submit1" /></div>
+				<div class="command"><input value="æ›´æ–°æ•°æ®" type="submit" name="submit1" id="submit1" /></div>
 			</form>
 		</div>
 	</div>

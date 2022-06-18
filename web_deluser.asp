@@ -49,7 +49,7 @@ if Not IsEmpty(Request.Form) then
 	end if
 	if Request.Form("arguments")<>"" then backurl=backurl & "?" & Request.Form("arguments")
 
-	Call TipsPage("ÒÑÉ¾³ý" &affected& "¸öÓÃ»§¡£",backurl)
+	Call TipsPage("å·²åˆ é™¤" &affected& "ä¸ªç”¨æˆ·ã€‚",backurl)
 else
 	Response.Redirect "web_admin.asp"
 end if

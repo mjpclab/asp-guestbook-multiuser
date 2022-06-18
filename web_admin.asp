@@ -22,7 +22,7 @@ Response.AddHeader "cache-control","private"
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster¹ÜÀíÖĞĞÄ</title>
+	<title><%=web_BookName%> Webmasterç®¡ç†ä¸­å¿ƒ</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
 
@@ -30,10 +30,10 @@ Response.AddHeader "cache-control","private"
 
 <div id="outerborder" class="outerborder">
 
-	<%Call WebInitHeaderData("","Webmaster¹ÜÀíÖĞĞÄ","","")%><!-- #include file="include/template/header.inc" -->
+	<%Call WebInitHeaderData("","Webmasterç®¡ç†ä¸­å¿ƒ","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
-	<h3>×¢²áÓÃ»§ÁĞ±í£º</h3>
+	<h3>æ³¨å†Œç”¨æˆ·åˆ—è¡¨ï¼š</h3>
 	<%
 	set cn=server.CreateObject("ADODB.Connection")
 	set rs=server.CreateObject("ADODB.Recordset")
@@ -44,19 +44,19 @@ Response.AddHeader "cache-control","private"
 
 	if ItemsCount>0 then
 	%>
-		<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"[ÓÃ»§ÁĞ±í·ÖÒ³£¬¹²" &PagesCount& "Ò³£¬" &ItemsCount& "¸öÓÃ»§]",""%>
-		<form method="post" action="web_deluser.asp" name="frm_user" onsubmit="for(var i=0;i<=elements.users.length-1;i++)if(elements.users[i].checked){if(confirm('¾¯¸æ£¡É¾³ıµÄÓÃ»§ºÍÊı¾İ½«²»ÄÜ»Ö¸´£¡\nÈ·ÊµÒªÖ´ĞĞÉ¾³ı²Ù×÷Âğ£¿'))return confirm('ÇëÔÙ´ÎÈ·ÈÏÊÇ·ñÒªÉ¾³ıÓÃ»§£¿');else return false;}alert('ÇëÏÈÑ¡ÔñÒªÉ¾³ıµÄÓÃ»§¡£');return false;">
+		<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"[ç”¨æˆ·åˆ—è¡¨åˆ†é¡µï¼Œå…±" &PagesCount& "é¡µï¼Œ" &ItemsCount& "ä¸ªç”¨æˆ·]",""%>
+		<form method="post" action="web_deluser.asp" name="frm_user" onsubmit="for(var i=0;i<=elements.users.length-1;i++)if(elements.users[i].checked){if(confirm('è­¦å‘Šï¼åˆ é™¤çš„ç”¨æˆ·å’Œæ•°æ®å°†ä¸èƒ½æ¢å¤ï¼\nç¡®å®è¦æ‰§è¡Œåˆ é™¤æ“ä½œå—ï¼Ÿ'))return confirm('è¯·å†æ¬¡ç¡®è®¤æ˜¯å¦è¦åˆ é™¤ç”¨æˆ·ï¼Ÿ');else return false;}alert('è¯·å…ˆé€‰æ‹©è¦åˆ é™¤çš„ç”¨æˆ·ã€‚');return false;">
 
 			<input type="hidden" name="source" value="1">
 			<%if isnumeric(Request.QueryString("page")) and Request.QueryString("page")<>"" then%><input type="hidden" name="arguments" value="page=<%=Request.QueryString("page")%>"><%end if%>
 
 			<table id="titlelist" class="topic-list">
 			<thead>
-				<tr><th class="select"><input type="checkbox" name="users" class="users checkbox"/></th><th>ÓÃ»§Ãû</th><th>êÇ³Æ</th><th>×¢²áÈÕÆÚ</th><th>×îºóµÇÂ¼ÈÕÆÚ</th><th>´ò¿ªÁôÑÔ±¾</th></tr>
+				<tr><th class="select"><input type="checkbox" name="users" class="users checkbox"/></th><th>ç”¨æˆ·å</th><th>æ˜µç§°</th><th>æ³¨å†Œæ—¥æœŸ</th><th>æœ€åç™»å½•æ—¥æœŸ</th><th>æ‰“å¼€ç•™è¨€æœ¬</th></tr>
 			</thead>
 			<tbody>
 			<%while not rs.EOF%>
-				<tr><td class="select"><input type="checkbox" name="users" class="users checkbox" value="<%=rs("adminname")%>" /></td><td><a href="web_userinfo.asp?user=<%=rs("adminname")%>" target="_blank"><%=rs("adminname")%></a></td><td><%=rs("name")%></td><td><%=UTCToDisplayTime(rs("regdate"))%></td><td><%=UTCToDisplayTime(rs("lastlogin"))%></td><td><a href="index.asp?user=<%=rs("adminname")%>" target="_blank">´ò¿ªÁôÑÔ±¾</a></td></tr>
+				<tr><td class="select"><input type="checkbox" name="users" class="users checkbox" value="<%=rs("adminname")%>" /></td><td><a href="web_userinfo.asp?user=<%=rs("adminname")%>" target="_blank"><%=rs("adminname")%></a></td><td><%=rs("name")%></td><td><%=UTCToDisplayTime(rs("regdate"))%></td><td><%=UTCToDisplayTime(rs("lastlogin"))%></td><td><a href="index.asp?user=<%=rs("adminname")%>" target="_blank">æ‰“å¼€ç•™è¨€æœ¬</a></td></tr>
 			<%rs.MoveNext : wend%>
 			</tbody>
 			</table>
@@ -64,7 +64,7 @@ Response.AddHeader "cache-control","private"
 			<%if ItemsCount>0 then%>
 			<div class="guest-functions">
 			<div class="main">
-				<input type="submit" value="É¾³ıÑ¡¶¨ÓÃ»§" />
+				<input type="submit" value="åˆ é™¤é€‰å®šç”¨æˆ·" />
 			</div>
 			</div>
 			<%end if%>
@@ -75,7 +75,7 @@ Response.AddHeader "cache-control","private"
 	cn.Close : set rs=nothing : set cn=nothing
 	%>
 
-	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"[ÓÃ»§ÁĞ±í·ÖÒ³£¬¹²" &PagesCount& "Ò³£¬" &ItemsCount& "¸öÓÃ»§]",""%>
+	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"[ç”¨æˆ·åˆ—è¡¨åˆ†é¡µï¼Œå…±" &PagesCount& "é¡µï¼Œ" &ItemsCount& "ä¸ªç”¨æˆ·]",""%>
 
 	<!-- #include file="include/template/web_admin_searchuserbox.inc" -->
 	</div>

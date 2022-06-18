@@ -33,7 +33,7 @@ if Not IsEmpty(Request.Form) then
 	Call CreateConn(cn)
 	rs.Open Replace(Replace(sql_adminsaveedit_open,"{0}",Request.Form("mainid")),"{1}",adminid),cn,0,3,1
 
-	if Not rs.EOF then		'ÁôÑÔ´æÔÚ
+	if Not rs.EOF then		'ç•™è¨€å­˜åœ¨
 		rs.Fields("guestflag")=cbyte(rs.Fields("guestflag") and 248) + cbyte(tlimit and web_adminlimit)
 		if Request.Form("etitle")<>"" then rs.Fields("title")=HtmlEncode(Request.Form("etitle"))
 		rs.Fields("article")=Request.Form("econtent")

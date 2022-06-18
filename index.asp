@@ -67,7 +67,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=HomeName%> ÁôÑÔ±¾</title>
+	<title><%=HomeName%> ç•™è¨€æœ¬</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 	</head>
 
@@ -84,12 +84,12 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 	<!-- #include file="include/template/sysbulletin.inc" -->
 	<!-- #include file="include/template/topbulletin.inc" -->
 	<!-- #include file="include/template/guest_tiphidden.inc" -->
-	<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"[ÁôÑÔ·ÖÒ³]",""%>
+	<%if PagesCount>1 and ShowTopPageList then show_page_list ipage,PagesCount,"[ç•™è¨€åˆ†é¡µ]",""%>
 	<%if ItemsCount>0 and StatusSearch and ShowTopSearchBox then%><!-- #include file="include/template/guest_searchbox.inc" --><%end if%>
 
 	<%
 	if ItemsCount=0 then
-		Response.Write "<br/><br/><div class=""centertext"">Ä¿Ç°ÉĞÎŞÁôÑÔ£¬Çëµã»÷¡°Ç©Ğ´ÁôÑÔ¡±¡£</div><br/><br/>"
+		Response.Write "<br/><br/><div class=""centertext"">ç›®å‰å°šæ— ç•™è¨€ï¼Œè¯·ç‚¹å‡»â€œç­¾å†™ç•™è¨€â€ã€‚</div><br/><br/>"
 	else
 		dim pagename, inAdminPage, inWebAdminPage
 		pagename="index"
@@ -106,7 +106,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 	
 	<!-- #include file="include/template/guest_func.inc" -->
 
-	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"[ÁôÑÔ·ÖÒ³]",""%>
+	<%if PagesCount>1 and ShowBottomPageList then show_page_list ipage,PagesCount,"[ç•™è¨€åˆ†é¡µ]",""%>
 	<%if ItemsCount>0 and StatusSearch and ShowBottomSearchBox then%><!-- #include file="include/template/guest_searchbox.inc" --><%end if%>
 	</div>
 

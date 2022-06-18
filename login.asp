@@ -32,34 +32,34 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> ÁôÑÔ±¾ ¹ÜÀíÔ±µÇÂ¼</title>
+	<title><%=web_BookName%> ç•™è¨€æœ¬ ç®¡ç†å‘˜ç™»å½•</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
 
 <body onload="if(form5.user.value.length===0)form5.user.focus();else form5.iadminpass.focus()">
-<%Call WebInitHeaderData("","¹ÜÀíÔ±µÇÂ¼","","")%><!-- #include file="include/template/header.inc" -->
+<%Call WebInitHeaderData("","ç®¡ç†å‘˜ç™»å½•","","")%><!-- #include file="include/template/header.inc" -->
 
 <div id="mainborder" class="mainborder narrow-mainborder">
 <div class="region form-region narrow-region">
-	<h3 class="title">¹ÜÀíÔ±µÇÂ¼</h3>
+	<h3 class="title">ç®¡ç†å‘˜ç™»å½•</h3>
 	<div class="content">
 		<form method="post" action="login_verify.asp" name="form5" onsubmit="return submitCheck(this);">
 			<div class="field">
-				<span class="label">ÓÃ»§Ãû</span>
+				<span class="label">ç”¨æˆ·å</span>
 				<span class="value"><input type="text" name="user" maxlength="32" value="<%=ruser%>" <%if ruser="" then Response.Write "autofocus='autofocus'"%>/></span>
 			</div>
 			<div class="field">
-				<span class="label">ÃÜÂë</span>
+				<span class="label">å¯†ç </span>
 				<span class="value"><input type="password" name="iadminpass" maxlength="32" <%if ruser<>"" then Response.Write "autofocus='autofocus'"%>/></span>
 			</div>
 			<%if VcodeCount>0 then%>
 			<div class="field">
-				<span class="label">ÑéÖ¤Âë</span>
+				<span class="label">éªŒè¯ç </span>
 				<span class="value"><input type="text" name="ivcode" size="10" autocomplete="off" /><img id="captcha" class="captcha" src="show_vcode.asp?t=0"/></span>
 			</div>
 			<%end if%>
 			<div class="command">
-				<input value="µÇÂ¼" type="submit" name="submit1" />
+				<input value="ç™»å½•" type="submit" name="submit1" />
 			</div>
 			</form>
 	</div>

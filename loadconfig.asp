@@ -17,12 +17,12 @@ checkuser lcn,lrs,false
 lrs.Open Replace(sql_loadconfig_config,"{0}",wm_id),lcn,0,1,1
 
 status=lrs("status")
-StatusOpen=CBool(status and 1)	'ÁôÑÔ±¾¿ªÆô
-StatusWrite=CBool(status and 2)	'ÁôÑÔÈ¨ÏŞ¿ªÆô
-StatusSearch=CBool(status and 4)	'ËÑË÷È¨ÏŞ¿ªÆô
-StatusLogin=CBool(status and 32)	'ÓÃ»§µÇÂ¼È¨ÏŞ¿ªÆô
-StatusStatistics=CBool(status and 256)	'Í³¼Æ¿ªÆô
-StatusNeedAudit=CBool(status and 512)	'È«¾ÖÉóºË¿ªÆô
+StatusOpen=CBool(status and 1)	'ç•™è¨€æœ¬å¼€å¯
+StatusWrite=CBool(status and 2)	'ç•™è¨€æƒé™å¼€å¯
+StatusSearch=CBool(status and 4)	'æœç´¢æƒé™å¼€å¯
+StatusLogin=CBool(status and 32)	'ç”¨æˆ·ç™»å½•æƒé™å¼€å¯
+StatusStatistics=CBool(status and 256)	'ç»Ÿè®¡å¼€å¯
+StatusNeedAudit=CBool(status and 512)	'å…¨å±€å®¡æ ¸å¼€å¯
 
 web_StatusOpen=StatusOpen
 web_StatusWrite=StatusWrite
@@ -30,47 +30,47 @@ web_StatusSearch=StatusSearch
 web_StatusStatistics=StatusStatistics
 web_StatusNeedAudit=StatusNeedAudit
 
-web_IPConStatus=lrs("ipconstatus")	'IPÆÁ±Î²ßÂÔ£¬µÍ4Î»ÓÃÓÚIPv4£¬¸ß4Î»ÓÃÓÚIPv6
+web_IPConStatus=lrs("ipconstatus")	'IPå±è”½ç­–ç•¥ï¼Œä½4ä½ç”¨äºIPv4ï¼Œé«˜4ä½ç”¨äºIPv6
 web_IPv4ConStatus=web_IPConStatus mod 16
 if web_IPv4ConStatus<0 or web_IPv4ConStatus>2 then web_IPv4ConStatus=0
 web_IPv6ConStatus=web_IPConStatus \ 16
 if web_IPv6ConStatus<0 or web_IPv6ConStatus>2 then web_IPv6ConStatus=0
 
 
-'========HTMLÈ¨ÏŞÉè¶¨========
+'========HTMLæƒé™è®¾å®š========
 dim web_adminlimit,web_guestlimit
 web_adminlimit=lrs("adminhtml")
-web_AdminHTMLSupport=CBool(web_adminlimit and 1)		'¹ÜÀíÔ±»Ø¸´¡¢¹«¸æÄ¬ÈÏÊÇ·ñÖ§³ÖHTML True:ÊÇ False:·ñ
-web_AdminUBBSupport=CBool(web_adminlimit and 2)		'¹ÜÀíÔ±»Ø¸´¡¢¹«¸æÄ¬ÈÏÊÇ·ñÖ§³ÖUBB±ê¼Ç
-web_AdminAllowNewLine=CBool(web_adminlimit and 4)	'¹ÜÀíÔ±²»Ö§³ÖHTMLºÍUBBÊ±£¬Ä¬ÈÏÊÇ·ñÔÊĞí»Ø³µ»»ĞĞ
+web_AdminHTMLSupport=CBool(web_adminlimit and 1)		'ç®¡ç†å‘˜å›å¤ã€å…¬å‘Šé»˜è®¤æ˜¯å¦æ”¯æŒHTML True:æ˜¯ False:å¦
+web_AdminUBBSupport=CBool(web_adminlimit and 2)		'ç®¡ç†å‘˜å›å¤ã€å…¬å‘Šé»˜è®¤æ˜¯å¦æ”¯æŒUBBæ ‡è®°
+web_AdminAllowNewLine=CBool(web_adminlimit and 4)	'ç®¡ç†å‘˜ä¸æ”¯æŒHTMLå’ŒUBBæ—¶ï¼Œé»˜è®¤æ˜¯å¦å…è®¸å›è½¦æ¢è¡Œ
 
 web_guestlimit=lrs("guesthtml")
-web_HTMLSupport=CBool(web_guestlimit and 1)			'·Ã¿ÍÁôÑÔÊÇ·ñÖ§³ÖHTML
-web_UBBSupport=CBool(web_guestlimit and 2)			'·Ã¿ÍÁôÑÔÊÇ·ñÖ§³ÖUBB±ê¼Ç
-web_AllowNewLine=CBool(web_guestlimit and 4)			'·Ã¿Í²»Ö§³ÖHTMLºÍUBBÊ±£¬ÊÇ·ñÔÊĞí»Ø³µ»»ĞĞ
+web_HTMLSupport=CBool(web_guestlimit and 1)			'è®¿å®¢ç•™è¨€æ˜¯å¦æ”¯æŒHTML
+web_UBBSupport=CBool(web_guestlimit and 2)			'è®¿å®¢ç•™è¨€æ˜¯å¦æ”¯æŒUBBæ ‡è®°
+web_AllowNewLine=CBool(web_guestlimit and 4)			'è®¿å®¢ä¸æ”¯æŒHTMLå’ŒUBBæ—¶ï¼Œæ˜¯å¦å…è®¸å›è½¦æ¢è¡Œ
 
 
-'========°²È«ĞÔÉèÖÃ========
-web_ShowIP=lrs("showip")			'ÁôÑÔÕßIPÏÔÊ¾£¬µÍ4Î»ÓÃÓÚIPv4£¬¸ß4Î»ÓÃÓÚIPv6
+'========å®‰å…¨æ€§è®¾ç½®========
+web_ShowIP=lrs("showip")			'ç•™è¨€è€…IPæ˜¾ç¤ºï¼Œä½4ä½ç”¨äºIPv4ï¼Œé«˜4ä½ç”¨äºIPv6
 web_ShowIPv4=web_ShowIP mod 16
 web_ShowIPv6=web_ShowIP \ 16
-web_AdminShowIP=lrs("adminshowip")	'Îª¹ÜÀíÔ±ÏÔÊ¾IPÎ»Êı£¬µÍ4Î»ÓÃÓÚIPv4£¬¸ß4Î»ÓÃÓÚIPv6
+web_AdminShowIP=lrs("adminshowip")	'ä¸ºç®¡ç†å‘˜æ˜¾ç¤ºIPä½æ•°ï¼Œä½4ä½ç”¨äºIPv4ï¼Œé«˜4ä½ç”¨äºIPv6
 web_AdminShowIPv4=web_AdminShowIP mod 16
 web_AdminShowIPv6=web_AdminShowIP \ 16
-web_AdminShowOriginalIP=lrs("adminshoworiginalip")	'Îª¹ÜÀíÔ±ÏÔÊ¾Ô­Ê¼IPÎ»Êı£¬µÍ4Î»ÓÃÓÚIPv4£¬¸ß4Î»ÓÃÓÚIPv6
+web_AdminShowOriginalIP=lrs("adminshoworiginalip")	'ä¸ºç®¡ç†å‘˜æ˜¾ç¤ºåŸå§‹IPä½æ•°ï¼Œä½4ä½ç”¨äºIPv4ï¼Œé«˜4ä½ç”¨äºIPv6
 web_AdminShowOriginalIPv4=web_AdminShowOriginalIP mod 16
 web_AdminShowOriginalIPv6=web_AdminShowOriginalIP \ 16
 
-web_VcodeCount=clng(lrs("vcodecount") and &H0F)		'µÇÂ¼ÑéÖ¤Âë³¤¶È
-web_WriteVcodeCount=clng(lrs("vcodecount") and &HF0) \ &H10		'ÁôÑÔÑéÖ¤Âë³¤¶È
+web_VcodeCount=clng(lrs("vcodecount") and &H0F)		'ç™»å½•éªŒè¯ç é•¿åº¦
+web_WriteVcodeCount=clng(lrs("vcodecount") and &HF0) \ &H10		'ç•™è¨€éªŒè¯ç é•¿åº¦
 
-'========ĞĞÎª========
+'========è¡Œä¸º========
 ServerTimezoneOffset=lrs("servertimezoneoffset")
 
-'========ÓÊ¼şÉèÖÃ========
+'========é‚®ä»¶è®¾ç½®========
 web_MailFlag=lrs("mailflag")
-web_MailNewInform=CBool(web_Mailflag and 1)		'ĞÂÁôÑÔÍ¨Öª
-web_MailReplyInform=CBool(web_Mailflag and 2)		'»Ø¸´Í¨Öª
+web_MailNewInform=CBool(web_Mailflag and 1)		'æ–°ç•™è¨€é€šçŸ¥
+web_MailReplyInform=CBool(web_Mailflag and 2)		'å›å¤é€šçŸ¥
 if CBool(web_Mailflag and 4) then MailComponent="cdo" else MailComponent="jmail"
 
 '========web UBB Flags========
@@ -114,82 +114,82 @@ lrs.Close
 lrs.Open Replace(sql_loadconfig_config,"{0}",adminid),lcn,0,1,1
 
 status=lrs("status")
-if StatusOpen then StatusOpen=CBool(status and 1)	'ÁôÑÔ±¾¿ªÆô
-if StatusWrite then StatusWrite=CBool(status and 2)	'ÁôÑÔÈ¨ÏŞ¿ªÆô
-if StatusSearch then StatusSearch=CBool(status and 4)	'ËÑË÷È¨ÏŞ¿ªÆô
-StatusShowHead=CBool(status and 8)	'·Ã¿ÍÍ·ÏñÏÔÊ¾¿ª¹Ø
-if Not StatusNeedAudit then StatusNeedAudit=CBool(status and 16)	'ÁôÑÔĞèÒªÉóºË
-StatusWhisper=CBool(status and 32)	'ÔÊĞíÇÄÇÄ»°
-StatusEncryptWhisper=CBool(status and 64)	'ÔÊĞí·Ã¿Í¼ÓÃÜÇÄÇÄ»°»Ø¸´
-StatusGuestReply=CBool(status and 128)	'ÔÊĞí·Ã¿Í»Ø¸´
-if StatusStatistics then StatusStatistics=CBool(status and 256)	'Í³¼Æ¿ªÆô
-StatusAccountEnabled=Not CBool(status and 1073741824)	'ÕËºÅÆôÓÃ×´Ì¬
-StatusAccountLoginEnabled=Not CBool(status and 536870912)	'ÕËºÅÆôÓÃ×´Ì¬
-StatusAccountLeavewordEnabled=Not CBool(status and 268435456)	'ÕËºÅÆôÓÃ×´Ì¬
+if StatusOpen then StatusOpen=CBool(status and 1)	'ç•™è¨€æœ¬å¼€å¯
+if StatusWrite then StatusWrite=CBool(status and 2)	'ç•™è¨€æƒé™å¼€å¯
+if StatusSearch then StatusSearch=CBool(status and 4)	'æœç´¢æƒé™å¼€å¯
+StatusShowHead=CBool(status and 8)	'è®¿å®¢å¤´åƒæ˜¾ç¤ºå¼€å…³
+if Not StatusNeedAudit then StatusNeedAudit=CBool(status and 16)	'ç•™è¨€éœ€è¦å®¡æ ¸
+StatusWhisper=CBool(status and 32)	'å…è®¸æ‚„æ‚„è¯
+StatusEncryptWhisper=CBool(status and 64)	'å…è®¸è®¿å®¢åŠ å¯†æ‚„æ‚„è¯å›å¤
+StatusGuestReply=CBool(status and 128)	'å…è®¸è®¿å®¢å›å¤
+if StatusStatistics then StatusStatistics=CBool(status and 256)	'ç»Ÿè®¡å¼€å¯
+StatusAccountEnabled=Not CBool(status and 1073741824)	'è´¦å·å¯ç”¨çŠ¶æ€
+StatusAccountLoginEnabled=Not CBool(status and 536870912)	'è´¦å·å¯ç”¨çŠ¶æ€
+StatusAccountLeavewordEnabled=Not CBool(status and 268435456)	'è´¦å·å¯ç”¨çŠ¶æ€
 
-IPConStatus=lrs("ipconstatus")	'IPÆÁ±Î²ßÂÔ£¬µÍ4Î»ÓÃÓÚIPv4£¬¸ß4Î»ÓÃÓÚIPv6
+IPConStatus=lrs("ipconstatus")	'IPå±è”½ç­–ç•¥ï¼Œä½4ä½ç”¨äºIPv4ï¼Œé«˜4ä½ç”¨äºIPv6
 IPv4ConStatus=IPConStatus mod 16
 if IPv4ConStatus<0 or IPv4ConStatus>2 then IPv4ConStatus=0
 IPv6ConStatus=IPConStatus \ 16
 if IPv6ConStatus<0 or IPv6ConStatus>2 then IPv6ConStatus=0
 
-HomeLogo=lrs("homelogo")			'ÍøÕ¾LogoµØÖ·
-HomeName=lrs("homename")			'ÍøÕ¾Ãû³Æ
-HomeAddr=lrs("homeaddr")	'ÍøÕ¾µØÖ·
+HomeLogo=lrs("homelogo")			'ç½‘ç«™Logoåœ°å€
+HomeName=lrs("homename")			'ç½‘ç«™åç§°
+HomeAddr=lrs("homeaddr")	'ç½‘ç«™åœ°å€
 
 
 
-'========HTMLÈ¨ÏŞÉè¶¨========
+'========HTMLæƒé™è®¾å®š========
 dim adminlimit,guestlimit
 adminlimit=lrs("adminhtml")
-AdminHTMLSupport=CBool(adminlimit and 1)	'¹ÜÀíÔ±»Ø¸´¡¢¹«¸æÄ¬ÈÏÊÇ·ñÖ§³ÖHTML True:ÊÇ False:·ñ
-AdminUBBSupport=CBool(adminlimit and 2)		'¹ÜÀíÔ±»Ø¸´¡¢¹«¸æÄ¬ÈÏÊÇ·ñÖ§³ÖUBB±ê¼Ç
-AdminAllowNewLine=CBool(adminlimit and 4)	'¹ÜÀíÔ±²»Ö§³ÖHTMLºÍUBBÊ±£¬Ä¬ÈÏÊÇ·ñÔÊĞí»Ø³µ»»ĞĞ
-AdminViewCode=CBool(adminlimit and 8)		'Îª¹ÜÀíÔ±ÏÔÊ¾Êµ¼ÊHTML´úÂë
+AdminHTMLSupport=CBool(adminlimit and 1)	'ç®¡ç†å‘˜å›å¤ã€å…¬å‘Šé»˜è®¤æ˜¯å¦æ”¯æŒHTML True:æ˜¯ False:å¦
+AdminUBBSupport=CBool(adminlimit and 2)		'ç®¡ç†å‘˜å›å¤ã€å…¬å‘Šé»˜è®¤æ˜¯å¦æ”¯æŒUBBæ ‡è®°
+AdminAllowNewLine=CBool(adminlimit and 4)	'ç®¡ç†å‘˜ä¸æ”¯æŒHTMLå’ŒUBBæ—¶ï¼Œé»˜è®¤æ˜¯å¦å…è®¸å›è½¦æ¢è¡Œ
+AdminViewCode=CBool(adminlimit and 8)		'ä¸ºç®¡ç†å‘˜æ˜¾ç¤ºå®é™…HTMLä»£ç 
 
 guestlimit=lrs("guesthtml")
-HTMLSupport=CBool(guestlimit and 1)			'·Ã¿ÍÁôÑÔÊÇ·ñÖ§³ÖHTML
-UBBSupport=CBool(guestlimit and 2)			'·Ã¿ÍÁôÑÔÊÇ·ñÖ§³ÖUBB±ê¼Ç
-AllowNewLine=CBool(guestlimit and 4)		'·Ã¿Í²»Ö§³ÖHTMLºÍUBBÊ±£¬ÊÇ·ñÔÊĞí»Ø³µ»»ĞĞ
+HTMLSupport=CBool(guestlimit and 1)			'è®¿å®¢ç•™è¨€æ˜¯å¦æ”¯æŒHTML
+UBBSupport=CBool(guestlimit and 2)			'è®¿å®¢ç•™è¨€æ˜¯å¦æ”¯æŒUBBæ ‡è®°
+AllowNewLine=CBool(guestlimit and 4)		'è®¿å®¢ä¸æ”¯æŒHTMLå’ŒUBBæ—¶ï¼Œæ˜¯å¦å…è®¸å›è½¦æ¢è¡Œ
 
 
-'========°²È«ĞÔÉèÖÃ========
-AdminTimeOut=lrs("admintimeout")		'¹ÜÀíÔ±µÇÂ¼³¬Ê±(·Ö)
-ShowIP=lrs("showip")			'ÁôÑÔÕßIPÏÔÊ¾£¬µÍ4Î»ÓÃÓÚIPv4£¬¸ß4Î»ÓÃÓÚIPv6
+'========å®‰å…¨æ€§è®¾ç½®========
+AdminTimeOut=lrs("admintimeout")		'ç®¡ç†å‘˜ç™»å½•è¶…æ—¶(åˆ†)
+ShowIP=lrs("showip")			'ç•™è¨€è€…IPæ˜¾ç¤ºï¼Œä½4ä½ç”¨äºIPv4ï¼Œé«˜4ä½ç”¨äºIPv6
 ShowIPv4=ShowIP mod 16
 ShowIPv6=ShowIP \ 16
-AdminShowIP=lrs("adminshowip")	'Îª¹ÜÀíÔ±ÏÔÊ¾IPÎ»Êı£¬µÍ4Î»ÓÃÓÚIPv4£¬¸ß4Î»ÓÃÓÚIPv6
+AdminShowIP=lrs("adminshowip")	'ä¸ºç®¡ç†å‘˜æ˜¾ç¤ºIPä½æ•°ï¼Œä½4ä½ç”¨äºIPv4ï¼Œé«˜4ä½ç”¨äºIPv6
 AdminShowIPv4=AdminShowIP mod 16
 AdminShowIPv6=AdminShowIP \ 16
-AdminShowOriginalIP=lrs("adminshoworiginalip")	'Îª¹ÜÀíÔ±ÏÔÊ¾Ô­Ê¼IPÎ»Êı£¬µÍ4Î»ÓÃÓÚIPv4£¬¸ß4Î»ÓÃÓÚIPv6
+AdminShowOriginalIP=lrs("adminshoworiginalip")	'ä¸ºç®¡ç†å‘˜æ˜¾ç¤ºåŸå§‹IPä½æ•°ï¼Œä½4ä½ç”¨äºIPv4ï¼Œé«˜4ä½ç”¨äºIPv6
 AdminShowOriginalIPv4=AdminShowOriginalIP mod 16
 AdminShowOriginalIPv6=AdminShowOriginalIP \ 16
 
-if web_ShowIPv4<ShowIPv4 then ShowIPv4=web_ShowIPv4		'WebMasterÉèÖÃÓÅÏÈ
-if web_ShowIPv6<ShowIPv6 then ShowIPv6=web_ShowIPv6		'WebMasterÉèÖÃÓÅÏÈ
-if web_AdminShowIPv4<AdminShowIPv4 then AdminShowIPv4=web_AdminShowIPv4		'WebMasterÉèÖÃÓÅÏÈ
-if web_AdminShowIPv6<AdminShowIPv6 then AdminShowIPv6=web_AdminShowIPv6		'WebMasterÉèÖÃÓÅÏÈ
-if web_AdminShowOriginalIPv4<AdminShowOriginalIPv4 then AdminShowOriginalIPv4=web_AdminShowOriginalIPv4		'WebMasterÉèÖÃÓÅÏÈ
-if web_AdminShowOriginalIPv6<AdminShowOriginalIPv6 then AdminShowOriginalIPv6=web_AdminShowOriginalIPv6		'WebMasterÉèÖÃÓÅÏÈ
+if web_ShowIPv4<ShowIPv4 then ShowIPv4=web_ShowIPv4		'WebMasterè®¾ç½®ä¼˜å…ˆ
+if web_ShowIPv6<ShowIPv6 then ShowIPv6=web_ShowIPv6		'WebMasterè®¾ç½®ä¼˜å…ˆ
+if web_AdminShowIPv4<AdminShowIPv4 then AdminShowIPv4=web_AdminShowIPv4		'WebMasterè®¾ç½®ä¼˜å…ˆ
+if web_AdminShowIPv6<AdminShowIPv6 then AdminShowIPv6=web_AdminShowIPv6		'WebMasterè®¾ç½®ä¼˜å…ˆ
+if web_AdminShowOriginalIPv4<AdminShowOriginalIPv4 then AdminShowOriginalIPv4=web_AdminShowOriginalIPv4		'WebMasterè®¾ç½®ä¼˜å…ˆ
+if web_AdminShowOriginalIPv6<AdminShowOriginalIPv6 then AdminShowOriginalIPv6=web_AdminShowOriginalIPv6		'WebMasterè®¾ç½®ä¼˜å…ˆ
 
-VcodeCount=lrs("vcodecount") mod 16		'µÇÂ¼ÑéÖ¤Âë³¤¶È
-if VcodeCount<web_VcodeCount then VcodeCount=web_VcodeCount		'WebMasterÉèÖÃÓÅÏÈ
+VcodeCount=lrs("vcodecount") mod 16		'ç™»å½•éªŒè¯ç é•¿åº¦
+if VcodeCount<web_VcodeCount then VcodeCount=web_VcodeCount		'WebMasterè®¾ç½®ä¼˜å…ˆ
 
-WriteVcodeCount=lrs("vcodecount") \ 16	'ÁôÑÔÑéÖ¤Âë³¤¶È
-if WriteVcodeCount<web_WriteVcodeCount then WriteVcodeCount=web_WriteVcodeCount		'WebMasterÉèÖÃÓÅÏÈ
+WriteVcodeCount=lrs("vcodecount") \ 16	'ç•™è¨€éªŒè¯ç é•¿åº¦
+if WriteVcodeCount<web_WriteVcodeCount then WriteVcodeCount=web_WriteVcodeCount		'WebMasterè®¾ç½®ä¼˜å…ˆ
 
-'========ÓÊ¼şÉèÖÃ========
+'========é‚®ä»¶è®¾ç½®========
 MailFlag=lrs("mailflag")
-MailNewInform=CBool(Mailflag and 1)		'ĞÂÁôÑÔÍ¨Öª
-MailReplyInform=CBool(Mailflag and 2)	'»Ø¸´Í¨Öª
-MailReceive=lrs("mailreceive")			'ĞÂÁôÑÔÍ¨Öª½ÓÊÕµØÖ·
-MailFrom=lrs("mailfrom")				'·¢¼şÈËµØÖ·
-MailSmtpServer=lrs("mailsmtpserver")	'·¢¼şÈËSMTP·şÎñÆ÷µØÖ·
-MailUserId=lrs("mailuserid")			'µÇÂ¼ÓÃ»§Ãû
-MailUserPass=lrs("mailuserpass")		'µÇÂ¼ÃÜÂë
-MailLevel=lrs("maillevel")				'½ô¼±³Ì¶È
+MailNewInform=CBool(Mailflag and 1)		'æ–°ç•™è¨€é€šçŸ¥
+MailReplyInform=CBool(Mailflag and 2)	'å›å¤é€šçŸ¥
+MailReceive=lrs("mailreceive")			'æ–°ç•™è¨€é€šçŸ¥æ¥æ”¶åœ°å€
+MailFrom=lrs("mailfrom")				'å‘ä»¶äººåœ°å€
+MailSmtpServer=lrs("mailsmtpserver")	'å‘ä»¶äººSMTPæœåŠ¡å™¨åœ°å€
+MailUserId=lrs("mailuserid")			'ç™»å½•ç”¨æˆ·å
+MailUserPass=lrs("mailuserpass")		'ç™»å½•å¯†ç 
+MailLevel=lrs("maillevel")				'ç´§æ€¥ç¨‹åº¦
 
-'========½çÃæÉèÖÃ========
+'========ç•Œé¢è®¾ç½®========
 CssFontFamily=lrs("cssfontfamily")
 CssFontSize=lrs("cssfontsize")
 CssLineHeight=lrs("csslineheight")
@@ -197,22 +197,22 @@ CssLineHeight=lrs("csslineheight")
 DisplayTimezoneOffset=lrs("displaytimezoneoffset")
 
 VisualFlag=lrs("visualflag")
-ReplyInWord=CBool(VisualFlag and 1)					'»Ø¸´ÄÚÇ¶ÓÚÁôÑÔ
-ShowUbbTool=CBool(VisualFlag and 2)					'ÏÔÊ¾UBB¹¤¾ßÀ¸
-ShowTopPageList=CBool(VisualFlag and 4)			'ÉÏ·½ÏÔÊ¾·ÖÒ³
-ShowBottomPageList=CBool(VisualFlag and 8)		'ÏÂ·½ÏÔÊ¾·ÖÒ³
+ReplyInWord=CBool(VisualFlag and 1)					'å›å¤å†…åµŒäºç•™è¨€
+ShowUbbTool=CBool(VisualFlag and 2)					'æ˜¾ç¤ºUBBå·¥å…·æ 
+ShowTopPageList=CBool(VisualFlag and 4)			'ä¸Šæ–¹æ˜¾ç¤ºåˆ†é¡µ
+ShowBottomPageList=CBool(VisualFlag and 8)		'ä¸‹æ–¹æ˜¾ç¤ºåˆ†é¡µ
 if Not ShowTopPageList and Not ShowBottomPageList then ShowBottomPageList=true
-ShowTopSearchBox=CBool(VisualFlag and 16)		'ÉÏ·½ÏÔÊ¾ËÑË÷
-ShowBottomSearchBox=CBool(VisualFlag and 32)	'ÏÂ·½ÏÔÊ¾ËÑË÷
+ShowTopSearchBox=CBool(VisualFlag and 16)		'ä¸Šæ–¹æ˜¾ç¤ºæœç´¢
+ShowBottomSearchBox=CBool(VisualFlag and 32)	'ä¸‹æ–¹æ˜¾ç¤ºæœç´¢
 if Not ShowTopSearchBox and Not ShowBottomSearchBox then ShowBottomSearchBox=true
-ShowAdvPageList=CBool(VisualFlag and 64)			'Çø¶ÎÊ½·ÖÒ³
-HideHidden=CBool(VisualFlag and 128)					'Òş²ØÄÚÈİ±»Òş²ØµÄÁôÑÔ
-HideAudit=CBool(VisualFlag and 256)						'Òş²Ø´ıÉóºËÁôÑÔ
-HideWhisper=CBool(VisualFlag and 512)					'Òş²Ø°æÖ÷Î´»Ø¸´ÇÄÇÄ»°
-if CBool(VisualFlag and 1024) then DisplayMode="forum" else DisplayMode="book"			'Ä¬ÈÏ°æÃæÄ£Ê½
-LogoBannerMode=CBool(VisualFlag and 2048)			'LogoÏÔÊ¾Ä£Ê½
+ShowAdvPageList=CBool(VisualFlag and 64)			'åŒºæ®µå¼åˆ†é¡µ
+HideHidden=CBool(VisualFlag and 128)					'éšè—å†…å®¹è¢«éšè—çš„ç•™è¨€
+HideAudit=CBool(VisualFlag and 256)						'éšè—å¾…å®¡æ ¸ç•™è¨€
+HideWhisper=CBool(VisualFlag and 512)					'éšè—ç‰ˆä¸»æœªå›å¤æ‚„æ‚„è¯
+if CBool(VisualFlag and 1024) then DisplayMode="forum" else DisplayMode="book"			'é»˜è®¤ç‰ˆé¢æ¨¡å¼
+LogoBannerMode=CBool(VisualFlag and 2048)			'Logoæ˜¾ç¤ºæ¨¡å¼
 
-AdvPageListCount=lrs("advpagelistcount")	'Çø¶ÎÊ½·ÖÒ³ÏîÊı
+AdvPageListCount=lrs("advpagelistcount")	'åŒºæ®µå¼åˆ†é¡µé¡¹æ•°
 
 '========UBB Flags========
 UbbFlag=lrs("ubbflag")
@@ -230,29 +230,29 @@ UbbFlag_face=CBool(UbbFlag and 1024)
 UbbFlag_markdown_paragraph=CBool(UbbFlag and 32768)
 UbbFlag_markdown_fontstyle=CBool(UbbFlag and 65536)
 
-TableWidth=lrs("tablewidth")		'±í¸ñ¿í¶È£¬¿ÉÓÃ°Ù·Ö±È
-TableLeftWidth=lrs("tableleftwidth")	'±í¸ñ×ó·½¿í¶È£¬¿ÉÓÃ°Ù·Ö±È
-WindowSpace=lrs("windowspace")			'´°¸ñÇø¿é¼ä¾à
+TableWidth=lrs("tablewidth")		'è¡¨æ ¼å®½åº¦ï¼Œå¯ç”¨ç™¾åˆ†æ¯”
+TableLeftWidth=lrs("tableleftwidth")	'è¡¨æ ¼å·¦æ–¹å®½åº¦ï¼Œå¯ç”¨ç™¾åˆ†æ¯”
+WindowSpace=lrs("windowspace")			'çª—æ ¼åŒºå—é—´è·
 
-LeaveContentHeight=lrs("leavecontentheight")		'¡°ÁôÑÔÄÚÈİ¡±ÎÄ±¾¸ß¶È
-SearchTextWidth=lrs("searchtextwidth")				'¡°ÁôÑÔËÑË÷¡±ÎÄ±¾¿í¶È
-ReplyTextHeight=lrs("replytextheight")				'»Ø¸´¡¢¹«¸æ±à¼­¿ò¸ß¶È
+LeaveContentHeight=lrs("leavecontentheight")		'â€œç•™è¨€å†…å®¹â€æ–‡æœ¬é«˜åº¦
+SearchTextWidth=lrs("searchtextwidth")				'â€œç•™è¨€æœç´¢â€æ–‡æœ¬å®½åº¦
+ReplyTextHeight=lrs("replytextheight")				'å›å¤ã€å…¬å‘Šç¼–è¾‘æ¡†é«˜åº¦
 
-ItemsPerPage=lrs("itemsperpage")		'Ã¿Ò³ÏÔÊ¾µÄÁôÑÔÊı
-TitlesPerPage=lrs("titlesperpage")		'Ã¿Ò³ÏÔÊ¾µÄ±êÌâÊı(ÂÛÌ³Ä£Ê½)
-PicturesPerRow=lrs("picturesperrow")		'Ã¿ĞĞÏÔÊ¾µÄÍ·ÏñÊı
-FrequentFaceCount=lrs("frequentfacecount")	'ÉÙÁ¿ÔØÈëµÄÍ·ÏñÊı
+ItemsPerPage=lrs("itemsperpage")		'æ¯é¡µæ˜¾ç¤ºçš„ç•™è¨€æ•°
+TitlesPerPage=lrs("titlesperpage")		'æ¯é¡µæ˜¾ç¤ºçš„æ ‡é¢˜æ•°(è®ºå›æ¨¡å¼)
+PicturesPerRow=lrs("picturesperrow")		'æ¯è¡Œæ˜¾ç¤ºçš„å¤´åƒæ•°
+FrequentFaceCount=lrs("frequentfacecount")	'å°‘é‡è½½å…¥çš„å¤´åƒæ•°
 if FrequentFaceCount>FaceCount then FrequentFaceCount=FaceCount
 
 PageControl=clng(lrs("pagecontrol"))
-'ShowBorder=CBool(PageControl and 1)		'ÏÔÊ¾±ß¿ò
-ShowTitle=CBool(PageControl and 2)			'ÏÔÊ¾±êÌâÀ¸
-ShowContext=CBool(PageControl and 4)		'ÏÔÊ¾ÓÒ¼ü²Ëµ¥
-SelectContent=CBool(PageControl and 8)		'ÔÊĞíÑ¡Ôñ
-CopyContent=CBool(PageControl and 16)		'ÔÊĞí¸´ÖÆ
-BeFramed=CBool(PageControl and 32)			'ÔÊĞíframe
+'ShowBorder=CBool(PageControl and 1)		'æ˜¾ç¤ºè¾¹æ¡†
+ShowTitle=CBool(PageControl and 2)			'æ˜¾ç¤ºæ ‡é¢˜æ 
+ShowContext=CBool(PageControl and 4)		'æ˜¾ç¤ºå³é”®èœå•
+SelectContent=CBool(PageControl and 8)		'å…è®¸é€‰æ‹©
+CopyContent=CBool(PageControl and 16)		'å…è®¸å¤åˆ¶
+BeFramed=CBool(PageControl and 32)			'å…è®¸frame
 
-WordsLimit=abs(lrs("wordslimit"))		'×î´óÁôÑÔÊı
+WordsLimit=abs(lrs("wordslimit"))		'æœ€å¤§ç•™è¨€æ•°
 
 DelConfirm=lrs("delconfirm")
 DelTip=CBool(DelConfirm and 1)

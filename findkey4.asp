@@ -31,38 +31,38 @@ end if
 
 if VcodeCount>0 and (Request.Form("vcode")<>Session(InstanceName & "_vcode") or Session(InstanceName & "_vcode")="") then
 	Session(InstanceName & "_vcode")=""
-	Call TipsPage("ÑéÖ¤Âë´íÎó","findkey.asp")
+	Call TipsPage("éªŒè¯ç é”™è¯¯","findkey.asp")
 	Response.End
 else
 	Session(InstanceName & "_vcode")=""
 end if
 
-'===============================ºÏÊ½ÑéÖ¤
+'===============================åˆå¼éªŒè¯
 dim re
 set re=new RegExp
 re.Pattern="^\w+$"
 
 ruser=Request.Form("user")
 if ruser="" then
-	Call TipsPage("ÓÃ»§Ãû²»ÄÜÎª¿Õ¡£","findkey.asp")
+	Call TipsPage("ç”¨æˆ·åä¸èƒ½ä¸ºç©ºã€‚","findkey.asp")
 	Response.End
 elseif re.Test(ruser)=false then
-	Call TipsPage("ÓÃ»§ÃûÖĞÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß¡£","findkey.asp")
+	Call TipsPage("ç”¨æˆ·åä¸­åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚","findkey.asp")
 	Response.End
 elseif Request.Form("key")="" then
-	Call TipsPage("ÕÒ»ØÃÜÂë´ğ°¸²»ÄÜÎª¿Õ¡£","findkey.asp")
+	Call TipsPage("æ‰¾å›å¯†ç ç­”æ¡ˆä¸èƒ½ä¸ºç©ºã€‚","findkey.asp")
 	Response.End
 elseif Request.Form("pass1")="" then
-	Call TipsPage("ÃÜÂë²»ÄÜÎª¿Õ¡£","findkey.asp")
+	Call TipsPage("å¯†ç ä¸èƒ½ä¸ºç©ºã€‚","findkey.asp")
 	Response.End
 elseif Request.Form("pass2")="" then
-	Call TipsPage("È·ÈÏÃÜÂë²»ÄÜÎª¿Õ¡£","findkey.asp")
+	Call TipsPage("ç¡®è®¤å¯†ç ä¸èƒ½ä¸ºç©ºã€‚","findkey.asp")
 	Response.End
 elseif Request.Form("pass1")<>Request.Form("pass2") then
-	Call TipsPage("ÃÜÂë²»Ò»ÖÂ£¬Çë¼ì²é¡£","findkey.asp")
+	Call TipsPage("å¯†ç ä¸ä¸€è‡´ï¼Œè¯·æ£€æŸ¥ã€‚","findkey.asp")
 	Response.End
 elseif len(Request.Form("pass1"))>32 then
-	Call TipsPage("ÃÜÂë³¤¶È²»ÄÜ³¬¹ı32×Ö¡£","findkey.asp")
+	Call TipsPage("å¯†ç é•¿åº¦ä¸èƒ½è¶…è¿‡32å­—ã€‚","findkey.asp")
 	Response.End
 end if
 
@@ -71,16 +71,16 @@ set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 
-'=============================´æÔÚĞÔÑéÖ¤
+'=============================å­˜åœ¨æ€§éªŒè¯
 rs.Open Replace(sql_findkey4_checkuser,"{0}",ruser),cn,,,1
 if rs.EOF then
-	Call TipsPage("ÓÃ»§Ãû²»´æÔÚ¡£","findkey.asp")
+	Call TipsPage("ç”¨æˆ·åä¸å­˜åœ¨ã€‚","findkey.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
 
 if md5(Request.Form("key"),32)<>rs("key") then
-	Call TipsPage("ÕÒ»ØÃÜÂë´ğ°¸²»ÕıÈ·¡£","findkey.asp")
+	Call TipsPage("æ‰¾å›å¯†ç ç­”æ¡ˆä¸æ­£ç¡®ã€‚","findkey.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
@@ -93,7 +93,7 @@ cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> ÕÒ»ØÃÜÂëÍê³É</title>
+	<title><%=web_BookName%> æ‰¾å›å¯†ç å®Œæˆ</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
 
@@ -101,7 +101,7 @@ cn.Execute Replace(Replace(sql_findkey4_resetpass,"{0}",md5(Request.Form("pass1"
 
 <div id="outerborder" class="outerborder">
 
-<%Call WebInitHeaderData("findkey.asp","ÕÒ»ØÃÜÂë","","²½Öè4")%><!-- #include file="include/template/header.inc" -->
+<%Call WebInitHeaderData("findkey.asp","æ‰¾å›å¯†ç ","","æ­¥éª¤4")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 dim sys_bul_flag
@@ -113,10 +113,10 @@ sys_bul_flag=32
 <!-- #include file="include/template/web_guest_func.inc" -->
 
 <div class="region form-region">
-	<h3 class="title">ÕÒ»ØÃÜÂë ²½Öè3</h3>
+	<h3 class="title">æ‰¾å›å¯†ç  æ­¥éª¤3</h3>
 	<div class="content">
-		<h4>ÒÑÖØÉèÃÜÂë£¬Çëµã»÷ÏÂÃæµÄÁ´½ÓµÇÂ¼£º</h4>
-		<p><a href="admin_login.asp?user=<%=ruser%>">ÓÃ»§µÇÂ¼</a></p>
+		<h4>å·²é‡è®¾å¯†ç ï¼Œè¯·ç‚¹å‡»ä¸‹é¢çš„é“¾æ¥ç™»å½•ï¼š</h4>
+		<p><a href="admin_login.asp?user=<%=ruser%>">ç”¨æˆ·ç™»å½•</a></p>
 	</div>
 </div>
 </div>

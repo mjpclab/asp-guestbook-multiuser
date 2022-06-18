@@ -28,14 +28,14 @@ end if
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> ÕÒ»ØÃÜÂë²½Öè1</title>
+	<title><%=web_BookName%> æ‰¾å›å¯†ç æ­¥éª¤1</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function submitcheck(frm)
 	{
-		if (frm.user.value.length===0) {alert('ÇëÊäÈëÓÃ»§Ãû¡£'); frm.user.focus(); return false;}
-		else if (/^\w+$/.test(frm.user.value)===false) {alert('ÓÃ»§ÃûÖĞÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß¡£'); frm.user.select(); return false;}
+		if (frm.user.value.length===0) {alert('è¯·è¾“å…¥ç”¨æˆ·åã€‚'); frm.user.focus(); return false;}
+		else if (/^\w+$/.test(frm.user.value)===false) {alert('ç”¨æˆ·åä¸­åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚'); frm.user.select(); return false;}
 		else {frm.submit1.disabled=true; return true;}
 	}
 	</script>
@@ -45,7 +45,7 @@ end if
 
 <div id="outerborder" class="outerborder">
 
-<%Call WebInitHeaderData("findkey.asp","ÕÒ»ØÃÜÂë","","²½Öè1")%><!-- #include file="include/template/header.inc" -->
+<%Call WebInitHeaderData("findkey.asp","æ‰¾å›å¯†ç ","","æ­¥éª¤1")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 set cn=server.CreateObject("ADODB.Connection")
@@ -60,14 +60,14 @@ sys_bul_flag=32
 <!-- #include file="include/template/web_guest_func.inc" -->
 
 <div class="region form-region">
-	<h3 class="title">ÕÒ»ØÃÜÂë ²½Öè1</h3>
+	<h3 class="title">æ‰¾å›å¯†ç  æ­¥éª¤1</h3>
 	<div class="content">
 	<form name="findform" method="post" action="findkey2.asp" onsubmit="return submitcheck(this)">
 		<div class="field">
-			<span class="label">ÓÃ»§Ãû£º</span>
-			<span class="value"><input type="text" name="user" maxlength="32" size="32" title="Ö»ÄÜ°üº¬Ó¢ÎÄ¡¢Êı×ÖºÍÏÂ»®Ïß£¬×î´ó32Î»" /></span>
+			<span class="label">ç”¨æˆ·åï¼š</span>
+			<span class="value"><input type="text" name="user" maxlength="32" size="32" title="åªèƒ½åŒ…å«è‹±æ–‡ã€æ•°å­—å’Œä¸‹åˆ’çº¿ï¼Œæœ€å¤§32ä½" /></span>
 		</div>
-		<div class="command"><input type="submit" name="submit1" value="ÏÂÒ»²½" />¡¡¡¡<input type="reset" value="ÖØĞÂÌîĞ´" /></div>
+		<div class="command"><input type="submit" name="submit1" value="ä¸‹ä¸€æ­¥" />ã€€ã€€<input type="reset" value="é‡æ–°å¡«å†™" /></div>
 	</form>
 	</div>
 </div>

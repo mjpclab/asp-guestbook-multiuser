@@ -32,7 +32,7 @@ end if
 
 if VcodeCount>0 and (Request.Form("vcode")<>Session(InstanceName & "_vcode") or Session(InstanceName & "_vcode")="") then
 	Session(InstanceName & "_vcode")=""
-	Call TipsPage("ÑéÖ¤Âë´íÎó¡£","findkey.asp")
+	Call TipsPage("éªŒè¯ç é”™è¯¯ã€‚","findkey.asp")
 	Response.End
 elseif VcodeCount>0 then
 	Session(InstanceName & "_vcode")=getvcode(VcodeCount)
@@ -40,20 +40,20 @@ else
 	Session(InstanceName & "_vcode")=""
 end if
 
-'===============================ºÏÊ½ÑéÖ¤
+'===============================åˆå¼éªŒè¯
 dim re
 set re=new RegExp
 re.Pattern="^\w+$"
 
 ruser=Request.Form("user")
 if ruser="" then
-	Call TipsPage("ÓÃ»§Ãû²»ÄÜÎª¿Õ¡£","findkey.asp")
+	Call TipsPage("ç”¨æˆ·åä¸èƒ½ä¸ºç©ºã€‚","findkey.asp")
 	Response.End
 elseif re.Test(ruser)=false then
-	Call TipsPage("ÓÃ»§ÃûÖĞÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß¡£","findkey.asp")
+	Call TipsPage("ç”¨æˆ·åä¸­åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚","findkey.asp")
 	Response.End
 elseif Request.Form("key")="" then
-	Call TipsPage("ÕÒ»ØÃÜÂë´ğ°¸²»ÄÜÎª¿Õ¡£","findkey.asp")
+	Call TipsPage("æ‰¾å›å¯†ç ç­”æ¡ˆä¸èƒ½ä¸ºç©ºã€‚","findkey.asp")
 	Response.End
 end if
 
@@ -62,16 +62,16 @@ set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 
-'=============================´æÔÚĞÔÑéÖ¤
+'=============================å­˜åœ¨æ€§éªŒè¯
 rs.Open Replace(sql_findkey3_checkuser,"{0}",ruser),cn,,,1
 if rs.EOF then
-	Call TipsPage("ÓÃ»§Ãû²»´æÔÚ¡£","findkey.asp")
+	Call TipsPage("ç”¨æˆ·åä¸å­˜åœ¨ã€‚","findkey.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
 
 if md5(Request.Form("key"),32)<>rs("key") then
-	Call TipsPage("ÕÒ»ØÃÜÂë´ğ°¸²»ÕıÈ·¡£","findkey.asp")
+	Call TipsPage("æ‰¾å›å¯†ç ç­”æ¡ˆä¸æ­£ç¡®ã€‚","findkey.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
@@ -82,16 +82,16 @@ rs.Close : set rs=nothing
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> ÕÒ»ØÃÜÂë²½Öè3</title>
+	<title><%=web_BookName%> æ‰¾å›å¯†ç æ­¥éª¤3</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 
 	<script type="text/javascript">
 	function submitcheck(frm)
 	{
-		if (frm.pass1.value.length===0) {alert('ÇëÊäÈëÃÜÂë¡£'); frm.pass1.focus(); return false;}
-		else if (frm.pass2.value.length===0) {alert('ÇëÊäÈëÈ·ÈÏÃÜÂë¡£'); frm.pass2.focus(); return false;}
-		else if (frm.pass1.value!==frm.pass2.value) {alert('ÃÜÂë²»Ò»ÖÂ£¬Çë¼ì²é¡£'); frm.pass2.select(); return false;}
-		else if (frm.vcode && frm.vcode.value.length===0) {alert('ÇëÊäÈëÑéÖ¤Âë¡£'); frm.vcode.focus(); return false;}
+		if (frm.pass1.value.length===0) {alert('è¯·è¾“å…¥å¯†ç ã€‚'); frm.pass1.focus(); return false;}
+		else if (frm.pass2.value.length===0) {alert('è¯·è¾“å…¥ç¡®è®¤å¯†ç ã€‚'); frm.pass2.focus(); return false;}
+		else if (frm.pass1.value!==frm.pass2.value) {alert('å¯†ç ä¸ä¸€è‡´ï¼Œè¯·æ£€æŸ¥ã€‚'); frm.pass2.select(); return false;}
+		else if (frm.vcode && frm.vcode.value.length===0) {alert('è¯·è¾“å…¥éªŒè¯ç ã€‚'); frm.vcode.focus(); return false;}
 		else {frm.submit1.disabled=true; return true;}
 	}
 	</script>
@@ -101,7 +101,7 @@ rs.Close : set rs=nothing
 
 <div id="outerborder" class="outerborder">
 
-<%Call WebInitHeaderData("findkey.asp","ÕÒ»ØÃÜÂë","","²½Öè3")%><!-- #include file="include/template/header.inc" -->
+<%Call WebInitHeaderData("findkey.asp","æ‰¾å›å¯†ç ","","æ­¥éª¤3")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 dim sys_bul_flag
@@ -113,28 +113,28 @@ sys_bul_flag=32
 <!-- #include file="include/template/web_guest_func.inc" -->
 
 <div class="region form-region">
-	<h3 class="title">ÕÒ»ØÃÜÂë ²½Öè3</h3>
+	<h3 class="title">æ‰¾å›å¯†ç  æ­¥éª¤3</h3>
 	<div class="content">
 		<form name="findform3" method="post" action="findkey4.asp" onsubmit="return submitcheck(this)">
 			<input type="hidden" name="user" value="<%=ruser%>" />
 			<input type="hidden" name="key" value="<%=Request.Form("key")%>" />
 
-			<h4>ÇëÖØĞÂÉèÖÃÄúµÄÃÜÂë</h4>
+			<h4>è¯·é‡æ–°è®¾ç½®æ‚¨çš„å¯†ç </h4>
 			<div class="field">
-				<span class="label">ÃÜÂë£º</span>
+				<span class="label">å¯†ç ï¼š</span>
 				<span class="value"><input type="password" name="pass1" maxlength="32" size="32" /></span>
 			</div>
 			<div class="field">
-				<span class="label">È·ÈÏÃÜÂë£º</span>
+				<span class="label">ç¡®è®¤å¯†ç ï¼š</span>
 				<span class="value"><input type="password" name="pass2" maxlength="32" size="32" /></span>
 			</div>
 			<%if VcodeCount>0 then%>
 			<div class="field">
-				<span class="label">ÑéÖ¤Âë£º</span>
+				<span class="label">éªŒè¯ç ï¼š</span>
 				<span class="value"><input type="text" name="vcode" size="10" autocomplete="off" /><img id="captcha" class="captcha" src="show_vcode.asp?t=0"/></span>
 			</div>
 			<%end if%>
-			<div class="command"><input type="submit" name="submit1" value="Íê³ÉÖØÉè" />¡¡¡¡<input type="reset" value="ÖØĞÂÌîĞ´" /></div>
+			<div class="command"><input type="submit" name="submit1" value="å®Œæˆé‡è®¾" />ã€€ã€€<input type="reset" value="é‡æ–°å¡«å†™" /></div>
 		</form>
 	</div>
 </div>

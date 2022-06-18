@@ -19,7 +19,7 @@
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster¹ÜÀíÖÐÐÄ ²é¿´ÓÃ»§ÐÅÏ¢</title>
+	<title><%=web_BookName%> Webmasterç®¡ç†ä¸­å¿ƒ æŸ¥çœ‹ç”¨æˆ·ä¿¡æ¯</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 </head>
 
@@ -35,28 +35,28 @@ checkuser cn,rs,false
 
 <div id="outerborder" class="outerborder">
 
-<%Call WebInitHeaderData("","Webmaster¹ÜÀíÖÐÐÄ","","")%><!-- #include file="include/template/header.inc" -->
+<%Call WebInitHeaderData("","Webmasterç®¡ç†ä¸­å¿ƒ","","")%><!-- #include file="include/template/header.inc" -->
 
 <div id="mainborder" class="mainborder">
 <div class="region">
-	<h3 class="title">²é¿´ÓÃ»§ÐÅÏ¢</h3>
+	<h3 class="title">æŸ¥çœ‹ç”¨æˆ·ä¿¡æ¯</h3>
 	<div class="content">
 		<%
 		rs.Open Replace(sql_webuserinfo,"{0}",ruser),cn,,,1
 		if rs("faceid")>0 then Response.Write "<img src=""asset/face/" & rs("faceid") & ".gif" & """>"
 		%>
 		<p class="field">
-			<a href="index.asp?user=<%=ruser%>" target="_blank">[´ò¿ªÁôÑÔ±¾]</a>
-			<a href="web_chuserpass.asp?user=<%=ruser%>">[ÖØÉèÓÃ»§ÃÜÂë]</a>
-			<a href="web_chuserstatus.asp?user=<%=ruser%>">[¸ü¸ÄÕËºÅ×´Ì¬]</a>
+			<a href="index.asp?user=<%=ruser%>" target="_blank">[æ‰“å¼€ç•™è¨€æœ¬]</a>
+			<a href="web_chuserpass.asp?user=<%=ruser%>">[é‡è®¾ç”¨æˆ·å¯†ç ]</a>
+			<a href="web_chuserstatus.asp?user=<%=ruser%>">[æ›´æ”¹è´¦å·çŠ¶æ€]</a>
 		</p>
 		<table cellpadding="5">
-			<tr><th scope="row">ÓÃ»§Ãû</th><td><%=rs("adminname")%></td></tr>
-			<tr><th scope="row">êÇ³Æ</th><td><%=rs("name") & ""%></td></tr>
+			<tr><th scope="row">ç”¨æˆ·å</th><td><%=rs("adminname")%></td></tr>
+			<tr><th scope="row">æ˜µç§°</th><td><%=rs("name") & ""%></td></tr>
 			<tr><th scope="row">E-mail</th><td><%=rs("email") & ""%></td></tr>
-			<tr><th scope="row">QQºÅ</th><td><%=rs("qqid") & ""%></td></tr>
+			<tr><th scope="row">QQå·</th><td><%=rs("qqid") & ""%></td></tr>
 			<tr><th scope="row">Skype</th><td><%=rs("msnid") & ""%></td></tr>
-			<tr><th scope="row">Ö÷Ò³</th><td><%=rs("homepage") & ""%></td></tr>
+			<tr><th scope="row">ä¸»é¡µ</th><td><%=rs("homepage") & ""%></td></tr>
 
 			<%
 			rs.Close
@@ -64,59 +64,59 @@ checkuser cn,rs,false
 			Dim userstatus
 			userstatus=rs.Fields(0)
 			%>
-			<tr><th scope="row">ÕËºÅ×´Ì¬</th><td><%if CBool(userstatus AND 1073741824) then Response.Write "½ûÓÃ" else Response.Write "ÆôÓÃ"%></td></tr>
-			<tr><th scope="row">ÕËºÅ¹ÜÀíµÇÂ½×´Ì¬</th><td><%if CBool(userstatus AND 536870912) then Response.Write "½ûÓÃ" else Response.Write "ÆôÓÃ"%></td></tr>
-			<tr><th scope="row">ÕËºÅÇ©Ð´ÁôÑÔ×´Ì¬</th><td><%if CBool(userstatus AND 268435456) then Response.Write "½ûÓÃ" else Response.Write "ÆôÓÃ"%></td></tr>
+			<tr><th scope="row">è´¦å·çŠ¶æ€</th><td><%if CBool(userstatus AND 1073741824) then Response.Write "ç¦ç”¨" else Response.Write "å¯ç”¨"%></td></tr>
+			<tr><th scope="row">è´¦å·ç®¡ç†ç™»é™†çŠ¶æ€</th><td><%if CBool(userstatus AND 536870912) then Response.Write "ç¦ç”¨" else Response.Write "å¯ç”¨"%></td></tr>
+			<tr><th scope="row">è´¦å·ç­¾å†™ç•™è¨€çŠ¶æ€</th><td><%if CBool(userstatus AND 268435456) then Response.Write "ç¦ç”¨" else Response.Write "å¯ç”¨"%></td></tr>
 
 			<%
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_count_view,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">ÁôÑÔ²é¿´´ÎÊý</th><td><%if Not rs.EOF then Response.Write rs(0) else Response.Write "0"%></td></tr>
+			<tr><th scope="row">ç•™è¨€æŸ¥çœ‹æ¬¡æ•°</th><td><%if Not rs.EOF then Response.Write rs(0) else Response.Write "0"%></td></tr>
 
 			<%
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_count_words,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">ÁôÑÔÊý</th><td><%=rs(0)%></td></tr>
+			<tr><th scope="row">ç•™è¨€æ•°</th><td><%=rs(0)%></td></tr>
 
 			<%
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_count_reply,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">»Ø¸´Êý</th><td><%=rs(0)%></td></tr>
+			<tr><th scope="row">å›žå¤æ•°</th><td><%=rs(0)%></td></tr>
 
 			<%
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_count_ipv4config,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">×Ô¶¨ÒåIPv4ÆÁ±Î²ßÂÔÌõÊý</th><td><%=rs(0)%></td></tr>
+			<tr><th scope="row">è‡ªå®šä¹‰IPv4å±è”½ç­–ç•¥æ¡æ•°</th><td><%=rs(0)%></td></tr>
 
 			<%
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_count_ipv6config,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">×Ô¶¨ÒåIPv6ÆÁ±Î²ßÂÔÌõÊý</th><td><%=rs(0)%></td></tr>
+			<tr><th scope="row">è‡ªå®šä¹‰IPv6å±è”½ç­–ç•¥æ¡æ•°</th><td><%=rs(0)%></td></tr>
 
 			<%
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_count_filterconfig,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">×Ô¶¨ÒåÄÚÈÝ¹ýÂË²ßÂÔÌõÊý</th><td><%=rs(0)%></td></tr>
+			<tr><th scope="row">è‡ªå®šä¹‰å†…å®¹è¿‡æ»¤ç­–ç•¥æ¡æ•°</th><td><%=rs(0)%></td></tr>
 
 			<%
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_reginfo,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">×¢²áÈÕÆÚ</th><td><%=UTCToDisplayTime(rs("regdate"))%></td></tr>
-			<tr><th scope="row">×îºóµÇÂ¼ÈÕÆÚ</th><td><%=UTCToDisplayTime(rs("lastlogin"))%></td></tr>
+			<tr><th scope="row">æ³¨å†Œæ—¥æœŸ</th><td><%=UTCToDisplayTime(rs("regdate"))%></td></tr>
+			<tr><th scope="row">æœ€åŽç™»å½•æ—¥æœŸ</th><td><%=UTCToDisplayTime(rs("lastlogin"))%></td></tr>
 
 			<%
 			rs.Close
 			rs.Open Replace(sql_webuserinfo_logininfo,"{0}",adminid),cn,,,1
 			%>
-			<tr><th scope="row">µÇÂ¼´ÎÊý</th><td><%if not rs.EOF then Response.Write rs(0) else Response.Write "0"%></td></tr>
-			<tr><th scope="row">ÆäÖÐµÇÂ¼Ê§°Ü´ÎÊý</th><td><%if not rs.EOF then Response.Write rs(1) else Response.Write "0"%></td></tr>
+			<tr><th scope="row">ç™»å½•æ¬¡æ•°</th><td><%if not rs.EOF then Response.Write rs(0) else Response.Write "0"%></td></tr>
+			<tr><th scope="row">å…¶ä¸­ç™»å½•å¤±è´¥æ¬¡æ•°</th><td><%if not rs.EOF then Response.Write rs(1) else Response.Write "0"%></td></tr>
 		</table>
 	</div>
 </div>

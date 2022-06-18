@@ -42,7 +42,7 @@ if VcodeCount>0 then
 	if VcodeCount>Len(Session(InstanceName & "_vcode")) then
 		Session(InstanceName & "_vcode")=""
 		if StatusStatistics then call addstat("loginfailed")
-		Call TipsPage("ÑéÖ¤Âë³¤¶È²»×ã¡£","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
+		Call TipsPage("éªŒè¯ç é•¿åº¦ä¸è¶³ã€‚","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
 
 		set rs=nothing
 		set cn=nothing
@@ -50,7 +50,7 @@ if VcodeCount>0 then
 	elseif Request.Form("ivcode")<>Session(InstanceName & "_vcode") or Session(InstanceName & "_vcode")="" then
 		Session(InstanceName & "_vcode")=""
 		if StatusStatistics then call addstat("loginfailed")
-		Call TipsPage("ÑéÖ¤Âë´íÎó¡£","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
+		Call TipsPage("éªŒè¯ç é”™è¯¯ã€‚","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
 
 		set rs=nothing
 		set cn=nothing
@@ -62,7 +62,7 @@ end if
 
 Sub LoginFailed
 	if StatusStatistics then call addstat("loginfailed")
-	Call TipsPage("ÃÜÂë²»ÕıÈ·¡£","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
+	Call TipsPage("å¯†ç ä¸æ­£ç¡®ã€‚","admin_login.asp?user=" &ruser& "&referrer=" & Server.UrlEncode(referrer))
 End Sub
 
 Dim iadminpass

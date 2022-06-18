@@ -17,21 +17,21 @@ re.Pattern="^\w+$"
 
 ruser=Request.QueryString("user")
 if ruser="" then
-	Response.Write "ÓÃ»§Ãû²»ÄÜÎª¿Õ¡£"
+	Response.Write "ç”¨æˆ·åä¸èƒ½ä¸ºç©ºã€‚"
 elseif re.Test(ruser)=false then
-	Response.Write "ÓÃ»§ÃûÖÐÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êý×ÖºÍÏÂ»®Ïß¡£"
+	Response.Write "ç”¨æˆ·åä¸­åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚"
 else
 	dim cn,rs
 	set cn=server.CreateObject("ADODB.Connection")
 	set rs=server.CreateObject("ADODB.Recordset")
 	Call CreateConn(cn)
 
-	'=============================´æÔÚÐÔÑéÖ¤
+	'=============================å­˜åœ¨æ€§éªŒè¯
 	rs.Open Replace(sql_web_checkuser,"{0}",ruser),cn,,,1
 	if not rs.EOF then
-		Response.Write "ÓÃ»§Ãû£º " & ruser & " ÒÑ´æÔÚ£¬Çë»»ÓÃÆäËüÓÃ»§Ãû¡£"
+		Response.Write "ç”¨æˆ·åï¼š " & ruser & " å·²å­˜åœ¨ï¼Œè¯·æ¢ç”¨å…¶å®ƒç”¨æˆ·åã€‚"
 	else
-		Response.Write "ÓÃ»§Ãû£º " & ruser & " ¿ÉÒÔÊ¹ÓÃ¡£"
+		Response.Write "ç”¨æˆ·åï¼š " & ruser & " å¯ä»¥ä½¿ç”¨ã€‚"
 	end if
 end if
 %>

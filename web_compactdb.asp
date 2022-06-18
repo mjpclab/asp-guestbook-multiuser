@@ -17,7 +17,7 @@ err.number=0
 set tfso=Server.CreateObject("Scripting.FileSystemObject")
 set tfso=nothing
 if err.number<>0 then
-	Call TipsPage("·þÎñÆ÷²»Ö§³ÖFSO(File System Object)£¬²Ù×÷ÎÞ·¨¼ÌÐø¡£","web_admin.asp")
+	Call TipsPage("æœåŠ¡å™¨ä¸æ”¯æŒFSO(File System Object)ï¼Œæ“ä½œæ— æ³•ç»§ç»­ã€‚","web_admin.asp")
 	response.end
 end if
 on error goto 0
@@ -65,5 +65,5 @@ elseif dbtype>=10 and dbtype<=13 then
 	set cn=nothing
 end if
 
-Call TipsPage("Êý¾Ý¿âÑ¹ËõÍê³É¡£","web_admin.asp")
+Call TipsPage("æ•°æ®åº“åŽ‹ç¼©å®Œæˆã€‚","web_admin.asp")
 %>

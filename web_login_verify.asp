@@ -19,14 +19,14 @@ Response.AddHeader "cache-control","no-cache, must-revalidate"
 
 if VcodeCount>0 and (Request.Form("ivcode")<>Session(InstanceName & "_vcode") or Session(InstanceName & "_vcode")="") then
 	Session(InstanceName & "_vcode")=""
-	Call TipsPage("ÑéÖ¤Âë´íÎó¡£","web_login.asp")
+	Call TipsPage("éªŒè¯ç é”™è¯¯ã€‚","web_login.asp")
 	Response.End
 else
 	Session(InstanceName & "_vcode")=""
 end if
 
 Sub LoginFailed
-	Call TipsPage("ÃÜÂë²»ÕıÈ·¡£","web_login.asp")
+	Call TipsPage("å¯†ç ä¸æ­£ç¡®ã€‚","web_login.asp")
 End Sub
 
 Dim iadminpass

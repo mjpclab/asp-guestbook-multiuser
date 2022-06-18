@@ -123,11 +123,11 @@ Session(InstanceName & "_icontent_" & ruser)=Request.Form("icontent")
 if WriteVcodeCount>0 then
 	if WriteVcodeCount>Len(Session(InstanceName & "_vcode_write")) then
 		Session(InstanceName & "_vcode_write")=""
-		Call TipsPage("ÑéÖ¤Âë³¤¶È²»×ã¡£", getLeaveWordUrl)
+		Call TipsPage("éªŒè¯ç é•¿åº¦ä¸è¶³ã€‚", getLeaveWordUrl)
 		Response.End
 	elseif Request.Form("ivcode")<>Session(InstanceName & "_vcode_write") or Session(InstanceName & "_vcode_write")="" then
 		Session(InstanceName & "_vcode_write")=""
-		Call TipsPage("ÑéÖ¤Âë´íÎó¡£", getLeaveWordUrl)
+		Call TipsPage("éªŒè¯ç é”™è¯¯ã€‚", getLeaveWordUrl)
 		Response.End
 	else
 		Session(InstanceName & "_vcode_write")=""

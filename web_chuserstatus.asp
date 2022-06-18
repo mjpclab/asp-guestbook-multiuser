@@ -38,7 +38,7 @@ set cn=nothing
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> Webmaster¹ÜÀíÖÐÐÄ ¸ü¸ÄÕËºÅ×´Ì¬</title>
+	<title><%=web_BookName%> Webmasterç®¡ç†ä¸­å¿ƒ æ›´æ”¹è´¦å·çŠ¶æ€</title>
 	<!-- #include file="inc_web_admin_stylesheet.asp" -->
 
 </head>
@@ -47,35 +47,35 @@ set cn=nothing
 
 <div id="outerborder" class="outerborder">
 
-	<%Call WebInitHeaderData("","Webmaster¹ÜÀíÖÐÐÄ","","")%><!-- #include file="include/template/header.inc" -->
+	<%Call WebInitHeaderData("","Webmasterç®¡ç†ä¸­å¿ƒ","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<div class="region form-region region-longtext region-config">
-		<h3 class="title">¸ü¸ÄÕËºÅ×´Ì¬</h3>
+		<h3 class="title">æ›´æ”¹è´¦å·çŠ¶æ€</h3>
 		<div class="content">
 			<form method="post" action="web_saveuserstatus.asp">
 			<div class="field">
-				<span class="label">ÓÃ»§Ãû£º</span>
+				<span class="label">ç”¨æˆ·åï¼š</span>
 				<span class="value"><input type="text" name="user" maxlength="32" value="<%=ruser%>" /></span>
 			</div>
 			<div class="field">
-				<span class="label">ÕËºÅ×´Ì¬£º</span>
+				<span class="label">è´¦å·çŠ¶æ€ï¼š</span>
 				<span class="value">
-					<input type="radio" name="statusDisabled" value="0" id="statusDisabled0"<%=cked(Not statusDisabled)%>/><label for="statusDisabled0">ÆôÓÃ</label>¡¡¡¡<input type="radio" name="statusDisabled" value="1073741824" id="statusDisabled1"<%=cked(statusDisabled)%>/><label for="statusDisabled1">½ûÓÃ</label>
+					<input type="radio" name="statusDisabled" value="0" id="statusDisabled0"<%=cked(Not statusDisabled)%>/><label for="statusDisabled0">å¯ç”¨</label>ã€€ã€€<input type="radio" name="statusDisabled" value="1073741824" id="statusDisabled1"<%=cked(statusDisabled)%>/><label for="statusDisabled1">ç¦ç”¨</label>
 				</span>
 			</div>
 			<div class="field">
-				<span class="label">ÕËºÅ¹ÜÀíµÇÂ½×´Ì¬£º</span>
+				<span class="label">è´¦å·ç®¡ç†ç™»é™†çŠ¶æ€ï¼š</span>
 				<span class="value">
-					<input type="radio" name="statusLoginDisabled" value="0" id="statusLoginDisabled0"<%=cked(Not statusLoginDisabled)%>/><label for="statusLoginDisabled0">ÆôÓÃ</label>¡¡¡¡<input type="radio" name="statusLoginDisabled" value="536870912" id="statusLoginDisabled1"<%=cked(statusLoginDisabled)%>/><label for="statusLoginDisabled1">½ûÓÃ</label>
+					<input type="radio" name="statusLoginDisabled" value="0" id="statusLoginDisabled0"<%=cked(Not statusLoginDisabled)%>/><label for="statusLoginDisabled0">å¯ç”¨</label>ã€€ã€€<input type="radio" name="statusLoginDisabled" value="536870912" id="statusLoginDisabled1"<%=cked(statusLoginDisabled)%>/><label for="statusLoginDisabled1">ç¦ç”¨</label>
 				</span>
 			</div>
 			<div class="field">
-				<span class="label">ÕËºÅÇ©Ð´ÁôÑÔ×´Ì¬£º</span>
+				<span class="label">è´¦å·ç­¾å†™ç•™è¨€çŠ¶æ€ï¼š</span>
 				<span class="value">
-					<input type="radio" name="statusLeavewordDisabled" value="0" id="statusLeavewordDisabled0"<%=cked(Not statusLeavewordDisabled)%>/><label for="statusLeavewordDisabled0">ÆôÓÃ</label>¡¡¡¡<input type="radio" name="statusLeavewordDisabled" value="268435456" id="statusLeavewordDisabled1"<%=cked(statusLeavewordDisabled)%>/><label for="statusLeavewordDisabled1">½ûÓÃ</label>
+					<input type="radio" name="statusLeavewordDisabled" value="0" id="statusLeavewordDisabled0"<%=cked(Not statusLeavewordDisabled)%>/><label for="statusLeavewordDisabled0">å¯ç”¨</label>ã€€ã€€<input type="radio" name="statusLeavewordDisabled" value="268435456" id="statusLeavewordDisabled1"<%=cked(statusLeavewordDisabled)%>/><label for="statusLeavewordDisabled1">ç¦ç”¨</label>
 				</span>
 			</div>
-			<div class="command"><input value="¸üÐÂÊý¾Ý" type="submit" name="submit1" /></div>
+			<div class="command"><input value="æ›´æ–°æ•°æ®" type="submit" name="submit1" /></div>
             </form>
 		</div>
 	</div>

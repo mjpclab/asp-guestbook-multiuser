@@ -30,43 +30,43 @@ end if
 
 if VcodeCount>0 and (Request.Form("vcode")<>Session(InstanceName & "_vcode") or Session(InstanceName & "_vcode")="") then
 	Session(InstanceName & "_vcode")=""
-	Call TipsPage("ÑéÖ¤Âë´íÎó¡£","reg.asp")
+	Call TipsPage("éªŒè¯ç é”™è¯¯ã€‚","reg.asp")
 	Response.End
 else
 	Session(InstanceName & "_vcode")=""
 end if
-'===============================ºÏÊ½ÑéÖ¤
+'===============================åˆå¼éªŒè¯
 dim re
 set re=new RegExp
 re.Pattern="^\w+$"
 
 ruser=Request.Form("user")
 if ruser="" then
-	Call TipsPage("ÓÃ»§Ãû²»ÄÜÎª¿Õ¡£","reg.asp")
+	Call TipsPage("ç”¨æˆ·åä¸èƒ½ä¸ºç©ºã€‚","reg.asp")
 	Response.End
 elseif re.Test(ruser)=false then
-	Call TipsPage("ÓÃ»§ÃûÖĞÖ»ÄÜ°üº¬Ó¢ÎÄ×ÖÄ¸¡¢Êı×ÖºÍÏÂ»®Ïß¡£","reg.asp")
+	Call TipsPage("ç”¨æˆ·åä¸­åªèƒ½åŒ…å«è‹±æ–‡å­—æ¯ã€æ•°å­—å’Œä¸‹åˆ’çº¿ã€‚","reg.asp")
 	Response.End
 elseif len(ruser)>32 then
-	Call TipsPage("ÓÃ»§Ãû³¤¶È²»ÄÜ³¬¹ı32×Ö¡£","reg.asp")
+	Call TipsPage("ç”¨æˆ·åé•¿åº¦ä¸èƒ½è¶…è¿‡32å­—ã€‚","reg.asp")
 	Response.End
 elseif Request.Form("pass1")="" then
-	Call TipsPage("ÃÜÂë²»ÄÜÎª¿Õ¡£","reg.asp")
+	Call TipsPage("å¯†ç ä¸èƒ½ä¸ºç©ºã€‚","reg.asp")
 	Response.End
 elseif Request.Form("pass2")="" then
-	Call TipsPage("È·ÈÏÃÜÂë²»ÄÜÎª¿Õ¡£","reg.asp")
+	Call TipsPage("ç¡®è®¤å¯†ç ä¸èƒ½ä¸ºç©ºã€‚","reg.asp")
 	Response.End
 elseif Request.Form("pass1")<>Request.Form("pass2") then
-	Call TipsPage("ÃÜÂë²»Ò»ÖÂ£¬Çë¼ì²é¡£","reg.asp")
+	Call TipsPage("å¯†ç ä¸ä¸€è‡´ï¼Œè¯·æ£€æŸ¥ã€‚","reg.asp")
 	Response.End
 elseif len(Request.Form("pass1"))>32 then
-	Call TipsPage("ÃÜÂë³¤¶È²»ÄÜ³¬¹ı32×Ö¡£","reg.asp")
+	Call TipsPage("å¯†ç é•¿åº¦ä¸èƒ½è¶…è¿‡32å­—ã€‚","reg.asp")
 	Response.End
 elseif Request.Form("question")="" then
-	Call TipsPage("ÕÒ»ØÃÜÂëÎÊÌâ²»ÄÜÎª¿Õ¡£","reg.asp")
+	Call TipsPage("æ‰¾å›å¯†ç é—®é¢˜ä¸èƒ½ä¸ºç©ºã€‚","reg.asp")
 	Response.End
 elseif Request.Form("key")="" then
-	Call TipsPage("ÕÒ»ØÃÜÂë´ğ°¸²»ÄÜÎª¿Õ¡£","reg.asp")
+	Call TipsPage("æ‰¾å›å¯†ç ç­”æ¡ˆä¸èƒ½ä¸ºç©ºã€‚","reg.asp")
 	Response.End
 end if
 
@@ -75,10 +75,10 @@ set cn=server.CreateObject("ADODB.Connection")
 set rs=server.CreateObject("ADODB.Recordset")
 Call CreateConn(cn)
 
-'=============================´æÔÚĞÔÑéÖ¤
+'=============================å­˜åœ¨æ€§éªŒè¯
 rs.Open Replace(sql_submitreg_checkuser,"{0}",ruser),cn,,,1
 if not rs.EOF then
-	Call TipsPage("ÓÃ»§ÃûÒÑ´æÔÚ£¬ÇëÖØĞÂÊäÈë¡£","reg.asp")
+	Call TipsPage("ç”¨æˆ·åå·²å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥ã€‚","reg.asp")
 	rs.Close : cn.Close : set rs=nothing : set cn=nothing
 	Response.End
 end if
@@ -102,7 +102,7 @@ gbookaddr=geturlpath & "index.asp?user=" & ruser
 <html>
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
-	<title><%=web_BookName%> ´´½¨³É¹¦</title>
+	<title><%=web_BookName%> åˆ›å»ºæˆåŠŸ</title>
 	<!-- #include file="inc_stylesheet.asp" -->
 </head>
 
@@ -110,7 +110,7 @@ gbookaddr=geturlpath & "index.asp?user=" & ruser
 
 <div id="outerborder" class="outerborder">
 
-<%Call WebInitHeaderData("reg.asp","ÉêÇëÁôÑÔ±¾","","ÉêÇë³É¹¦")%><!-- #include file="include/template/header.inc" -->
+<%Call WebInitHeaderData("reg.asp","ç”³è¯·ç•™è¨€æœ¬","","ç”³è¯·æˆåŠŸ")%><!-- #include file="include/template/header.inc" -->
 <div id="mainborder" class="mainborder">
 <%
 dim sys_bul_flag
@@ -121,7 +121,7 @@ sys_bul_flag=32
 
 <!-- #include file="include/template/web_guest_func.inc" -->
 
-<p class="centertext">´´½¨³É¹¦£¡Çë¼ÇÏÂÄúµÄÁôÑÔ±¾Ê×Ò³µØÖ·£º<br/><%=gbookaddr%><br/>&gt;<a href="<%=gbookaddr%>">×ªµ½¸ÃÒ³¡ú</a></p>
+<p class="centertext">åˆ›å»ºæˆåŠŸï¼è¯·è®°ä¸‹æ‚¨çš„ç•™è¨€æœ¬é¦–é¡µåœ°å€ï¼š<br/><%=gbookaddr%><br/>&gt;<a href="<%=gbookaddr%>">è½¬åˆ°è¯¥é¡µâ†’</a></p>
 </div>
 
 <!-- #include file="include/template/footer.inc" -->

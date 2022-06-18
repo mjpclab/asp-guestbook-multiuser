@@ -1,8 +1,8 @@
 <div class="guest-functions">
 	<div class="aside">
-		<a class="function" href="reg.asp">ÉêÇëÁôÑÔ±¾</a>
-		<a class="function" href="findkey.asp">ÕÒ»ØÃÜÂë</a>
-		<a class="function" href="login.asp">Î¬»¤ÁôÑÔ±¾</a>
-		<a class="function" href=unreg.asp>×ÔÉ¾ÕÊºÅ</a>
+		<a class="function" href="reg.asp">ç”³è¯·ç•™è¨€æœ¬</a>
+		<a class="function" href="findkey.asp">æ‰¾å›žå¯†ç </a>
+		<a class="function" href="login.asp">ç»´æŠ¤ç•™è¨€æœ¬</a>
+		<a class="function" href=unreg.asp>è‡ªåˆ å¸å·</a>
 	</div>
 </div>

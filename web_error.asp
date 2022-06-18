@@ -3,36 +3,36 @@ sub WebErrorPage(errorCode)
 	dim errmsg
 	select case errorCode
 	case 1
-		errmsg="¶Ô²»Æð£¬ÁôÑÔ±¾´´½¨¹¦ÄÜÒÑ¹Ø±Õ£¬ÇëÉÔºóÔÙÊÔ¡£"
+		errmsg="å¯¹ä¸èµ·ï¼Œç•™è¨€æœ¬åˆ›å»ºåŠŸèƒ½å·²å…³é—­ï¼Œè¯·ç¨åŽå†è¯•ã€‚"
 	case 2
-		errmsg="¶Ô²»Æð£¬ÕÒ»ØÃÜÂë¹¦ÄÜÒÑ¹Ø±Õ£¬ÇëÉÔºóÔÙÊÔ¡£"
+		errmsg="å¯¹ä¸èµ·ï¼Œæ‰¾å›žå¯†ç åŠŸèƒ½å·²å…³é—­ï¼Œè¯·ç¨åŽå†è¯•ã€‚"
 	case 3
-		errmsg="¶Ô²»Æð£¬¹ÜÀíÎ¬»¤¹¦ÄÜÒÑ¹Ø±Õ£¬ÇëÉÔºóÔÙÊÔ¡£"
+		errmsg="å¯¹ä¸èµ·ï¼Œç®¡ç†ç»´æŠ¤åŠŸèƒ½å·²å…³é—­ï¼Œè¯·ç¨åŽå†è¯•ã€‚"
 	case 4
-		errmsg="¶Ô²»Æð£¬ÄúµÄ·ÃÎÊÒÑ±»½ûÖ¹£¬ÇëÉÔºóÔÙÊÔ¡£"
+		errmsg="å¯¹ä¸èµ·ï¼Œæ‚¨çš„è®¿é—®å·²è¢«ç¦æ­¢ï¼Œè¯·ç¨åŽå†è¯•ã€‚"
 	case 5
-		errmsg="¶Ô²»Æð£¬×ÔÉ¾ÕÊºÅ¹¦ÄÜÒÑ¹Ø±Õ£¬ÇëÉÔºóÔÙÊÔ¡£"
+		errmsg="å¯¹ä¸èµ·ï¼Œè‡ªåˆ å¸å·åŠŸèƒ½å·²å…³é—­ï¼Œè¯·ç¨åŽå†è¯•ã€‚"
 	case 6
-		errmsg="¶Ô²»Æð£¬ÁôÑÔ±¾ÕËºÅÒÑ±»½ûÓÃ£¬ÇëÁªÏµ¹ÜÀíÔ±¡£"
+		errmsg="å¯¹ä¸èµ·ï¼Œç•™è¨€æœ¬è´¦å·å·²è¢«ç¦ç”¨ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ã€‚"
 	case else
-		errmsg="Î´Öª´íÎó£¬ÇëÁªÏµ¹ÜÀíÔ±¡£"
+		errmsg="æœªçŸ¥é”™è¯¯ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ã€‚"
 	end select
 	%>
 	<!-- #include file="include/template/dtd.inc" -->
 	<html>
 	<head>
 		<!-- #include file="include/template/metatag.inc" -->
-		<title><%=web_BookName%> ´íÎó</title>
+		<title><%=web_BookName%> é”™è¯¯</title>
 		<!-- #include file="inc_web_admin_stylesheet.asp" -->
 	</head>
 
 	<body>
 
-	<%Call WebInitHeaderData("","´íÎó","","")%><!-- #include file="include/template/header.inc" -->
+	<%Call WebInitHeaderData("","é”™è¯¯","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="outerborder" class="outerborder">
 		<div id="mainborder" class="mainborder">
 		<!-- #include file="include/template/web_guest_func.inc" -->
-		<p style="margin-bottom: 3em;">¡¡¡¡¡ö¡¡<%=errmsg%></p>
+		<p style="margin-bottom: 3em;">ã€€ã€€â– ã€€<%=errmsg%></p>
 		</div>
 	</div>
 
