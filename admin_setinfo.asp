@@ -24,7 +24,7 @@ Call CreateConn(cn)
 %>
 
 <!-- #include file="include/template/dtd.inc" -->
-<html>
+<html lang="zh-CN">
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=HomeName%> 留言本 修改版主资料</title>

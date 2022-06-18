@@ -19,7 +19,7 @@ sub WebErrorPage(errorCode)
 	end select
 	%>
 	<!-- #include file="include/template/dtd.inc" -->
-	<html>
+	<html lang="zh-CN">
 	<head>
 		<!-- #include file="include/template/metatag.inc" -->
 		<title><%=web_BookName%> 错误</title>

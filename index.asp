@@ -64,7 +64,7 @@ get_divided_page cn,rs,sql_pk_main,Replace(local_sql_count,"{0}",adminid),Replac
 %>
 
 <!-- #include file="include/template/dtd.inc" -->
-<html>
+<html lang="zh-CN">
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=HomeName%> 留言本</title>

@@ -22,7 +22,7 @@ end if
 %>
 
 <!-- #include file="include/template/dtd.inc" -->
-<html>
+<html lang="zh-CN">
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%></title>

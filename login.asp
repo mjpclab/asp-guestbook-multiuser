@@ -29,7 +29,7 @@ if VcodeCount>0 then Session(InstanceName & "_vcode")=getvcode(VcodeCount)
 %>
 
 <!-- #include file="include/template/dtd.inc" -->
-<html>
+<html lang="zh-CN">
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> 留言本 管理员登录</title>

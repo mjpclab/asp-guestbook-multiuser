@@ -62,7 +62,7 @@ rs.Close : set rs=nothing
 %>
 
 <!-- #include file="include/template/dtd.inc" -->
-<html>
+<html lang="zh-CN">
 <head>
 	<!-- #include file="include/template/metatag.inc" -->
 	<title><%=web_BookName%> 找回密码步骤2</title>
