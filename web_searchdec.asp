@@ -66,7 +66,7 @@ Call CreateConn(cn)
 	<%Call WebInitHeaderData("","Webmaster管理中心","","")%><!-- #include file="include/template/header.inc" -->
 	<div id="mainborder" class="mainborder">
 	<!-- #include file="include/template/web_admin_mainmenu.inc" -->
-	<div class="region form-region">
+	<div class="region form-region region-longtext">
 		<h3 class="title">搜索置顶公告</h3>
 		<div class="content">
 			<form method="post" action="web_searchdec.asp" name="form1">
