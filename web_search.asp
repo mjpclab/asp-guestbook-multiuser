@@ -74,12 +74,12 @@ if Len(Request("s_email"))>0 then	'邮件
 	param_str=param_str & ",s_email"
 end if
 
-if Len(Request("s_qqid"))>0 then	'QQ号码
+if Len(Request("s_qqid"))>0 then	'QQ
 	sql_condition=sql_condition & Replace(sql_websearch_condition_qqid,"{0}",FilterAdminLike(Request("s_qqid")))
 	param_str=param_str & ",s_qqid"
 end if
 
-if Len(Request("s_msnid"))>0 then	'Skype号
+if Len(Request("s_msnid"))>0 then	'微信
 	sql_condition=sql_condition & Replace(sql_websearch_condition_msnid,"{0}",FilterAdminLike(Request("s_msnid")))
 	param_str=param_str & ",s_msnid"
 end if
@@ -165,15 +165,15 @@ sql_condition=sql_websearch_condition_init & sql_condition
 			<span class="value"><input type="text" name="s_article" value="<%=Request("s_article")%>" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客邮件地址</span>
+			<span class="label">访客邮件</span>
 			<span class="value"><input type="text" name="s_email" value="<%=Request("s_email")%>" maxlength="48" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客QQ号码</span>
+			<span class="label">访客QQ</span>
 			<span class="value"><input type="text" name="s_qqid" value="<%=Request("s_qqid")%>" maxlength="16" /></span>
 		</div>
 		<div class="field">
-			<span class="label">访客Skype地址</span>
+			<span class="label">访客微信</span>
 			<span class="value"><input type="text" name="s_msnid" value="<%=Request("s_msnid")%>" maxlength="48" /></span>
 		</div>
 		<div class="field">

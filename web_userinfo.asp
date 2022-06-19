@@ -54,8 +54,8 @@ checkuser cn,rs,false
 			<tr><th scope="row">用户名</th><td><%=rs("adminname")%></td></tr>
 			<tr><th scope="row">昵称</th><td><%=rs("name") & ""%></td></tr>
 			<tr><th scope="row">E-mail</th><td><%=rs("email") & ""%></td></tr>
-			<tr><th scope="row">QQ号</th><td><%=rs("qqid") & ""%></td></tr>
-			<tr><th scope="row">Skype</th><td><%=rs("msnid") & ""%></td></tr>
+			<tr><th scope="row">QQ</th><td><%=rs("qqid") & ""%></td></tr>
+			<tr><th scope="row">微信</th><td><%=rs("msnid") & ""%></td></tr>
 			<tr><th scope="row">主页</th><td><%=rs("homepage") & ""%></td></tr>
 
 			<%
